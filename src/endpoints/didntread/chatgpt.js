@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const OPENAI_API_URL = process.env.DIDNTREAD__OPENAI_API_URL;
-const OPENAI_API_KEY = process.env.DIDNTREAD__OPENAI_API_KEY;
+const OPENAI_API_URL = process.env.OPENAI_API_URL;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 export const chatGpetApi = axios.create({
     baseURL: OPENAI_API_URL,

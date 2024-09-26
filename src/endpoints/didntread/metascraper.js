@@ -11,10 +11,11 @@ import metascraperTitle from 'metascraper-title';
 import metascraperUrl from 'metascraper-url';
 
 import TurndownService from 'turndown';
+import { memoizeOne } from '@metascraper/helpers';
 import { JSDOM } from 'jsdom';
 import { Readability } from '@mozilla/readability';
 
-const htmlToMarkdown = ({ htmlDom: $ }) => {
+const htmlToMarkdown = memoizeOne(({ htmlDom: $ }) => {
     const dom = new JSDOM($.html());
     const article = new Readability(dom.window.document).parse();
     const turndown = new TurndownService();
@@ -45,7 +46,7 @@ const htmlToMarkdown = ({ htmlDom: $ }) => {
 
     const markdown = `# ${article.title} \n\n` + turndown.turndown(article.content);
     return markdown;
-};
+});
 
 const metascraperMarkdown = () => ({
     markdown: htmlToMarkdown,
