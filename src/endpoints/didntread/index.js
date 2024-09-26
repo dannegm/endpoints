@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
-import puppeteer from 'puppeteer';
+// import puppeteer from 'puppeteer';
+import got from 'got';
 
 import { scrapper } from './metascraper.js';
 import { makePrompt } from './chatgpt.js';
@@ -15,20 +16,20 @@ const prompt = `
 
 const readerPrompt = makePrompt({ prompt });
 
-const getPageUrlContent = async url => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-
-    // Navigate the page to a URL.
-    await page.goto(url);
-    const htmlContent = await page.content();
-    await browser.close();
-
-    return htmlContent;
-};
+// const getPageUrlContent = async url => {
+//     const browser = await puppeteer.launch();
+//     const page = await browser.newPage();
+//
+//     // Navigate the page to a URL.
+//     await page.goto(url);
+//     const htmlContent = await page.content();
+//     await browser.close();
+//
+//     return htmlContent;
+// };
 
 router.all('/', (req, res) => {
-    return res.send("OK - didntread");
+    return res.send('OK - didntread');
 });
 
 router.get('/scrapper', async (req, res) => {
@@ -40,8 +41,11 @@ router.get('/scrapper', async (req, res) => {
     }
 
     try {
-        const html = await getPageUrlContent(url);
-        const { markdown, ...metadata } = await scrapper({ url, html });
+        // const got = (await import('got')).default;
+
+        // const html = await getPageUrlContent(url);
+        const { body } = await got(url);
+        const { markdown, ...metadata } = await scrapper({ url, html: body });
 
         const resume = await readerPrompt({ lang, message: markdown });
 

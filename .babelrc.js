@@ -5,10 +5,6 @@ module.exports = {
             'module-resolver',
             {
                 root: ['./src'],
-                alias: {
-                    '@': './src',
-                    '@endpoints': './src/endpoints',
-                },
             },
         ],
     ],
