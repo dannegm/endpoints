@@ -28,7 +28,7 @@ const getPageUrlContent = async url => {
 };
 
 router.all('/', (req, res) => {
-    return res.send('OK');
+    return res.send("OK - didntread");
 });
 
 router.get('/scrapper', async (req, res) => {

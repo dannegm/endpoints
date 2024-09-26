@@ -16,7 +16,7 @@ const totp = new OTPAuth.TOTP({
 });
 
 router.all('/', (req, res) => {
-    return res.send('OK');
+    return res.send('OK - starfish');
 });
 
 router.get('/otp', (req, res) => {
