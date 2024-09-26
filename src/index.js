@@ -18,11 +18,15 @@ app
 const startApp = app => {
     console.log('Mounting server...');
 
-    app.get('/', (req, res) => {
+    app.all('/', (req, res) => {
         res.send('OK');
     });
 
     const loader = makeLoader(app);
+
+    app.use('*', (req, res) => {
+        return res.status(404).send('Not Found');
+    });
 
     loader.listen(PORT, () => {
         console.log(`Server started at port ${PORT}`);
