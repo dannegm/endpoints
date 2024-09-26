@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "baseUrl": "./",
+        "paths": {
+            "@/*": ["./src/*"],
+            "@endpoints/*": ["./endpoints/*"]
+        },
+        "plugins": [
+            {
+                "name": "typescript-styled-plugin",
+                "validate": false
+            }
+        ]
+    },
+    "exclude": ["**/node_modules"]
+}
