@@ -32,8 +32,8 @@ router.all('/', (req, res) => {
     return res.send('OK - didntread');
 });
 
-router.get('/scrapper', async (req, res) => {
-    const url = req.query.url;
+router.post('/scrapper', async (req, res) => {
+    const url = req.body.url;
     const lang = req.query?.lang || 'infer';
 
     if (!url) {
