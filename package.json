@@ -8,6 +8,7 @@
         "dev": "nodemon -r dotenv/config --exec babel-node src",
         "format": "prettier . --write --log-level=warn",
         "build": "npx babel src --out-dir ./build",
+        "build:digitalocean": "npx puppeteer browsers install chrome",
         "start": "node ./build",
         "prod": "pm2 start ./build"
     },
@@ -49,5 +50,9 @@
         "resend": "^4.0.0",
         "turndown": "^7.2.0",
         "uuid": "^10.0.0"
+    },
+    "engines": {
+        "node": "20.12.2",
+        "yarn": "1.22.22"
     }
 }
