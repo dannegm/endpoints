@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import got from 'got';
 
-import { scrapper } from './metascraper.js';
-import { makePrompt } from './chatgpt.js';
+import { scrapper } from './metascraper';
+import { makePrompt } from './chatgpt';
 
 const router = Router();
 

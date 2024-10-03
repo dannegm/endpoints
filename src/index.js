@@ -15,14 +15,14 @@ app
     .use(morgan(':method :url :status :response-time ms - ":user-agent"'))
     .use(bodyParser.json());
 
-const startApp = app => {
+const startApp = async app => {
     console.log('Mounting server...');
 
     app.all('/', (req, res) => {
         res.send('OK');
     });
 
-    const loader = makeLoader(app);
+    const loader = await makeLoader(app);
 
     app.use('*', (req, res) => {
         return res.status(404).send('Not Found');
