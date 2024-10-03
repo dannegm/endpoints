@@ -9,7 +9,8 @@
         "format": "prettier . --write --log-level=warn",
         "build": "npx babel src --out-dir ./build",
         "start": "node ./build",
-        "prod": "pm2 start ./build"
+        "prod": "pm2 start ./build",
+        "make": "plop"
     },
     "dependencies": {
         "@babel/cli": "^7.25.6",
@@ -44,6 +45,7 @@
         "nanoid": "^5.0.7",
         "nodemon": "^3.1.7",
         "otpauth": "^9.3.3",
+        "plop": "^4.0.1",
         "pm2": "^5.4.2",
         "prettier": "^3.3.3",
         "react": "^18.3.1",
