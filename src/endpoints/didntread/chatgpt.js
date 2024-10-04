@@ -3,7 +3,7 @@ import axios from 'axios';
 const OPENAI_API_URL = process.env.OPENAI_API_URL;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-export const chatGpetApi = axios.create({
+export const chatGptApi = axios.create({
     baseURL: OPENAI_API_URL,
     headers: {
         'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ const getLangPrompt = ({ lang }) =>
 
 export const makePrompt = ({ prompt }) => {
     return async ({ message, lang = 'infer' }) => {
-        const resp = await chatGpetApi.post('/chat/completions', {
+        const resp = await chatGptApi.post('/chat/completions', {
             model: 'gpt-4o-mini',
             messages: [
                 {

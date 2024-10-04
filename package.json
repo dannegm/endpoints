@@ -10,7 +10,8 @@
         "build": "npx babel src --out-dir ./build",
         "start": "node ./build",
         "prod": "pm2 start ./build",
-        "make": "plop"
+        "make": "plop",
+        "codename": "npx codename-generator"
     },
     "dependencies": {
         "@babel/cli": "^7.25.6",

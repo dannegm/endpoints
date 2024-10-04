@@ -8,8 +8,8 @@ const router = Router();
 
 const prompt = `
     You're going to be a machine that reads an article and gives me in a tweet (no more than
-    240 characters), whit no hashtags, what the article's title is promising, saving me from reading all the useless
-    filler content. I'll send the articles in markdown.
+    240 characters), whit no hashtags, what the article's title is promising, saving me from
+    reading all the useless filler content. I'll send the articles in markdown.
 `;
 
 const readerPrompt = makePrompt({ prompt });
