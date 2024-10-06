@@ -1,46 +1,62 @@
 import { Router } from 'express';
-import got from 'got';
 
-import { scrapper } from './metascraper';
-import { makePrompt } from './chatgpt';
+import { apiKeyMiddleware, fingerprintMiddleware, tokenMiddleware } from './middlewares';
+import {
+    fetchAbstract,
+    findAbstractsByFingerprint,
+    linkAbstractToFingerprint,
+    upsertAbstract,
+} from './abstracts';
 
 const router = Router();
 
-const prompt = `
-    You're going to be a machine that reads an article and gives me in a tweet (no more than
-    240 characters), whit no hashtags, what the article's title is promising, saving me from
-    reading all the useless filler content. I'll send the articles in markdown.
-`;
-
-const readerPrompt = makePrompt({ prompt });
-
-router.all('/', (req, res) => {
+router.all('/', (_, res) => {
     return res.send('OK - didntread');
 });
 
-router.post('/scrapper', async (req, res) => {
-    const url = req.body.url;
-    const lang = req.query?.lang || 'infer';
+router.get('/tokens', apiKeyMiddleware, fingerprintMiddleware, async (req, res) => {
+    const fingerprint = req.fingerprint;
+    return res.json(fingerprint);
+});
 
-    if (!url) {
-        return res.status(400).json({ message: 'Missing url' });
-    }
+router.get('/abstracts', apiKeyMiddleware, fingerprintMiddleware, async (req, res) => {
+    const fingerprint = req.fingerprint.fingerprint;
 
-    try {
-        const { body } = await got(url);
-        const { markdown, ...metadata } = await scrapper({ url, html: body });
+    const [abstracts] = await findAbstractsByFingerprint({ fingerprint });
+    return res.json(abstracts);
+});
 
-        const resume = await readerPrompt({ lang, message: markdown });
+router.post(
+    '/scrapper',
+    apiKeyMiddleware,
+    fingerprintMiddleware,
+    tokenMiddleware,
+    async (req, res) => {
+        const url = req.body.url;
+        const lang = req.body.lang || 'infer';
+
+        if (!url) {
+            return res.status(400).json({ message: 'Missing url' });
+        }
+
+        const [abstract, abstractError, cached] = await fetchAbstract({ lang, url });
+
+        if (abstractError) {
+            return res.status(500).json({ error: abstractError });
+        }
+
+        await upsertAbstract(abstract);
+        await linkAbstractToFingerprint({
+            fingerprint: req.fingerprint.fingerprint,
+            hash: abstract.hash,
+        });
 
         return res.status(200).json({
-            // ...
-            ...metadata,
-            resume,
+            ...abstract,
+            cached,
+            remainingTokens: req.remainingTokens || null,
         });
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({ message: 'unexpected error', error });
-    }
-});
+    },
+);
 
 export default router;

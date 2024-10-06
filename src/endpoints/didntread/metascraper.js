@@ -12,8 +12,8 @@ import metascraperUrl from 'metascraper-url';
 
 import TurndownService from 'turndown';
 import { memoizeOne } from '@metascraper/helpers';
-import { JSDOM } from 'jsdom';
 import { Readability } from '@mozilla/readability';
+import { JSDOM } from 'jsdom';
 
 const htmlToMarkdown = memoizeOne(({ htmlDom: $ }) => {
     const dom = new JSDOM($.html());
