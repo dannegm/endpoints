@@ -3,34 +3,47 @@ import { supabase } from '@/services/supabase';
 const $schema = supabase.schema('didntread');
 const FREE_TOKENS = 15;
 const TransactionTypes = {
-    SPENT: '',
-    EARNED: '',
-    FAILED: '',
+    SPENT: 'spent',
+    EARNED: 'earned',
+    FAILED: 'failed',
 };
 
-export const upsertFingerprint = async ({ fingerprint }) => {
+export const findFingerprint = async ({ fingerprint }) => {
     const { data, error } = await $schema
         .from('fingerprints')
-        .upsert(
-            {
-                fingerprint,
-                tokens: FREE_TOKENS,
-            },
-            {
-                onConflict: ['fingerprint'],
-            },
-        )
         .select()
+        .eq('fingerprint', fingerprint)
         .single();
 
     return [data, error];
 };
 
-export const updateFingerprint = async ({ fingerprint, body }) => {
-    return await $schema
+export const upsertFingerprint = async ({ fingerprint }) => {
+    let { data, error } = await $schema
         .from('fingerprints')
-        .update({ ...body })
-        .eq('fingerprint', fingerprint);
+        .select()
+        .eq('fingerprint', fingerprint)
+        .single();
+
+    if (!data || error) {
+        const { data: created, createdError } = await $schema
+            .from('fingerprints')
+            .insert({
+                fingerprint,
+                tokens: FREE_TOKENS,
+            })
+            .select()
+            .single();
+
+        data = created;
+        error = createdError;
+    }
+
+    return [data, error];
+};
+
+export const updateFingerprint = async ({ fingerprint, ...body }) => {
+    return await $schema.from('fingerprints').update(body).eq('fingerprint', fingerprint);
 };
 
 export const registerTransaction = async ({ fingerprint, tokens, type, source, payload = {} }) => {
@@ -44,10 +57,10 @@ export const registerTransaction = async ({ fingerprint, tokens, type, source, p
 };
 
 export const spendTokens = async ({ fingerprint, tokens, source, payload = {} }) => {
-    const [{ tokens: availableTokens }, userError] = await upsertFingerprint({ fingerprint });
+    const [{ tokens: availableTokens }, fingerprintError] = await findFingerprint({ fingerprint });
 
-    if (userError) {
-        return [null, userError];
+    if (fingerprintError) {
+        return [null, fingerprintError];
     }
 
     if (availableTokens < tokens) {

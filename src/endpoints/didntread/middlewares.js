@@ -4,7 +4,7 @@ const API_KEY = process.env.DIDNTREAD__APP_KEY;
 
 const getSourcesCost = ({ source }) => {
     const sources = {
-        '/scrapper': 1,
+        '/scrapper': 5,
     };
 
     return sources[source] || 0;
