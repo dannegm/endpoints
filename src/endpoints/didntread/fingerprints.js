@@ -34,15 +34,13 @@ export const updateFingerprint = async ({ fingerprint, body }) => {
 };
 
 export const registerTransaction = async ({ fingerprint, tokens, type, source, payload = {} }) => {
-    return await $schema.from('transactions').insert([
-        {
-            fingerprint,
-            tokens,
-            type,
-            source,
-            payload,
-        },
-    ]);
+    return await $schema.from('transactions').insert({
+        fingerprint,
+        tokens,
+        type,
+        source,
+        payload,
+    });
 };
 
 export const spendTokens = async ({ fingerprint, tokens, source, payload = {} }) => {
