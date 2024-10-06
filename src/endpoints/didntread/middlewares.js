@@ -1,3 +1,4 @@
+import { tokenDecode } from '@/helpers/crypto';
 import { spendTokens, upsertFingerprint } from './fingerprints';
 
 const API_KEY = process.env.DIDNTREAD__APP_KEY;
@@ -22,6 +23,29 @@ export const apiKeyMiddleware = (req, res, next) => {
     next();
 };
 
+export const tokenMiddleware = (req, res, next) => {
+    const token = req.headers['x-dnn-token'];
+
+    if (!token) {
+        return res.status(401).json({ error: 'Invalid token' });
+    }
+
+    const decodedToken = tokenDecode(token);
+
+    if (decodedToken?.apiKey !== API_KEY) {
+        return res.status(401).json({ error: 'Invalid API Key' });
+    }
+
+    if (!decodedToken?.fingerprint) {
+        return res.status(401).json({ error: 'Invalid fingerprint' });
+    }
+
+    req.token = decodedToken;
+    req.headers['x-dnn-fingerprint'] = decodedToken.fingerprint;
+
+    next();
+};
+
 export const fingerprintMiddleware = async (req, res, next) => {
     const fingerprint = req.headers['x-dnn-fingerprint'];
 
@@ -42,7 +66,7 @@ export const fingerprintMiddleware = async (req, res, next) => {
     next();
 };
 
-export const tokenMiddleware = async (req, res, next) => {
+export const withCostMiddleware = async (req, res, next) => {
     const fingerprint = req.fingerprint;
     const tokenCost = getSourcesCost({ source: req.path });
 
