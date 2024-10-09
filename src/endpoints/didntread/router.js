@@ -1,11 +1,6 @@
 import { Router } from 'express';
 
-import {
-    apiKeyMiddleware,
-    tokenMiddleware,
-    fingerprintMiddleware,
-    withCostMiddleware,
-} from './middlewares';
+import { tokenMiddleware, fingerprintMiddleware, withCostMiddleware } from './middlewares';
 import {
     fetchAbstract,
     findAbstractsByFingerprint,

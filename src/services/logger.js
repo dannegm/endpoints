@@ -1,45 +1,63 @@
 import { createLogger, format, transports, addColors } from 'winston';
+import { upperCase, kebabCase } from 'lodash';
+import clc from 'cli-color';
 
-// Define un nivel personalizado
 const customLevels = {
     levels: {
         error: 0,
         warn: 1,
-        info: 2,
-        request: 3,
+        success: 3,
+        info: 4,
+        request: 4,
+        debug: 5,
+        verbose: 6,
+        silly: 6,
     },
     colors: {
         error: 'red',
         warn: 'yellow',
-        info: 'blue',
-        request: 'magenta',
+        success: 'green',
+        info: 'cyan',
+        request: 'blue',
+        debug: 'gray',
+        verbose: 'gray',
+        silly: 'gray',
     },
 };
 
 addColors(customLevels.colors);
 
-export const logger = createLogger({
-    levels: customLevels.levels,
-    format: format.combine(format.timestamp(), format.json()),
-    transports: [
-        new transports.Console({
-            level: 'request',
-            format: format.combine(format.colorize(), format.simple()),
-        }),
-        new transports.File({
-            filename: 'logs/request.log',
-            level: 'request',
-            format: format.combine(format.timestamp(), format.json()),
-        }),
-        new transports.File({
-            filename: 'logs/app.log',
-            level: 'info',
-            format: format.combine(format.timestamp(), format.json()),
-        }),
-        new transports.File({
-            filename: 'logs/error.log',
-            level: 'error',
-            format: format.combine(format.timestamp(), format.json()),
-        }),
-    ],
-});
+const consoleFormat = (tag = 'logger') =>
+    format.printf(({ level, message }) => {
+        const coloredTag = clc.magenta(`[${upperCase(tag)}]`);
+        const timestamp = new Date().toISOString();
+        return `${clc.blackBright(timestamp)} ${coloredTag} ${level}: ${message}`;
+    });
+
+const buildCustomLogger = tag => {
+    const filename = kebabCase(tag);
+
+    return createLogger({
+        levels: customLevels.levels,
+        transports: [
+            new transports.Console({
+                level: 'info',
+                format: format.combine(format.colorize(), consoleFormat(tag)),
+            }),
+            new transports.File({
+                filename: `logs/${filename}.log`,
+                level: 'info',
+                format: format.combine(format.timestamp(), format.json()),
+            }),
+            new transports.File({
+                filename: `logs/${filename}.error.log`,
+                level: 'error',
+                format: format.combine(format.timestamp(), format.json()),
+            }),
+        ],
+    });
+};
+
+const logger = buildCustomLogger('app');
+
+export { logger, buildCustomLogger };

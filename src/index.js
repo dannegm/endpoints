@@ -16,14 +16,14 @@ app
     .use(
         morgan(':method :url :status :response-time ms - :user-agent', {
             stream: {
-                write: message => logger.log('request', message.trim()),
+                write: message => logger.request(message.trim()),
             },
         }),
     )
     .use(bodyParser.json());
 
 const startApp = async app => {
-    console.log('Mounting server...');
+    logger.info('Mounting server...');
 
     app.all('/', (req, res) => {
         res.send('OK');
@@ -41,7 +41,7 @@ const startApp = async app => {
     });
 
     loader.listen(PORT, () => {
-        console.log(`Server started at port ${PORT}`);
+        logger.info(`Server started at port ${PORT}`);
     });
 };
 
