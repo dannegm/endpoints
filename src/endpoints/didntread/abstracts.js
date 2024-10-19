@@ -19,6 +19,7 @@ export const findAbstractsByFingerprint = async ({ fingerprint }) => {
     const { data, error } = await $schema
         .from('fingerprint_abstracts')
         .select('abstracts(*)')
+        .order('id', { ascending: false })
         .eq('fingerprint', fingerprint);
 
     if (!data || error) {
