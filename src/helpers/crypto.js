@@ -1,5 +1,4 @@
 import CryptoJS from 'crypto-js';
-import { encode as encode64, decode as decode64 } from 'base-64';
 
 export const sha1 = data => CryptoJS.SHA1(data).toString();
 
@@ -8,6 +7,10 @@ export const nanoid = (length = 21) => {
     const hash = CryptoJS.SHA1(randomValue).toString();
     return hash.substring(0, length);
 };
+
+export const encode64 = raw => CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(raw));
+
+export const decode64 = encoded => CryptoJS.enc.Base64.parse(encoded).toString(CryptoJS.enc.Utf8);
 
 export const tokenEncode = (payload = {}) => {
     const SEPARATOR_SIZE = 12;
