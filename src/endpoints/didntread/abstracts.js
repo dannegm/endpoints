@@ -26,7 +26,11 @@ export const findAbstractsByFingerprint = async ({ fingerprint }) => {
         return [null, error];
     }
 
-    const flatData = data.map(({ abstracts }) => abstracts);
+    const flatData = data
+        .filter(i => i !== null)
+        .filter(i => i.abstracts !== null)
+        .map(({ abstracts }) => abstracts);
+
     return [flatData, error];
 };
 
