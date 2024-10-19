@@ -1,4 +1,7 @@
 import { Router } from 'express';
+import { trim } from 'lodash';
+
+import { urlValidator } from '@/helpers/validators';
 
 import { tokenMiddleware, fingerprintMiddleware, withCostMiddleware } from './middlewares';
 import {
@@ -32,13 +35,14 @@ router.post(
     withCostMiddleware,
     async (req, res) => {
         const url = req.body.url;
+        const sanitizedUrl = trim(url.trim(), '.');
         const lang = req.body.lang || 'infer';
 
-        if (!url) {
-            return res.status(400).json({ message: 'Missing url' });
+        if (!urlValidator(sanitizedUrl)) {
+            return res.status(400).json({ message: 'Invalid url' });
         }
 
-        const [abstract, abstractError, cached] = await fetchAbstract({ lang, url });
+        const [abstract, abstractError, cached] = await fetchAbstract({ lang, url: sanitizedUrl });
 
         if (abstractError) {
             return res.status(500).json({ error: abstractError });
