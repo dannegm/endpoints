@@ -14,11 +14,11 @@
 # Build
 ######################
 /build
+**/indice.json
 
 # Cache
 ######################
 **.cache
-
 
 # OS generated files
 ######################
