@@ -18,11 +18,6 @@ router.all('/', (req, res) => {
     return res.send('OK - bookworms');
 });
 
-router.get('/migrate', async (req, res) => {
-    loadBooks('./indice.json');
-    return res.json({ message: 'running' });
-});
-
 router.all('/book/:libid', async (req, res) => {
     const libid = req.params?.libid;
 
