@@ -1,69 +1,29 @@
-import fs from 'fs';
-import path from 'path';
 import { Router } from 'express';
 import { lowerCase, deburr } from 'lodash';
-import axios from 'axios';
 
 import ntfy from '@/services/ntfy';
 import { totp } from '@/services/security';
 import { supabase } from '@/services/supabase';
 import { pipe } from '@/helpers/utils';
-import { buildCustomLogger } from '@/services/logger';
+import { loadBooks } from './migrate';
 
 const router = Router();
-const logger = buildCustomLogger('bookworms');
 
 const toString = str => str.toString();
-const sanitize = pipe([toString, lowerCase, deburr]);
+const normalize = pipe([toString, lowerCase, deburr]);
 
-const initializeDB = async ({ extarlnalUrl, localName }) => {
-    const outputPath = path.join(__dirname, localName);
-
-    logger.info(`Initializing DB: ${outputPath}`);
-
-    if (fs.existsSync(outputPath)) {
-        logger.info(`DB already exists: ${outputPath}`);
-        return;
-    }
-
-    try {
-        const response = await axios({
-            method: 'get',
-            url: extarlnalUrl,
-            responseType: 'stream',
-        });
-
-        const writer = fs.createWriteStream(outputPath);
-
-        response.data.pipe(writer);
-
-        await new Promise((resolve, reject) => {
-            writer.on('finish', () => {
-                logger.success(`DB downloaded successfully to: ${outputPath}`);
-                resolve();
-            });
-            writer.on('error', error => {
-                logger.error('Error writing DB');
-                reject(error);
-            });
-        });
-    } catch (error) {
-        logger.error('Error downloading DB: ' + error.message);
-    }
-};
-
-initializeDB({
-    extarlnalUrl:
-        'https://firebasestorage.googleapis.com/v0/b/d4nn36m.appspot.com/o/indice.json?alt=media&token=f25e77fc-c93f-49e9-9576-ee6183f2e4b6',
-    localName: 'indice.json',
-});
+const $schema = supabase.schema('bookworms');
 
 router.all('/', (req, res) => {
     return res.send('OK - bookworms');
 });
 
+router.get('/migrate', async (req, res) => {
+    loadBooks('./indice.json');
+    return res.json({ message: 'running' });
+});
+
 router.all('/book/:libid', async (req, res) => {
-    const startTime = Date.now();
     const libid = req.params?.libid;
 
     if (!libid) {
@@ -72,30 +32,32 @@ router.all('/book/:libid', async (req, res) => {
         });
     }
 
-    const { default: books } = await import(`./indice.json`);
+    const { data: bookData, error: bookError } = await $schema
+        .from('books')
+        .select(
+            `libid, title, description, labels, published, pagecount, size, filename, views, downloads, serie_name, serie_sequence, authors(name)`,
+        )
+        .eq('libid', libid)
+        .single();
 
-    const { filename, ...book } = books.find(book => {
-        return String(book.libid) === String(libid);
-    });
-
-    if (!book) {
+    if (!bookData || bookError) {
         return res.status(404).json({
             message: 'Book not found',
         });
     }
 
+    const { filename, ...book } = bookData;
+
     return res.json({
         ...book,
-        startTime,
         requestUrl: `/bookworms/request?filename=${filename}`,
         downloadUrl: `/bookworms/download?filename=${filename}`,
     });
 });
 
 router.all('/search', async (req, res) => {
-    const startTime = Date.now();
-    const title = sanitize(req.query?.title || '');
-    const author = sanitize(req.query?.author || '');
+    const title = normalize(req.query?.title || '');
+    const author = normalize(req.query?.author || '');
 
     if (!title && !author) {
         return res.status(400).json({
@@ -103,24 +65,48 @@ router.all('/search', async (req, res) => {
         });
     }
 
-    const { default: books } = await import(`./indice.json`);
+    const getBooks = async ({ title = undefined, authors = [] }) => {
+        const query = [];
 
-    const results = books
-        .filter(book => {
-            const matchTitle = title !== '' ? sanitize(book.title).includes(title) : false;
-            const matchAuthor = author !== '' ? sanitize(book.authors).includes(author) : false;
-            return matchTitle || matchAuthor;
-        })
-        .map(({ filename, ...book }) => ({
+        if (title) {
+            query.push(`title_normalized.ilike.%${title}%`);
+        }
+
+        if (authors.length) {
+            query.push(`id.in.(${authors})`);
+        }
+
+        const { data: booksData, error } = await $schema
+            .from('books')
+            .select(
+                `libid, title, description, labels, published, pagecount, size, filename, views, downloads, serie_name, serie_sequence, authors(name)`,
+            )
+            .or(query);
+
+        const data = booksData.map(({ filename, ...book }) => ({
             ...book,
-            requestUrl: `/bookworms/request?filename=${filename}`,
             downloadUrl: `/bookworms/download?filename=${filename}`,
+            requestUrl: `/bookworms/request?filename=${filename}`,
         }));
 
+        return { data, error };
+    };
+
+    let authorsBooks = [];
+
+    if (author) {
+        const { data: authorsData } = await $schema
+            .from('authors')
+            .select(`name, books(id)`)
+            .or(`name_normalized.ilike.%${author}%)`);
+
+        authorsBooks = authorsData.flatMap(author => author.books).map(({ id }) => id);
+    }
+
+    const { data: booksData } = await getBooks({ title, authors: authorsBooks });
+
     return res.json({
-        duration: Date.now() - startTime,
-        count: results.length,
-        results,
+        booksData,
     });
 });
 
