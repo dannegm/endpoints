@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 
 import { logger } from './services/logger';
 import { makeLoader } from './loader';
+import { ratelimitMiddleware } from './middlewares';
 
 const PORT = process.env.PORT || 3000;
 
@@ -20,7 +21,8 @@ app
             },
         }),
     )
-    .use(bodyParser.json());
+    .use(bodyParser.json())
+    .use(ratelimitMiddleware);
 
 const startApp = async app => {
     logger.info('Mounting server...');
