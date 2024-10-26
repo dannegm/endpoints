@@ -54,7 +54,7 @@ router.get('/search', async (req, res) => {
     const { data: booksData } = await $schema
         .from('books')
         .select(
-            'libid, title, filename, views, downloads, serie_name, serie_sequence, authors(name)',
+            'libid, title, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name)',
         )
         .ilike('title_normalized', `%${query}%`)
         .order('title_normalized', { ascending: true })
@@ -86,7 +86,7 @@ router.get('/top', async (req, res) => {
     const setupMap = {
         books: {
             categories: ['views', 'downloads'],
-            fields: 'libid, title, filename, views, downloads, serie_name, serie_sequence, authors(name)',
+            fields: 'libid, title, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name)',
         },
         series: {
             categories: ['views'],
@@ -140,7 +140,7 @@ router.get('/book/:libid', async (req, res) => {
     const { data: bookData, error: bookError } = await $schema
         .from('books')
         .select(
-            `libid, title, description, labels, published, pagecount, size, filename, views, downloads, serie_name, serie_sequence, authors(name)`,
+            `libid, title, description, labels, published, pagecount, size, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name)`,
         )
         .eq('libid', libid)
         .single();
@@ -168,7 +168,7 @@ router.get('/author/:authorKey', async (req, res) => {
     const { data: authorData, error: authorError } = await $schema
         .from('authors')
         .select(
-            `name, views, books(libid, title, filename, serie_name, serie_sequence, views, downloads)`,
+            `name, views, books(libid, title, filename, cover_id, serie_name, serie_sequence, views, downloads)`,
         )
         .eq('name_normalized', authorName)
         .single();
@@ -196,7 +196,7 @@ router.get('/serie/:serieKey', async (req, res) => {
     const { data: serieData, error: serieError } = await $schema
         .from('series')
         .select(
-            `name, views, books(libid, title, filename, serie_name, serie_sequence, views, downloads)`,
+            `name, views, books(libid, title, filename, cover_id, serie_name, serie_sequence, views, downloads)`,
         )
         .eq('name_normalized', serieName)
         .single();
@@ -276,8 +276,12 @@ router.get('/download', async (req, res) => {
     const buffer = Buffer.from(await data.arrayBuffer());
     res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
     res.setHeader('Content-Type', 'application/epub+zip');
-
     return res.send(buffer);
+});
+
+router.get('/empty-bucket', async (req, res) => {
+    await supabase.storage.emptyBucket('bookworms');
+    return res.status(204).send();
 });
 
 export default router;
