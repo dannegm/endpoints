@@ -81,7 +81,7 @@ router.get('/search', async (req, res) => {
 router.get('/top', async (req, res) => {
     const entity = req.query?.entity || 'books';
     const category = req.query?.category || 'views';
-    const limit = Math.max(50, req.query?.limit || 10);
+    const limit = Math.min(50, req.query?.limit || 10);
 
     const setupMap = {
         books: {
