@@ -64,15 +64,15 @@ router.get('/search', async (req, res) => {
 
     return res.json({
         authors: {
-            count: authorsData.length,
+            count: authorsData.length || 0,
             results: authorsData.map(mapCount),
         },
         series: {
-            count: seriesData.length,
+            count: seriesData.length || 0,
             results: seriesData.map(mapCount),
         },
         books: {
-            count: booksData.length,
+            count: booksData.length || 0,
             results: booksData,
         },
     });
