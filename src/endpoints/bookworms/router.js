@@ -1,21 +1,15 @@
 import { Router } from 'express';
-import { Redis } from '@upstash/redis';
-import { trim, lowerCase, deburr } from 'lodash';
-
-import { pipe } from '@/helpers/utils';
 import { sha1 } from '@/helpers/crypto';
 
 import ntfy from '@/services/ntfy';
 import { totp } from '@/services/security';
 import { supabase } from '@/services/supabase';
 
-const CACHE_TTL_SECONDS = 24 * 60 * 60;
+import { cache, getPagination, normalize } from './helpers';
+import { apiKeyMiddleware } from './middlewares';
 
 const router = Router();
-const redis = Redis.fromEnv();
-
-const toString = str => str.toString();
-const normalize = pipe([toString, trim, lowerCase, deburr]);
+router.use(apiKeyMiddleware);
 
 const $schema = supabase.schema('bookworms');
 const $storage = supabase.storage.from('bookworms');
@@ -23,25 +17,6 @@ const $storage = supabase.storage.from('bookworms');
 router.all('/', (req, res) => {
     return res.send('OK - bookworms');
 });
-
-const cache = async (cacheKey, handler) => {
-    const cached = await redis.get(cacheKey);
-
-    if (cached) {
-        return { data: cached, cached: true };
-    }
-
-    try {
-        const data = await handler();
-
-        await redis.set(cacheKey, data);
-        await redis.expire(cacheKey, CACHE_TTL_SECONDS);
-
-        return { data, cached: false };
-    } catch (error) {
-        return { error, cached: false };
-    }
-};
 
 router.get('/summaries', async (req, res) => {
     const cacheKey = `bookworms.summaries`;
@@ -68,6 +43,7 @@ router.get('/summaries', async (req, res) => {
 
 router.get('/search', async (req, res) => {
     const query = normalize(req.query?.q || '');
+    const pagination = getPagination(req);
 
     if (!query) {
         return res.status(400).json({
@@ -75,28 +51,27 @@ router.get('/search', async (req, res) => {
         });
     }
 
-    const cacheKey = `bookworms.search.${sha1(query)}`;
+    const cacheKey = `bookworms.search.${sha1(query + pagination)}`;
     const { data, cached, error } = await cache(cacheKey, async () => {
         const { data: authorsData } = await $schema
             .from('authors')
             .select(`name, views, books(count)`)
             .ilike('name_normalized', `%${query}%`)
-            .order('name_normalized', { ascending: true });
+            .range(...pagination);
 
         const { data: seriesData } = await $schema
             .from('series')
             .select(`name, views, books(count)`)
             .ilike('name_normalized', `%${query}%`)
-            .order('name_normalized', { ascending: true });
+            .range(...pagination);
 
-        const { data: booksData } = await $schema
+        const { data: booksData, error: booksError } = await $schema
             .from('books')
             .select(
                 'libid, title, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name)',
             )
             .ilike('title_normalized', `%${query}%`)
-            .order('title_normalized', { ascending: true })
-            .order('serie_sequence', { ascending: true });
+            .range(...pagination);
 
         const mapCount = item => ({
             name: item.name,
@@ -106,16 +81,16 @@ router.get('/search', async (req, res) => {
 
         return {
             authors: {
-                count: authorsData.length || 0,
-                results: authorsData.map(mapCount),
+                count: authorsData?.length || 0,
+                results: authorsData.map(mapCount) || [],
             },
             series: {
-                count: seriesData.length || 0,
-                results: seriesData.map(mapCount),
+                count: seriesData?.length || 0,
+                results: seriesData.map(mapCount) || [],
             },
             books: {
-                count: booksData.length || 0,
-                results: booksData,
+                count: booksData?.length || 0,
+                results: booksData || [],
             },
         };
     });
