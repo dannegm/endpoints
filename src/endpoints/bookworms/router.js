@@ -197,7 +197,7 @@ router.get('/book/:libid', async (req, res) => {
             const { data: bookData, error: bookError } = await $schema
                 .from('books')
                 .select(
-                    `libid, title, description, labels, published, pagecount, size, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name)`,
+                    `libid, title, description, labels, published, pagecount, size, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name, views, books(count))`,
                 )
                 .eq('libid', libid)
                 .single();
