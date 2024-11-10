@@ -90,6 +90,8 @@ router.get('/search', async (req, res) => {
                 books: item.books[0].count,
             });
 
+            const [from, to] = pagination;
+
             return {
                 authors: {
                     total: authorsData?.length || 0,
@@ -100,8 +102,10 @@ router.get('/search', async (req, res) => {
                     results: seriesData.map(mapCount) || [],
                 },
                 books: {
-                    total: booksCount[0]?.count || 0,
+                    from,
+                    to,
                     count: booksData?.length || 0,
+                    total: booksCount[0]?.count || 0,
                     results: booksData || [],
                 },
             };
