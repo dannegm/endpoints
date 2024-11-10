@@ -68,12 +68,14 @@ router.get('/search', async (req, res) => {
             const { data: seriesData } = await $schema
                 .from('series')
                 .select(`name, views, books(count)`)
+                .order('id', { ascending: false })
                 .ilike('name_normalized', `%${query}%`);
             // .range(...pagination)
 
             const { data: booksCount } = await $schema
                 .from('books')
                 .select('count')
+                .order('id', { ascending: false })
                 .ilike('title_normalized', `%${query}%`);
 
             const { data: booksData } = await $schema
@@ -81,6 +83,7 @@ router.get('/search', async (req, res) => {
                 .select(
                     'libid, title, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name)',
                 )
+                .order('id', { ascending: false })
                 .ilike('title_normalized', `%${query}%`)
                 .range(...pagination);
 
