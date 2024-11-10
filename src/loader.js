@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import ntfy from './services/ntfy';
 
 export const makeLoader = async app => {
     const endpointsDir = path.join(__dirname, './endpoints');
@@ -11,6 +12,10 @@ export const makeLoader = async app => {
         if (fs.existsSync(routerPath)) {
             const { default: router } = await import(`./endpoints/${folder}/router`);
             app.use(`/${folder}`, router);
+            ntfy.pushRich({
+                title: 'DNN Endpoints Deploy',
+                message: `/${folder} mounted...`,
+            });
         }
     }
 
