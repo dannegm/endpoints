@@ -17,10 +17,17 @@ export const getPagination = req => {
     return pagination;
 };
 
-export const cache = async (cacheKey, handler) => {
+export const getNoCacheFlag = req => {
+    const params = new URLSearchParams(req.url.split('?')[1]);
+    const noCache = params.get('nocache');
+    const isNoCache = noCache === 'true' || noCache === '' || noCache === null ? true : false;
+    return isNoCache;
+};
+
+export const cache = async (cacheKey, handler, nocache = false) => {
     const cached = await redis.get(cacheKey);
 
-    if (!DEBUG && cached) {
+    if (!DEBUG && !nocache && cached) {
         return { data: cached, cached: true };
     }
 

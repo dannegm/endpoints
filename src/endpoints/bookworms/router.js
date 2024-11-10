@@ -5,7 +5,7 @@ import ntfy from '@/services/ntfy';
 import { totp } from '@/services/security';
 import { supabase } from '@/services/supabase';
 
-import { cache, getPagination, normalize } from './helpers';
+import { cache, getNoCacheFlag, getPagination, normalize } from './helpers';
 import { apiKeyMiddleware } from './middlewares';
 
 const router = Router();
@@ -20,17 +20,21 @@ router.all('/', (req, res) => {
 
 router.get('/summaries', async (req, res) => {
     const cacheKey = `bookworms.summaries`;
-    const { data, cached, error } = await cache(cacheKey, async () => {
-        const { data: authorsData } = await $schema.from('authors').select(`count`);
-        const { data: seriesData } = await $schema.from('series').select(`count`);
-        const { data: booksData } = await $schema.from('books').select('count');
+    const { data, cached, error } = await cache(
+        cacheKey,
+        async () => {
+            const { data: authorsData } = await $schema.from('authors').select(`count`);
+            const { data: seriesData } = await $schema.from('series').select(`count`);
+            const { data: booksData } = await $schema.from('books').select('count');
 
-        return {
-            authors: authorsData[0]?.count || 0,
-            series: seriesData[0]?.count || 0,
-            books: booksData[0]?.count || 0,
-        };
-    });
+            return {
+                authors: authorsData[0]?.count || 0,
+                series: seriesData[0]?.count || 0,
+                books: booksData[0]?.count || 0,
+            };
+        },
+        getNoCacheFlag(req),
+    );
 
     res.setHeader('X-Cached', cached);
 
@@ -52,48 +56,58 @@ router.get('/search', async (req, res) => {
     }
 
     const cacheKey = `bookworms.search.${sha1(query + pagination)}`;
-    const { data, cached, error } = await cache(cacheKey, async () => {
-        const { data: authorsData } = await $schema
-            .from('authors')
-            .select(`name, views, books(count)`)
-            .ilike('name_normalized', `%${query}%`)
-            .range(...pagination);
+    const { data, cached, error } = await cache(
+        cacheKey,
+        async () => {
+            const { data: authorsData } = await $schema
+                .from('authors')
+                .select(`name, views, books(count)`)
+                .ilike('name_normalized', `%${query}%`)
+                .range(...pagination);
 
-        const { data: seriesData } = await $schema
-            .from('series')
-            .select(`name, views, books(count)`)
-            .ilike('name_normalized', `%${query}%`)
-            .range(...pagination);
+            const { data: seriesData } = await $schema
+                .from('series')
+                .select(`name, views, books(count)`)
+                .ilike('name_normalized', `%${query}%`)
+                .range(...pagination);
 
-        const { data: booksData, error: booksError } = await $schema
-            .from('books')
-            .select(
-                'libid, title, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name)',
-            )
-            .ilike('title_normalized', `%${query}%`)
-            .range(...pagination);
+            const { data: booksCount } = await $schema
+                .from('books')
+                .select('count')
+                .ilike('title_normalized', `%${query}%`);
 
-        const mapCount = item => ({
-            name: item.name,
-            views: item.views,
-            books: item.books[0].count,
-        });
+            const { data: booksData } = await $schema
+                .from('books')
+                .select(
+                    'libid, title, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name)',
+                )
+                .ilike('title_normalized', `%${query}%`)
+                .range(...pagination);
 
-        return {
-            authors: {
-                count: authorsData?.length || 0,
-                results: authorsData.map(mapCount) || [],
-            },
-            series: {
-                count: seriesData?.length || 0,
-                results: seriesData.map(mapCount) || [],
-            },
-            books: {
-                count: booksData?.length || 0,
-                results: booksData || [],
-            },
-        };
-    });
+            const mapCount = item => ({
+                name: item.name,
+                views: item.views,
+                books: item.books[0].count,
+            });
+
+            return {
+                authors: {
+                    total: authorsData?.length || 0,
+                    results: authorsData.map(mapCount) || [],
+                },
+                series: {
+                    total: seriesData?.length || 0,
+                    results: seriesData.map(mapCount) || [],
+                },
+                books: {
+                    total: booksCount[0]?.count || 0,
+                    count: booksData?.length || 0,
+                    results: booksData || [],
+                },
+            };
+        },
+        getNoCacheFlag(req),
+    );
 
     res.setHeader('X-Cached', cached);
 
@@ -139,15 +153,19 @@ router.get('/top', async (req, res) => {
     }
 
     const cacheKey = `bookworms.top.${entity}.${category}.${limit}`;
-    const { data, cached, error } = await cache(cacheKey, async () => {
-        const { data } = await $schema
-            .from(entity)
-            .select(setupMap[entity].fields)
-            .order(category, { ascending: false })
-            .limit(limit);
+    const { data, cached, error } = await cache(
+        cacheKey,
+        async () => {
+            const { data } = await $schema
+                .from(entity)
+                .select(setupMap[entity].fields)
+                .order(category, { ascending: false })
+                .limit(limit);
 
-        return data;
-    });
+            return data;
+        },
+        getNoCacheFlag(req),
+    );
 
     res.setHeader('X-Cached', cached);
 
@@ -168,21 +186,25 @@ router.get('/book/:libid', async (req, res) => {
     }
 
     const cacheKey = `bookworms.book.${libid}`;
-    const { data, cached, error } = await cache(cacheKey, async () => {
-        const { data: bookData, error: bookError } = await $schema
-            .from('books')
-            .select(
-                `libid, title, description, labels, published, pagecount, size, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name)`,
-            )
-            .eq('libid', libid)
-            .single();
+    const { data, cached, error } = await cache(
+        cacheKey,
+        async () => {
+            const { data: bookData, error: bookError } = await $schema
+                .from('books')
+                .select(
+                    `libid, title, description, labels, published, pagecount, size, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name)`,
+                )
+                .eq('libid', libid)
+                .single();
 
-        if (!bookData || bookError) {
-            throw { type: 'NOT_FOUND' };
-        }
+            if (!bookData || bookError) {
+                throw { type: 'NOT_FOUND' };
+            }
 
-        return bookData;
-    });
+            return bookData;
+        },
+        getNoCacheFlag(req),
+    );
 
     res.setHeader('X-Cached', cached);
 
@@ -207,22 +229,26 @@ router.get('/author/:authorKey', async (req, res) => {
     }
 
     const cacheKey = `bookworms.author.${authorKey}`;
-    const { data, cached, error } = await cache(cacheKey, async () => {
-        const authorName = normalize(authorKey.replaceAll('-', ' '));
-        const { data: authorData, error: authorError } = await $schema
-            .from('authors')
-            .select(
-                `name, views, books(libid, title, filename, cover_id, serie_name, serie_sequence, views, downloads)`,
-            )
-            .eq('name_normalized', authorName)
-            .single();
+    const { data, cached, error } = await cache(
+        cacheKey,
+        async () => {
+            const authorName = normalize(authorKey.replaceAll('-', ' '));
+            const { data: authorData, error: authorError } = await $schema
+                .from('authors')
+                .select(
+                    `name, views, books(libid, title, filename, cover_id, serie_name, serie_sequence, views, downloads)`,
+                )
+                .eq('name_normalized', authorName)
+                .single();
 
-        if (!authorData || authorError) {
-            throw { type: 'NOT_FOUND' };
-        }
+            if (!authorData || authorError) {
+                throw { type: 'NOT_FOUND' };
+            }
 
-        return authorData;
-    });
+            return authorData;
+        },
+        getNoCacheFlag(req),
+    );
 
     res.setHeader('X-Cached', cached);
 
@@ -247,22 +273,26 @@ router.get('/serie/:serieKey', async (req, res) => {
     }
 
     const cacheKey = `bookworms.author.${serieKey}`;
-    const { data, cached, error } = await cache(cacheKey, async () => {
-        const serieName = normalize(serieKey.replaceAll('-', ' '));
-        const { data: serieData, error: serieError } = await $schema
-            .from('series')
-            .select(
-                `name, views, books(libid, title, filename, cover_id, serie_name, serie_sequence, views, downloads)`,
-            )
-            .eq('name_normalized', serieName)
-            .single();
+    const { data, cached, error } = await cache(
+        cacheKey,
+        async () => {
+            const serieName = normalize(serieKey.replaceAll('-', ' '));
+            const { data: serieData, error: serieError } = await $schema
+                .from('series')
+                .select(
+                    `name, views, books(libid, title, filename, cover_id, serie_name, serie_sequence, views, downloads)`,
+                )
+                .eq('name_normalized', serieName)
+                .single();
 
-        if (!serieData || serieError) {
-            throw { type: 'NOT_FOUND' };
-        }
+            if (!serieData || serieError) {
+                throw { type: 'NOT_FOUND' };
+            }
 
-        return serieData;
-    });
+            return serieData;
+        },
+        getNoCacheFlag(req),
+    );
 
     res.setHeader('X-Cached', cached);
 
