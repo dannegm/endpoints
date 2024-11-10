@@ -11,9 +11,9 @@ const toString = str => str.toString();
 export const normalize = pipe([toString, trim, lowerCase, deburr]);
 
 export const getPagination = req => {
-    const page = req.query?.page || 1;
-    const limit = req.query?.limit || 20;
-    const pagination = [limit * (page - 1), limit * (page - 1) + limit];
+    const page = Number(req.query?.page || 1);
+    const limit = Number(req.query?.limit || 20);
+    const pagination = [limit * (page - 1), limit * (page - 1) + limit - 1];
     return pagination;
 };
 

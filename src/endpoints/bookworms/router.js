@@ -104,7 +104,7 @@ router.get('/search', async (req, res) => {
                 books: {
                     from,
                     to,
-                    page: req.query?.page || 1,
+                    page: Number(req.query?.page || 1),
                     count: booksData?.length || 0,
                     total: booksCount[0]?.count || 0,
                     results: booksData || [],
