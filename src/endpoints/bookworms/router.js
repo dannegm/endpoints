@@ -206,6 +206,12 @@ router.get('/book/:libid', async (req, res) => {
                 throw { type: 'NOT_FOUND' };
             }
 
+            bookData.authors = bookData.authors.map(({ name, views, books }) => ({
+                name,
+                views,
+                books: books[0]?.count || 0,
+            }));
+
             return bookData;
         },
         getNoCacheFlag(req),
