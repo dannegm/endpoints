@@ -1,4 +1,4 @@
-import { randomIndex, randomIndexWithMemory } from '@/helpers/arrays';
+import { pickFromIndex, randomIndex, randomIndexWithMemory } from '@/helpers/arrays';
 import { createSimpleMemoryHandler } from '@/helpers/handlers';
 
 // Emojis recurrentes
