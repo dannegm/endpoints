@@ -23,6 +23,7 @@ router.get('/quote', (req, res) => {
     const memoryHandler = createMemoryHandlerByIp(
         req.headers['x-forwarded-for'] || req.connection.remoteAddress,
     );
+
     const quote = getQuote(code, memoryHandler);
 
     return res.json(quote);

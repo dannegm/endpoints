@@ -1,6 +1,72 @@
 import { randomIndex, randomIndexWithMemory } from '@/helpers/arrays';
 import { createSimpleMemoryHandler } from '@/helpers/handlers';
 
+// Emojis recurrentes
+// 😔 🤭 🫢 🥹 🥺
+
+const testQuote =
+    'Esto es **negrita**, \\**No negrita\\**, __subrayado__, ~~tachado~~, //inclinado//, ::resaltado::, $$brillo$$, y un sticker [[hello]]. Otro sticker: [[wow]].';
+
+const quotes = [
+    'Perdón por ser tan cursi a veces (//casi siempre//).',
+    'Esta es la única forma que encontré de decirte (//casi//) todo lo que pienso.',
+    'Sólo disfruta de todo lo que te doy sin deberme nada.',
+    'Recordé que alguna vez mencionaste que los tulipanes blancos eran tus favoritos.',
+    'Aún no descarto la posibilidad de algún día ir a Japón contigo 😔.',
+    'Quisiera estar ahí para poder felicitarte con un abrazo.',
+    'Escucho //Die With a Smile// y en automático pienso en ti.',
+    'Me gustaría que el poder vernos se repita más seguido :).',
+    'Vendré a dejarte más pensamientos por aquí de vez en cuando.',
+    'Quizá yo sea el único $$celebrándote$$ a ti y no el año nuevo.',
+    'Me encantaría que cada vez que sonríes, el mundo entero se detuviera para admirarte.',
+    'A veces, el mundo necesita un recordatorio de lo %%increíble%% que eres.',
+    'A veces siento que no te digo lo suficiente lo importante que eres para mí.',
+    'Lo único que quiero para ti es que disfrutes de la vida, que encuentres razones para sonreír todos los días.',
+    'Me gusta pensar que te hago sentir mejor, aunque sea solo por un momento. Ojalá fuera siempre.',
+    'Me gustaría que pudieras ver lo $$increíble$$ que eres, porque a veces no te das cuenta de lo mucho que vales.',
+    'Sabía que te mataba la curiosidad por saber qué era este sitio.',
+    'Espero esta sorpresa te haya sacado más de alguna sonrisa.',
+    'Cada que entres aquí, encontrarás algo nuevo :)',
+    'No preguntes, sólo gózalo 7u7.',
+    'Lo divertido de esto es que no tienes que leerlo todo de una vez, podrías leer sólo una frase cada día.',
+    'Esta pequeña app es otra forma de estar cerca tuyo.',
+    'Si picas muchas veces el botón de %%like%%, será como si me invocaras.',
+    'Feliz año, por cierto 🎉.',
+    'Mi plan era regalarte el brazalete para tu cumpleaños, pero me alegra habértelo dado antes y en persona.',
+    'Cuenta hasta 10 y pide un $$deseo$$ :D.',
+    'Obvio pensé en felicitarte desde el primer minuto hoy, pero quería sorprenderte de esta forma.',
+    'Me hubiera gustado pasarla contigo el día de hoy.',
+    'Espero que este pequeño detalle te haya hecho sonreír.',
+    'Recuerda siempre lo especial e importante que eres para mí.',
+    'Espero que estos mensajes te alegren el día.',
+    'Sabes que aún hay un millón de cosas más que quisiera decirte.',
+    'Yo sé que has intentado spamear los %%corazones%% 🫢.',
+    'Lo mejor de mi 2024 fuiste tú y todas las veces que pude verte 😔.',
+    'No hay un solo instante que no estés en mi cabeza.',
+    'Ya estás más cerca de los 30 🫢.',
+    'Like si te gustó la sorpresa 🤭.',
+    'Extraño demasiado pasar tiempo contigo.',
+    'Te quiero demasiado, nunca lo olvides.',
+    'No hay nada que me llene más de alegría que verte feliz a causa mía.',
+    // 2 de enero 2025
+    'Amo tanto que esta app te haya gustado demasiado.',
+    'Verte en persona también fue de mis cosas favoritas del 2024.',
+    'No puedo esperar a verte de nuevo 😔.',
+    'Me la paso muy bien cuando pasamos tiempo juntos.',
+    '¿Te gusta la nueva opción de descargar las tarjetitas?',
+    'Mientras sigas viniendo aquí a leerme, seguiré escribiendo para ti.',
+    '[[[sun]]] Buenos días,||por cierto :)',
+    'Ojalá pudiera ver la %%sonrisa%% que pones cuando lees esto 🫢.',
+    'Quizá ya lo sabes, pero ~:me encanta cuando me mandas fotos tuyas:~ 🫢.',
+    'Me hizo muy %%feliz%% ver tu reacción a esta sorpresa, no esperaba que te gustara tanto.',
+    'Soy muy $$afortunado$$ de tenerte en mi vida.',
+    'Casi me derrito cuando me dijiste que he sido de las pocas personas que de verdad te han hecho $$feliz$$.',
+    'No existe nada más bello que el saber de tu felicidad.',
+    'Nunca dejes de spamear los %%corazones%% 🥹, //me gusta recibir esa notificación tuya//.',
+    '[[[movie_time]]] ¿Te gustaría que te recomendara películas?',
+    'Ahora puedes hacer doble tap para darle al %%like%% 🤭.',
+];
+
 const icons = [
     'Candy',
     'Cake',
@@ -107,69 +173,6 @@ const colorSchemes = [
     'bg-slate-100 text-slate-800',
 ];
 
-// Emojis recurrentes
-// 😔 🤭 🫢 🥹 🥺
-
-const quotes = [
-    'Perdón por ser tan cursi a veces (//casi siempre//).',
-    'Esta es la única forma que encontré de decirte (//casi//) todo lo que pienso.',
-    'Sólo disfruta de todo lo que te doy sin deberme nada.',
-    'Recordé que alguna vez mencionaste que los tulipanes blancos eran tus favoritos.',
-    'Aún no descarto la posibilidad de algún día ir a Japón contigo 😔.',
-    'Quisiera estar ahí para poder felicitarte con un abrazo.',
-    'Escucho //Die With a Smile// y en automático pienso en ti.',
-    'Me gustaría que el poder vernos se repita más seguido :).',
-    'Vendré a dejarte más pensamientos por aquí de vez en cuando.',
-    'Quizá yo sea el único $$celebrándote$$ a ti y no el año nuevo.',
-    'Me encantaría que cada vez que sonríes, el mundo entero se detuviera para admirarte.',
-    'A veces, el mundo necesita un recordatorio de lo %%increíble%% que eres.',
-    'A veces siento que no te digo lo suficiente lo importante que eres para mí.',
-    'Lo único que quiero para ti es que disfrutes de la vida, que encuentres razones para sonreír todos los días.',
-    'Me gusta pensar que te hago sentir mejor, aunque sea solo por un momento. Ojalá fuera siempre.',
-    'Me gustaría que pudieras ver lo $$increíble$$ que eres, porque a veces no te das cuenta de lo mucho que vales.',
-    'Sabía que te mataba la curiosidad por saber qué era este sitio.',
-    'Espero esta sorpresa te haya sacado más de alguna sonrisa.',
-    'Cada que entres aquí, encontrarás algo nuevo :)',
-    'No preguntes, sólo gózalo 7u7.',
-    'Lo divertido de esto es que no tienes que leerlo todo de una vez, podrías leer sólo una frase cada día.',
-    'Esta pequeña app es otra forma de estar cerca tuyo.',
-    'Si picas muchas veces el botón de %%like%%, será como si me invocaras.',
-    'Feliz año, por cierto 🎉.',
-    'Mi plan era regalarte el brazalete para tu cumpleaños, pero me alegra habértelo dado antes y en persona.',
-    'Cuenta hasta 10 y pide un $$deseo$$ :D.',
-    'Obvio pensé en felicitarte desde el primer minuto hoy, pero quería sorprenderte de esta forma.',
-    'Me hubiera gustado pasarla contigo el día de hoy.',
-    'Espero que este pequeño detalle te haya hecho sonreír.',
-    'Recuerda siempre lo especial e importante que eres para mí.',
-    'Espero que estos mensajes te alegren el día.',
-    'Sabes que aún hay un millón de cosas más que quisiera decirte.',
-    'Yo sé que has intentado spamear los %%corazones%% 🫢.',
-    'Lo mejor de mi 2024 fuiste tú y todas las veces que pude verte 😔.',
-    'No hay un solo instante que no estés en mi cabeza.',
-    'Ya estás más cerca de los 30 🫢.',
-    'Like si te gustó la sorpresa 🤭.',
-    'Extraño demasiado pasar tiempo contigo.',
-    'Te quiero demasiado, nunca lo olvides.',
-    'No hay nada que me llene más de alegría que verte feliz a causa mía.',
-    // 2 de enero 2025
-    'Amo tanto que esta app te haya gustado demasiado.',
-    'Verte en persona también fue de mis cosas favoritas del 2024.',
-    'No puedo esperar a verte de nuevo 😔.',
-    'Me la paso muy bien cuando pasamos tiempo juntos.',
-    '¿Te gusta la nueva opción de descargar las tarjetitas?',
-    'Mientras sigas viniendo aquí a leerme, seguiré escribiendo para ti.',
-    '[[[sun]]] Buenos días,||por cierto :)',
-    'Ojalá pudiera ver la %%sonrisa%% que pones cuando lees esto 🫢.',
-    'Quizá ya lo sabes, pero ~:me encanta cuando me mandas fotos tuyas:~ 🫢.',
-    'Me hizo muy %%feliz%% ver tu reacción a esta sorpresa, no esperaba que te gustara tanto.',
-    'Soy muy $$afortunado$$ de tenerte en mi vida.',
-    'Casi me derrito cuando me dijiste que he sido de las pocas personas que de verdad te han hecho $$feliz$$.',
-    'No existe nada más bello que el saber de tu felicidad.',
-    'Nunca dejes de spamear los %%corazones%% 🥹, //me gusta recibir esa notificación tuya//.',
-    '[[[movie_time]]] ¿Te gustaría que te recomendara películas?',
-    'Ahora puedes hacer doble tap para darle al %%like%% 🤭.',
-];
-
 //
 
 const repetitionProbability = 0.15;
@@ -186,13 +189,17 @@ export const getRandomSettings = (memoryHandler = createSimpleMemoryHandler()) =
 
 export const quoteFromSettings = settings => {
     const decodedSettings = settings.split(':');
+
+    const quote =
+        decodedSettings[0] === 'test' ? testQuote : pickFromIndex(quotes, decodedSettings[0]);
+
     return {
         settings,
-        quote: quotes[decodedSettings[0]],
-        icon: icons[decodedSettings[1]],
-        border: `url(${borderPatterns[decodedSettings[2]]})`,
-        bg: `url(${bgPatterns[decodedSettings[3]]})`,
-        scheme: colorSchemes[decodedSettings[4]],
+        quote,
+        icon: pickFromIndex(icons, decodedSettings[1]),
+        border: `url(${pickFromIndex(borderPatterns, decodedSettings[2])})`,
+        bg: `url(${pickFromIndex(bgPatterns, decodedSettings[3])})`,
+        scheme: pickFromIndex(colorSchemes, decodedSettings[4]),
     };
 };
 
