@@ -149,31 +149,32 @@ const quotes = [
     'Lo mejor de mi 2024 fuiste tú y todas las veces que pude verte 😔.',
     'No hay un solo instante que no estés en mi cabeza.',
     'Ya estás más cerca de los 30 🫢.',
-    '%%Like%% si te gustó la sorpresa 🤭.',
+    'Like si te gustó la sorpresa 🤭.',
     'Extraño demasiado pasar tiempo contigo.',
     'Te quiero demasiado, nunca lo olvides.',
     'No hay nada que me llene más de alegría que verte feliz a causa mía.',
     // 2 de enero 2025
-    '%%Amo%% tanto que esta app te haya gustado demasiado.',
+    'Amo tanto que esta app te haya gustado demasiado.',
     'Verte en persona también fue de mis cosas favoritas del 2024.',
     'No puedo esperar a verte de nuevo 😔.',
     'Me la paso muy bien cuando pasamos tiempo juntos.',
     '¿Te gusta la nueva opción de descargar las tarjetitas?',
     'Mientras sigas viniendo aquí a leerme, seguiré escribiendo para ti.',
-    '[[[sun]]] Buenos días, por cierto :).',
+    '[[[sun]]] Buenos días,||por cierto :)',
     'Ojalá pudiera ver la %%sonrisa%% que pones cuando lees esto 🫢.',
-    'Quizá ya lo sabes, ~:pero me encanta cuando me mandas fotos tuyas:~ 🫢.',
+    'Quizá ya lo sabes, pero ~:me encanta cuando me mandas fotos tuyas:~ 🫢.',
     'Me hizo muy %%feliz%% ver tu reacción a esta sorpresa, no esperaba que te gustara tanto.',
     'Soy muy $$afortunado$$ de tenerte en mi vida.',
     'Casi me derrito cuando me dijiste que he sido de las pocas personas que de verdad te han hecho $$feliz$$.',
     'No existe nada más bello que el saber de tu felicidad.',
     'Nunca dejes de spamear los %%corazones%% 🥹, //me gusta recibir esa notificación tuya//.',
     '[[[movie_time]]] ¿Te gustaría que te recomendara películas?',
+    'Ahora puedes hacer doble tap para darle al %%like%% 🤭.',
 ];
 
 //
 
-const repetitionProbability = 0;
+const repetitionProbability = 0.15;
 
 export const getRandomSettings = (memoryHandler = createSimpleMemoryHandler()) => {
     return [

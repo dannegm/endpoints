@@ -1,12 +1,22 @@
 export const createSimpleMemoryHandler = () => {
-    let memory = [];
-
+    const memory = [];
     return {
-        getMemory: () => {
-            return memory;
-        },
+        getMemory: () => memory,
         updateMemory: newMemory => {
             memory = newMemory;
         },
+    };
+};
+
+export const createIpMemoryHandler = () => {
+    const memory = {};
+    return ip => {
+        memory[ip] ??= [];
+        return {
+            getMemory: () => memory[ip],
+            updateMemory: newMemory => {
+                memory[ip] = newMemory;
+            },
+        };
     };
 };
