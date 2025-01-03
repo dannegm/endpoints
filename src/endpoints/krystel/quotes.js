@@ -70,7 +70,6 @@ const bgPatterns = [
     'https://cdn.pixabay.com/photo/2023/11/17/16/41/butterflies-8394629_1280.png',
     'https://cdn.pixabay.com/photo/2014/04/02/10/22/hibiscus-303637_1280.png',
     'https://cdn.pixabay.com/photo/2020/11/16/01/47/pandas-5747695_1280.png',
-    'https://cdn.pixabay.com/photo/2020/05/21/21/07/flowers-5202790_1280.png',
     'https://cdn.pixabay.com/photo/2021/11/05/11/06/pattern-6771027_1280.png',
     'https://cdn.pixabay.com/photo/2023/02/06/00/37/triangle-pattern-7770878_1280.png',
     'https://cdn.pixabay.com/photo/2021/10/10/09/39/background-6696169_1280.png',
@@ -80,7 +79,6 @@ const bgPatterns = [
     'https://cdn.pixabay.com/photo/2019/09/06/22/32/pattern-4457535_1280.png',
     'https://cdn.pixabay.com/photo/2020/11/09/01/42/leaves-5725346_1280.png',
     'https://cdn.pixabay.com/photo/2022/03/21/13/45/background-7083249_1280.png',
-    'https://cdn.pixabay.com/photo/2022/12/26/21/05/geometric-pattern-7679782_1280.png',
     'https://cdn.pixabay.com/photo/2020/11/03/07/07/stripes-5708884_1280.png',
     'https://cdn.pixabay.com/photo/2016/03/31/21/53/abstract-1296713_1280.png',
 ];
