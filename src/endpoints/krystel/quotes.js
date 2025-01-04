@@ -7,6 +7,8 @@ import { createSimpleMemoryHandler } from '@/helpers/handlers';
 const testQuote =
     'Esto es **negrita**, \\**No negrita\\**, __subrayado__, ~~tachado~~, //inclinado//, ::resaltado::, $$brillo$$, y un sticker [[hello]]. Otro sticker: [[wow]].';
 
+const testSpotify = '##spotify:track:0BxE4FqsDD1Ot4YuBXwAPp##';
+
 const quotes = [
     'Perdón por ser tan cursi a veces (//casi siempre//).',
     'Esta es la única forma que encontré de decirte (//casi//) todo lo que pienso.',
@@ -190,8 +192,15 @@ export const getRandomSettings = (memoryHandler = createSimpleMemoryHandler()) =
 export const quoteFromSettings = settings => {
     const decodedSettings = settings.split(':');
 
-    const quote =
-        decodedSettings[0] === 'test' ? testQuote : pickFromIndex(quotes, decodedSettings[0]);
+    let quote = pickFromIndex(quotes, decodedSettings[0]);
+
+    if (decodedSettings[0] === 'test') {
+        quote = testQuote;
+    }
+
+    if (decodedSettings[0] === 'spotify') {
+        quote = testSpotify;
+    }
 
     return {
         settings,
