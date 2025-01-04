@@ -30,7 +30,7 @@ router.post('/quotes/:space/bulk', (req, res) => {
     return res.send('OK - quotes');
 });
 
-router.update('/quotes/:space/:id', (req, res) => {
+router.put('/quotes/:space/:id', (req, res) => {
     return res.send('OK - quotes');
 });
 
