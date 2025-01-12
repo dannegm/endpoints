@@ -243,6 +243,7 @@ router.post(
     async (req, res) => {
         const { space, id, action } = req.params;
         const { code, ua } = req.query;
+        const meta = req.body;
 
         const { data, error } = await $schema
             .from('quotes')
@@ -261,9 +262,7 @@ router.post(
             },
         };
 
-        console.log(customReq);
-
-        await logEvent(customReq, action, space, id, { code });
+        await logEvent(customReq, action, space, id, { code, ...meta });
 
         if (allowedActionsForNotification.includes(action)) {
             await ntfy.pushRich({
