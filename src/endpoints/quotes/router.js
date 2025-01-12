@@ -1,41 +1,218 @@
 import { Router } from 'express';
+import axios from 'axios';
+
+import { supabase } from '@/services/supabase';
+import { createIpMemoryHandler } from '@/helpers/handlers';
+import { withQueryParams } from '@/middlewares';
+import { buildCustomLogger } from '@/services/logger';
+
+const IPINFO_TOKEN = process.env.IPINFO_TOKEN;
+
+const logger = buildCustomLogger('quotes');
 
 const router = Router();
+const $schema = supabase.schema('quotes');
+
+const DEFAULT_REPEAT_PROBABLITY = 0.25;
+const createMemoryHandlerByIp = createIpMemoryHandler();
+
+const logEvent = async (req, type, quote_id, metadata = null) => {
+    const ip = req.headers['x-forwarded-for']?.split(',')[0] || req.ip || 'unknown';
+    let ip_location = 'unknown';
+
+    if (ip !== 'unknown') {
+        const { data } = await axios.get(`https://ipinfo.io/${ip}/json?token=${IPINFO_TOKEN}`);
+        ip_location = data.city ? `${data.city}, ${data.region}, ${data.country}` : 'unknown';
+    }
+
+    const user_agent = req.headers['user-agent'] || 'unknown';
+
+    logger.info(`[${type}] ID:${quote_id} IP:${ip} UA:${user_agent}`);
+
+    await $schema.from('events').insert({
+        ip,
+        user_agent,
+        created_at: new Date().toISOString(),
+        type,
+        quote_id,
+        metadata,
+        ip_location,
+    });
+};
 
 router.all('/', (req, res) => {
     return res.send('OK - quotes');
 });
 
-router.get('/quotes/:space', (req, res) => {
-    return res.send('OK - quotes');
+router.get('/:space', async (req, res) => {
+    const { space } = req.params;
+
+    try {
+        const { data, error } = await $schema
+            .from('quotes')
+            .select('*')
+            .eq('space', space)
+            .order('id', { ascending: false });
+
+        if (error) throw error;
+
+        if (!data || data.length === 0) {
+            return res.status(404).json({ message: 'No quotes found for the given space' });
+        }
+
+        res.status(200).json(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to fetch quotes', details: error.message });
+    }
 });
 
-router.get('/quotes/:space/random', (req, res) => {
-    return res.send('OK - quotes');
+router.get(
+    '/:space/pick',
+    withQueryParams({
+        'quote.id': {
+            type: Number,
+            default: null,
+        },
+        repeatProbability: {
+            type: Number,
+            default: DEFAULT_REPEAT_PROBABLITY,
+        },
+    }),
+    async (req, res) => {
+        const { space } = req.params;
+        const { repeatProbability } = req.query;
+
+        if (req.query['quote.id']) {
+            const { data, error } = await $schema
+                .from('quotes')
+                .select('*')
+                .eq('space', space)
+                .eq('id', req.query['quote.id'])
+                .single();
+
+            await logEvent(req, 'view', req.query['quote.id']);
+
+            if (error) return res.status(400).json({ error: error.message });
+            return res.json(data);
+        }
+
+        const memoryHandler = createMemoryHandlerByIp(req.headers['x-forwarded-for']);
+
+        const { data: countData, error: countError } = await $schema.rpc(
+            'count_non_repeated_quotes',
+            {
+                space_param: space,
+                exclude_ids: memoryHandler.getMemory(),
+            },
+        );
+
+        if (!countData || countError) {
+            memoryHandler.clearMemory();
+        }
+
+        const { data, error } = await $schema.rpc('get_random_quote', {
+            space_param: space,
+            exclude_ids: memoryHandler.getMemory(),
+            repeat_probability: repeatProbability,
+        });
+
+        if (error) return res.status(400).json({ error: error.message });
+
+        if (!data || data.length === 0) {
+            return res.status(404).json({ error: 'No quotes found for this space' });
+        }
+
+        const [quote] = data;
+        memoryHandler.updateMemory([...memoryHandler.getMemory(), quote.id]);
+        await logEvent(req, 'view', quote.id);
+
+        return res.json(quote);
+    },
+);
+
+router.get('/:space/:id', async (req, res) => {
+    const { space, id } = req.params;
+
+    const { data, error } = await $schema
+        .from('quotes')
+        .select('*')
+        .eq('space', space)
+        .eq('id', id)
+        .single();
+
+    if (error) return res.status(400).json({ error: error.message });
+
+    await logEvent(req, 'view', id);
+    return res.json(data);
 });
 
-router.get('/quotes/:space/pick', (req, res) => {
-    return res.send('OK - quotes');
+router.put('/:space/:id', async (req, res) => {
+    const { space, id } = req.params;
+    const { quote } = req.body;
+
+    if (!quote) return res.status(400).json({ error: 'Quote is required' });
+
+    const { data, error } = await $schema
+        .from('quotes')
+        .update({ quote })
+        .eq('space', space)
+        .eq('id', id)
+        .select();
+
+    if (error) return res.status(400).json({ error: error.message });
+    await logEvent(req, 'updated', id);
+    return res.json(data);
 });
 
-router.get('/quotes/:space/:id', (req, res) => {
-    return res.send('OK - quotes');
+router.delete('/:space/:id', async (req, res) => {
+    const { space, id } = req.params;
+
+    const { data, error } = await $schema
+        .from('quotes')
+        .update({ deleted_at: new Date().toISOString() })
+        .eq('space', space)
+        .eq('id', id)
+        .select();
+
+    if (error) return res.status(400).json({ error: error.message });
+    await logEvent(req, 'deleted', id);
+    return res.json(data);
 });
 
-router.post('/quotes/:space', (req, res) => {
-    return res.send('OK - quotes');
+router.post('/:space/bulk', async (req, res) => {
+    const { space } = req.params;
+    const { quotes } = req.body;
+
+    if (!Array.isArray(quotes) || quotes.length === 0) {
+        return res.status(400).json({ error: 'Invalid or empty quotes array' });
+    }
+
+    const dataToInsert = quotes.map(quote => ({ space, quote }));
+
+    try {
+        const { data, error } = await $schema.from('quotes').insert(dataToInsert);
+
+        if (error) throw error;
+
+        res.status(201).json({ success: true, inserted: data });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to insert quotes', details: error.message });
+    }
 });
 
-router.post('/quotes/:space/bulk', (req, res) => {
-    return res.send('OK - quotes');
-});
+router.post('/:space', async (req, res) => {
+    const { space } = req.params;
+    const { quote } = req.body;
 
-router.put('/quotes/:space/:id', (req, res) => {
-    return res.send('OK - quotes');
-});
+    if (!quote) return res.status(400).json({ error: 'Quote is required' });
 
-router.delete('/quotes/:space/:id', (req, res) => {
-    return res.send('OK - quotes');
+    const { data, error } = await $schema.from('quotes').insert({ space, quote }).select();
+
+    if (error) return res.status(400).json({ error: error.message });
+    await logEvent(req, 'created', data.id);
+    return res.status(201).json(data);
 });
 
 export default router;

@@ -37,3 +37,51 @@ export const ratelimitMiddleware = async (req, res, next) => {
         });
     }
 };
+
+export const withQueryParams = (schema, errorHandler = null) => {
+    return (req, res, next) => {
+        const errors = [];
+        const queryParams = req.query;
+
+        for (const key in schema) {
+            const { type, default: defaultValue, required } = schema[key];
+            let value = queryParams[key];
+
+            if (value === undefined) {
+                if (required) {
+                    errors.push(`${key} is required`);
+                } else {
+                    value = defaultValue;
+                }
+            } else {
+                if (type === Array) {
+                    if (typeof value === 'string') {
+                        value = value.split(',').map(item => item.trim());
+                    } else {
+                        errors.push(`${key} must be a comma-separated list of values`);
+                    }
+                } else {
+                    try {
+                        if (type === Number) value = Number(value);
+                        else if (type === Boolean) value = /^(true|1|on)$/i.test(value);
+                        else if (type === String) value = String(value);
+                    } catch (error) {
+                        errors.push(`${key} must be of type ${type.name}`);
+                    }
+                }
+            }
+
+            queryParams[key] = value;
+        }
+
+        if (errors.length) {
+            if (errorHandler) {
+                errorHandler(res, errors);
+            } else {
+                res.status(400).json({ errors });
+            }
+        } else {
+            next();
+        }
+    };
+};

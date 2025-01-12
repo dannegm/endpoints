@@ -33,3 +33,28 @@ export const pickFromIndex = (arr, index) => {
 
     return arr[index];
 };
+
+export const repeatedInsights = arr => {
+    const elementCount = {};
+    let mostRepeated = null;
+    let maxRepetitions = 0;
+
+    arr.forEach(element => {
+        elementCount[element] = (elementCount[element] || 0) + 1;
+        if (elementCount[element] > maxRepetitions) {
+            maxRepetitions = elementCount[element];
+            mostRepeated = element;
+        }
+    });
+
+    const repeatedItems = Object.entries(elementCount)
+        .filter(([_, count]) => count > 1)
+        .map(([element, repeatedTimes]) => ({ element, repeatedTimes }));
+
+    return {
+        repetitionRate: repeatedItems.length ? repeatedItems.length / arr.length : 0,
+        count: arr.length,
+        repeatedItems,
+        mostRepeated,
+    };
+};
