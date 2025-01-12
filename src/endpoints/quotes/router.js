@@ -1,14 +1,18 @@
 import { Router } from 'express';
 import axios from 'axios';
 
+import { Ntfy } from '@/services/ntfy';
+import { buildCustomLogger } from '@/services/logger';
 import { supabase } from '@/services/supabase';
 import { createIpMemoryHandler } from '@/helpers/handlers';
+import { parseText, stripedElements } from '@/helpers/strings';
 import { withQueryParams } from '@/middlewares';
-import { buildCustomLogger } from '@/services/logger';
 
 const IPINFO_TOKEN = process.env.IPINFO_TOKEN;
+const APP_TOPIC = process.env.QUOTES_APP_TOPIC;
 
 const logger = buildCustomLogger('quotes');
+const ntfy = new Ntfy(APP_TOPIC);
 
 const router = Router();
 const $schema = supabase.schema('quotes');
@@ -16,7 +20,7 @@ const $schema = supabase.schema('quotes');
 const DEFAULT_REPEAT_PROBABLITY = 0.25;
 const createMemoryHandlerByIp = createIpMemoryHandler();
 
-const logEvent = async (req, type, quote_id, metadata = null) => {
+const logEvent = async (req, type, space, quote_id, metadata = null) => {
     const ip = req.headers['x-forwarded-for']?.split(',')[0] || req.ip || 'unknown';
     let ip_location = 'unknown';
 
@@ -34,6 +38,7 @@ const logEvent = async (req, type, quote_id, metadata = null) => {
         user_agent,
         created_at: new Date().toISOString(),
         type,
+        space,
         quote_id,
         metadata,
         ip_location,
@@ -91,7 +96,7 @@ router.get(
                 .eq('id', req.query['quote.id'])
                 .single();
 
-            await logEvent(req, 'view', req.query['quote.id']);
+            await logEvent(req, 'view', space, req.query['quote.id']);
 
             if (error) return res.status(400).json({ error: error.message });
             return res.json(data);
@@ -125,7 +130,7 @@ router.get(
 
         const [quote] = data;
         memoryHandler.updateMemory([...memoryHandler.getMemory(), quote.id]);
-        await logEvent(req, 'view', quote.id);
+        await logEvent(req, 'view', space, quote.id);
 
         return res.json(quote);
     },
@@ -143,7 +148,7 @@ router.get('/:space/:id', async (req, res) => {
 
     if (error) return res.status(400).json({ error: error.message });
 
-    await logEvent(req, 'view', id);
+    await logEvent(req, 'view', space, id);
     return res.json(data);
 });
 
@@ -161,7 +166,7 @@ router.put('/:space/:id', async (req, res) => {
         .select();
 
     if (error) return res.status(400).json({ error: error.message });
-    await logEvent(req, 'updated', id);
+    await logEvent(req, 'updated', space, id);
     return res.json(data);
 });
 
@@ -176,7 +181,7 @@ router.delete('/:space/:id', async (req, res) => {
         .select();
 
     if (error) return res.status(400).json({ error: error.message });
-    await logEvent(req, 'deleted', id);
+    await logEvent(req, 'deleted', space, id);
     return res.json(data);
 });
 
@@ -211,8 +216,48 @@ router.post('/:space', async (req, res) => {
     const { data, error } = await $schema.from('quotes').insert({ space, quote }).select();
 
     if (error) return res.status(400).json({ error: error.message });
-    await logEvent(req, 'created', data.id);
+    await logEvent(req, 'created', space, data.id);
     return res.status(201).json(data);
 });
+
+router.post(
+    '/:space/:id/like',
+    withQueryParams({
+        code: {
+            type: String,
+            default: req => {
+                const { id } = req.params;
+                return `${id}:0:0:0:0`;
+            },
+        },
+    }),
+    async (req, res) => {
+        const { space, id } = req.params;
+        const { code } = req.query;
+
+        const { data, error } = await $schema
+            .from('quotes')
+            .select('*')
+            .eq('space', space)
+            .eq('id', id)
+            .single();
+
+        if (error) return res.status(400).json({ error: error.message });
+
+        await logEvent(req, 'view', space, id, { code });
+
+        await ntfy.pushRich({
+            title: 'Krystel liked',
+            message: parseText(data.quote, stripedElements).join(''),
+            tags: 'heart',
+            click: `https://axolote.me/krystel?code=${code}`,
+        });
+
+        return res.json({
+            code: req.query.code,
+            ...data,
+        });
+    },
+);
 
 export default router;

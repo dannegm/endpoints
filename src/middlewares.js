@@ -51,7 +51,7 @@ export const withQueryParams = (schema, errorHandler = null) => {
                 if (required) {
                     errors.push(`${key} is required`);
                 } else {
-                    value = defaultValue;
+                    value = typeof defaultValue !== 'function' ? defaultValue : defaultValue(req);
                 }
             } else {
                 if (type === Array) {

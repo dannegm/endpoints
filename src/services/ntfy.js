@@ -25,20 +25,27 @@ class Ntfy {
         }
     }
 
-    async pushRich({ title, message, tags }) {
-        logger.debug(`Sending rich: ${title}`);
+    async pushRich({ title, message, tags, click = undefined }) {
+        console.info(`Sending rich: ${title}`);
+
+        const fallbackTitle = title || 'DNN Endpoints';
+        const payload = {
+            Title: fallbackTitle,
+            Tags: tags || 'white_circle',
+            Markdown: 'yes',
+        };
+
+        if (click) {
+            payload.Click = click;
+        }
+
         try {
-            const fallbackTitle = title || 'DNN Endpoints';
             await axios.post(this.ntfyUrl, message, {
-                headers: {
-                    Title: fallbackTitle,
-                    Tags: tags || 'white_circle',
-                    Markdown: 'yes',
-                },
+                headers: payload,
             });
-            logger.success(`Sent rinch: ${fallbackTitle} | ${message}`);
+            console.info(`Sent rinch: ${fallbackTitle} | ${message}`);
         } catch (err) {
-            logger.error('Error sending notification', err);
+            console.error('Error sending notification', err);
         }
     }
 
@@ -50,5 +57,7 @@ class Ntfy {
         });
     }
 }
+
+export { Ntfy };
 
 export default new Ntfy(APP_TOPIC);
