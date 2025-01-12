@@ -244,7 +244,7 @@ router.post(
 
         if (error) return res.status(400).json({ error: error.message });
 
-        await logEvent(req, 'view', space, id, { code });
+        await logEvent(req, 'like', space, id, { code });
 
         await ntfy.pushRich({
             title: 'Krystel liked',
