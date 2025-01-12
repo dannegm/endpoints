@@ -220,8 +220,13 @@ router.post('/:space', async (req, res) => {
     return res.status(201).json(data);
 });
 
+const allowedActionsForNotification = [
+    // ...
+    'like',
+];
+
 router.post(
-    '/:space/:id/like',
+    '/:space/:id/action/:action',
     withQueryParams({
         code: {
             type: String,
@@ -230,10 +235,14 @@ router.post(
                 return `${id}:0:0:0:0`;
             },
         },
+        ua: {
+            type: String,
+            default: 'unknown',
+        },
     }),
     async (req, res) => {
-        const { space, id } = req.params;
-        const { code } = req.query;
+        const { space, id, action } = req.params;
+        const { code, ua } = req.query;
 
         const { data, error } = await $schema
             .from('quotes')
@@ -244,16 +253,29 @@ router.post(
 
         if (error) return res.status(400).json({ error: error.message });
 
-        await logEvent(req, 'like', space, id, { code });
+        const customReq = {
+            ip: req.ip,
+            headers: {
+                'x-forwarded-for': req.headers['x-forwarded-for'],
+                'user-agent': ua,
+            },
+        };
 
-        await ntfy.pushRich({
-            title: 'Krystel liked',
-            message: parseText(data.quote, stripedElements).join(''),
-            tags: 'heart',
-            click: `https://axolote.me/krystel?code=${code}`,
-        });
+        console.log(customReq);
+
+        await logEvent(customReq, action, space, id, { code });
+
+        if (allowedActionsForNotification.includes(action)) {
+            await ntfy.pushRich({
+                title: 'Krystel liked',
+                message: parseText(data.quote, stripedElements).join(''),
+                tags: 'heart',
+                click: `https://axolote.me/krystel?code=${code}`,
+            });
+        }
 
         return res.json({
+            action,
             code: req.query.code,
             ...data,
         });
