@@ -92,7 +92,7 @@ router.get('/:space/pick', pickQuoteQueryPayload, async (req, res) => {
             .eq('id', req.query['quote.id'])
             .single();
 
-        await logEvent(req, 'view', space, req.query['quote.id']);
+        // await logEvent(req, 'view', space, req.query['quote.id']);
 
         if (error) return res.status(400).json({ error: error.message });
         return res.json(data);
@@ -123,7 +123,7 @@ router.get('/:space/pick', pickQuoteQueryPayload, async (req, res) => {
 
     const [quote] = data;
     memoryHandler.updateMemory([...memoryHandler.getMemory(), quote.id]);
-    await logEvent(req, 'view', space, quote.id);
+    // await logEvent(req, 'view', space, quote.id);
 
     return res.json(quote);
 });
@@ -162,7 +162,7 @@ router.get('/:space/:id', async (req, res) => {
 
     if (error) return res.status(500).json({ error: error.message });
 
-    await logEvent(req, 'view', space, id);
+    // await logEvent(req, 'view', space, id);
     return res.json(data);
 });
 
@@ -180,7 +180,7 @@ router.put('/:space/:id', async (req, res) => {
         .select();
 
     if (error) return res.status(500).json({ error: error.message });
-    await logEvent(req, 'updated', space, id);
+    // await logEvent(req, 'updated', space, id);
     return res.json(data);
 });
 
@@ -195,7 +195,7 @@ router.delete('/:space/:id', async (req, res) => {
         .select();
 
     if (error) return res.status(500).json({ error: error.message });
-    await logEvent(req, 'deleted', space, id);
+    // await logEvent(req, 'deleted', space, id);
     return res.json(data);
 });
 
@@ -223,7 +223,7 @@ router.post('/:space', async (req, res) => {
     const { data, error } = await $schema.from('quotes').insert({ space, quote }).select();
 
     if (error) return res.status(500).json({ error: error.message });
-    await logEvent(req, 'created', space, data.id);
+    // await logEvent(req, 'created', space, data.id);
     return res.status(201).json(data);
 });
 
