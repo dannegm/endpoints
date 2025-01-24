@@ -7,6 +7,8 @@ export const stripedElements = [
     { pattern: /\$\$(.*?)\$\$/g, parser: text => text },
     { pattern: /\~\:(.*?)\:\~/g, parser: text => text },
     { pattern: /\%\%(.*?)\%\%/g, parser: text => text },
+    { pattern: /\$\@(.*?)\@\$/g, parser: text => text },
+    { pattern: /<<([^>]+)>>/g, parser: match => match.split('|').join(', ') },
     { pattern: /\|\|/g, parser: () => ' ¬ ' },
     { pattern: /\*\/(.*?)\/\*/g, parser: text => text },
     { pattern: /`(.*?)`/g, parser: text => text },
@@ -17,9 +19,41 @@ export const stripedElements = [
     { pattern: /\[\[(.*?)\]\]/g, parser: id => `[${id}]` },
 ];
 
+export const extractConfigs = (configsText = null) => {
+    if (!configsText) return null;
+
+    return configsText
+        .trim()
+        .split('|')
+        .map(i => i.trim())
+        .reduce((a, c) => {
+            const [key, value] = c.split(':');
+            a[key] = value ?? true;
+            return a;
+        }, {});
+};
+
+export const extractConfigsAndContent = text => {
+    const regex = /^\(\{(.*?)\}\)/;
+    const match = text.match(regex);
+
+    if (match) {
+        const configs = extractConfigs(match[1]);
+        return {
+            configs,
+            content: text.slice(match[0].length).trim(),
+        };
+    }
+
+    return {
+        configs: null,
+        content: text,
+    };
+};
+
 export const parseText = (text, elements) => {
-    // Handle escaped characters
-    const unescapedText = text.replace(/\\([*~_/:\[\]$])/g, (_, char) => `\0${char}`);
+    const { content } = extractConfigsAndContent(text);
+    const unescapedText = content.replace(/\\([*~_/:\[\]$])/g, (_, char) => `\0${char}`);
 
     let parsedElements = [unescapedText];
 
@@ -42,7 +76,6 @@ export const parseText = (text, elements) => {
         });
     });
 
-    // Restore escaped characters
     return parsedElements.map(segment =>
         typeof segment === 'string' ? segment.replace(/\0([*~_/:\[\]$])/g, '$1') : segment,
     );
