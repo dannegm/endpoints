@@ -130,12 +130,20 @@ router.get('/:space/pick', pickQuoteQueryPayload, async (req, res) => {
 
 router.get('/:space/actions', async (req, res) => {
     const { space } = req.params;
+    const { page = 1, limit = 50 } = req.query;
+
+    const pageNum = parseInt(page, 10);
+    const pageSize = parseInt(limit, 10);
+
+    const start = (pageNum - 1) * pageSize;
+    const end = start + pageSize - 1;
 
     const { data, error } = await $schema
         .from('events')
         .select('*, quotes(*)')
         .eq('space', space)
-        .order('created_at', { ascending: false });
+        .order('created_at', { ascending: false })
+        .range(start, end);
 
     if (error) return res.status(500).json({ error: error.message });
 
