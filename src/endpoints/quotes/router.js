@@ -45,6 +45,13 @@ const logEvent = async (req, type, space, quote_id, metadata = null) => {
     });
 };
 
+const richQuote = quote => {
+    return {
+        ...quote,
+        quoteStripped: parseText(quote.quote, stripedElements).join(''),
+    };
+};
+
 router.all('/', (req, res) => {
     return res.send('OK - quotes');
 });
@@ -67,7 +74,9 @@ router.get('/:space', async (req, res) => {
 
     if (error) return res.status(500).json({ error: error.message });
 
-    return res.status(200).json(data);
+    const mappedData = data.map(richQuote);
+
+    return res.status(200).json(mappedData);
 });
 
 const pickQuoteQueryPayload = withQueryParams({
@@ -96,7 +105,7 @@ router.get('/:space/pick', pickQuoteQueryPayload, async (req, res) => {
         // await logEvent(req, 'view', space, req.query['quote.id']);
 
         if (error) return res.status(400).json({ error: error.message });
-        return res.json(data);
+        return res.json(richQuote(data));
     }
 
     const memoryHandler = createMemoryHandlerByIp(req.headers['x-forwarded-for']);
@@ -126,7 +135,7 @@ router.get('/:space/pick', pickQuoteQueryPayload, async (req, res) => {
     memoryHandler.updateMemory([...memoryHandler.getMemory(), quote.id]);
     // await logEvent(req, 'view', space, quote.id);
 
-    return res.json(quote);
+    return res.json(richQuote(quote));
 });
 
 router.get('/:space/actions', async (req, res) => {
@@ -172,7 +181,7 @@ router.get('/:space/:id', async (req, res) => {
     if (error) return res.status(500).json({ error: error.message });
 
     // await logEvent(req, 'view', space, id);
-    return res.json(data);
+    return res.json(richQuote(data));
 });
 
 router.put('/:space/:id', async (req, res) => {
