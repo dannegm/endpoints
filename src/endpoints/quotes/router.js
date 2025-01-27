@@ -62,6 +62,7 @@ router.get('/:space', async (req, res) => {
         .from('quotes')
         .select('*')
         .eq('space', space)
+        .is('deleted_at', null)
         .order('id', { ascending: false });
 
     if (error) return res.status(500).json({ error: error.message });
