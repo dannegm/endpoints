@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import axios from 'axios';
+import { capitalize } from 'lodash';
 
 import { Ntfy } from '@/services/ntfy';
 import { buildCustomLogger } from '@/services/logger';
@@ -245,10 +246,19 @@ router.post('/:space', async (req, res) => {
     return res.status(201).json(data);
 });
 
-const allowedActionsForNotification = [
+const allowedActionsForNotification = {
     // ...
-    'like',
-];
+    like: {
+        type: 'like',
+        actionDescription: 'liked',
+        tags: 'heart',
+    },
+    balloons: {
+        type: 'balloons',
+        actionDescription: 'has exploded all the balloons',
+        tags: 'balloon',
+    },
+};
 
 const postActionQueryPayload = withQueryParams({
     code: {
@@ -288,12 +298,12 @@ router.post('/:space/:id/action/:action', postActionQueryPayload, async (req, re
 
     await logEvent(customReq, action, space, id, { code, ...meta });
 
-    if (allowedActionsForNotification.includes(action)) {
+    if (Object.keys(allowedActionsForNotification).includes(action)) {
         await ntfy.pushRich({
-            title: 'Krystel liked',
+            title: `${capitalize(space)} ${allowedActionsForNotification[action].actionDescription}`,
             message: parseText(data.quote, stripedElements).join(''),
-            tags: 'heart',
-            click: `https://axolote.me/krystel?code=${code}`,
+            tags: allowedActionsForNotification[action].tags,
+            click: `https://axolote.me/${space}?code=${code}`,
         });
     }
 
