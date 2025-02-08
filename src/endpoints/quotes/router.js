@@ -262,6 +262,7 @@ const generateSessionId = (ip, userAgent) => {
 
 router.post('/:space/track', async (req, res) => {
     const { space } = req.params;
+    const { ua } = req.query;
 
     const ip = req.headers['x-forwarded-for']?.split(',')[0] || req.ip || 'unknown';
     let ip_location = 'unknown';
@@ -271,7 +272,7 @@ router.post('/:space/track', async (req, res) => {
         ip_location = data.city ? `${data.city}, ${data.region}, ${data.country}` : 'unknown';
     }
 
-    const user_agent = req.headers['user-agent'] || 'unknown';
+    const user_agent = ua || req.headers['user-agent'] || 'unknown';
     const referer = req.headers['referer'] || '';
     const session_id = generateSessionId(ip, user_agent);
     const now = new Date();
