@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
 import { logger } from './services/logger';
 import { makeLoader } from './loader';
@@ -14,6 +15,7 @@ const app = express();
 app
     // ...
     .use(cors())
+    .use(cookieParser())
     .use(
         morgan(':method :url :status :response-time ms - :user-agent', {
             stream: {
