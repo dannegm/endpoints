@@ -348,15 +348,6 @@ router.post('/:space/:id/action/:action', postActionQueryPayload, async (req, re
     const { code, ua } = req.query;
     const meta = req.body;
 
-    const { data, error } = await $schema
-        .from('quotes')
-        .select('*')
-        .eq('space', space)
-        .eq('id', id)
-        .single();
-
-    if (error) return res.status(500).json({ error: error.message });
-
     const customReq = {
         ip: req.ip,
         headers: {
@@ -365,7 +356,25 @@ router.post('/:space/:id/action/:action', postActionQueryPayload, async (req, re
         },
     };
 
+    if (id === 'none') {
+        await logEvent(customReq, action, space, null, meta);
+
+        return res.json({
+            action,
+            meta,
+        });
+    }
+
     await logEvent(customReq, action, space, id, { code, ...meta });
+
+    const { data, error } = await $schema
+        .from('quotes')
+        .select('*')
+        .eq('space', space)
+        .eq('id', id)
+        .single();
+
+    if (error) return res.status(500).json({ error: error.message });
 
     if (Object.keys(allowedActionsForNotification).includes(action)) {
         await ntfy.pushRich({
@@ -378,6 +387,7 @@ router.post('/:space/:id/action/:action', postActionQueryPayload, async (req, re
 
     return res.json({
         action,
+        meta,
         code: req.query.code,
         ...data,
     });
