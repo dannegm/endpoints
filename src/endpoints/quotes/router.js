@@ -71,7 +71,8 @@ router.get('/:space', async (req, res) => {
         .select('*')
         .eq('space', space)
         .is('deleted_at', null)
-        .order('id', { ascending: false });
+        .lte('published_at', new Date().toISOString())
+        .order('published_at', { ascending: false });
 
     if (error) return res.status(500).json({ error: error.message });
 
