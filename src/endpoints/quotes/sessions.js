@@ -6,6 +6,7 @@ import { parseISO, subMinutes, isBefore, formatISO } from 'date-fns';
 
 import { Ntfy } from '@/services/ntfy';
 import { supabase } from '@/services/supabase';
+import { blacklist } from './constants';
 
 const IPINFO_TOKEN = process.env.IPINFO_TOKEN;
 const APP_TOPIC = process.env.QUOTES_APP_TOPIC;
@@ -15,7 +16,6 @@ const ntfy = new Ntfy(APP_TOPIC);
 const $schema = supabase.schema('quotes');
 
 const SESSION_TIMEOUT_MIN = 15;
-const blacklist = [];
 
 const generateSessionId = (ip, userAgent) => {
     const secret = process.env.HASH_SECRET || 'default_secret';
