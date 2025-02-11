@@ -1,17 +1,9 @@
 import { supabase } from '@/services/supabase';
 import { createIpMemoryHandler } from '@/helpers/handlers';
-import { extractConfigsAndContent, parseText, stripedElements } from '@/helpers/strings';
 import { withQueryParams } from '@/middlewares';
+import { richQuote } from './helpers';
 
 const $schema = supabase.schema('quotes');
-
-const richQuote = quote => {
-    return {
-        ...quote,
-        quoteStripped: parseText(quote.quote, stripedElements).join(''),
-        configs: extractConfigsAndContent(quote.quote).configs,
-    };
-};
 
 const readAllQuotes = async (req, res) => {
     const { space } = req.params;

@@ -7,6 +7,7 @@ import { supabase } from '@/services/supabase';
 
 import { parseText, stripedElements } from '@/helpers/strings';
 import { withQueryParams } from '@/middlewares';
+import { richQuote } from './helpers';
 
 const IPINFO_TOKEN = process.env.IPINFO_TOKEN;
 const APP_TOPIC = process.env.QUOTES_APP_TOPIC;
@@ -143,7 +144,16 @@ const readAllActions = async (req, res) => {
 
     if (error) return res.status(500).json({ error: error.message });
 
-    return res.status(200).json(data);
+    const logs = data.map(item => {
+        const { quotes, ...rest } = item;
+
+        return {
+            ...rest,
+            quote: richQuote(quotes),
+        };
+    });
+
+    return res.status(200).json(logs);
 };
 
 const deleteAllActions = async (req, res) => {
