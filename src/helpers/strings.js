@@ -30,8 +30,8 @@ export const extractConfigs = (configsText = null) => {
         .split('|')
         .map(i => i.trim())
         .reduce((a, c) => {
-            const [key, value] = c.split(':');
-            a[key] = value ?? true;
+            const [key, ...value] = c.split(':');
+            a[key] = value.join(':') ?? true;
             return a;
         }, {});
 };
