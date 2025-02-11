@@ -149,7 +149,7 @@ const readAllActions = async (req, res) => {
 
         return {
             ...rest,
-            quote: richQuote(quotes),
+            quote: !quotes ? null : richQuote(quotes),
         };
     });
 
