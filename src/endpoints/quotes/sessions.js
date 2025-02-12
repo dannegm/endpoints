@@ -17,16 +17,16 @@ const $schema = supabase.schema('quotes');
 
 const SESSION_TIMEOUT_MIN = 15;
 
-const generateSessionId = (ip, userAgent) => {
+const generateSessionId = (sid, ip, userAgent) => {
     const secret = process.env.HASH_SECRET || 'default_secret';
     const hmac = crypto.createHmac('sha256', secret);
-    hmac.update(ip + userAgent);
+    hmac.update(sid + ip + userAgent);
     return hmac.digest('hex');
 };
 
 const registerSession = async (req, res) => {
     const { space } = req.params;
-    const { ua } = req.query;
+    const { ua, sid } = req.query;
 
     const ip = req.headers['x-forwarded-for']?.split(',')[0] || req.ip || 'unknown';
     let ip_location = 'unknown';
@@ -38,7 +38,7 @@ const registerSession = async (req, res) => {
 
     const user_agent = ua || req.headers['user-agent'] || 'unknown';
     const referer = req.headers['referer'] || '';
-    const session_id = generateSessionId(ip, user_agent);
+    const session_id = generateSessionId(sid, ip, user_agent);
     const now = new Date();
 
     const { data: lastSession } = await $schema
