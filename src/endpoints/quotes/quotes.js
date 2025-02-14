@@ -109,13 +109,10 @@ const readQuoteById = async (req, res) => {
 
 const updateQuoteById = async (req, res) => {
     const { space, id } = req.params;
-    const { quote } = req.body;
-
-    if (!quote) return res.status(400).json({ error: 'Quote is required' });
 
     const { data, error } = await $schema
         .from('quotes')
-        .update({ quote })
+        .update(req.body)
         .eq('space', space)
         .eq('id', id)
         .select();
