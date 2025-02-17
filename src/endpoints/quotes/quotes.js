@@ -5,16 +5,31 @@ import { richQuote } from './helpers';
 
 const $schema = supabase.schema('quotes');
 
+const gettAllQuotesQueryPayload = withQueryParams({
+    includes: {
+        type: Array,
+        default: [],
+    },
+});
 const readAllQuotes = async (req, res) => {
     const { space } = req.params;
+    const { includes } = req.query;
 
-    const { data, error } = await $schema
+    const publishedReference = includes.includes('future')
+        ? new Date('3000-12-31T12:00:00.000Z')
+        : new Date();
+
+    const $initialQuery = $schema
         .from('quotes')
         .select('*')
         .eq('space', space)
-        .is('deleted_at', null)
-        .lte('published_at', new Date().toISOString())
-        .order('published_at', { ascending: false });
+        .lte('published_at', publishedReference.toISOString());
+
+    const $query = includes.includes('deleted')
+        ? $initialQuery
+        : $initialQuery.is('deleted_at', null);
+
+    const { data, error } = await $query.order('published_at', { ascending: false });
 
     if (error) return res.status(500).json({ error: error.message });
 
@@ -136,7 +151,7 @@ const deleteQuoteById = async (req, res) => {
 };
 
 export const quotesRouter = router => {
-    router.get('/:space', readAllQuotes);
+    router.get('/:space', gettAllQuotesQueryPayload, readAllQuotes);
     router.post('/:space', createQuote);
     router.get('/:space/pick', pickQuoteQueryPayload, pickQuote);
     router.get('/:space/:id', readQuoteById);
