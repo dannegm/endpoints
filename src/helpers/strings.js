@@ -1,3 +1,10 @@
+import { camelCase } from 'lodash';
+
+export const pascalCase = str => {
+    const camel = camelCase(str);
+    return camel.charAt(0).toUpperCase() + camel.slice(1);
+};
+
 export const stripedElements = [
     { pattern: /~~(.*?)~~/g, parser: text => text },
     { pattern: /__(.*?)__/g, parser: text => text },
@@ -36,6 +43,7 @@ export const stripedElements = [
     { pattern: /<sticker::(.*?)>/g, parser: id => `[${id}]` },
     { pattern: /<badge::(.*?)>/g, parser: id => `[${id}]` },
     { pattern: /\[\[(.*?)\]\]/g, parser: id => `[${id}]` },
+    { pattern: /<app::(.*?)>/g, parser: name => `<${pascalCase(name)} />` },
 ];
 
 export const extractConfigs = (configsText = null) => {
