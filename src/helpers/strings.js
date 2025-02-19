@@ -33,6 +33,8 @@ export const stripedElements = [
     { pattern: /<icon::(.*?)>/g, parser: name => `[${name}]` },
     { pattern: /<link::(.*?)>(.*?)<\/link>/g, parser: (url, label) => `[${label}](${url})` },
     { pattern: /<ilink::(.*?)>(.*?)<\/ilink>/g, parser: (url, label) => `[${label}](${url})` },
+    { pattern: /<blink::(.*?)>(.*?)<\/blink>/g, parser: (url, label) => `[${label}](${url})` },
+    { pattern: /<iblink::(.*?)>(.*?)<\/iblink>/g, parser: (url, label) => `[${label}](${url})` },
     { pattern: /<button::(.*?)>(.*?)<\/button>/g, parser: (_, label) => `[${label}]` },
     {
         pattern: /<polaroid::(.*?)>(.*?)<\/polaroid>/g,
