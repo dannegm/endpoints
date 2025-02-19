@@ -29,6 +29,11 @@ const allowedActionsForNotification = {
         actionDescription: 'has exploded all the balloons',
         tags: 'balloon',
     },
+    said_yes: {
+        type: 'said_yes',
+        actionDescription: 'Dijo que sí quiere ser tu valentín',
+        tags: 'cupid',
+    },
 };
 
 const logEvent = async (req, type, space, quote_id, metadata = null) => {
