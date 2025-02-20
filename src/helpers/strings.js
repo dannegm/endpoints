@@ -45,6 +45,17 @@ export const stripedElements = [
     { pattern: /<sticker::(.*?)>/g, parser: id => `[${id}]` },
     { pattern: /<badge::(.*?)>/g, parser: id => `[${id}]` },
     { pattern: /\[\[(.*?)\]\]/g, parser: id => `[${id}]` },
+    {
+        pattern: /<app::(.*?)\(\{(.*?)\}\)>/g,
+        parser: (name, args) => {
+            const props = extractConfigs(args);
+            return `<${pascalCase(name)} props={${JSON.stringify(props)}} />`;
+        },
+    },
+    {
+        pattern: /<app::(.*?)\((.*?)\)>/g,
+        parser: (name, input) => `<${pascalCase(name)} input="${input}" />`,
+    },
     { pattern: /<app::(.*?)>/g, parser: name => `<${pascalCase(name)} />` },
 ];
 
