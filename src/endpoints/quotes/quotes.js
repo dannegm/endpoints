@@ -44,7 +44,10 @@ const createQuote = async (req, res) => {
 
     if (!quote) return res.status(400).json({ error: 'Quote is required' });
 
-    const { data, error } = await $schema.from('quotes').insert({ space, quote }).select();
+    const { data, error } = await $schema
+        .from('quotes')
+        .insert({ space, ...req.body })
+        .select();
 
     if (error) return res.status(500).json({ error: error.message });
     return res.status(201).json(data);
