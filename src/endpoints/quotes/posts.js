@@ -54,6 +54,7 @@ const readPost = async (req, res) => {
         .select('*')
         .eq('space', space)
         .eq('id', id)
+        .select()
         .single();
 
     if (error) return res.status(500).json({ error: error.message });
@@ -84,7 +85,8 @@ const deletePost = async (req, res) => {
         .update({ deleted_at: new Date().toISOString() })
         .eq('space', space)
         .eq('id', id)
-        .select();
+        .select()
+        .single();
 
     if (error) return res.status(500).json({ error: error.message });
     return res.json(richPost(data));
