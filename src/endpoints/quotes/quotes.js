@@ -5,7 +5,7 @@ import { richQuote } from './helpers';
 
 const $schema = supabase.schema('quotes');
 
-const gettAllQuotesQueryPayload = withQueryParams({
+const getAllQuotesQueryPayload = withQueryParams({
     includes: {
         type: Array,
         default: [],
@@ -47,10 +47,11 @@ const createQuote = async (req, res) => {
     const { data, error } = await $schema
         .from('quotes')
         .insert({ space, ...req.body })
-        .select();
+        .select()
+        .single();
 
     if (error) return res.status(500).json({ error: error.message });
-    return res.status(201).json(data);
+    return res.status(201).json(richQuote(data));
 };
 
 const DEFAULT_REPEAT_PROBABLITY = 0.25;
@@ -133,10 +134,11 @@ const updateQuoteById = async (req, res) => {
         .update(req.body)
         .eq('space', space)
         .eq('id', id)
-        .select();
+        .select()
+        .single();
 
     if (error) return res.status(500).json({ error: error.message });
-    return res.json(data);
+    return res.json(richQuote(data));
 };
 
 const deleteQuoteById = async (req, res) => {
@@ -147,14 +149,14 @@ const deleteQuoteById = async (req, res) => {
         .update({ deleted_at: new Date().toISOString() })
         .eq('space', space)
         .eq('id', id)
-        .select();
+        .single();
 
     if (error) return res.status(500).json({ error: error.message });
-    return res.json(data);
+    return res.json(richQuote(data));
 };
 
 export const quotesRouter = router => {
-    router.get('/:space', gettAllQuotesQueryPayload, readAllQuotes);
+    router.get('/:space', getAllQuotesQueryPayload, readAllQuotes);
     router.post('/:space', createQuote);
     router.get('/:space/pick', pickQuoteQueryPayload, pickQuote);
     router.get('/:space/:id', readQuoteById);

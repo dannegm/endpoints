@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { quotesRouter } from './quotes';
+import { postsRouter } from './posts';
 import { actionsRouter } from './actions';
 import { sessionsRouter } from './sessions';
 
@@ -18,5 +19,6 @@ export default registerRouters(router, [
     // ...
     sessionsRouter,
     actionsRouter,
+    postsRouter,
     quotesRouter,
 ]);

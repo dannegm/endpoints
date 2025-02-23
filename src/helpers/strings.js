@@ -73,7 +73,14 @@ export const extractConfigs = (configsText = null) => {
         }, {});
 };
 
-export const extractConfigsAndContent = text => {
+export const extractConfigsAndContent = (text = '') => {
+    if (!text) {
+        return {
+            configs: null,
+            content: '',
+        };
+    }
+
     const regex = /^\(\{(.*?)\}\)/;
     const match = text.match(regex);
 
@@ -91,7 +98,7 @@ export const extractConfigsAndContent = text => {
     };
 };
 
-export const parseText = (text, elements) => {
+export const parseText = (text = '', elements) => {
     const { content } = extractConfigsAndContent(text);
     const unescapedText = content.replace(/\\([*~_/:\[\]$])/g, (_, char) => `\0${char}`);
 
