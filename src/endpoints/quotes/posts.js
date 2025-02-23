@@ -14,7 +14,7 @@ const readAllPost = async (req, res) => {
     const { space } = req.params;
     const { includes } = req.query;
 
-    const $initialQuery = await $schema.from('posts').select('*').eq('space', space);
+    const $initialQuery = $schema.from('posts').select('*').eq('space', space);
 
     const $query = includes.includes('deleted')
         ? $initialQuery
