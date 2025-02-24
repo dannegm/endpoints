@@ -35,7 +35,6 @@ export const stripedElements = [
     { pattern: /<ilink::(.*?)>(.*?)<\/ilink>/g, parser: (url, label) => `[${label}](${url})` },
     { pattern: /<blink::(.*?)>(.*?)<\/blink>/g, parser: (url, label) => `[${label}](${url})` },
     { pattern: /<iblink::(.*?)>(.*?)<\/iblink>/g, parser: (url, label) => `[${label}](${url})` },
-    { pattern: /<button::(.*?)>(.*?)<\/button>/g, parser: (_, label) => `[${label}]` },
     {
         pattern: /<polaroid::(.*?)>(.*?)<\/polaroid>/g,
         parser: (url, description) => `![${description}](${url})`,
@@ -45,6 +44,12 @@ export const stripedElements = [
     { pattern: /<sticker::(.*?)>/g, parser: id => `[${id}]` },
     { pattern: /<badge::(.*?)>/g, parser: id => `[${id}]` },
     { pattern: /\[\[(.*?)\]\]/g, parser: id => `[${id}]` },
+    {
+        pattern: /<button::(.*?)\(\{(.*?)\}\)>(.*?)<\/button>/g,
+        parser: (_, __, label) => `[${label}]`,
+    },
+    { pattern: /<button::(.*?)\((.*?)\)>(.*?)<\/button>/g, parser: (_, __, label) => `[${label}]` },
+    { pattern: /<button::(.*?)>(.*?)<\/button>/g, parser: (_, label) => `[${label}]` },
     {
         pattern: /<app::(.*?)\(\{(.*?)\}\)>/g,
         parser: (name, args) => {
