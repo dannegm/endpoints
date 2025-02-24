@@ -1,5 +1,4 @@
 import axios from 'axios';
-import crypto from 'crypto';
 import { capitalize } from 'lodash';
 
 import { parseISO, subMinutes, isBefore, formatISO } from 'date-fns';
@@ -17,13 +16,6 @@ const $schema = supabase.schema('quotes');
 
 const SESSION_TIMEOUT_MIN = 15;
 
-const generateSessionId = (sid, ip, userAgent) => {
-    const secret = process.env.HASH_SECRET || 'default_secret';
-    const hmac = crypto.createHmac('sha256', secret);
-    hmac.update(sid + ip + userAgent);
-    return hmac.digest('hex');
-};
-
 const registerSession = async (req, res) => {
     const { space } = req.params;
     const { ua, sid } = req.query;
@@ -38,7 +30,7 @@ const registerSession = async (req, res) => {
 
     const user_agent = ua || req.headers['user-agent'] || 'unknown';
     const referer = req.headers['referer'] || '';
-    const session_id = generateSessionId(sid, ip, user_agent);
+    const session_id = sid;
     const now = new Date();
 
     const { data: lastSession } = await $schema
