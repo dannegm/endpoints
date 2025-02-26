@@ -5,6 +5,16 @@ import { richQuote } from './helpers';
 
 const $schema = supabase.schema('quotes');
 
+const registerViewById = async (space, quoteId, skip = false) => {
+    // Skip actions if requested
+    if (skip) return;
+
+    // Optimistic continue, this is not too necesary
+    if (!space || !quoteId) return;
+
+    return await $schema.rpc('increment_views', { space, quote_id: quoteId });
+};
+
 const getAllQuotesQueryPayload = withQueryParams({
     includes: {
         type: Array,
@@ -54,18 +64,21 @@ const createQuote = async (req, res) => {
     return res.status(201).json(richQuote(data));
 };
 
-const DEFAULT_REPEAT_PROBABLITY = 0.25;
+const DEFAULT_REPEAT_PROBABLITY = 0.2;
 const pickQuoteQueryPayload = withQueryParams({
     'quote.id': {
         type: Number,
         default: null,
+    },
+    'skip-actions': {
+        type: Boolean,
+        default: false,
     },
     repeatProbability: {
         type: Number,
         default: DEFAULT_REPEAT_PROBABLITY,
     },
 });
-
 const createMemoryHandlerByIp = createIpMemoryHandler();
 const pickQuote = async (req, res) => {
     const { space } = req.params;
@@ -80,6 +93,8 @@ const pickQuote = async (req, res) => {
             .single();
 
         if (error) return res.status(400).json({ error: error.message });
+
+        await registerViewById(space, req.query['quote.id'], req.query['skip-actions']);
         return res.json(richQuote(data));
     }
 
@@ -109,9 +124,16 @@ const pickQuote = async (req, res) => {
     const [quote] = data;
     memoryHandler.updateMemory([...memoryHandler.getMemory(), quote.id]);
 
+    await registerViewById(space, quote.id, req.query['skip-actions']);
     return res.json(richQuote(quote));
 };
 
+const readQuoteQueryPayload = withQueryParams({
+    'skip-actions': {
+        type: Boolean,
+        default: false,
+    },
+});
 const readQuoteById = async (req, res) => {
     const { space, id } = req.params;
 
@@ -124,6 +146,8 @@ const readQuoteById = async (req, res) => {
         .single();
 
     if (error) return res.status(500).json({ error: error.message });
+
+    await registerViewById(space, id, req.query['skip-actions']);
     return res.json(richQuote(data));
 };
 
@@ -161,7 +185,7 @@ export const quotesRouter = router => {
     router.get('/:space', getAllQuotesQueryPayload, readAllQuotes);
     router.post('/:space', createQuote);
     router.get('/:space/pick', pickQuoteQueryPayload, pickQuote);
-    router.get('/:space/:id', readQuoteById);
+    router.get('/:space/:id', readQuoteQueryPayload, readQuoteById);
     router.put('/:space/:id', updateQuoteById);
     router.delete('/:space/:id', deleteQuoteById);
     return router;

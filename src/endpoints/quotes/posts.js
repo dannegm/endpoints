@@ -4,7 +4,8 @@ import { richPost } from './helpers';
 
 const $schema = supabase.schema('quotes');
 
-const getAllQuotesQueryPayload = withQueryParams({
+
+const getAllPostsQueryPayload = withQueryParams({
     includes: {
         type: Array,
         default: [],
@@ -93,7 +94,7 @@ const deletePost = async (req, res) => {
 };
 
 export const postsRouter = router => {
-    router.get('/:space/posts', getAllQuotesQueryPayload, readAllPost);
+    router.get('/:space/posts', getAllPostsQueryPayload, readAllPost);
     router.post('/:space/posts', createPost);
     router.get('/:space/posts/:id', readPost);
     router.put('/:space/posts/:id', updatePost);
