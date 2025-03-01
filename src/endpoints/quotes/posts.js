@@ -18,11 +18,15 @@ const readAllPost = async (req, res) => {
     const { space } = req.params;
     const { includes } = req.query;
 
-    const $initialQuery = $schema.from('posts').select('*').eq('space', space);
+    let $query = $schema.from('posts').select('*').eq('space', space);
 
-    const $query = includes.includes('deleted')
-        ? $initialQuery
-        : $initialQuery.is('deleted_at', null);
+    if (!includes.includes('indev')) {
+        $query = $query.is('indev', false);
+    }
+
+    if (!includes.includes('deleted')) {
+        $query = $query.is('deleted_at', null);
+    }
 
     const { data, error } = await $query.order('created_at', { ascending: false });
 
