@@ -3,6 +3,8 @@ import { withQueryParams } from '@/middlewares';
 import { Ntfy } from '@/services/ntfy';
 import { richPost } from './helpers';
 
+const APP_TOPIC = process.env.QUOTES_APP_TOPIC;
+
 const $schema = supabase.schema('quotes');
 const ntfy = new Ntfy(APP_TOPIC);
 
