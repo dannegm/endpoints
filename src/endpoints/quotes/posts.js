@@ -1,9 +1,10 @@
 import { supabase } from '@/services/supabase';
 import { withQueryParams } from '@/middlewares';
+import { Ntfy } from '@/services/ntfy';
 import { richPost } from './helpers';
 
 const $schema = supabase.schema('quotes');
-
+const ntfy = new Ntfy(APP_TOPIC);
 
 const getAllPostsQueryPayload = withQueryParams({
     includes: {
@@ -32,7 +33,7 @@ const readAllPost = async (req, res) => {
 
 const createPost = async (req, res) => {
     const { space } = req.params;
-    const { content, type = 'post', ...rest } = req.body;
+    const { skipActions, content, type = 'post', ...rest } = req.body;
 
     if (!content) return res.status(400).json({ error: 'Content is required' });
 
@@ -43,6 +44,13 @@ const createPost = async (req, res) => {
         .single();
 
     if (error) return res.status(500).json({ error: error.message });
+
+    if (!skipActions) {
+        ntfy.pushRich({
+            message: `Krystel posted an ${type}`,
+            click: `https://axolote.me/${space}/posts`,
+        });
+    }
 
     return res.status(201).json(richPost(data));
 };
