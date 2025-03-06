@@ -107,11 +107,27 @@ const deletePost = async (req, res) => {
     return res.json(richPost(data));
 };
 
+const destroyPost = async (req, res) => {
+    const { space, id } = req.params;
+
+    const { data, error } = await $schema
+        .from('posts')
+        .delete()
+        .eq('space', space)
+        .eq('id', id)
+        .select()
+        .single();
+
+    if (error) return res.status(500).json({ error: error.message });
+    return res.json(richPost(data));
+};
+
 export const postsRouter = router => {
     router.get('/:space/posts', getAllPostsQueryPayload, readAllPost);
     router.post('/:space/posts', createPost);
     router.get('/:space/posts/:id', readPost);
     router.put('/:space/posts/:id', updatePost);
     router.delete('/:space/posts/:id', deletePost);
+    router.delete('/:space/posts/:id/destroy', destroyPost);
     return router;
 };
