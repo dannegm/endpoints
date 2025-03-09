@@ -29,11 +29,16 @@ const readAllQuotes = async (req, res) => {
         ? new Date('3000-12-31T12:00:00.000Z')
         : new Date();
 
+    const deletedReference = includes.includes('deleted')
+        ? new Date('1970-01-01T00:00:00.000Z')
+        : new Date();
+
     const $initialQuery = $schema
         .from('quotes')
         .select('*')
         .eq('space', space)
-        .lte('published_at', publishedReference.toISOString());
+        .lte('published_at', publishedReference.toISOString())
+        .gte('published_at', deletedReference.toISOString());
 
     const $query = includes.includes('deleted')
         ? $initialQuery
