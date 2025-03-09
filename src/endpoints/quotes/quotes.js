@@ -184,6 +184,21 @@ const deleteQuoteById = async (req, res) => {
     return res.json(richQuote(data));
 };
 
+const destroyQuoteById = async (req, res) => {
+    const { space, id } = req.params;
+
+    const { data, error } = await $schema
+        .from('quotes')
+        .delete()
+        .eq('space', space)
+        .eq('id', id)
+        .select()
+        .single();
+
+    if (error) return res.status(500).json({ error: error.message });
+    return res.json(richPost(data));
+};
+
 export const quotesRouter = router => {
     router.get('/:space', getAllQuotesQueryPayload, readAllQuotes);
     router.post('/:space', createQuote);
@@ -191,5 +206,6 @@ export const quotesRouter = router => {
     router.get('/:space/:id', readQuoteQueryPayload, readQuoteById);
     router.put('/:space/:id', updateQuoteById);
     router.delete('/:space/:id', deleteQuoteById);
+    router.delete('/:space/:id/destroy', destroyQuoteById);
     return router;
 };
