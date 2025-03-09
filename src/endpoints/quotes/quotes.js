@@ -40,9 +40,7 @@ const readAllQuotes = async (req, res) => {
         .lte('published_at', publishedReference.toISOString())
         .gte('published_at', deletedReference.toISOString());
 
-    const $query = includes.includes('deleted')
-        ? $initialQuery
-        : $initialQuery.is('deleted_at', null);
+    const $query = $initialQuery;
 
     const { data, error } = await $query.order('published_at', { ascending: false });
 
