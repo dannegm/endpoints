@@ -38,7 +38,7 @@ const readAllQuotes = async (req, res) => {
         .select('*')
         .eq('space', space)
         .lte('published_at', publishedReference.toISOString())
-        .gte('published_at', deletedReference.toISOString());
+        .gte('deleted_at', deletedReference.toISOString());
 
     const $query = $initialQuery;
 
