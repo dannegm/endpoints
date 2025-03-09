@@ -196,7 +196,7 @@ const destroyQuoteById = async (req, res) => {
         .single();
 
     if (error) return res.status(500).json({ error: error.message });
-    return res.json(richPost(data));
+    return res.json(richQuote(data));
 };
 
 export const quotesRouter = router => {
