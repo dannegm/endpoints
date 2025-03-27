@@ -1,14 +1,13 @@
-import axios from 'axios';
 import { capitalize } from 'lodash';
 
-import { parseISO, subMinutes, isBefore, formatISO } from 'date-fns';
+import { parseISO, subMinutes, addDays, isBefore, formatISO } from 'date-fns';
 
 import { Ntfy } from '@/services/ntfy';
 import { supabase } from '@/services/supabase';
 
 import { blacklist } from './constants';
 import { withAuth, withLimit } from './middlewares';
-import { encryptCode, getClientData, getCounter, setCounter } from './helpers';
+import { encryptCode, getClientData } from './helpers';
 
 const APP_TOPIC = process.env.QUOTES_APP_TOPIC;
 
@@ -20,6 +19,7 @@ const ntfy = new Ntfy(APP_TOPIC);
 const $schema = supabase.schema('quotes');
 
 const SESSION_TIMEOUT_MIN = 15;
+const TOKEN_TIMEOUT_DAYS = 30;
 const RATE_LIMIT_MIN = 15;
 const RATE_LIMIT_TTL = 15 * 60;
 
@@ -104,6 +104,7 @@ const requestToken = async (req, res) => {
         user_agent,
         ip,
         ip_location,
+        expires_at: formatISO(addDays(new Date(), TOKEN_TIMEOUT_DAYS)),
     });
 
     if (error) {
