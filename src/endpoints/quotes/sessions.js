@@ -7,10 +7,9 @@ import { Ntfy } from '@/services/ntfy';
 import { supabase } from '@/services/supabase';
 
 import { blacklist } from './constants';
-import { encryptCode } from './helpers';
-import { withAuth } from './middlewares';
+import { withAuth, withLimit } from './middlewares';
+import { encryptCode, getClientData, getCounter, setCounter } from './helpers';
 
-const IPINFO_TOKEN = process.env.IPINFO_TOKEN;
 const APP_TOPIC = process.env.QUOTES_APP_TOPIC;
 
 const SECRET_TOKEN = process.env.QUOTES_SECRET_TOKEN;
@@ -21,30 +20,8 @@ const ntfy = new Ntfy(APP_TOPIC);
 const $schema = supabase.schema('quotes');
 
 const SESSION_TIMEOUT_MIN = 15;
-
-const getClientData = async req => {
-    const { ua, sid } = req.query;
-
-    const ip = req.headers['x-forwarded-for']?.split(',')[0] || req.ip || 'unknown';
-    let ip_location = 'unknown';
-
-    if (ip !== 'unknown') {
-        const { data } = await axios.get(`https://ipinfo.io/${ip}/json?token=${IPINFO_TOKEN}`);
-        ip_location = data.city ? `${data.city}, ${data.region}, ${data.country}` : 'unknown';
-    }
-
-    const user_agent = ua || req.headers['user-agent'] || 'unknown';
-    const referer = req.headers['referer'] || '';
-    const session_id = sid;
-
-    return {
-        ip,
-        ip_location,
-        user_agent,
-        referer,
-        session_id,
-    };
-};
+const RATE_LIMIT_MIN = 15;
+const RATE_LIMIT_TTL = 15 * 60;
 
 const registerSession = async (req, res) => {
     const { space } = req.params;
@@ -144,7 +121,7 @@ const validateToken = async (req, res) => {
 
 export const sessionsRouter = router => {
     router.post('/:space/track', registerSession);
-    router.post('/:space/auth/token', requestToken);
-    router.get('/:space/auth/validate', withAuth, validateToken);
+    router.post('/:space/auth/token', withLimit(RATE_LIMIT_MIN, RATE_LIMIT_TTL), requestToken);
+    router.get('/:space/auth/validate', withLimit(), withAuth, validateToken);
     return router;
 };

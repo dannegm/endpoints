@@ -2,7 +2,7 @@ import { supabase } from '@/services/supabase';
 import { createIpMemoryHandler } from '@/helpers/handlers';
 import { withQueryParams } from '@/middlewares';
 import { richQuote } from './helpers';
-import { withAuth } from './middlewares';
+import { withAuth, withLimit } from './middlewares';
 
 const $schema = supabase.schema('quotes');
 
@@ -201,12 +201,12 @@ const destroyQuoteById = async (req, res) => {
 };
 
 export const quotesRouter = router => {
-    router.get('/:space', withAuth, getAllQuotesQueryPayload, readAllQuotes);
-    router.post('/:space', withAuth, createQuote);
-    router.get('/:space/pick', withAuth, pickQuoteQueryPayload, pickQuote);
-    router.get('/:space/:id', withAuth, readQuoteQueryPayload, readQuoteById);
-    router.put('/:space/:id', withAuth, updateQuoteById);
-    router.delete('/:space/:id', withAuth, deleteQuoteById);
-    router.delete('/:space/:id/destroy', withAuth, destroyQuoteById);
+    router.get('/:space', withLimit(), withAuth, getAllQuotesQueryPayload, readAllQuotes);
+    router.post('/:space', withLimit(), withAuth, createQuote);
+    router.get('/:space/pick', withLimit(), withAuth, pickQuoteQueryPayload, pickQuote);
+    router.get('/:space/:id', withLimit(), withAuth, readQuoteQueryPayload, readQuoteById);
+    router.put('/:space/:id', withLimit(), withAuth, updateQuoteById);
+    router.delete('/:space/:id', withLimit(), withAuth, deleteQuoteById);
+    router.delete('/:space/:id/destroy', withLimit(), withAuth, destroyQuoteById);
     return router;
 };
