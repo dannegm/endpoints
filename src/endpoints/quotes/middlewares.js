@@ -3,8 +3,25 @@ import { getCounter, getIp, setCounter } from './helpers';
 
 const $schema = supabase.schema('quotes');
 
+const SECRET_TOKEN = process.env.QUOTES_SECRET_TOKEN;
 const RATE_LIMIT_MIN = 30;
 const RATE_LIMIT_TTL = 60;
+
+export const withSecret = (req, res, next) => {
+    const token = req.headers['x-dnn-secret'];
+
+    if (!token) {
+        console.error('Invalid secret:', { token });
+        return res.status(401).json({ error: 'Invalid secret.' });
+    }
+
+    if (token !== SECRET_TOKEN) {
+        console.error('Invalid secret:', { token });
+        return res.status(403).json({ error: 'Invalid secret.' });
+    }
+
+    next();
+};
 
 export const withLimit =
     (limit = RATE_LIMIT_MIN, ttl = RATE_LIMIT_TTL) =>

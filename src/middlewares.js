@@ -14,7 +14,16 @@ const ratelimit = new Ratelimit({
     prefix: RATELIMIT_PREFIX,
 });
 
+const rateLimitWhitelist = [
+    // ...
+    '/quotes',
+];
+
 export const ratelimitMiddleware = async (req, res, next) => {
+    if (rateLimitWhitelist.includes(req.path)) {
+        return next();
+    }
+
     const rawIP = getClientIp(req);
     const identifier = sha1(`${rawIP}::${req.path}`);
 
