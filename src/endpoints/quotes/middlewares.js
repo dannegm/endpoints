@@ -22,7 +22,7 @@ export const withAuth = async (req, res, next) => {
 
     if (error || !data) {
         console.error('Invalid session:', { token, data, error });
-        return res.status(401).json({ error: 'Invalid session.' });
+        return res.status(403).json({ error: 'Invalid session.' });
     }
 
     req.session = data;
