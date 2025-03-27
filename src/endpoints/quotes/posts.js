@@ -2,6 +2,7 @@ import { supabase } from '@/services/supabase';
 import { withQueryParams } from '@/middlewares';
 import { Ntfy } from '@/services/ntfy';
 import { richPost } from './helpers';
+import { withAuth } from './middlewares';
 
 const APP_TOPIC = process.env.QUOTES_APP_TOPIC;
 
@@ -123,11 +124,11 @@ const destroyPost = async (req, res) => {
 };
 
 export const postsRouter = router => {
-    router.get('/:space/posts', getAllPostsQueryPayload, readAllPost);
-    router.post('/:space/posts', createPost);
-    router.get('/:space/posts/:id', readPost);
-    router.put('/:space/posts/:id', updatePost);
-    router.delete('/:space/posts/:id', deletePost);
-    router.delete('/:space/posts/:id/destroy', destroyPost);
+    router.get('/:space/posts', withAuth, getAllPostsQueryPayload, readAllPost);
+    router.post('/:space/posts', withAuth, createPost);
+    router.get('/:space/posts/:id', withAuth, readPost);
+    router.put('/:space/posts/:id', withAuth, updatePost);
+    router.delete('/:space/posts/:id', withAuth, deletePost);
+    router.delete('/:space/posts/:id/destroy', withAuth, destroyPost);
     return router;
 };
