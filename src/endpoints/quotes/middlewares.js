@@ -4,7 +4,7 @@ import { getCounter, getIp, setCounter } from './helpers';
 const $schema = supabase.schema('quotes');
 
 const SECRET_TOKEN = process.env.QUOTES_SECRET_TOKEN;
-const RATE_LIMIT_MIN = 30;
+const RATE_LIMIT_MIN = 60;
 const RATE_LIMIT_TTL = 60;
 
 export const withSecret = (req, res, next) => {
