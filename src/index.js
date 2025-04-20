@@ -5,8 +5,11 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
 import { logger } from './services/logger';
-import { makeLoader } from './loader';
 import { ratelimitMiddleware } from './middlewares';
+import { buildSubdomainRouters } from './helpers/builders';
+
+import { getEndpointsRouter } from './endpoints/router';
+import shortenerRouter from './shortener';
 
 const PORT = process.env.PORT || 3000;
 
@@ -29,22 +32,22 @@ app
 const startApp = async app => {
     logger.info('Mounting server...');
 
-    app.all('/', (req, res) => {
-        res.send('OK');
+    const endpointsRouter = await getEndpointsRouter();
+    const server = buildSubdomainRouters(app, {
+        's|shortener': shortenerRouter,
+        default: endpointsRouter,
     });
 
-    const loader = await makeLoader(app);
-
-    app.use('*', (req, res) => {
+    server.use('*', (req, res) => {
         return res.status(404).send('Not Found');
     });
 
-    app.use((err, req, res, next) => {
+    server.use((err, req, res, next) => {
         logger.error(err);
         return res.status(500).json({ error: 'Unexpected internal error' });
     });
 
-    loader.listen(PORT, () => {
+    server.listen(PORT, () => {
         logger.info(`Server started at port ${PORT}`);
     });
 };
