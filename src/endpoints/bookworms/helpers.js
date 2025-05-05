@@ -10,11 +10,12 @@ const CACHE_TTL_SECONDS = 24 * 60 * 60;
 const toString = str => str.toString();
 export const normalize = pipe([toString, trim, lowerCase, deburr]);
 
-export const getPagination = req => {
+export const getPagination = (req, size = 10) => {
     const page = Number(req.query?.page || 1);
-    const limit = Number(req.query?.limit || 20);
-    const pagination = [limit * (page - 1), limit * (page - 1) + limit - 1];
-    return pagination;
+    const limit = Number(req.query?.limit || size);
+    const from = (page - 1) * limit;
+    const to = from + limit - 1;
+    return [from + 1, to + 1];
 };
 
 export const getNoCacheFlag = req => {

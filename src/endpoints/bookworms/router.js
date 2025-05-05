@@ -126,6 +126,76 @@ router.get('/search', async (req, res) => {
     return res.json(data);
 });
 
+const entities = {
+    books: {
+        rpc: 'search_books_similar',
+        threshold: 0.3,
+        map: item => item,
+    },
+    author: {
+        rpc: 'search_authors_similar',
+        threshold: 0.3,
+        map: item => ({
+            id: item.id,
+            name: item.name,
+            views: item.views,
+            books: item.books_count,
+        }),
+    },
+    serie: {
+        rpc: 'search_series_similar',
+        threshold: 0.3,
+        map: item => ({
+            id: item.id,
+            name: item.name,
+            views: item.views,
+            books: item.books_count,
+        }),
+    },
+};
+
+router.get('/search/:entity', async (req, res) => {
+    const { entity } = req.params;
+    const config = entities[entity];
+    if (!config) return res.status(404).json({ message: 'Invalid entity' });
+
+    const query = normalize(req.query?.q || '');
+    if (!query) return res.status(400).json({ message: 'Missing query' });
+
+    const pagination = getPagination(req);
+    const cacheKey = `bookworms.search.${sha1(entity + query + pagination)}`;
+
+    const { data, cached, error } = await cache(
+        cacheKey,
+        async () => {
+            const [from, to] = pagination;
+
+            const { data, error } = await $schema.rpc(config.rpc, {
+                q: query,
+                threshold: config.threshold,
+                from_index: from,
+                to_index: to,
+            });
+
+            if (error) throw error;
+
+            return {
+                data: data?.map(config.map) || [],
+                pagination: { from, to },
+            };
+        },
+        getNoCacheFlag(req),
+    );
+
+    res.setHeader('X-Cached', cached);
+
+    if (error) {
+        res.status(500).json({ error, message: 'Something went worng' });
+    }
+
+    return res.json(data);
+});
+
 router.get('/top', async (req, res) => {
     const entity = req.query?.entity || 'books';
     const category = req.query?.category || 'views';
