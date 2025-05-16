@@ -11,7 +11,6 @@ export const umami = () => (req, res, next) => {
     const clientData = req.clientData || {};
 
     UmamiService.track({
-        name: 'request',
         url: req.originalUrl,
         referrer: clientData?.referrer,
         data: {
