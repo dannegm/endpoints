@@ -1807,6 +1807,11 @@
   dependencies:
     "@types/node" "*"
 
+"@umami/node@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@umami/node/-/node-0.4.0.tgz#bbed7c5fed3ffb1863afbbdac29a03bdf024951f"
+  integrity sha512-pyphprbiF7KiDSc+SWZ4/rVM8B5vU27zIiFfEPj2lEqczpI4xAKSp+dM3tlzyRAWJL32fcbCfAaLGhJZQV13Rg==
+
 "@upstash/core-analytics@^0.0.10":
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/@upstash/core-analytics/-/core-analytics-0.0.10.tgz#e686a313ec2279d5a8d53e6c215085f1c0f5ab4b"

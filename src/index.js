@@ -10,6 +10,7 @@ import { buildSubdomainRouters } from './helpers/builders';
 
 import { getEndpointsRouter } from './endpoints/router';
 import shortenerRouter from './shortener';
+import { clientInfo, umami } from './helpers/middlewares';
 
 const PORT = process.env.PORT || 3000;
 
@@ -26,6 +27,8 @@ app
             },
         }),
     )
+    .use(clientInfo())
+    .use(umami())
     .use(bodyParser.json())
     .use(ratelimitMiddleware);
 
