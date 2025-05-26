@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import { Resend } from 'resend';
+
 import { sha1 } from '@/helpers/crypto';
 
 import ntfy from '@/services/ntfy';
@@ -8,6 +10,7 @@ import { supabase } from '@/services/supabase';
 import { cache, getNoCacheFlag, getPagination, normalize } from './helpers';
 import { apiKeyMiddleware } from './middlewares';
 
+const resend = new Resend(process.env.RESEND_API_KEY || '');
 const router = Router();
 router.use(apiKeyMiddleware);
 
@@ -16,6 +19,34 @@ const $storage = supabase.storage.from('bookworms');
 
 router.all('/', (req, res) => {
     return res.send('OK - bookworms');
+});
+
+router.get('/settings', async (req, res) => {
+    const { data, error } = await $schema.from('settings').select('key, value');
+
+    if (error) {
+        res.status(500).json({ message: 'Something went worng' });
+    }
+
+    const config = Object.fromEntries(data.map(({ key, value }) => [key, value]));
+    res.json(config);
+});
+
+router.put('/settings', async (req, res) => {
+    const settings = req.body;
+    const records = Object.entries(settings).map(([key, value]) => ({ key, value }));
+
+    const { data, error } = await $schema
+        .from('settings')
+        .upsert(records, { onConflict: 'key' })
+        .select();
+
+    if (error) {
+        res.status(500).json({ message: 'Something went worng' });
+    }
+
+    const config = Object.fromEntries(data.map(({ key, value }) => [key, value]));
+    res.json(config);
 });
 
 router.get('/summaries', async (req, res) => {
@@ -393,6 +424,7 @@ router.get('/serie/:serieKey', async (req, res) => {
 
 router.get('/request', async (req, res) => {
     const filename = req.query?.filename;
+    const format = req.query?.format || 'epub';
 
     if (!filename && !author) {
         return res.status(400).json({
@@ -401,15 +433,16 @@ router.get('/request', async (req, res) => {
     }
 
     const otp = totp.generate();
+    const finalFilename = filename.replace(/\.epub$/i, `.${format}`);
 
     await ntfy.pushSimple({
-        message: `requestBook::${filename}=${otp}`,
+        message: `requestBook::${filename}::${format}=${otp}`,
     });
 
     return res.json({
         message: 'Reach the validate url to see if your book is available',
-        validateUrl: `/bookworms/validate?filename=${filename}`,
-        filename,
+        validateUrl: `/bookworms/validate?filename=${finalFilename}`,
+        filename: finalFilename,
     });
 });
 
@@ -458,6 +491,51 @@ router.get('/download', async (req, res) => {
     res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
     res.setHeader('Content-Type', 'application/epub+zip');
     return res.send(buffer);
+});
+
+router.post('/sendto-kindle', async (req, res) => {
+    const { email, filename } = req.body;
+
+    if (!filename || !email) {
+        return res.status(400).send({
+            message: 'Invalid payload.',
+        });
+    }
+
+    const { data: fileData, error: fileError } = await $storage.download(filename);
+
+    if (!fileData || fileError) {
+        console.error('Read book error:', fileError);
+        return res.status(404).send();
+    }
+
+    await $storage.remove([filename]);
+
+    const buffer = Buffer.from(await fileData.arrayBuffer());
+    const bookFilename = filename.split('/').pop();
+
+    const { error: emailError } = await resend.emails.send({
+        from: 'Bookworms <no-reply@mail.hckr.mx>',
+        to: email,
+        subject: 'Bookworms - Your book is on its way to your Kindle!',
+        html: `
+            <p>You've received a new book for your Kindle. Enjoy your reading!</p>
+            <p>Happy reading,<br/>The Bookworms Team</p>
+        `,
+        attachments: [
+            {
+                content: buffer.toString('base64'),
+                filename: bookFilename,
+            },
+        ],
+    });
+
+    if (emailError) {
+        console.error('Error sending email:', emailError);
+        return res.status(404).send();
+    }
+
+    res.status(200).json({ message: 'Email sent successfully.', filename, email });
 });
 
 router.get('/clear-bucket', async (req, res) => {

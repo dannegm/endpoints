@@ -1553,15 +1553,6 @@
   resolved "https://registry.yarnpkg.com/@react-email/preview/-/preview-0.0.11.tgz#bf25a24608817ba00f1fbc8f2f02e2423078105c"
   integrity sha512-7O/CT4b16YlSGrj18htTPx3Vbhu2suCGv/cSe5c+fuSrIM/nMiBSZ3Js16Vj0XJbAmmmlVmYFZw9L20wXJ+LjQ==
 
-"@react-email/render@0.0.17":
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/@react-email/render/-/render-0.0.17.tgz#9ad401c5bbc6b71c3e93f34795c726f3f5bfeb9f"
-  integrity sha512-xBQ+/73+WsGuXKY7r1U73zMBNV28xdV0cp9cFjhNYipBReDHhV97IpA6v7Hl0dDtDzt+yS/72dY5vYXrF1v8NA==
-  dependencies:
-    html-to-text "9.0.5"
-    js-beautify "^1.14.11"
-    react-promise-suspense "0.3.4"
-
 "@react-email/render@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@react-email/render/-/render-1.0.1.tgz#5a8897a2b87c1aa41ebe5dd36233bd8d983b801a"
@@ -1569,6 +1560,15 @@
   dependencies:
     html-to-text "9.0.5"
     js-beautify "^1.14.11"
+    react-promise-suspense "0.3.4"
+
+"@react-email/render@1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@react-email/render/-/render-1.0.6.tgz#52ee2276febd4a08e3f2a7ad3c055d451e7d3731"
+  integrity sha512-zNueW5Wn/4jNC1c5LFgXzbUdv5Lhms+FWjOvWAhal7gx5YVf0q6dPJ0dnR70+ifo59gcMLwCZEaTS9EEuUhKvQ==
+  dependencies:
+    html-to-text "9.0.5"
+    prettier "3.5.3"
     react-promise-suspense "0.3.4"
 
 "@react-email/row@0.0.10":
@@ -5917,6 +5917,11 @@ postcss@8.4.31:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
+prettier@3.5.3:
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.5.3.tgz#4fc2ce0d657e7a02e602549f053b239cb7dfe1b5"
+  integrity sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==
+
 prettier@^3.3.3:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.3.3.tgz#30c54fe0be0d8d12e6ae61dbb10109ea00d53105"
@@ -6249,12 +6254,12 @@ reselect@^4.1.7:
   resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.1.8.tgz#3f5dc671ea168dccdeb3e141236f69f02eaec524"
   integrity sha512-ab9EmR80F/zQTMNeneUr4cv+jSwPJgIlvEmVwLerwrWVbpLlBuls9XHzIeTFy4cegU2NHBp3va0LKOzU5qFEYQ==
 
-resend@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/resend/-/resend-4.0.0.tgz#37e981c9e9bc78395f5c06c377483a63565af84f"
-  integrity sha512-rDX0rspl/XcmC2JV2V5obQvRX2arzxXUvNFUDMOv5ObBLR68+7kigCOysb7+dlkb0JE3erhQG0nHrbBt/ZCWIg==
+resend@^4.5.1:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/resend/-/resend-4.5.1.tgz#fb85375263f7c4b07b1a16b377fa7c14d0512780"
+  integrity sha512-ryhHpZqCBmuVyzM19IO8Egtc2hkWI4JOL5lf5F3P7Dydu3rFeX6lHNpGqG0tjWoZ63rw0l731JEmuJZBdDm3og==
   dependencies:
-    "@react-email/render" "0.0.17"
+    "@react-email/render" "1.0.6"
 
 resolve-alpn@^1.0.0:
   version "1.2.1"
