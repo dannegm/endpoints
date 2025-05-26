@@ -26,24 +26,26 @@ export const withSecret = (req, res, next) => {
 export const withLimit =
     (limit = RATE_LIMIT_MIN, ttl = RATE_LIMIT_TTL) =>
     async (req, res, next) => {
-        const ip = await getIp(req);
-
-        const counterKey = `limiter:${ip}:${req.path}`;
-        const [counter, counterError] = await getCounter(counterKey);
-
-        await setCounter(counterKey, counter + 1, ttl);
-
-        if (counterError) {
-            console.error('Too many request:', { error: counterError });
-            return res.status(429).json({ error: 'Too many request.' });
-        }
-
-        if (counter && counter >= limit) {
-            console.error('Too many request:', { counter });
-            return res.status(429).json({ error: 'Too many request.' });
-        }
-
         next();
+
+        //         const ip = await getIp(req);
+        //
+        //         const counterKey = `limiter:${ip}:${req.path}`;
+        //         const [counter, counterError] = await getCounter(counterKey);
+        //
+        //         await setCounter(counterKey, counter + 1, ttl);
+        //
+        //         if (counterError) {
+        //             console.error('Too many request:', { error: counterError });
+        //             return res.status(429).json({ error: 'Too many request.' });
+        //         }
+        //
+        //         if (counter && counter >= limit) {
+        //             console.error('Too many request:', { counter });
+        //             return res.status(429).json({ error: 'Too many request.' });
+        //         }
+        //
+        //         next();
     };
 
 export const withAuth = async (req, res, next) => {

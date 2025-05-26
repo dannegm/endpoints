@@ -20,7 +20,7 @@ const rateLimitWhitelist = [
 ];
 
 export const ratelimitMiddleware = async (req, res, next) => {
-    if (rateLimitWhitelist.includes(req.path)) {
+    if (rateLimitWhitelist.some(prefix => req.path.startsWith(prefix))) {
         return next();
     }
 
