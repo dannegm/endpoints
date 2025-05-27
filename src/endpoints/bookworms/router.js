@@ -301,7 +301,7 @@ router.get('/book/:libid', async (req, res) => {
             const { data: bookData, error: bookError } = await $schema
                 .from('books')
                 .select(
-                    `libid, title, description, labels, published, pagecount, size, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name, views, books(count))`,
+                    `id, libid, title, description, labels, published, pagecount, size, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name, views, books(count))`,
                 )
                 .eq('libid', libid)
                 .single();
@@ -331,6 +331,12 @@ router.get('/book/:libid', async (req, res) => {
         return res.status(404).json({ message: 'Book not found' });
     }
 
+    await $schema.rpc('increment_field', {
+        target_table: 'books',
+        target_column: 'views',
+        target_id: data.id,
+    });
+
     return res.json(data);
 });
 
@@ -351,7 +357,7 @@ router.get('/author/:authorKey', async (req, res) => {
             const { data: authorData, error: authorError } = await $schema
                 .from('authors')
                 .select(
-                    `name, views, books(libid, title, filename, cover_id, serie_name, serie_sequence, views, downloads)`,
+                    `id, name, views, books(libid, title, filename, cover_id, serie_name, serie_sequence, views, downloads)`,
                 )
                 .eq('name_normalized', authorName)
                 .single();
@@ -375,6 +381,12 @@ router.get('/author/:authorKey', async (req, res) => {
         return res.status(404).json({ message: 'Author not found' });
     }
 
+    await $schema.rpc('increment_field', {
+        target_table: 'authors',
+        target_column: 'views',
+        target_id: data.id,
+    });
+
     return res.json(data);
 });
 
@@ -395,7 +407,7 @@ router.get('/serie/:serieKey', async (req, res) => {
             const { data: serieData, error: serieError } = await $schema
                 .from('series')
                 .select(
-                    `name, views, books(libid, title, filename, cover_id, serie_name, serie_sequence, views, downloads)`,
+                    `id, name, views, books(libid, title, filename, cover_id, serie_name, serie_sequence, views, downloads)`,
                 )
                 .eq('name_normalized', serieName)
                 .single();
@@ -418,6 +430,12 @@ router.get('/serie/:serieKey', async (req, res) => {
     if (error?.type === 'NOT_FOUND') {
         return res.status(404).json({ message: 'Serie not found' });
     }
+
+    await $schema.rpc('increment_field', {
+        target_table: 'series',
+        target_column: 'views',
+        target_id: data.id,
+    });
 
     return res.json(data);
 });
@@ -487,6 +505,18 @@ router.get('/download', async (req, res) => {
 
     await $storage.remove([filename]);
 
+    const { data: bookData } = await $schema
+        .from('books')
+        .select('id')
+        .eq('filename', filename)
+        .single();
+
+    await $schema.rpc('increment_field', {
+        target_table: 'books',
+        target_column: 'downloads',
+        target_id: bookData.id,
+    });
+
     const buffer = Buffer.from(await data.arrayBuffer());
     res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
     res.setHeader('Content-Type', 'application/epub+zip');
@@ -534,6 +564,18 @@ router.post('/sendto-kindle', async (req, res) => {
         console.error('Error sending email:', emailError);
         return res.status(404).send();
     }
+
+    const { data: bookData } = await $schema
+        .from('books')
+        .select('id')
+        .eq('filename', filename.replace(/\.mobi/i, '.epub'))
+        .single();
+
+    await $schema.rpc('increment_field', {
+        target_table: 'books',
+        target_column: 'downloads',
+        target_id: bookData.id,
+    });
 
     res.status(200).json({ message: 'Email sent successfully.', filename, email });
 });
