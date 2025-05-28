@@ -160,11 +160,13 @@ router.get('/search', async (req, res) => {
 const entities = {
     books: {
         rpc: 'search_books_similar',
+        rpc_counter: 'count_books_similar',
         threshold: 0.3,
         map: item => item,
     },
     author: {
         rpc: 'search_authors_similar',
+        rpc_counter: 'count_authors_similar',
         threshold: 0.3,
         map: item => ({
             id: item.id,
@@ -175,6 +177,7 @@ const entities = {
     },
     serie: {
         rpc: 'search_series_similar',
+        rpc_counter: 'count_series_similar',
         threshold: 0.3,
         map: item => ({
             id: item.id,
@@ -210,9 +213,23 @@ router.get('/search/:entity', async (req, res) => {
 
             if (error) throw error;
 
+            const { data: countData } = await $schema.rpc(config.rpc_counter, {
+                q: query,
+                threshold: config.threshold,
+            });
+
+            const totalCount = countData || 0;
+
             return {
                 data: data?.map(config.map) || [],
-                pagination: { from, to },
+                pagination: {
+                    from,
+                    to: to,
+                    found: totalCount,
+                    count: data?.length || 0,
+                    page: Number(req.query?.page || 1),
+                    pages: Math.ceil(totalCount / (to - from + 1)),
+                },
             };
         },
         getNoCacheFlag(req),
