@@ -564,10 +564,10 @@ router.post('/sendto-kindle', async (req, res) => {
     const { error: emailError } = await resend.emails.send({
         from: 'Bookworms <no-reply@mail.hckr.mx>',
         to: email,
-        subject: 'Bookworms - Your book is on its way to your Kindle!',
+        subject: 'Bookworms - ¡Tu libro está en camino a tu Kindle!',
         html: `
-            <p>You've received a new book for your Kindle. Enjoy your reading!</p>
-            <p>Happy reading,<br/>The Bookworms Team</p>
+            <p>Has recibido un nuevo libro para tu Kindle.</p>
+            <p>¡Disfruta tu lectura!, <br/>El equipo de Bookworms</p>
         `,
         attachments: [
             {
