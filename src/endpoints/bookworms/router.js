@@ -540,17 +540,19 @@ router.get('/download', async (req, res) => {
     return res.send(buffer);
 });
 
-router.get('/signed-url', async (req, res) => {
+router.get('/file', async (req, res) => {
     const filename = req.query?.filename;
 
     if (!filename) {
-        return res.status(404).send();
+        return res.status(404).send({
+            message: 'Missing filename.',
+        });
     }
 
-    const { data, error } = await $storage.createSignedUrl(filename, 60 * 60 * 24); // 60s
+    const { data } = $storage.getPublicUrl(filename);
 
-    if (!data || error) {
-        return res.status(404).send();
+    if (!data) {
+        return res.status(404).send({ message: 'Book file not found.' });
     }
 
     const { data: bookData } = await $schema
