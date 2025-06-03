@@ -540,6 +540,34 @@ router.get('/download', async (req, res) => {
     return res.send(buffer);
 });
 
+router.get('/signed-url', async (req, res) => {
+    const filename = req.query?.filename;
+
+    if (!filename) {
+        return res.status(404).send();
+    }
+
+    const { data, error } = await $storage.createSignedUrl(filename, 60 * 60 * 24); // 60s
+
+    if (!data || error) {
+        return res.status(404).send();
+    }
+
+    const { data: bookData } = await $schema
+        .from('books')
+        .select('id')
+        .eq('filename', filename)
+        .single();
+
+    await $schema.rpc('increment_field', {
+        target_table: 'books',
+        target_column: 'downloads',
+        target_id: bookData.id,
+    });
+
+    return res.json(data);
+});
+
 router.post('/sendto-kindle', async (req, res) => {
     const { email, filename } = req.body;
 
