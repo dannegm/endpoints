@@ -1,5 +1,5 @@
 import { supabase } from '@/services/supabase';
-import { withQueryParams } from '@/middlewares';
+import { withQueryParams } from '@/helpers/middlewares';
 import { Ntfy } from '@/services/ntfy';
 import { richPost } from './helpers';
 import { withAuth, withLimit } from './middlewares';

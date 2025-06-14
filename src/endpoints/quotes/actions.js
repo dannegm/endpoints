@@ -6,7 +6,7 @@ import { buildCustomLogger } from '@/services/logger';
 import { supabase } from '@/services/supabase';
 
 import { parseText, stripedElements } from '@/helpers/strings';
-import { withQueryParams } from '@/middlewares';
+import { withQueryParams } from '@/helpers/middlewares';
 import { richQuote } from './helpers';
 
 const IPINFO_TOKEN = process.env.IPINFO_TOKEN;

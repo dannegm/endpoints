@@ -5,12 +5,12 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
 import { logger } from './services/logger';
-import { ratelimitMiddleware } from './middlewares';
+import { ratelimitMiddleware } from './helpers/middlewares';
 import { buildSubdomainRouters } from './helpers/builders';
 
+import { clientInfo, umami } from './helpers/middlewares';
 import { getEndpointsRouter } from './endpoints/router';
 import shortenerRouter from './shortener';
-import { clientInfo, umami } from './helpers/middlewares';
 
 const PORT = process.env.PORT || 3000;
 
@@ -29,8 +29,8 @@ app
     )
     .use(clientInfo())
     .use(umami())
-    .use(bodyParser.json())
-    .use(ratelimitMiddleware);
+    .use(ratelimitMiddleware())
+    .use(bodyParser.json());
 
 const startApp = async app => {
     logger.info('Mounting server...');

@@ -1,6 +1,6 @@
 import { supabase } from '@/services/supabase';
 import { createIpMemoryHandler } from '@/helpers/handlers';
-import { withQueryParams } from '@/middlewares';
+import { withQueryParams } from '@/helpers/middlewares';
 import { richQuote } from './helpers';
 import { withAuth, withLimit } from './middlewares';
 

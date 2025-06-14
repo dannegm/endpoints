@@ -1,4 +1,4 @@
-import express from 'express';
+import { Router } from 'express';
 import axios from 'axios';
 
 import { supabase } from '@/services/supabase';
@@ -6,7 +6,7 @@ import { nanoid, sha1 } from '@/helpers/crypto';
 
 const IPINFO_TOKEN = process.env.IPINFO_TOKEN;
 
-const router = express.Router();
+const router = Router();
 const $schema = supabase.schema('shortener');
 
 const getBaseUrl = req => {
@@ -18,16 +18,7 @@ const getBaseUrl = req => {
 const withShort = (data, host) => ({ ...data, short: `${host}/${data.code}` });
 
 const hit = async (req, code) => {
-    const ip = req.headers['x-forwarded-for']?.split(',')[0] || req.ip || 'unknown';
-    let ip_location = 'unknown';
-
-    if (ip !== 'unknown') {
-        const { data } = await axios.get(`https://ipinfo.io/${ip}/json?token=${IPINFO_TOKEN}`);
-        ip_location = data.city ? `${data.city}, ${data.region}, ${data.country}` : 'unknown';
-    }
-
-    const user_agent = req.headers['user-agent'] || 'unknown';
-    const referer = req.headers['referer'] || null;
+    const { ip, ip_location, user_agent, referer } = req.clientData;
 
     await $schema.from('hits').insert({
         code,
@@ -37,6 +28,10 @@ const hit = async (req, code) => {
         referer,
     });
 };
+
+router.get('/', (req, res) => {
+    res.send(`OK - shortener`);
+});
 
 router.post('/shorten', async (req, res) => {
     const { url, code, redirect_type = 'temporal' } = req.body;
@@ -63,21 +58,6 @@ router.post('/shorten', async (req, res) => {
 
     if (error) return res.status(500).json({ error });
     res.status(201).json(withShort(data, host));
-});
-
-router.get('/:code', async (req, res) => {
-    const { data, error } = await $schema
-        .from('links')
-        .select('*')
-        .eq('code', req.params.code)
-        .single();
-
-    if (error || !data) return res.status(404).send('Not found');
-
-    await hit(req, req.params.code);
-
-    const status = data.redirect_type === 'temporal' ? 302 : 301;
-    res.redirect(status, data.url);
 });
 
 router.get('/meta/:code', async (req, res) => {
@@ -118,8 +98,19 @@ router.get('/qr/:code', async (req, res) => {
     }
 });
 
-router.get('/', (req, res) => {
-    res.send(`OK - shortener`);
+router.get('/:code', async (req, res) => {
+    const { data, error } = await $schema
+        .from('links')
+        .select('*')
+        .eq('code', req.params.code)
+        .single();
+
+    if (error || !data) return res.status(404).send('Not found');
+
+    await hit(req, req.params.code);
+
+    const status = data.redirect_type === 'temporal' ? 302 : 301;
+    res.redirect(status, data.url);
 });
 
 export default router;
