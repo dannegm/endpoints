@@ -2,6 +2,7 @@ import { Redis } from '@upstash/redis';
 import { trim, lowerCase, deburr } from 'lodash';
 
 import { pipe } from '@/helpers/utils';
+import { isTruthy } from '@/helpers/booleans';
 
 const redis = Redis.fromEnv();
 const DEBUG = process.env.DEBUG === 'true';
@@ -20,9 +21,9 @@ export const getPagination = (req, size = 10) => {
 
 export const getNoCacheFlag = req => {
     const params = new URLSearchParams(req.url.split('?')[1]);
-    const noCache = params.get('nocache');
-    const isNoCache = noCache === 'true' || noCache === '' || noCache === null ? true : false;
-    return isNoCache;
+    return (
+        params.has('nocache') && (params.get('nocache') === '' || isTruthy(params.get('nocache')))
+    );
 };
 
 export const cache = async (cacheKey, handler, nocache = false) => {
