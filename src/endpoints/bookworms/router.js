@@ -457,6 +457,57 @@ router.get('/serie/:serieKey', async (req, res) => {
     return res.json(data);
 });
 
+router.get('/category/:categoryKey', async (req, res) => {
+    const { categoryKey } = req.params;
+
+    const pagination = getPagination(req);
+    const cacheKey = `bookworms.category.${categoryKey}.${sha1(pagination)}`;
+
+    const { data, cached, error } = await cache(
+        cacheKey,
+        async () => {
+            const [from, to] = pagination;
+
+            const { data, error } = await $schema.rpc('match_books_by_label', {
+                q: categoryKey,
+                threshold: 0.3,
+                from_index: from,
+                to_index: to,
+            });
+
+            if (error) throw error;
+
+            const { data: countData } = await $schema.rpc('count_books_by_label', {
+                q: categoryKey,
+                threshold: 0.3,
+            });
+
+            const totalCount = countData || 0;
+
+            return {
+                data,
+                pagination: {
+                    from,
+                    to: to,
+                    found: totalCount,
+                    count: data?.length || 0,
+                    page: Number(req.query?.page || 1),
+                    pages: Math.ceil(totalCount / (to - from + 1)),
+                },
+            };
+        },
+        getNoCacheFlag(req),
+    );
+
+    res.setHeader('X-Cached', cached);
+
+    if (error) {
+        res.status(500).json({ error, message: 'Something went worng' });
+    }
+
+    return res.json(data);
+});
+
 router.get('/request', async (req, res) => {
     const filename = req.query?.filename;
     const format = req.query?.format || 'epub';
