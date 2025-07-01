@@ -86,7 +86,7 @@ router.get('/search', async (req, res) => {
         });
     }
 
-    const cacheKey = `bookworms.search.${sha1(query + pagination)}`;
+    const cacheKey = `bookworms.search.${sha1(query + pagination.join(','))}`;
     const { data, cached, error } = await cache(
         cacheKey,
         async () => {
@@ -197,7 +197,7 @@ router.get('/search/:entity', async (req, res) => {
     if (!query) return res.status(400).json({ message: 'Missing query' });
 
     const pagination = getPagination(req);
-    const cacheKey = `bookworms.search.${sha1(entity + query + pagination)}`;
+    const cacheKey = `bookworms.search.${sha1(entity + query + pagination.join(','))}`;
 
     const { data, cached, error } = await cache(
         cacheKey,
@@ -461,7 +461,7 @@ router.get('/category/:categoryKey', async (req, res) => {
     const { categoryKey } = req.params;
 
     const pagination = getPagination(req);
-    const cacheKey = `bookworms.category.${categoryKey}.${sha1(pagination)}`;
+    const cacheKey = `bookworms.category.${categoryKey}.${sha1(pagination.join(','))}`;
 
     const { data, cached, error } = await cache(
         cacheKey,
