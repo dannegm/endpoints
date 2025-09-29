@@ -28,6 +28,35 @@ export const clientInfo = () => async (req, res, next) => {
     next();
 };
 
+export const createCorsOriginChecker = allowedDomains => {
+    const domainRegexes = allowedDomains.flatMap(domain => {
+        const escapedDomain = domain.replace(/\./g, '\\.');
+        return [
+            new RegExp(`^https?:\\/\\/.*\\.${escapedDomain}$`),
+            new RegExp(`^https?:\\/\\/${escapedDomain}$`),
+        ];
+    });
+
+    return function (origin, callback) {
+        // Permitir requests sin origin (apps móviles, servicios, etc.)
+        if (!origin) return callback(null, true);
+
+        // Permitir localhost para desarrollo local y testing
+        if (/^https?:\/\/localhost(:\d+)?$/.test(origin)) {
+            return callback(null, true);
+        }
+
+        // Verificar dominios configurados
+        const isAllowed = domainRegexes.some(regex => regex.test(origin));
+
+        if (isAllowed) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    };
+};
+
 export const umami = () => (req, res, next) => {
     const clientData = req.clientData || {};
 
