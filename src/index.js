@@ -34,6 +34,12 @@ app
     //         credentials: true,
     //     }),
     // )
+    .use(
+        cors({
+            origin: true, // Permite cualquier origin
+            credentials: true,
+        }),
+    )
     .use(cookieParser())
     .use(
         morgan(':method :url :status :response-time ms - :user-agent', {
