@@ -42,9 +42,9 @@ app
             },
         }),
     )
-    .use(clientInfo())
-    .use(umami())
-    .use(ratelimitMiddleware())
+    // .use(clientInfo())
+    // .use(umami())
+    // .use(ratelimitMiddleware())
     .use(bodyParser.json());
 
 const startApp = async app => {

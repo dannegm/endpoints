@@ -27,7 +27,7 @@
         "@umami/node": "^0.4.0",
         "@upstash/ratelimit": "^2.0.4",
         "@upstash/redis": "^1.34.3",
-        "axios": "^1.7.9",
+        "axios": "^1.12.2",
         "babel-plugin-module-resolver": "^5.0.2",
         "base-64": "^1.0.0",
         "body-parser": "^1.20.3",
