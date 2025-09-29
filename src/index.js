@@ -28,12 +28,12 @@ const app = express();
 
 app
     // ...
-    .use(
-        cors({
-            origin: createCorsOriginChecker(allowedDomains),
-            credentials: true,
-        }),
-    )
+    // .use(
+    //     cors({
+    //         origin: createCorsOriginChecker(allowedDomains),
+    //         credentials: true,
+    //     }),
+    // )
     .use(cookieParser())
     .use(
         morgan(':method :url :status :response-time ms - :user-agent', {
