@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
 import { logger } from './services/logger';
-import { ratelimitMiddleware, createCorsOriginChecker } from './helpers/middlewares';
+import { ratelimitMiddleware } from './helpers/middlewares';
 import { buildSubdomainRouters } from './helpers/builders';
 
 import { clientInfo, umami } from './helpers/middlewares';
@@ -14,32 +14,11 @@ import shortenerRouter from './shortener';
 
 const PORT = process.env.PORT || 3000;
 
-// Lista de dominios permitidos
-const allowedDomains = [
-    // ...
-    'hckr.mx',
-    'dnn.im',
-    'danielgarcia.me',
-    'didntread.app',
-    'didnotread.app',
-];
-
 const app = express();
 
 app
     // ...
-    // .use(
-    //     cors({
-    //         origin: createCorsOriginChecker(allowedDomains),
-    //         credentials: true,
-    //     }),
-    // )
-    .use(
-        cors({
-            origin: true, // Permite cualquier origin
-            credentials: true,
-        }),
-    )
+    .use(cors())
     .use(cookieParser())
     .use(
         morgan(':method :url :status :response-time ms - :user-agent', {
@@ -48,9 +27,9 @@ app
             },
         }),
     )
-    // .use(clientInfo())
-    // .use(umami())
-    // .use(ratelimitMiddleware())
+    .use(clientInfo())
+    .use(umami())
+    .use(ratelimitMiddleware())
     .use(bodyParser.json());
 
 const startApp = async app => {

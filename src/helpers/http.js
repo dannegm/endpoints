@@ -17,10 +17,14 @@ export const getClientData = async req => {
     let ip_location = 'unknown';
     let ip_info = null;
 
-    if (ip !== 'unknown') {
-        const { data } = await axios.get(`https://ipinfo.io/${ip}/json?token=${IPINFO_TOKEN}`);
-        ip_info = data;
-        ip_location = data.city ? `${data.city}, ${data.region}, ${data.country}` : 'unknown';
+    try {
+        if (ip !== 'unknown') {
+            const { data } = await axios.get(`https://ipinfo.io/${ip}/json?token=${IPINFO_TOKEN}`);
+            ip_info = data;
+            ip_location = data.city ? `${data.city}, ${data.region}, ${data.country}` : 'unknown';
+        }
+    } catch (error) {
+        console.error('Error fetching IP info');
     }
 
     const user_agent = ua || req.headers['user-agent'] || 'unknown';
