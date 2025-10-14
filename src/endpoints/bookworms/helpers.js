@@ -36,8 +36,8 @@ export const cache = async (cacheKey, handler, nocache = false) => {
     try {
         const data = await handler();
 
-        await redis.set(cacheKey, data);
-        await redis.expire(cacheKey, CACHE_TTL_SECONDS);
+        // await redis.set(cacheKey, data);
+        // await redis.expire(cacheKey, CACHE_TTL_SECONDS);
 
         return { data, cached: false };
     } catch (error) {
