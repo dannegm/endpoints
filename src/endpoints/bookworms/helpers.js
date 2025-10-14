@@ -27,11 +27,11 @@ export const getNoCacheFlag = req => {
 };
 
 export const cache = async (cacheKey, handler, nocache = false) => {
-    const cached = await redis.get(cacheKey);
-
-    if (!DEBUG && !nocache && cached) {
-        return { data: cached, cached: true };
-    }
+//     const cached = await redis.get(cacheKey);
+//
+//     if (!DEBUG && !nocache && cached) {
+//         return { data: cached, cached: true };
+//     }
 
     try {
         const data = await handler();
