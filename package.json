@@ -39,6 +39,7 @@
         "dotenv": "^16.4.5",
         "eventsource": "^2.0.2",
         "express": "^4.21.0",
+        "express-rate-limit": "^8.1.0",
         "got": "^11.8.2",
         "jsdom": "^25.0.1",
         "lodash": "^4.17.21",
