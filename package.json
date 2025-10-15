@@ -7,7 +7,9 @@
     "scripts": {
         "dev": "nodemon -r dotenv/config --exec babel-node src",
         "format": "prettier . --write --log-level=warn",
-        "build": "npx babel src --out-dir ./build",
+        "build:server": "npx babel src --out-dir ./build",
+        "build:client": "cd home && yarn build",
+        "build": "sh ./scripts/build.sh",
         "start": "NODE_ENV=production node ./build",
         "prod": "pm2 start ./build",
         "make": "plop",
@@ -74,7 +76,7 @@
         "winston": "^3.15.0"
     },
     "engines": {
-        "node": "20.12.2",
+        "node": "v24.9.0",
         "yarn": "1.22.22"
     }
 }
