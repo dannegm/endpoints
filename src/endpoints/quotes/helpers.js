@@ -58,8 +58,18 @@ export const getClientData = async req => {
     let ip_location = 'unknown';
 
     if (ip !== 'unknown') {
-        const { data } = await axios.get(`https://ipinfo.io/${ip}/json?token=${IPINFO_TOKEN}`);
-        ip_location = data.city ? `${data.city}, ${data.region}, ${data.country}` : 'unknown';
+        try {
+            const { data } = await axios.get(`https://ipinfo.io/${ip}/json?token=${IPINFO_TOKEN}`);
+            ip_location = data.city ? `${data.city}, ${data.region}, ${data.country}` : 'unknown';
+        } catch (error) {
+            if (error.status === 429) {
+                ip_location = 'unknown (not fetched)';
+                console.error('Rate limit exceeded while fetching IP location');
+            } else {
+                ip_location = 'unknown (error)';
+                console.error('Error fetching IP location');
+            }
+        }
     }
 
     const user_agent = ua || req.headers['user-agent'] || 'unknown';
