@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import axios from 'axios';
 
 import { supabase } from '@/services/supabase';
 import { nanoid, sha1 } from '@/helpers/crypto';
