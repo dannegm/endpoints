@@ -5,16 +5,18 @@ import { quotesRouter } from './quotes';
 import { postsRouter } from './posts';
 import { actionsRouter } from './actions';
 import { sessionsRouter } from './sessions';
-import { withSecret } from './middlewares';
+import { withApiKey } from '@/helpers/middlewares';
 
 const router = Router();
 const redis = Redis.fromEnv();
+
+const API_KEY = process.env.QUOTES_SECRET_TOKEN || '';
 
 router.all('/', (req, res) => {
     return res.send('OK - quotes');
 });
 
-router.post('/clear/ratelimit', withSecret, async (req, res) => {
+router.post('/clear/ratelimit', withApiKey(API_KEY), async (req, res) => {
     const { ip } = req.query;
 
     if (!ip) {

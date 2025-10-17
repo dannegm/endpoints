@@ -4,8 +4,6 @@ import axios from 'axios';
 import { supabase } from '@/services/supabase';
 import { nanoid, sha1 } from '@/helpers/crypto';
 
-const IPINFO_TOKEN = process.env.IPINFO_TOKEN;
-
 const router = Router();
 const $schema = supabase.schema('shortener');
 

@@ -5,9 +5,8 @@ import { parseISO, subMinutes, addDays, isBefore, formatISO } from 'date-fns';
 import { Ntfy } from '@/services/ntfy';
 import { supabase } from '@/services/supabase';
 
-import { blacklist } from './constants';
-import { withAuth, withLimit } from './middlewares';
-import { encryptCode, getClientData } from './helpers';
+import { withAuth } from './middlewares';
+import { encryptCode } from './helpers';
 
 const APP_TOPIC = process.env.QUOTES_APP_TOPIC;
 
@@ -20,12 +19,18 @@ const $schema = supabase.schema('quotes');
 
 const SESSION_TIMEOUT_MIN = 15;
 const TOKEN_TIMEOUT_DAYS = 30;
-const RATE_LIMIT_MIN = 15;
-const RATE_LIMIT_TTL = 15 * 60;
+
+export const blacklist = [
+    // ...
+    '::1',
+    '187.190.25.131',
+    '187.190.26.77',
+    '44.214.70.151',
+];
 
 const registerSession = async (req, res) => {
     const { space } = req.params;
-    const { ip, ip_location, user_agent, referer, session_id } = await getClientData(req);
+    const { ip, ip_location, user_agent, referer, session_id } = req.clientData;
 
     const now = new Date();
 
@@ -68,7 +73,9 @@ const registerSession = async (req, res) => {
 };
 
 const requestToken = async (req, res) => {
-    const { ip, ip_location, user_agent } = await getClientData(req);
+    console.log('Requesting token...');
+    const { ip, ip_location, user_agent } = req.clientData;
+    console.log({ ip, ip_location, user_agent });
 
     const tokenFromHeader = req.headers['x-dnn-tracker'];
     const { code } = req.body;
@@ -122,7 +129,7 @@ const validateToken = async (req, res) => {
 
 export const sessionsRouter = router => {
     router.post('/:space/track', registerSession);
-    router.post('/:space/auth/token', withLimit(RATE_LIMIT_MIN, RATE_LIMIT_TTL), requestToken);
-    router.get('/:space/auth/validate', withLimit(), withAuth, validateToken);
+    router.post('/:space/auth/token', requestToken);
+    router.get('/:space/auth/validate', withAuth, validateToken);
     return router;
 };

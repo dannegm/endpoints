@@ -120,3 +120,17 @@ export const withQueryParams = (schema, errorHandler = null) => {
         }
     };
 };
+
+export const withApiKey =
+    (API_KEY, header = 'x-dnn-apikey') =>
+    (req, res, next) => {
+        const apiKey = req.headers[header];
+
+        if (apiKey !== API_KEY) {
+            return res.status(401).json({ error: 'Invalid API Key' });
+        }
+
+        req.apiKey = apiKey;
+
+        next();
+    };

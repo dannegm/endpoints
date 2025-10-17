@@ -6,13 +6,14 @@ import { sha1 } from '@/helpers/crypto';
 import ntfy from '@/services/ntfy';
 import { totp } from '@/services/security';
 import { supabase } from '@/services/supabase';
+import { withApiKey } from '@/helpers/middlewares';
 
 import { cache, getNoCacheFlag, getPagination, normalize } from './helpers';
-import { apiKeyMiddleware } from './middlewares';
 
 const resend = new Resend(process.env.RESEND_API_KEY || '');
 const router = Router();
-router.use(apiKeyMiddleware);
+
+router.use(withApiKey(process.env.BOOKWORMS__APP_KEY || ''));
 
 const $schema = supabase.schema('bookworms');
 const $storage = supabase.storage.from('bookworms');

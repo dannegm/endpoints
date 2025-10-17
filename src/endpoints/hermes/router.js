@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { ulid } from 'ulid';
 import { buildCustomLogger } from '@/services/logger.js';
+import { withApiKey } from '@/helpers/middlewares';
 
 const APP_KEY = process.env.APP_KEY;
 
@@ -9,20 +10,13 @@ const logger = buildCustomLogger('hermes');
 const router = Router();
 const topics = new Map();
 
-const withToken = (req, res, next) => {
-    const key = req.header('x-api-key') || req.query.token;
-
-    if (key !== APP_KEY) {
-        return res.sendStatus(401);
-    }
-    next();
-};
+router.use(withApiKey(APP_KEY));
 
 router.all('/', (req, res) => {
     return res.send('OK - hermes');
 });
 
-router.get('/sub/:topic', withToken, (req, res) => {
+router.get('/sub/:topic', (req, res) => {
     const { topic } = req.params;
 
     res.set({
@@ -45,7 +39,7 @@ router.get('/sub/:topic', withToken, (req, res) => {
     });
 });
 
-router.post('/pub/:topic/:event', withToken, (req, res) => {
+router.post('/pub/:topic/:event', (req, res) => {
     const { topic, event } = req.params;
     const data = JSON.stringify(req.body);
 

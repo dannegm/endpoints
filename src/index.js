@@ -37,7 +37,7 @@ app
             },
         }),
     )
-    // .use(clientInfo())
+    .use(clientInfo())
     .use(bodyParser.json());
 
 const startApp = async app => {
