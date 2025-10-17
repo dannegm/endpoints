@@ -180,10 +180,6 @@ const processEnvValue = (key, val) => {
 };
 
 router.all('/env', (req, res) => {
-    if (process.env.NODE_ENV === 'production') {
-        return res.status(404).send({ error: 'Not found' });
-    }
-
     const out = {};
     for (const key of Object.keys(process.env)) {
         out[key] = processEnvValue(key, process.env[key]);
