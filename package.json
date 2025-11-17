@@ -59,10 +59,11 @@
         "multer": "^1.4.5-lts.1",
         "nanoid": "^5.0.7",
         "nodemon": "^3.1.7",
-        "openai": "^4.83.0",
+        "openai": "^6.9.1",
         "otpauth": "^9.3.3",
         "plop": "^4.0.1",
         "pm2": "^5.4.2",
+        "pocketbase": "^0.26.3",
         "prettier": "^3.3.3",
         "qrcode": "^1.5.4",
         "react": "^18.3.1",
@@ -73,7 +74,8 @@
         "ulid": "^3.0.1",
         "url-regex-safe": "^4.0.0",
         "uuid": "^10.0.0",
-        "winston": "^3.15.0"
+        "winston": "^3.15.0",
+        "zod": "^4.1.12"
     },
     "engines": {
         "node": "24.x",
