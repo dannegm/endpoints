@@ -82,6 +82,7 @@ ${existingLines || '- (no hay cartas registradas todavía)'}
 
 Crea algo nuevo, juguetón pero útil en conversación real.
 Agrega un poco de humor o picardía al significado y al flavor.
+Nivel de picante: 75%.
 Utiliza las cartas existentes como referencia de estilo y formato.
 `;
 
