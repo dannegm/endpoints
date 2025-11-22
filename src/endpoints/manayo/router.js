@@ -11,6 +11,49 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
 
+/**
+ * Get all settings from the database.
+ * Returns an object like:
+ * {
+ *   ia_enabled: true,
+ *   theme: "dark",
+ *   whatever: 123
+ * }
+ */
+export const getAllSettings = async () => {
+    try {
+        const records = await pb.collection('manayo_settings').getFullList({ fields: 'key,value' });
+
+        const map = {};
+        for (const r of records) {
+            map[r.key] = r.value;
+        }
+
+        return map;
+    } catch (err) {
+        console.error('[getAllSettings] error:', err?.data || err);
+        return {};
+    }
+};
+
+/**
+ * Get a single setting by key.
+ * Returns the value or null if not found.
+ */
+export const getSetting = async key => {
+    try {
+        const record = await pb.collection('manayo_settings').getFullList(`key="${key}"`, {
+            fields: 'value',
+        });
+
+        return record.at(0)?.value;
+    } catch (err) {
+        if (err?.status === 404) return null;
+        console.error(`[getSetting:${key}] error:`, err?.data || err);
+        return null;
+    }
+};
+
 router.all('/', (req, res) => {
     return res.send('OK - manayo');
 });
@@ -94,6 +137,14 @@ Utiliza las cartas existentes como referencia de estilo y formato.
 }
 
 router.post('/ai/suggest', async (req, res) => {
+    const ia_enabled = await getSetting('ia_enabled');
+
+    if (!ia_enabled) {
+        return res.status(503).json({
+            error: 'El endpoint de sugerencias AI está deshabilitado temporalmente.',
+        });
+    }
+
     try {
         const { mode, description } = req.body || {};
 
@@ -151,6 +202,11 @@ router.post('/ai/suggest', async (req, res) => {
             error: 'Error generando sugerencia.',
         });
     }
+});
+
+router.get('/settings', async (req, res) => {
+    const settings = await getAllSettings();
+    res.json(settings);
 });
 
 export default router;
