@@ -201,12 +201,12 @@ const destroyQuoteById = async (req, res) => {
 };
 
 export const quotesRouter = router => {
-    router.get('/:space', withAuth, getAllQuotesQueryPayload, readAllQuotes);
-    router.post('/:space', withAuth, createQuote);
-    router.get('/:space/pick', withAuth, pickQuoteQueryPayload, pickQuote);
-    router.get('/:space/:id', withAuth, readQuoteQueryPayload, readQuoteById);
-    router.put('/:space/:id', withAuth, updateQuoteById);
-    router.delete('/:space/:id', withAuth, deleteQuoteById);
-    router.delete('/:space/:id/destroy', withAuth, destroyQuoteById);
+    router.get('/:space', getAllQuotesQueryPayload, readAllQuotes);
+    router.post('/:space', createQuote);
+    router.get('/:space/pick', pickQuoteQueryPayload, pickQuote);
+    router.get('/:space/:id', readQuoteQueryPayload, readQuoteById);
+    router.put('/:space/:id', updateQuoteById);
+    router.delete('/:space/:id', deleteQuoteById);
+    router.delete('/:space/:id/destroy', destroyQuoteById);
     return router;
 };
