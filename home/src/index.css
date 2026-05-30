@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Zen+Kaku+Gothic+New:wght@900&display=swap');
+
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -120,6 +122,6 @@
 }
 
 @theme {
-    --font-bitter: 'Bitter', serif;
+    --font-bitter: 'Bitter', sans-serif;
     --font-zenkaku: 'Zen Kaku Gothic New', sans-serif;
 }
