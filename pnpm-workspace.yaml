@@ -1,7 +1,0 @@
-allowBuilds:
-  '@openrouter/sdk': true
-  core-js: true
-  es5-ext: true
-  esbuild: true
-  re2: true
-  sharp: true
