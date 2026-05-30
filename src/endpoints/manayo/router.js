@@ -1,14 +1,14 @@
 import { Router } from 'express';
-import PocketBase from 'pocketbase';
-import OpenAI from 'openai';
 import { z } from 'zod';
+import { OpenRouter } from '@openrouter/sdk';
+import PocketBase from 'pocketbase';
+
+const OPENROUTER_API_MODEL = process.env.OPENROUTER_API_MODEL || 'minimax/minimax-m2';
 
 const router = Router();
-
 const pb = new PocketBase(process.env.POCKETBASE_URL || 'https://base.hckr.mx');
-
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+const ia = new OpenRouter({
+    apiKey: process.env.OPENROUTER_API_KEY,
 });
 
 /**
@@ -95,7 +95,7 @@ async function getExistingCardsSample(limit = 150) {
     }));
 }
 
-function buildPrompt({ description, existingCards }) {
+function buildPrompt({ existingCards }) {
     const existingLines = existingCards
         .map(c => `- jp: ${c.jp} | romaji: ${c.romaji} | meaning: ${c.meaning}`)
         .join('\n');
@@ -127,13 +127,10 @@ Crea algo nuevo, juguetón pero útil en conversación real.
 Agrega un poco de humor o picardía al significado y al flavor.
 Nivel de picante: 75%.
 Utiliza las cartas existentes como referencia de estilo y formato.
+Recuerda: responde SOLO con JSON.
 `;
 
-    const userPart = description
-        ? `El usuario describe lo que busca así:\n"${description}"\nAdapta el estilo de la carta a esa descripción.\n`
-        : 'Genera una carta sorpresa, sin tema específico, pero usable entre amigos.\n';
-
-    return baseInstruction + '\n' + userPart + '\nRecuerda: responde SOLO con JSON.';
+    return baseInstruction;
 }
 
 router.post('/ai/suggest', async (req, res) => {
@@ -149,20 +146,31 @@ router.post('/ai/suggest', async (req, res) => {
         const { mode, description } = req.body || {};
 
         const existingCards = await getExistingCardsSample(50);
+        const systemPrompt = buildPrompt({ existingCards });
 
-        const prompt = buildPrompt({
-            description: mode === 'prompt' ? description : null,
-            existingCards,
+        const userPrompt = {
+            role: 'user',
+            content: `Genera una carta sorpresa basada en esta descripción: "${description}". Sé creativo y no te limites a lo literal. Ajusta el estilo de la carta a esa descripción.`,
+        };
+        const defaultPrompt = {
+            role: 'user',
+            content: 'Genera una carta sorpresa, sin tema específico, pero usable entre amigos.\n',
+        };
+
+        const finalPrompt = mode === 'prompt' ? userPrompt : defaultPrompt;
+        const messages = [{ role: 'system', content: systemPrompt }, finalPrompt];
+
+        const response = await ia.chat.send({
+            chatRequest: {
+                model: OPENROUTER_API_MODEL,
+                messages,
+            },
         });
 
-        const completion = await openai.responses.create({
-            model: 'gpt-4.1-mini',
-            input: prompt,
-        });
-
-        const output = completion.output[0]?.content?.[0]?.text || '';
+        const output = response.choices[0].message.content || '';
 
         let parsed;
+
         try {
             const raw = JSON.parse(output);
             const result = ManayoAISuggestionSchema.safeParse(raw);
@@ -185,17 +193,10 @@ router.post('/ai/suggest', async (req, res) => {
             });
         }
 
-        const data = {
-            ...parsed,
-            source: 'ia',
-        };
-
+        const data = { ...parsed, source: 'ia' };
         const isDuplicate = existingCards.some(c => c.jp === data.jp || c.romaji === data.romaji);
 
-        return res.json({
-            ...data,
-            duplicate: isDuplicate,
-        });
+        return res.json({ ...data, duplicate: isDuplicate });
     } catch (err) {
         console.error('manayo/ai/suggest error:', err);
         return res.status(500).json({
