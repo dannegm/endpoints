@@ -7,11 +7,14 @@ const UPSTREAM = 'https://api.open-meteo.com';
 
 router.all('/*', async (req, res) => {
     try {
+        const { host, ...headers } = req.headers;
+
         const upstream = await axios({
             method: req.method,
             url: `${UPSTREAM}${req.path}`,
             params: req.query,
             data: req.body,
+            headers,
         });
 
         res.status(upstream.status).json(upstream.data);
