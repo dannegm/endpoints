@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { capitalize } from 'lodash';
 
 import { Ntfy } from '@/services/ntfy';
@@ -9,7 +8,6 @@ import { parseText, stripedElements } from '@/helpers/strings';
 import { withQueryParams } from '@/helpers/middlewares';
 import { richQuote } from './helpers';
 
-const IPINFO_TOKEN = process.env.IPINFO_TOKEN;
 const APP_TOPIC = process.env.QUOTES_APP_TOPIC;
 
 const logger = buildCustomLogger('quotes');
@@ -37,15 +35,8 @@ const allowedActionsForNotification = {
 };
 
 const logEvent = async (req, type, space, quote_id, metadata = null) => {
-    const ip = req.headers['x-forwarded-for']?.split(',')[0] || req.ip || 'unknown';
-    let ip_location = 'unknown';
-
-    if (ip !== 'unknown') {
-        const { data } = await axios.get(`https://ipinfo.io/${ip}/json?token=${IPINFO_TOKEN}`);
-        ip_location = data.city ? `${data.city}, ${data.region}, ${data.country}` : 'unknown';
-    }
-
-    const user_agent = req.headers['user-agent'] || 'unknown';
+    const { ip, ip_location } = req.clientData || {};
+    const user_agent = req.query.ua || req.headers['user-agent'] || 'unknown';
 
     logger.info(`[${type}] ID:${quote_id} IP:${ip} UA:${user_agent}`);
 
@@ -76,27 +67,15 @@ const postActionQueryPayload = withQueryParams({
 });
 const registerAction = async (req, res) => {
     const { space, id, action } = req.params;
-    const { code, ua } = req.query;
+    const { code } = req.query;
     const meta = req.body;
 
-    const customReq = {
-        ip: req.ip,
-        headers: {
-            'x-forwarded-for': req.headers['x-forwarded-for'],
-            'user-agent': ua,
-        },
-    };
-
     if (id === 'none') {
-        await logEvent(customReq, action, space, null, meta);
-
-        return res.json({
-            action,
-            meta,
-        });
+        await logEvent(req, action, space, null, meta);
+        return res.json({ action, meta });
     }
 
-    await logEvent(customReq, action, space, id, { code, ...meta });
+    await logEvent(req, action, space, id, { code, ...meta });
 
     const { data, error } = await $schema
         .from('quotes')

@@ -1,4 +1,3 @@
-import axios from 'axios';
 const IPINFO_TOKEN = process.env.IPINFO_TOKEN;
 
 export const getClientIp = req => {
@@ -20,19 +19,15 @@ export const getClientData = async req => {
 
     if (ip !== 'unknown') {
         try {
-            const { data } = await axios.get(`https://ipinfo.io/${ip}/json?token=${IPINFO_TOKEN}`);
+            const response = await fetch(`https://ipinfo.io/${ip}/json?token=${IPINFO_TOKEN}`);
+            const data = await response.json();
             ip_location = data.city
                 ? `${data.city}, ${data.region}, ${data.country}`
                 : 'unknown (unlocalized)';
             ip_info = data;
         } catch (error) {
-            if (error.status === 429) {
-                ip_location = 'unknown (not fetched)';
-                console.error('Rate limit exceeded while fetching IP location');
-            } else {
-                ip_location = 'unknown (error)';
-                console.error('Error fetching IP location');
-            }
+            ip_location = 'unknown (error)';
+            console.error('Error fetching IP location');
         }
     }
 

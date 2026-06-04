@@ -1,5 +1,5 @@
+import { Readable } from 'node:stream';
 import { Router } from 'express';
-import axios from 'axios';
 
 const router = Router();
 
@@ -12,22 +12,14 @@ router.get('/proxy/download', async (req, res) => {
     if (!url) return res.status(400).send('Missing URL');
 
     try {
-        const response = await axios.get(url, {
-            responseType: 'stream',
-        });
+        const response = await fetch(url);
 
         res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
-        res.setHeader(
-            'Content-Type',
-            response.headers['content-type'] || 'application/octet-stream',
-        );
+        res.setHeader('Content-Type', response.headers.get('content-type') || 'application/octet-stream');
 
-        response.data.pipe(res);
+        Readable.fromWeb(response.body).pipe(res);
     } catch (err) {
-        res.status(500).json({
-            error: 'Failed to download file',
-            details: err.message,
-        });
+        res.status(500).json({ error: 'Failed to download file', details: err.message });
     }
 });
 

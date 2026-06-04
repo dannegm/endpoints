@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import axios from 'axios';
 
 const router = Router();
 
@@ -8,19 +7,19 @@ const UPSTREAM = 'https://api.open-meteo.com';
 router.all('/*', async (req, res) => {
     try {
         const { host, ...headers } = req.headers;
+        const params = new URLSearchParams(req.query).toString();
+        const url = `${UPSTREAM}${req.path}${params ? '?' + params : ''}`;
 
-        const upstream = await axios({
+        const upstream = await fetch(url, {
             method: req.method,
-            url: `${UPSTREAM}${req.path}`,
-            params: req.query,
-            data: req.body,
             headers,
+            body: ['GET', 'HEAD'].includes(req.method) ? undefined : JSON.stringify(req.body),
         });
 
-        res.status(upstream.status).json(upstream.data);
+        const data = await upstream.json();
+        res.status(upstream.status).json(data);
     } catch (err) {
-        const status = err.response?.status || 502;
-        res.status(status).json(err.response?.data ?? { error: err.message });
+        res.status(502).json({ error: err.message });
     }
 });
 

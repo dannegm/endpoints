@@ -1,4 +1,3 @@
-import axios from 'axios';
 import EventSource from 'eventsource';
 import { buildCustomLogger } from '@/services/logger';
 
@@ -18,7 +17,7 @@ class Ntfy {
     async pushSimple({ message }) {
         logger.debug(`Sending simple: ${message}`);
         try {
-            await axios.post(this.ntfyUrl, message);
+            await fetch(this.ntfyUrl, { method: 'POST', body: message });
             logger.success(`Sent simple: ${message}`);
         } catch (err) {
             logger.error('Error sending notification', err);
@@ -40,9 +39,7 @@ class Ntfy {
         }
 
         try {
-            await axios.post(this.ntfyUrl, message, {
-                headers: payload,
-            });
+            await fetch(this.ntfyUrl, { method: 'POST', body: message, headers: payload });
             console.info(`Sent rinch: ${fallbackTitle} | ${message}`);
         } catch (err) {
             console.error('Error sending notification', err);

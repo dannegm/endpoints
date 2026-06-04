@@ -73,6 +73,7 @@ Copy `.env.example` to `.env`. Logs are written to `logs/` by Winston.
 
 ## Code style
 
-- No TypeScript unless absolutely necessary — plain JS throughout
-- Medium rigor: clean and elegant enough to be scalable, not verbose or over-engineered
-- No heavy patterns or abstractions unless the complexity warrants them
+**No overengineering.** Write the simplest thing that works. If a feature needs one fetch call, write one fetch call — not a wrapper, not a class, not a helper. Complexity must be justified by actual need, not anticipated need.
+
+- Plain JS throughout — no TypeScript unless absolutely necessary
+- No abstractions, patterns, or extra layers unless the complexity is already there and demands it
