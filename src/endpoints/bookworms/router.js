@@ -532,7 +532,7 @@ router.get('/request', async (req, res) => {
     });
 
     await ntfy.pushSimple({
-        message: `[${otp}]requestBook({${bookData}})`,
+        message: `[${otp}]requestBook(${bookData})`,
     });
 
     return res.json({
