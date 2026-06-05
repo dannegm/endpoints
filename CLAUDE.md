@@ -71,6 +71,10 @@ If an endpoint needs something not covered by shared code, it should define its 
 
 Copy `.env.example` to `.env`. Logs are written to `logs/` by Winston.
 
+## Package manager
+
+Use **yarn** for all dependency management (`yarn add`, `yarn remove`). Do not use `npm install/uninstall` — the deploy environment breaks if both `package-lock.json` and `yarn.lock` exist.
+
 ## Code style
 
 **No overengineering.** Write the simplest thing that works. If a feature needs one fetch call, write one fetch call — not a wrapper, not a class, not a helper. Complexity must be justified by actual need, not anticipated need.
