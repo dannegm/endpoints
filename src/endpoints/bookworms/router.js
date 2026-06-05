@@ -526,8 +526,13 @@ router.get('/request', async (req, res) => {
     const otp = totp.generate();
     const finalFilename = filename.replace(/\.epub$/i, `.${format}`);
 
+    const bookData = JSON.stringify({
+        filename,
+        format,
+    });
+
     await ntfy.pushSimple({
-        message: `requestBook::${filename}::${format}=${otp}`,
+        message: `[${otp}]requestBook({${bookData}})`,
     });
 
     return res.json({
