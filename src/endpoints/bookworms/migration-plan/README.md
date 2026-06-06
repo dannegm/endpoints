@@ -1,7 +1,7 @@
 # Bookworms — Migration Plan
 
 Proceso para importar nuevos libros a la DB y mantener los `cover_id` actualizados.
-Todos los scripts son CommonJS y se ejecutan directamente con Node desde la raíz del proyecto.
+Todos los scripts son CommonJS y se ejecutan directamente con Node **desde dentro de la carpeta `migration-plan/`**.
 
 ---
 
@@ -74,10 +74,15 @@ esta fuente con `indice.json` y con la columna `filename` de la DB (añadiendo `
     "pagecount": 314,
     "sha256sum": "abc123...",
     "size": 1234567,
-    "filename": "_Otros/Nombre-Autor.epub"
+    "filename": "_Otros/Nombre-Autor.epub",
+    "serie": "Nombre de la Serie",
+    "serieseq": 1
   }
 ]
 ```
+
+Los campos `serie` y `serieseq` son opcionales — los libros sin serie simplemente no los incluyen.
+El campo `serieseq` puede ser entero o decimal (e.g. `0.5` para prelogs, `1.5` para novellas entre volúmenes).
 
 ---
 
@@ -153,9 +158,14 @@ Ambos scripts se pueden correr en paralelo entre sí.
 ## Comportamiento de los scripts de migración
 
 **Reanudación automática**
-Al primer arranque generan un archivo `import-books-pending.ndjson` con todos los registros pendientes.
-Si el proceso se interrumpe (apagón, Ctrl+C, error), al reiniciar retoman exactamente
-desde donde se quedaron — el libro fallido permanece al inicio del archivo pendiente.
+Al primer arranque generan un archivo `.ndjson` con todos los registros pendientes
+(e.g. `import-books-pending.ndjson`). Si el proceso se interrumpe (apagón, Ctrl+C, error),
+al reiniciar retoman exactamente desde donde se quedaron — el registro fallido permanece
+al inicio del archivo pendiente.
+
+> NDJSON = Newline Delimited JSON. Cada línea es un objeto JSON independiente.
+> El archivo se reescribe completamente después de cada registro procesado,
+> por lo que el punto de reanudación es siempre exacto.
 
 **Reintentos**
 Cada registro se reintenta hasta 3 veces con backoff exponencial (2s, 4s, 6s).
@@ -175,8 +185,8 @@ el motivo. Al corregir el problema y reiniciar, retoma desde ese mismo registro.
 |---|---|
 | `import-books-pending.ndjson` | Libros pendientes de importar (import-books) |
 | `import-books-done.ndjson` | Libros importados correctamente |
-| `covers-import-books-pending.ndjson` | Covers pendientes de actualizar (update-covers) |
-| `covers-import-books-done.ndjson` | Covers actualizados correctamente |
+| `update-covers-pending.ndjson` | Covers pendientes de actualizar (update-covers) |
+| `update-covers-done.ndjson` | Covers actualizados correctamente |
 
 ---
 
@@ -201,10 +211,32 @@ Si se regeneran los sprites con un nuevo orden de covers:
 ## Notas importantes
 
 - Los scripts usan `libid` como identificador único del libro (no `id` interno de la DB).
-- Los autores se cachean en memoria durante `import-books.js` para minimizar consultas.
-  Si se añaden muchos autores nuevos en una sola sesión, el caché se actualiza en tiempo real.
-- Las series vienen en `indice.json` como `serie` y `serieseq`. Los libros sin serie
-  simplemente no incluyen esos campos. `import-books.js` maneja ambos casos: inserta
-  en `series` y `series_books` si el libro tiene serie, y omite ese paso si no la tiene.
-- Los archivos `.json` generados no se versionan (ver `.gitignore`). Solo se versionan
-  los scripts.
+- Los autores y series se cachean en memoria durante `import-books.js` para minimizar consultas.
+  Si se crean nuevos autores o series durante la sesión, el caché se actualiza en tiempo real.
+- Los libros sin serie simplemente no incluyen `serie`/`serieseq` en `indice.json`.
+  `import-books.js` maneja ambos casos: inserta en `series` y `series_books` si hay serie,
+  y omite ese paso si no la hay.
+- Si `build-new-books.js` reporta libros con `Missing cover: N`, es normal — significa que
+  esos filenames no aparecen en los archivos `bookinfo/`. Se insertan con `cover_id = null`.
+- Los archivos `.json` y `.ndjson` generados no se versionan (ver `.gitignore`).
+  Solo se versionan los scripts.
+
+---
+
+## Trampas conocidas
+
+**Supabase silently caps SELECT at 1000 rows**
+El cliente de Supabase JS no devuelve error si hay más de 1000 filas — simplemente
+corta el resultado sin avisar. Todos los fetch-* scripts usan paginación explícita con
+`.order('id').range(from, from + PAGE_SIZE - 1)` para evitar esto.
+Si algún día se añade un nuevo script que lea de la DB, **siempre paginar**.
+
+**Los cover_id no son derivables matemáticamente**
+El offset entre cover_id viejo y nuevo no es uniforme — varía por libro porque se
+insertaron ~23k libros nuevos distribuidos por toda la colección al regenerar los sprites.
+Por eso existe `build-cover-updates.js`: genera el mapa completo desde los archivos fuente.
+
+**El `cover_id` identifica posición global, no por sprite**
+`cover_id = 50` está en el sprite `50 / 12 = 4` (sprite 4), posición `x = 50 % 4 = 2`,
+`y = (50 / 4 | 0) % 3 = 0`. Si cambia el grid, hay que actualizar el cálculo en el cliente,
+pero los cover_id en la DB no cambian (a menos que el orden de los covers también cambie).
