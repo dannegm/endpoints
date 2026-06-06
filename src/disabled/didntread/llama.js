@@ -36,8 +36,6 @@ export const makePrompt = ({ prompt }) => {
             ],
         });
 
-        console.log(resp.data);
-
         const choices = resp.data?.choices[0];
         return choices.message.content;
     };

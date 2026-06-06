@@ -55,12 +55,9 @@ router.get('/summaries', async (req, res) => {
     const { data, cached, error } = await cache(
         cacheKey,
         async () => {
-            console.log('here');
             const { data: authorsData } = await $schema.from('authors').select(`count`);
             const { data: seriesData } = await $schema.from('series').select(`count`);
             const { data: booksData } = await $schema.from('books').select('count');
-
-            console.log({ authorsData });
 
             return {
                 authors: authorsData?.[0]?.count || 0,
