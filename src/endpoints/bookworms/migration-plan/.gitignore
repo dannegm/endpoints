@@ -1,0 +1,21 @@
+# Source data (heavy, not versioned)
+indice.json
+
+# Generated maps
+filename_to_cover.json
+cover_to_filename.json
+
+# DB snapshots
+existing-libids.json
+existing-authors.json
+existing-series.json
+
+# Curated output
+new-books.json
+cover-updates.json
+
+# Migration state (runtime, not versioned)
+import-books-pending.ndjson
+import-books-done.ndjson
+update-covers-pending.ndjson
+update-covers-done.ndjson
