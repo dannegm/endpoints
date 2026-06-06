@@ -1,5 +1,6 @@
 # Source data (heavy, not versioned)
 indice.json
+bookinfo/*.js
 
 # Generated maps
 filename_to_cover.json
