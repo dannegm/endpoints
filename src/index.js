@@ -27,7 +27,7 @@ const limiter = rateLimit({
 
 app
     // ...
-    .use(limiter)
+    // ... .use(limiter)
     .use(cors())
     .use(cookieParser())
     .use(
