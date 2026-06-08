@@ -45,7 +45,7 @@ Each endpoint lives in `src/endpoints/{name}/` and must export a default Express
 Endpoints are **agnostic** — they must not reference or depend on sibling endpoints.
 
 **Shared infrastructure** (available to all endpoints):
-- `src/services/` — Supabase, Redis (Upstash), Winston logger, Umami analytics
+- `src/services/` — Supabase, Redis (Upstash), Winston logger
 - `src/helpers/` — common middlewares, validators, crypto utilities
 
 If an endpoint needs something not covered by shared code, it should define its own middleware/service inside its own folder.
