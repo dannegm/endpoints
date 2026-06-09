@@ -329,3 +329,25 @@ INSERT INTO bookworms.settings (key, value)
 VALUES
     ('bucket.status',        'false'::jsonb),
     ('bucket.offline_until', 'null'::jsonb);
+
+-- Collections
+
+CREATE TABLE IF NOT EXISTS bookworms.topics (
+    id          SERIAL      PRIMARY KEY,
+    topic       TEXT        NOT NULL,
+    tags        TEXT[]      DEFAULT '{}',
+    hint        TEXT,
+    icon        JSONB,
+    times_used  INT         DEFAULT 0,
+    created_at  TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS bookworms.collections (
+    id          SERIAL      PRIMARY KEY,
+    headline    TEXT        NOT NULL,
+    description TEXT,
+    tags        TEXT[]      DEFAULT '{}',
+    topic_id    INT         REFERENCES bookworms.topics(id),
+    books       JSONB       DEFAULT '[]',
+    created_at  TIMESTAMPTZ DEFAULT NOW()
+);

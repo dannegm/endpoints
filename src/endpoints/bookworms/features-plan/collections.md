@@ -261,7 +261,7 @@ Estas tareas deben completarse antes de arrancar con el código del endpoint.
 
 - [x] **Generar `catalog-books.ndjson`** — script que lee el JSON completo del catálogo y produce el archivo curado en formato `[libid, title, authors_csv, published, cover_id]` por línea.
   > El archivo generado pesa ~10MB con 152,079 registros — se commitea directamente al repo. En futuras actualizaciones del catálogo, verificar que el tamaño siga siendo razonable antes de commitear.
-- [ ] **Crear las tablas en Supabase** — ejecutar el SQL de `topics` y `collections` en el proyecto de Supabase.
+- [x] **Crear las tablas en Supabase** — ejecutar el SQL de `topics` y `collections` en el proyecto de Supabase.
 - [ ] **Seedear topics iniciales** — llamar a `POST /topics/generate` una vez desplegado para tener topics suficientes antes del primer `generate`. Sin topics en la DB, el pipeline no puede arrancar sin prompt manual.
 - [x] **Verificar variables de entorno** — el proyecto ya tiene `OPENROUTER_API_KEY` y `OPENROUTER_API_MODEL` configurados (actualmente apuntando a Gemini Flash Mini). Se reutilizan tal cual, sin vars nuevas.
 - [x] **Curar listas de iconos** — se optó por un enfoque dinámico en lugar de hardcodear: `lucide-lab-icons.csv` (nombre, tags, categorías) se carga en memoria y se busca con Fuse.js vía `utils/icon-finder.js`. El Seeder genera un `icon_hint` en inglés y el código resuelve el icono aleatoriamente entre los candidatos con score < 0.3.
