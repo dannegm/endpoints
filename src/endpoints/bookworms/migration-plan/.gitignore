@@ -14,6 +14,7 @@ existing-series.json
 # Curated output
 new-books.json
 cover-updates.json
+catalog.ndjson
 
 # Migration state (runtime, not versioned)
 import-books-pending.ndjson
