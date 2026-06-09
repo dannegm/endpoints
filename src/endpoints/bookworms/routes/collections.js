@@ -27,7 +27,13 @@ function weightedRandom(topics) {
     return topics[topics.length - 1];
 }
 
-async function runPipeline({ prompt, topics, recentCollections, catalogCutoff, triedTopicIds = [] }) {
+async function runPipeline({
+    prompt,
+    topics,
+    recentCollections,
+    catalogCutoff,
+    triedTopicIds = [],
+}) {
     let pickerPrompt = prompt;
     let selectedTopic = null;
 
@@ -97,7 +103,9 @@ router.post('/topics/generate', async (req, res) => {
         topics = await seeder({ count, existingTopics, catalogCutoff });
     } catch (err) {
         if (err?.type === 'INVALID_SCHEMA') {
-            return res.status(502).json({ error: 'La IA devolvió una estructura inválida.', issues: err.issues });
+            return res
+                .status(502)
+                .json({ error: 'La IA devolvió una estructura inválida.', issues: err.issues });
         }
         if (err?.type === 'INVALID_JSON') {
             return res.status(502).json({ error: 'La IA no devolvió JSON válido.', raw: err.raw });
@@ -187,101 +195,170 @@ router.post('/collections', async (req, res) => {
     return res.status(201).json(data);
 });
 
-// POST /collections/suggest  y  POST /collections/generate
-async function handleCollectionPipeline(req, res, persist) {
-    const { prompt } = req.body || {};
-
-    const [
-        { data: topics },
-        { data: recentCollections },
-        { data: cutoffSetting },
-    ] = await Promise.all([
-        $schema.from('topics').select('id, topic, tags, times_used'),
-        $schema.from('collections').select('headline, tags').order('created_at', { ascending: false }).limit(20),
-        $schema.from('settings').select('value').eq('key', 'library.last_update').single(),
-    ]);
+async function fetchPipelineContext(prompt) {
+    const [{ data: topics }, { data: recentCollections }, { data: cutoffSetting }] =
+        await Promise.all([
+            $schema.from('topics').select('id, topic, tags, times_used'),
+            $schema
+                .from('collections')
+                .select('headline, tags')
+                .order('created_at', { ascending: false })
+                .limit(20),
+            $schema.from('settings').select('value').eq('key', 'library.last_update').single(),
+        ]);
 
     if (!prompt && (!topics || !topics.length)) {
-        return res.status(503).json({ error: 'No hay topics disponibles. Ejecuta /topics/generate primero.' });
+        return null;
     }
 
-    const catalogCutoff = cutoffSetting?.value
-        ? format(new Date(cutoffSetting.value), "MMMM 'de' yyyy", { locale: es })
-        : 'enero de 2026';
+    return {
+        topics: topics || [],
+        recentCollections: recentCollections || [],
+        catalogCutoff: cutoffSetting?.value
+            ? format(new Date(cutoffSetting.value), "MMMM 'de' yyyy", { locale: es })
+            : 'enero de 2026',
+    };
+}
 
+async function runPipelineLoop({ prompt, topics, recentCollections, catalogCutoff }) {
     const triedTopicIds = [];
     let result = null;
 
     for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
-        try {
-            result = await runPipeline({
-                prompt,
-                topics: topics || [],
-                recentCollections: recentCollections || [],
-                catalogCutoff,
-                triedTopicIds,
-            });
-        } catch (err) {
-            if (err?.type === 'INVALID_SCHEMA') {
-                return res.status(502).json({ error: 'La IA devolvió una estructura inválida.', issues: err.issues });
-            }
-            if (err?.type === 'INVALID_JSON') {
-                return res.status(502).json({ error: 'La IA no devolvió JSON válido.', raw: err.raw });
-            }
-            console.error('pipeline error:', err);
-            return res.status(500).json({ error: 'Error en el pipeline.' });
-        }
+        result = await runPipeline({
+            prompt,
+            topics,
+            recentCollections,
+            catalogCutoff,
+            triedTopicIds,
+        });
 
         if (!result) break;
-
         if (result.books.length >= MIN_BOOKS) break;
-
         if (result.topic_id) triedTopicIds.push(result.topic_id);
         result = null;
     }
 
-    if (!result) {
-        return res.status(503).json({ error: 'No se pudo generar una colección con suficientes libros válidos.' });
-    }
-
-    if (!persist) return res.json(result);
-
-    const { data, error } = await $schema
-        .from('collections')
-        .insert({
-            headline: result.headline,
-            description: result.description,
-            tags: result.tags,
-            topic_id: result.topic_id,
-            books: result.books,
-        })
-        .select()
-        .single();
-
-    if (error) {
-        console.error('collections insert error:', error);
-        return res.status(500).json({ error: 'Error guardando la colección.' });
-    }
-
-    if (result.topic_id) {
-        await $schema.rpc('increment_field', {
-            target_table: 'topics',
-            target_column: 'times_used',
-            target_id: result.topic_id,
-        });
-    }
-
-    ntfy.pushRich({
-        title: '📚 Nueva colección disponible',
-        message: `**${data.headline}**\n${data.description}`,
-        tags: 'books',
-    }).catch(() => {});
-
-    return res.status(201).json(data);
+    return result;
 }
 
-router.post('/collections/suggest', (req, res) => handleCollectionPipeline(req, res, false));
-router.post('/collections/generate', (req, res) => handleCollectionPipeline(req, res, true));
+// POST /collections/suggest
+router.post('/collections/suggest', async (req, res) => {
+    const { prompt } = req.body || {};
+
+    const ctx = await fetchPipelineContext(prompt);
+    if (!ctx)
+        return res
+            .status(503)
+            .json({ error: 'No hay topics disponibles. Ejecuta /topics/generate primero.' });
+
+    let result;
+    try {
+        result = await runPipelineLoop({ prompt, ...ctx });
+    } catch (err) {
+        if (err?.type === 'INVALID_SCHEMA')
+            return res
+                .status(502)
+                .json({ error: 'La IA devolvió una estructura inválida.', issues: err.issues });
+        if (err?.type === 'INVALID_JSON')
+            return res.status(502).json({ error: 'La IA no devolvió JSON válido.', raw: err.raw });
+        console.error('pipeline error:', err);
+        return res.status(500).json({ error: 'Error en el pipeline.' });
+    }
+
+    if (!result)
+        return res
+            .status(503)
+            .json({ error: 'No se pudo generar una colección con suficientes libros válidos.' });
+
+    return res.json(result);
+});
+
+// POST /collections/generate — fire and forget
+router.post('/collections/generate', async (req, res) => {
+    const { prompt } = req.body || {};
+
+    const ctx = await fetchPipelineContext(prompt);
+    if (!ctx)
+        return res
+            .status(503)
+            .json({ error: 'No hay topics disponibles. Ejecuta /topics/generate primero.' });
+
+    res.status(202).json({ message: 'Pipeline iniciado.' });
+
+    ntfy.pushRich({
+        title: '⚙️ Generando colección...',
+        message: 'El pipeline de curación ha comenzado.',
+        tags: 'hourglass_flowing_sand',
+    }).catch(() => {});
+
+    (async () => {
+        const startedAt = Date.now();
+        const elapsed = () => {
+            const ms = Date.now() - startedAt;
+            const s = Math.floor(ms / 1000);
+            return s >= 60 ? `${Math.floor(s / 60)}m ${s % 60}s` : `${s}s`;
+        };
+
+        let result;
+        try {
+            result = await runPipelineLoop({ prompt, ...ctx });
+        } catch (err) {
+            console.error('pipeline error:', err);
+            ntfy.pushRich({
+                title: '❌ Error en el pipeline',
+                message: `${err?.type || err?.message || 'Error desconocido'}\n_${elapsed()}_`,
+                tags: 'x',
+            }).catch(() => {});
+            return;
+        }
+
+        if (!result) {
+            ntfy.pushRich({
+                title: '⚠️ Colección sin libros',
+                message: `No se encontraron suficientes libros válidos tras 3 intentos.\n_${elapsed()}_`,
+                tags: 'warning',
+            }).catch(() => {});
+            return;
+        }
+
+        const { data, error } = await $schema
+            .from('collections')
+            .insert({
+                headline: result.headline,
+                description: result.description,
+                tags: result.tags,
+                topic_id: result.topic_id,
+                books: result.books,
+            })
+            .select()
+            .single();
+
+        if (error) {
+            console.error('collections insert error:', error);
+            ntfy.pushRich({
+                title: '❌ Error guardando colección',
+                message: `${error.message}\n_${elapsed()}_`,
+                tags: 'x',
+            }).catch(() => {});
+            return;
+        }
+
+        if (result.topic_id) {
+            await $schema.rpc('increment_field', {
+                target_table: 'topics',
+                target_column: 'times_used',
+                target_id: result.topic_id,
+            });
+        }
+
+        ntfy.pushRich({
+            title: '📚 Nueva colección disponible',
+            message: `**${data.headline}**\n${data.description}\n_${elapsed()}_`,
+            tags: 'books',
+        }).catch(() => {});
+    })();
+});
 
 // POST /collections/test-matcher
 router.post('/collections/test-matcher', (req, res) => {
