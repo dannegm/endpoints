@@ -34,10 +34,7 @@ async function main() {
         from += PAGE_SIZE;
     }
 
-    await writeFile(
-        join(__dirname, 'existing-authors.json'),
-        JSON.stringify(authorMap)
-    );
+    await writeFile(join(__dirname, 'existing-authors.json'), JSON.stringify(authorMap));
 
     console.log(`Done. ${Object.keys(authorMap).length} authors saved.`);
 }

@@ -29,14 +29,8 @@ async function main() {
         console.log(`✓ ${file}`);
     }
 
-    await writeFile(
-        join(__dirname, 'filename_to_cover.json'),
-        JSON.stringify(filenameToCover)
-    );
-    await writeFile(
-        join(__dirname, 'cover_to_filename.json'),
-        JSON.stringify(coverToFilename)
-    );
+    await writeFile(join(__dirname, 'filename_to_cover.json'), JSON.stringify(filenameToCover));
+    await writeFile(join(__dirname, 'cover_to_filename.json'), JSON.stringify(coverToFilename));
 
     console.log(`\nDone. ${Object.keys(filenameToCover).length} covers mapped.`);
 }

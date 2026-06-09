@@ -34,10 +34,7 @@ async function main() {
         from += PAGE_SIZE;
     }
 
-    await writeFile(
-        join(__dirname, 'existing-series.json'),
-        JSON.stringify(seriesMap)
-    );
+    await writeFile(join(__dirname, 'existing-series.json'), JSON.stringify(seriesMap));
 
     console.log(`Done. ${Object.keys(seriesMap).length} series saved.`);
 }

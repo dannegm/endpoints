@@ -12,26 +12,33 @@ const RETRY_DELAY = 2000;
 
 const FILES = {
     coverUpdates: join(__dirname, 'cover-updates.json'),
-    pending:      join(__dirname, 'update-covers-pending.ndjson'),
-    done:         join(__dirname, 'update-covers-done.ndjson'),
+    pending: join(__dirname, 'update-covers-pending.ndjson'),
+    done: join(__dirname, 'update-covers-done.ndjson'),
 };
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function fileExists(path) {
-    try { await access(path); return true; }
-    catch { return false; }
+    try {
+        await access(path);
+        return true;
+    } catch {
+        return false;
+    }
 }
 
 function classifyError(err) {
     const code = err.code || err.status;
-    if (code === 429)     return 'Rate limit reached — wait a few minutes before retrying';
+    if (code === 429) return 'Rate limit reached — wait a few minutes before retrying';
     if (code === '23505') return `Duplicate entry — record already exists (${err.details || ''})`;
-    if (code === '23502') return `Missing required field — ${err.details || 'null value in non-nullable column'}`;
-    if (code === '23503') return `Foreign key violation — referenced record not found (${err.details || ''})`;
+    if (code === '23502')
+        return `Missing required field — ${err.details || 'null value in non-nullable column'}`;
+    if (code === '23503')
+        return `Foreign key violation — referenced record not found (${err.details || ''})`;
     if (code === 'PGRST') return `PostgREST error — ${err.message}`;
     if (err.message?.includes('fetch')) return 'Network error — check your connection';
-    if (err.message?.includes('timeout')) return 'Request timed out — server took too long to respond';
+    if (err.message?.includes('timeout'))
+        return 'Request timed out — server took too long to respond';
     return err.message || 'Unknown error';
 }
 
@@ -72,7 +79,9 @@ async function withRetry(label, fn) {
                 throw err;
             }
             const wait = RETRY_DELAY * attempt;
-            console.warn(`  ↻ ${label} — attempt ${attempt}/${MAX_RETRIES}: ${reason}. Retrying in ${wait}ms...`);
+            console.warn(
+                `  ↻ ${label} — attempt ${attempt}/${MAX_RETRIES}: ${reason}. Retrying in ${wait}ms...`,
+            );
             await sleep(wait);
         }
     }

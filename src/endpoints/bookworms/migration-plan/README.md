@@ -14,7 +14,7 @@ global que identifica la posición absoluta de un cover en el sistema de sprites
 **Grid actual: 4×3 (12 covers por sprite)**
 
 ```js
-const spriteWidth  = 4;
+const spriteWidth = 4;
 const spriteHeight = 3;
 
 // Qué archivo de sprite usar
@@ -36,10 +36,10 @@ const imageY = ((cover_id / spriteWidth) | 0) % spriteHeight;
 
 ## Fuentes de datos
 
-| Archivo | Origen | Descripción |
-|---|---|---|
+| Archivo                       | Origen              | Descripción                                                                   |
+| ----------------------------- | ------------------- | ----------------------------------------------------------------------------- |
 | `bookinfo/bookinfo{Letra}.js` | Biblioteca original | Cover_id (clave) → [descripción, páginas, año, filename, bitmasks de géneros] |
-| `indice.json` | Biblioteca original | Índice completo de libros con todos sus metadatos |
+| `indice.json`                 | Biblioteca original | Índice completo de libros con todos sus metadatos                             |
 
 ### Estructura de `bookinfo{Letra}.js`
 
@@ -64,20 +64,20 @@ esta fuente con `indice.json` y con la columna `filename` de la DB (añadiendo `
 
 ```json
 [
-  {
-    "libid": 40022726,
-    "title": "Nombre del libro",
-    "authors": ["Autor Uno", "Autor Dos"],
-    "description": "...",
-    "labels": ["Novela", "Romántico"],
-    "published": 2018,
-    "pagecount": 314,
-    "sha256sum": "abc123...",
-    "size": 1234567,
-    "filename": "_Otros/Nombre-Autor.epub",
-    "serie": "Nombre de la Serie",
-    "serieseq": 1
-  }
+    {
+        "libid": 40022726,
+        "title": "Nombre del libro",
+        "authors": ["Autor Uno", "Autor Dos"],
+        "description": "...",
+        "labels": ["Novela", "Romántico"],
+        "published": 2018,
+        "pagecount": 314,
+        "sha256sum": "abc123...",
+        "size": 1234567,
+        "filename": "_Otros/Nombre-Autor.epub",
+        "serie": "Nombre de la Serie",
+        "serieseq": 1
+    }
 ]
 ```
 
@@ -170,6 +170,7 @@ al inicio del archivo pendiente.
 **Reintentos**
 Cada registro se reintenta hasta 3 veces con backoff exponencial (2s, 4s, 6s).
 En cada intento fallido se loguea la razón clasificada:
+
 - Rate limit (HTTP 429)
 - Error de red / timeout
 - Violación de constraint en la DB
@@ -181,12 +182,12 @@ el motivo. Al corregir el problema y reiniciar, retoma desde ese mismo registro.
 
 **Archivos de estado generados en runtime**
 
-| Archivo | Descripción |
-|---|---|
-| `import-books-pending.ndjson` | Libros pendientes de importar (import-books) |
-| `import-books-done.ndjson` | Libros importados correctamente |
+| Archivo                        | Descripción                                     |
+| ------------------------------ | ----------------------------------------------- |
+| `import-books-pending.ndjson`  | Libros pendientes de importar (import-books)    |
+| `import-books-done.ndjson`     | Libros importados correctamente                 |
 | `update-covers-pending.ndjson` | Covers pendientes de actualizar (update-covers) |
-| `update-covers-done.ndjson` | Covers actualizados correctamente |
+| `update-covers-done.ndjson`    | Covers actualizados correctamente               |
 
 ---
 
@@ -195,16 +196,16 @@ el motivo. Al corregir el problema y reiniciar, retoma desde ese mismo registro.
 Si se regeneran los sprites con un nuevo orden de covers:
 
 1. Verificar si el grid cambió (`spriteWidth` / `spriteHeight`)
-   - Si solo cambió el grid pero el orden de covers es el mismo → solo actualizar el cliente
-   - Si el orden de covers cambió → hay que regenerar los `cover_id` en la DB
+    - Si solo cambió el grid pero el orden de covers es el mismo → solo actualizar el cliente
+    - Si el orden de covers cambió → hay que regenerar los `cover_id` en la DB
 
 2. Si hay que regenerar:
-   ```bash
-   node build-cover-map.js       # nuevo mapa desde los binfo actualizados
-   node fetch-libids.js           # snapshot actual de la DB
-   node build-cover-updates.js    # genera cover-updates.json
-   node update-covers.js          # aplica el bulk update
-   ```
+    ```bash
+    node build-cover-map.js       # nuevo mapa desde los binfo actualizados
+    node fetch-libids.js           # snapshot actual de la DB
+    node build-cover-updates.js    # genera cover-updates.json
+    node update-covers.js          # aplica el bulk update
+    ```
 
 ---
 
@@ -227,7 +228,7 @@ Si se regeneran los sprites con un nuevo orden de covers:
 
 **Supabase silently caps SELECT at 1000 rows**
 El cliente de Supabase JS no devuelve error si hay más de 1000 filas — simplemente
-corta el resultado sin avisar. Todos los fetch-* scripts usan paginación explícita con
+corta el resultado sin avisar. Todos los fetch-\* scripts usan paginación explícita con
 `.order('id').range(from, from + PAGE_SIZE - 1)` para evitar esto.
 Si algún día se añade un nuevo script que lea de la DB, **siempre paginar**.
 

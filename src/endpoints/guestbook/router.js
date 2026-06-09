@@ -15,7 +15,10 @@ router.get('/proxy/download', async (req, res) => {
         const response = await fetch(url);
 
         res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
-        res.setHeader('Content-Type', response.headers.get('content-type') || 'application/octet-stream');
+        res.setHeader(
+            'Content-Type',
+            response.headers.get('content-type') || 'application/octet-stream',
+        );
 
         Readable.fromWeb(response.body).pipe(res);
     } catch (err) {

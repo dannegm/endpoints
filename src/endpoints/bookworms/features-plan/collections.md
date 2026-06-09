@@ -25,11 +25,12 @@ Las colecciones pueden crearse manualmente o generarse con IA. El flujo de IA en
 **Input:** Lista de topics ya existentes en la DB (para evitar repetición).
 
 **Output:**
+
 ```json
 [
     {
         "topic": "historias cortas de terror",
-        "tags": ["lovecraft", "horror", "suspenso"],  // en español
+        "tags": ["lovecraft", "horror", "suspenso"], // en español
         "hint": "Algo oscuro",
         "icon": { "library": "lucide-lab", "name": "skull" }
     },
@@ -42,12 +43,12 @@ Las colecciones pueden crearse manualmente o generarse con IA. El flujo de IA en
 ]
 ```
 
-- `hint`: frase de 2-3 palabras que captura el mood del topic. Ejemplos: *"Algo oscuro"*, *"Que enganche"*, *"Otro mundo"*, *"Para pensar"*, *"Clásicos"*, *"Ligero"*
+- `hint`: frase de 2-3 palabras que captura el mood del topic. Ejemplos: _"Algo oscuro"_, _"Que enganche"_, _"Otro mundo"_, _"Para pensar"_, _"Clásicos"_, _"Ligero"_
 - `icon`: objeto con la librería y el nombre del icono. Soporta dos librerías:
-  - `lucide` — [lucide.dev/icons](https://lucide.dev/icons/) (iconos estables)
-  - `lucide-lab` — [github.com/lucide-icons/lucide-lab](https://github.com/lucide-icons/lucide-lab) (iconos experimentales, `@lucide/lab`)
+    - `lucide` — [lucide.dev/icons](https://lucide.dev/icons/) (iconos estables)
+    - `lucide-lab` — [github.com/lucide-icons/lucide-lab](https://github.com/lucide-icons/lucide-lab) (iconos experimentales, `@lucide/lab`)
 
-  Los nombres siguen convención kebab-case en ambas librerías.
+    Los nombres siguen convención kebab-case en ambas librerías.
 
 El endpoint acepta un parámetro `count` en el body para controlar cuántos topics generar (default: 10).
 Los topics generados se insertan directamente en la DB.
@@ -63,16 +64,19 @@ El output del agente se valida con **Zod** antes de insertar — si la estructur
 **Rol:** Toma un topic de la DB (seleccionado aleatoriamente con peso inverso a `times_used`) y lo amplifica con aleatoriedad para producir un prompt rico y variado. El objetivo es que cada colección sea fresca y no repita el sabor de colecciones anteriores.
 
 **Input:**
+
 ```json
 {
     "topic": "como el pasado imaginaba el futuro",
     "tags": ["asimov", "scifi", "espacio", "futuro"]
 }
 ```
+
 Además consulta un sample de ~20 colecciones recientes para evitar generar algo demasiado similar a lo ya existente. Si no hay colecciones aún, se indica en el prompt que puede sugerir libremente sin restricción de repetición.
 
 **Output:** Texto libre con prompt enriquecido y tags adicionales.
-> *Quiero descubrir libros que hablen sobre el futuro, imaginarios que aún no existen o que podrían existir, quiero realizar esos viajes al espacio que aún no son posibles y sorprenderme por lo que pueda encontrar #scifi #travel #space #exploration #future #distopic*
+
+> _Quiero descubrir libros que hablen sobre el futuro, imaginarios que aún no existen o que podrían existir, quiero realizar esos viajes al espacio que aún no son posibles y sorprenderme por lo que pueda encontrar #scifi #travel #space #exploration #future #distopic_
 
 ---
 
@@ -83,6 +87,7 @@ Además consulta un sample de ~20 colecciones recientes para evitar generar algo
 **Input:** El prompt generado por Prompter, o el prompt manual del usuario.
 
 **Output:**
+
 ```json
 {
     "headline": "Viajes al futuro que el presente aún no puede hacer",
@@ -117,10 +122,13 @@ Además consulta un sample de ~20 colecciones recientes para evitar generar algo
 
 **Formato del catálogo (`catalog-books.ndjson`):**
 Cada línea es un array compacto:
+
 ```
 [libid, title, authors_csv, published, cover_id]
 ```
+
 Ejemplo:
+
 ```
 [23405,"Expreso de medianoche","Billy Hayes,William Hoffer",1977,23568]
 [11203,"Frankenstein","Mary Shelley",1817,4421]
@@ -134,6 +142,7 @@ Ejemplo:
 **Campos de búsqueda en Fuse.js:** `title`, `authors`, `published` — en ese orden de peso. Incluir `published` permite distinguir entre ediciones del mismo título (e.g. Frankenstein 1817 vs 1831).
 
 **Proceso por libro:**
+
 1. Buscar en el índice Fuse.js con título + autor + año del libro sugerido por Picker
 2. Tomar el primer resultado
 3. Si el score supera `0.5` → descartar el libro (Fuse.js: 0 = match perfecto, 1 = sin match)
@@ -141,6 +150,7 @@ Ejemplo:
 **Regla de umbral mínimo:** Si tras el matching quedan **3 libros o menos** (`< 4`), la sugerencia completa se descarta y se reintenta con otro topic. Máximo **3 intentos**. Si los 3 fallan → error 503.
 
 **Output por libro validado:**
+
 ```json
 {
     "libid": "123456",
@@ -157,6 +167,7 @@ Ejemplo:
 ## Modelos de datos
 
 ### Tabla `topics`
+
 ```sql
 CREATE TABLE bookworms.topics (
     id          SERIAL      PRIMARY KEY,
@@ -170,6 +181,7 @@ CREATE TABLE bookworms.topics (
 ```
 
 ### Tabla `collections`
+
 ```sql
 CREATE TABLE bookworms.collections (
     id          SERIAL      PRIMARY KEY,
@@ -188,23 +200,24 @@ CREATE TABLE bookworms.collections (
 
 ## Endpoints
 
-| Método | Ruta | Descripción |
-|--------|------|-------------|
-| `GET` | `/topics` | Listado de topics paginado |
-| `POST` | `/topics/generate` | Llama a Seeder para seedear nuevos topics en DB |
-| `GET` | `/topic/:id/collections` | Colecciones vinculadas a un topic |
-| `GET` | `/collections` | Listado de colecciones paginado |
-| `GET` | `/collections/last` | Última colección guardada |
-| `GET` | `/collections/:id` | Colección por ID |
-| `POST` | `/collections` | Crear colección manualmente |
-| `POST` | `/collections/suggest` | Pipeline IA completo → devuelve resultado **sin guardar** |
-| `POST` | `/collections/generate` | Pipeline IA completo → guarda en DB |
+| Método | Ruta                     | Descripción                                               |
+| ------ | ------------------------ | --------------------------------------------------------- |
+| `GET`  | `/topics`                | Listado de topics paginado                                |
+| `POST` | `/topics/generate`       | Llama a Seeder para seedear nuevos topics en DB           |
+| `GET`  | `/topic/:id/collections` | Colecciones vinculadas a un topic                         |
+| `GET`  | `/collections`           | Listado de colecciones paginado                           |
+| `GET`  | `/collections/last`      | Última colección guardada                                 |
+| `GET`  | `/collections/:id`       | Colección por ID                                          |
+| `POST` | `/collections`           | Crear colección manualmente                               |
+| `POST` | `/collections/suggest`   | Pipeline IA completo → devuelve resultado **sin guardar** |
+| `POST` | `/collections/generate`  | Pipeline IA completo → guarda en DB                       |
 
 ### Sobre `suggest` y `generate`
 
 Ambos ejecutan el mismo pipeline. La diferencia es que `generate` persiste el resultado.
 
 **Body (ambos):**
+
 ```json
 {
     "prompt": "una tarde melancólica #romance #desamor" // opcional
@@ -253,14 +266,14 @@ POST /collections/generate  (o /suggest)
 Estas tareas deben completarse antes de arrancar con el código del endpoint.
 
 - [x] **Refactorizar `router.js`** — separar en sub-routers por responsabilidad para que el router principal solo monte módulos. Agrupaciones sugeridas:
-  - `routes/search.js` — `/search`, `/search/:entity`, `/top`, `/summaries`
-  - `routes/books.js` — `/book/:libid`, `/author/:authorKey`, `/serie/:serieKey`, `/category/:categoryKey`
-  - `routes/files.js` — `/request`, `/validate`, `/download`, `/file`, `/sendto-kindle`, `/clear-bucket`
-  - `routes/settings.js` — `/settings` (GET/PUT)
-  - `routes/collections.js` — todo el scope de collections y topics (nuevo)
+    - `routes/search.js` — `/search`, `/search/:entity`, `/top`, `/summaries`
+    - `routes/books.js` — `/book/:libid`, `/author/:authorKey`, `/serie/:serieKey`, `/category/:categoryKey`
+    - `routes/files.js` — `/request`, `/validate`, `/download`, `/file`, `/sendto-kindle`, `/clear-bucket`
+    - `routes/settings.js` — `/settings` (GET/PUT)
+    - `routes/collections.js` — todo el scope de collections y topics (nuevo)
 
 - [x] **Generar `catalog-books.ndjson`** — script que lee el JSON completo del catálogo y produce el archivo curado en formato `[libid, title, authors_csv, published, cover_id]` por línea.
-  > El archivo generado pesa ~10MB con 152,079 registros — se commitea directamente al repo. En futuras actualizaciones del catálogo, verificar que el tamaño siga siendo razonable antes de commitear.
+    > El archivo generado pesa ~10MB con 152,079 registros — se commitea directamente al repo. En futuras actualizaciones del catálogo, verificar que el tamaño siga siendo razonable antes de commitear.
 - [x] **Crear las tablas en Supabase** — ejecutar el SQL de `topics` y `collections` en el proyecto de Supabase.
 - [ ] **Seedear topics iniciales** — llamar a `POST /topics/generate` una vez desplegado para tener topics suficientes antes del primer `generate`. Sin topics en la DB, el pipeline no puede arrancar sin prompt manual.
 - [x] **Verificar variables de entorno** — el proyecto ya tiene `OPENROUTER_API_KEY` y `OPENROUTER_API_MODEL` configurados (actualmente apuntando a Gemini Flash Mini). Se reutilizan tal cual, sin vars nuevas.
@@ -272,12 +285,12 @@ Estas tareas deben completarse antes de arrancar con el código del endpoint.
 
 ## Archivos a crear/modificar
 
-| Archivo | Acción |
-|---------|--------|
-| `router.js` | Añadir los nuevos routes |
-| `agents.js` | Seeder, Prompter, Picker (lógica de cada agente IA) |
-| `matcher.js` | Matcher (validación contra DB, sin IA) |
-| `db.sql` | Añadir tablas `topics` y `collections` |
+| Archivo      | Acción                                              |
+| ------------ | --------------------------------------------------- |
+| `router.js`  | Añadir los nuevos routes                            |
+| `agents.js`  | Seeder, Prompter, Picker (lógica de cada agente IA) |
+| `matcher.js` | Matcher (validación contra DB, sin IA)              |
+| `db.sql`     | Añadir tablas `topics` y `collections`              |
 
 ## Variables de entorno
 

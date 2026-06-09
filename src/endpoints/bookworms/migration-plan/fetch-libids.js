@@ -31,10 +31,7 @@ async function main() {
         from += PAGE_SIZE;
     }
 
-    await writeFile(
-        join(__dirname, 'existing-libids.json'),
-        JSON.stringify(libids)
-    );
+    await writeFile(join(__dirname, 'existing-libids.json'), JSON.stringify(libids));
 
     console.log(`Done. ${libids.length} libids saved.`);
 }

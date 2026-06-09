@@ -42,9 +42,7 @@ export function matchBook({ title, authors = [], published = null }) {
     });
     scored.sort((a, b) => b.bonus - a.bonus || a.score - b.score);
 
-    const best = authors.length
-        ? scored.find(r => r.bonus >= 2)
-        : scored[0];
+    const best = authors.length ? scored.find(r => r.bonus >= 2) : scored[0];
 
     if (!best) return null;
 

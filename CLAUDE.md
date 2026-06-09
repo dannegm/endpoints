@@ -45,6 +45,7 @@ Each endpoint lives in `src/endpoints/{name}/` and must export a default Express
 Endpoints are **agnostic** — they must not reference or depend on sibling endpoints.
 
 **Shared infrastructure** (available to all endpoints):
+
 - `src/services/` — Supabase, Redis (Upstash), Winston logger
 - `src/helpers/` — common middlewares, validators, crypto utilities
 
@@ -58,14 +59,14 @@ If an endpoint needs something not covered by shared code, it should define its 
 
 ### Key integrations
 
-| Service | Purpose |
-|---|---|
-| Supabase | PostgreSQL DB + auth + file storage |
-| Upstash Redis | Rate limiting + caching |
-| Resend | Email delivery |
-| OpenAI / OpenRouter | LLM features |
-| Multer | File uploads |
-| Metascraper | Link metadata extraction |
+| Service             | Purpose                             |
+| ------------------- | ----------------------------------- |
+| Supabase            | PostgreSQL DB + auth + file storage |
+| Upstash Redis       | Rate limiting + caching             |
+| Resend              | Email delivery                      |
+| OpenAI / OpenRouter | LLM features                        |
+| Multer              | File uploads                        |
+| Metascraper         | Link metadata extraction            |
 
 ### Environment
 

@@ -28,28 +28,25 @@ async function main() {
         if (cover_id === null) noCover++;
 
         newBooks.push({
-            libid:                  book.libid,
-            title:                  book.title,
-            title_normalized:       normalize(book.title),
+            libid: book.libid,
+            title: book.title,
+            title_normalized: normalize(book.title),
             cover_id,
-            description:            book.description    ?? null,
-            labels:                 book.labels         ?? [],
-            published:              book.published      ?? null,
-            pagecount:              book.pagecount      ?? null,
-            sha256sum:              book.sha256sum      ?? null,
-            size:                   book.size           ?? null,
-            filename:               book.filename,
-            serie_name:             book.serie                        ?? null,
-            serie_name_normalized:  book.serie ? normalize(book.serie) : null,
-            serie_sequence:         book.serieseq                     ?? null,
-            authors:                book.authors                      ?? [],
+            description: book.description ?? null,
+            labels: book.labels ?? [],
+            published: book.published ?? null,
+            pagecount: book.pagecount ?? null,
+            sha256sum: book.sha256sum ?? null,
+            size: book.size ?? null,
+            filename: book.filename,
+            serie_name: book.serie ?? null,
+            serie_name_normalized: book.serie ? normalize(book.serie) : null,
+            serie_sequence: book.serieseq ?? null,
+            authors: book.authors ?? [],
         });
     }
 
-    await writeFile(
-        join(__dirname, 'new-books.json'),
-        JSON.stringify(newBooks)
-    );
+    await writeFile(join(__dirname, 'new-books.json'), JSON.stringify(newBooks));
 
     console.log(`Total in index : ${indice.length}`);
     console.log(`Already in DB  : ${skipped}`);

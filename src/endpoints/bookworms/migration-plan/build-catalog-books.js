@@ -9,14 +9,11 @@ async function main() {
 
     const lines = indice.map(book => {
         const cover_id = filenameToCover[book.filename] ?? null;
-        const authors  = (book.authors ?? []).join(',');
+        const authors = (book.authors ?? []).join(',');
         return JSON.stringify([book.libid, book.title, authors, book.published ?? null, cover_id]);
     });
 
-    await writeFile(
-        join(__dirname, 'catalog-books.ndjson'),
-        lines.join('\n')
-    );
+    await writeFile(join(__dirname, 'catalog-books.ndjson'), lines.join('\n'));
 
     console.log(`Done. ${lines.length} entries written to catalog-books.ndjson`);
 }

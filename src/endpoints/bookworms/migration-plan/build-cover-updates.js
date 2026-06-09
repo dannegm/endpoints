@@ -18,15 +18,15 @@ async function main() {
         if (!existingSet.has(book.libid)) continue;
 
         const cover_id = filenameToCover[book.filename] ?? null;
-        if (cover_id === null) { nocover++; continue; }
+        if (cover_id === null) {
+            nocover++;
+            continue;
+        }
 
         updates.push({ libid: book.libid, cover_id });
     }
 
-    await writeFile(
-        join(__dirname, 'cover-updates.json'),
-        JSON.stringify(updates)
-    );
+    await writeFile(join(__dirname, 'cover-updates.json'), JSON.stringify(updates));
 
     console.log(`Existing books   : ${existingSet.size}`);
     console.log(`Updates ready    : ${updates.length}`);
