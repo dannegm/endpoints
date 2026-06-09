@@ -1,0 +1,2087 @@
+library,name,tags
+lucide-lab,ampersand-square,and|typography|operator|join|concatenate|code|coding|text|design|development
+lucide-lab,apple-core,fruit|juice|smoothie|sweet|snack|meal|lunch|ingredient|cooking|cookery|kitchen|cuisine|eating|healthy|nutrition|diet|bite|bitten|consumed|litter|trash|rubbish|food-beverage
+lucide-lab,arrows-up-down-square,elevator|lift|floors|levels|hotel|accommodation|expand|unfold|vertical|toolbar|button|buildings|travel|arrows|shapes
+lucide-lab,astronaut-helmet,spacesuit|spaceman|explore|interplanetary|stars|safety|protection|headgear|science|gaming
+lucide-lab,at-sign-circle,mention|at|email_address|message|contact|networking|ping|text|account|communication|social|notifications|shapes
+lucide-lab,at-sign-square,mention|at|email_address|message|contacts|details|address_book|directory|listing|networking|business_card|ping|toolbar|keyboard|button|text|account|connectivity|communication|social|shapes
+lucide-lab,avocado,fruit|snack|meal|lunch|ingredient|cooking|cookery|kitchen|cuisine|eating|healthy|nutrition|diet|guacamole|mexican|food-beverage
+lucide-lab,baby-pacifier,dummy|teething|suck|silence|quiet|newborn|childproof|children|infant|kids|toddler|mother|mum|family|people|home|shopping
+lucide-lab,bacon,rashers|smoked|streaky|crispy|meat|fast_food|junk_food|snack|dish|restaurant|brunch|lunch|meal|savory|savoury|cookery|cooking|grilled|barbecue|barbeque|bbq|pig|food-beverage
+lucide-lab,bag-hand,purse|finance|storage|store|ecommerce|cart|purchase|womens|girls|female|ladies|accessories|fashion|leather|shopping|money
+lucide-lab,barbecue,barbeque|bbq|grilled|smoke|dinner|meal|meat|cookery|cooking|charcoal|heat|hot|fire|food-beverage
+lucide-lab,barber-pole,hairdresser|grooming|cut|shave|shop|salon|service|signage|stripes|spin|spiral|helix|twist|twirl|rotate|maps|medical|people|social
+lucide-lab,barn,stable|cattle|horses|farm|ranch|hay|alfalfa|door|buildings|animals|maps
+lucide-lab,baseball,home_run|pitcher|bat|innings|rounders|bounce|sports|gaming
+lucide-lab,baseline-square,color|colour|toolbar|formatting|plain_text|rich_text|rtf|typography|fonts|font_book|collection|slab_serif|writing|writer|prose|content|markdown|markup|text|tools|design|development
+lucide-lab,basketball,bounce|hoop|netball|court|dribble|slam_dunk|alley-oop|team|score|nba|sports|gaming
+lucide-lab,bat-ball,table_tennis|ping-pong|whiff-whaff|paddle|racquet|racket|net|bounce|score|sports|gaming
+lucide-lab,bath-bubble,amenities|services|bathroom|towel|relax|luxury|home|travel
+lucide-lab,beach-ball,inflatable|summer_holiday|seaside|toys|kids|children|play|football|soccer|travel|sports|gaming
+lucide-lab,bear-face,cub|cuddle|children|kids|toys|teddy|nursery|picnic|outdoors|wilderness|forest|national_park|open_season|hunting|grizzly|warning|danger|strength|mammal|animals
+lucide-lab,bed-bunk,sleep|hostel|accommodation|sheets|furniture|home|travel
+lucide-lab,bee-hive,nest|beehive|beeswax|bumble|buzz|busy|productivity|honeycomb|keeper|garden|insect|sting|swarm|wasps|nature|food-beverage
+lucide-lab,bee,bumble|buzz|busy|productivity|pollen|pollinate|honey|hive|keeper|garden|insect|antennae|flying|wings|sting|swarm|wasp|animals
+lucide-lab,beetle-scarab,bug|wildlife|wings|flying|insect|antennae|ancient|egyptian|heiroglyphic|animals
+lucide-lab,bell-concierge-dot,reception|bellboy|bellhop|porter|service|summon|hospitality|hotel|accommodation|attention|alert|ring|ding|sound|reminder|unread|pending|updates|travel|notifications
+lucide-lab,bell-concierge-off,unstaffed|self-service|self-catering|hospitality|hotel|accommodation|silent|silence|quiet|ignore|forget|travel|notifications
+lucide-lab,bell-concierge,reception|bellboy|bellhop|porter|service|summon|hospitality|hotel|accommodation|attention|alert|sound|ding|ring|travel|notifications
+lucide-lab,belt,buckle|strap|fasten|fasting|waistline|weight_loss|diet|calories|store|clothing|clothes|accessories|apparel|attire|outfit|fashion|leather|shopping|social|food-beverage
+lucide-lab,bold-square,emphasis|emphasize|strong|toolbar|formatting|styling|plain_text|rich_text|rtf|typography|font|sans_serif|writing|writer|prose|content|markdown|markup|text|tools|design|development
+lucide-lab,bottle-baby,newborn|children|infant|kids|toddler|mother|mum|family|milk|people|home|shopping
+lucide-lab,bottle-champagne,alcohol|drink|glass|bubbly|sparkling|fizzy|bar|party|special_occasion|celebration|victory|champion|luxury|nightclub|nightlife|sommelier|restaurant|food-beverage|social
+lucide-lab,bottle-dispenser,toiletries|bathroom|amenities|shower_gel|bubble_bath|shampoo|conditioner|hand_soap|sanitizer|sanitiser|clean|wash|home|travel
+lucide-lab,bottle-perfume,parfum|aftershave|aroma|fragrance|smell|scent|special|present|gift|accessories|container|duty_free|social|travel
+lucide-lab,bottle-plastic,drink|water|liquid|litres|pints|container|shampoo|food-beverage
+lucide-lab,bottle-spray,cleaning_products|toiletries|bathroom|amenities|service|sanitizer|sanitiser|home|travel
+lucide-lab,bottle-toothbrush-comb,toiletries|bathroom|amenities|shower_gel|bubble_bath|shampoo|conditioner|toothpaste|tube|clean|wash|brush|home|travel
+lucide-lab,bowl-chopsticks,noodles|poke|soup|culinary|cuisine|asian|japanese|chinese|oriental|eastern|brunch|lunch|dinner|food-beverage|tools
+lucide-lab,bowl-overflow,spillage|drip|liquid|soup|porridge|gruel|cereal|breakfast|morning|brunch|lunch|dinner|meal|starter|appetizer|appetiser|culinary|cuisine|food-beverage
+lucide-lab,bowling,ten-pin|10_pin|pins|ball|lane|alley|strike|spare|score|indoor_sports|heavy|sports|gaming
+lucide-lab,bra-sports,brassiere|breasts|boobs|tops|womens|girls|female|ladies|lingerie|underwear|undergarment|sportswear|exercise|fitness|swimwear|beachwear|bathing_constume|summer_holiday|store|clothing|clothes|apparel|attire|fashion|thread|cotton|casual|shopping|sports|travel
+lucide-lab,briefcase-plus,healthcare|first_aid_kit|paramedic|medkit|medikit|medpack|medicine|pharmacy|pharmaceutical|add|cross|box|medical|gaming
+lucide-lab,broom,broomstick|brush|sweep|floor|cleaning|witch|halloween|tools|home
+lucide-lab,bucket,handle|container|fill|liquid|water|seaside|summer_holiday|beach|sandcastle|sandbox|toys|kids|children|play|gardening|equipment|spade|shovel|catch|fishing|crabs|nature|home|tools|travel
+lucide-lab,bull-head,cow|horns|meat|steak|barbecue|bbq|beef|bovine|rodeo|ranch|farmyard|livestock|cattle|taurus|toro|hoofs|hooved|mammal|animals|food-beverage
+lucide-lab,burger,hamburger|cheeseburger|meat|patty|bun|fast_food|junk_food|takeaway|takeout|snack|dish|restaurant|lunch|meal|savory|savoury|cookery|cooking|grilled|barbecue|barbeque|bbq|food-beverage
+lucide-lab,butterfly,wings|flying|wildlife|botanical_gardens|nectar|pollen|pollinate|pattern|insect|antennae|animals
+lucide-lab,cabin,hut|shed|property|real_estate|dwellings|living|door|woods|forest|winter_holiday|alpine|wilderness|outdoors|buildings|travel|home
+lucide-lab,cabinet-filing,nightstand|bedside_table|drawers|documents|binders|folders|records|storage|archive|office|furniture|files
+lucide-lab,cactus,spikes|spines|needles|glochid|plant|desert|botanical|flora|nature|maps
+lucide-lab,candle-holder-lit,handle|wax|incense|fragrance|smell|senses|spirituality|meditation|relaxation|wellbeing|romance|romantic_evening|valentines_day|date|power_cut|outage|melting|burning|flame|fire|alight|lighting|daytime|mode|theme|toggle|css|home|sustainability|design|development
+lucide-lab,candle-holder,handle|wax|incense|fragrance|smell|senses|spirituality|meditation|relaxation|wellbeing|romance|romantic_evening|valentines_day|date|power_cut|outage|darkness|night|mode|theme|toggle|css|home|sustainability|design|development
+lucide-lab,candle-tealight-lit,wax|incense|fragrance|smell|senses|spirituality|meditation|relaxation|wellbeing|romance|romantic_evening|valentines_day|date|power_cut|outage|melting|burning|flame|fire|alight|lighting|daytime|mode|theme|toggle|css|home|sustainability|design|development
+lucide-lab,candle-tealight,wax|incense|fragrance|smell|senses|spirituality|meditation|relaxation|wellbeing|romance|romantic_evening|valentines_day|date|power_cut|outage|melting|burning|flame|fire|alight|lighting|mode|theme|toggle|css|home|sustainability|design|development
+lucide-lab,candlestick-big-lit,wax|incense|fragrance|smell|senses|spirituality|meditation|relaxation|wellbeing|romance|romantic_evening|valentines_day|date|power_cut|outage|melting|burning|flame|fire|alight|lighting|daytime|mode|theme|toggle|css|home|sustainability|design|development
+lucide-lab,candlestick-big,wax|incense|fragrance|smell|senses|spirituality|meditation|relaxation|wellbeing|romance|romantic_evening|valentines_day|date|birthday_cake|power_cut|outage|melting|burning|flame|fire|alight|lighting|mode|theme|toggle|css|home|sustainability|design|development
+lucide-lab,candlestick-lit,wax|incense|fragrance|smell|senses|spirituality|meditation|relaxation|wellbeing|romance|romantic_evening|valentines_day|date|power_cut|outage|melting|burning|flame|fire|alight|lighting|daytime|mode|theme|toggle|css|home|sustainability|design|development
+lucide-lab,candlestick,wax|incense|fragrance|smell|senses|spirituality|meditation|relaxation|wellbeing|romance|romantic_evening|valentines_day|date|birthday_cake|power_cut|outage|darkness|night|mode|theme|toggle|css|home|sustainability|design|development
+lucide-lab,card-credit,atm|cash_machine|cash_point|withdrawal|debit|visa|mastercard|bank|finance|financial|spending|budget|purchase|payment|cc|shopping|retail|store|mall|consumer|loyalty|points|cashback|transaction|account|money
+lucide-lab,card-sd,smartphone|mobile|disk|data|backup|save|read|write|rw|storage|extra|capacity|megabytes|mb|gigabytes|gb|format|flash|drive|digital|camera|photos|pictures|images|raw|photography|files|multimedia|devices
+lucide-lab,card-sim,cellphone|smartphone|mobile|network|cellular|service|provider|signal|coverage|disk|data|format|storage|flash|digital|contacts|phone_book|contractual|circuit_board|chip|connectivity|communication|multimedia|devices
+lucide-lab,carton-off,milk|dairy|drink|diet|lactose_free|liquid|litres|pints|pasturised|skimmed|container|vegan|food-beverage
+lucide-lab,carton,milk|dairy|drink|diet|lactose|liquid|litres|pints|pasturised|skimmed|container|cow|food-beverage
+lucide-lab,case-camel,text|letters|characters|font|typography|ab|string|code|text|development
+lucide-lab,case-kebab,text|letters|characters|font|typography|dash|a-b|ab|string|code|text|development
+lucide-lab,case-snake-upper,text|letters|capitals|caps|characters|font|typography|underscore|ab|constant|string|code|text|development
+lucide-lab,case-snake,text|letters|characters|font|typography|underscore|ab|string|code|text|development
+lucide-lab,cat-big,tiger|lion|leopard|panther|zoo|safari_park|savannah|wildlife|mammal|carnivore|predator|pride|feline|ferocious|roar|animals
+lucide-lab,cauldron,pot|boiling|heat|hot|soup|potion|brewing|bubbles|spell|curse|witches|wizard|druid|halloween|gaming|food-beverage
+lucide-lab,cent-circle,finance|financial|markets|exchange|trader|trading|transaction|payment|coin|cents|dollar|usd|currency|money|shapes
+lucide-lab,cent-square,finance|financial|markets|exchange|trader|trading|transaction|payment|cents|dollar|usd|toolbar|button|currency|money|shapes
+lucide-lab,cent,finance|financial|markets|exchange|trader|trading|transaction|payment|symbol|cents|dollar|usd|currency|money
+lucide-lab,chairs-table-parasol,terrace|balcony|patio|umbrella|shade|seating|garden|outdoor|al_fresco|dining|furniture|home|travel
+lucide-lab,chairs-table-platter,restaurant|seating|table_service|waiter|waitress|served|dinner|dining|meal|courses|luxury|food-beverage|furniture|home|travel|maps
+lucide-lab,chameleon,camouflage|colors|colours|multicolor|multicolour|lizard|reptile|wildlife|animals
+lucide-lab,cheese,swiss|holes|fondue|emmental|gouda|edam|cheddar|brie|mozzarella|feta|halloumi|gorgonzola|roquefort|camembert|dairy|snack|dish|restaurant|lunch|meal|savory|savoury|cookery|cooking|grilled|food-beverage
+lucide-lab,chest,trunk|treasure|loot|gold|toybox|toolbox|tool_chest|storage|container|tools|gaming
+lucide-lab,chevrons-left-right-square,gist|source|programming|html|xml|code|coding|text|development
+lucide-lab,chevrons-up-down-square,elevator|lift|floors|levels|hotel|accommodation|expand|unfold|vertical|toolbar|button|buildings|travel|arrows|shapes
+lucide-lab,cloth,thread|sewing|stitch|embroidery|waeve|woven|fabric|material|textile|upholstery|cleaning|home|shopping|furniture
+lucide-lab,coat-hanger,clothes|clothing|apparel|attire|wardrobe|dry_cleaning|amenities|home|furniture|travel|maps
+lucide-lab,cocktail,martini|alcohol|spirits|drink|glass|straw|citrus|orange|lemon|lime|bar|lounge|party|nightclub|nightlife|food-beverage|social
+lucide-lab,coconut,segments|milk|smoothie|cocktail|tropical|beach_bar|holiday|vacation|sweet|creamy|snack|ingredient|cooking|cookery|kitchen|cuisine|eating|healthy|nutrition|diet|food-beverage|travel
+lucide-lab,coffee-bean,roast|ground|blend|arabica|filter|instant|cafetiere|hot|drink|barista|fair_trade|food-beverage
+lucide-lab,coffeemaker,machine|amenities|electronics|appliances|roast|ground|blend|arabica|filter|instant|cafetiere|hot|drink|barista|fair_trade|food-beverage|devices
+lucide-lab,coins-exchange,exchange|trader|trading|transaction|swap|finance|financial|markets|currency|money
+lucide-lab,coins-stack,cash|finance|financial|markets|exchange|trader|trading|transaction|payment|payroll|wages|income|pocket_money|allowance|savings|banking|gamble|money|currency|account|shopping|gaming
+lucide-lab,copy-code,clone|duplicate|multiple|codebase|source|raw|snippets|gists|text|development
+lucide-lab,copy-down,read|dictionary|booklet|library|code|version_control|git|repository|clone|download_all|development
+lucide-lab,copy-file-path,relative|location|multiple|files|development|text
+lucide-lab,copy-image,clone|duplicate|multiple|images|pictures|photos|album|collection|event|gallery|photography|text|multimedia|files|social|design|development
+lucide-lab,copy-text,clone|duplicate|multiple|texts|lines|drafts|script|plagiarism|text
+lucide-lab,copy-type,formatting|styling|rich_text|rtf|fonts|font_book|typography|collection|slab_serif|clone|duplicate|multiple|toolbar|button|text|tools|design
+lucide-lab,cow-head,milk|dairy|drink|diet|unpasturised|lactose|livestock|cattle|calf|bovine|farmyard|hoofs|hooved|mammal|animals|food-beverage
+lucide-lab,cow-udder-droplets,milk|dairy|drink|diet|unpasturised|lactose|livestock|cattle|calf|bovine|farmyard|hoofs|hooved|mammal|animals|food-beverage
+lucide-lab,crab,crustacean|shell|pinch|snap|crawl|sideways|ocean|marine_life|seabed|seaside|summer_holiday|beach|sand|water|bucket|fishing|catch|lobster|zodiac|astrology|star_sign|cancer|horoscope|animals
+lucide-lab,cricket-ball,bowler|batsman|batting|fielder|runs|wicket|innings|overs|score|umpire|spin|catch|bounce|ashes|summer|sports|gaming
+lucide-lab,cricket-wicket,bowler|ball|batsman|batting|fielder|runs|innings|overs|out|duck|score|umpire|spin|catch|bounce|ashes|summer|sports|gaming
+lucide-lab,cross-square,healthcare|first_aid_kit|paramedic|medkit|medikit|medpack|medicine|pharmacy|pharmaceutical|add|cross|box|medical|gaming
+lucide-lab,crosshair-2-dot,aim|target|scope|sight|reticule|gaming|cursors
+lucide-lab,crosshair-2,aim|target|scope|sight|reticule|gaming|cursors
+lucide-lab,crosshair-plus-dot,aim|target|scope|sight|reticule|gaming|cursors
+lucide-lab,crosshair-plus,aim|target|scope|sight|reticule|gaming|cursors
+lucide-lab,crosshair-square,aim|target|scope|sight|reticule|gaming|cursors|photography
+lucide-lab,cup-saucer,mug|hot|drink|cafe|tea|food-beverage
+lucide-lab,cup-to-go,coffee|roast|ground|blend|arabica|filter|instant|cafe|hot|drink|barista|fair_trade|packaging|disposable|recycling|cardboard|plastic|take_away|food-beverage
+lucide-lab,currency-square,finance|financial|markets|exchange|trader|trading|transaction|payment|symbol|scarab|toolbar|button|currency|money
+lucide-lab,desk-lamp,office|workstation|table|drawers|household|lighting|ambience|ambiance|furniture|home
+lucide-lab,diaper,nappy|absorbent|potty|newborn|childproof|children|infant|kids|toddler|mother|mum|family|people|home|shopping
+lucide-lab,dishwasher,kitchen|appliances|amenities|electric|cleaning|cycle|plates|glasses|cutlery|utensils|home|devices|travel
+lucide-lab,dollar-sign-circle,monetization|marketing|finance|financial|markets|exchange|trader|trading|transaction|payment|coin|usd|currency|money|shapes
+lucide-lab,dollar-sign-square,monetization|marketing|finance|financial|markets|exchange|trader|trading|transaction|payment|usd|toolbar|button|currency|money|shapes
+lucide-lab,doorbell-intercom,buzzer|speaker|call|service|summon|hospitality|hotel|accommodation|elevator|lift|ring|ding|sound|access|gate|buildings|home|travel|security
+lucide-lab,dress,skirt|womens|girls|female|ladies|store|sexy|classy|clothing|clothes|apparel|attire|outfit|fashion|formal|fancy|smart|refined|elegant|evening_wear|nightlife|club|party|occasion|gathering|wedding|tailored|thread|cotton|staps|shopping|social
+lucide-lab,egg-cup,boiled|soldiers|continental_breakfast|brunch|meal|morning|food-beverage
+lucide-lab,elephant-face,mammoth|mastodon|mammal|memory|remember|trunk|tusks|safari|savannah|wildlife|herbivore|herd|calf|dumbo|evernote|animals
+lucide-lab,elephant,mammoth|mastodon|mammal|memory|remember|trunk|tusks|safari_park|savannah|wildlife|herbivore|herd|calf|dumbo|animals
+lucide-lab,escalator-arrow-down-left,steps|stairs|staircase|conveyor_belt|conveyer|ground_floor|levels|signage|directions|diagonal|buildings|travel|arrows
+lucide-lab,escalator-arrow-up-right,steps|stairs|staircase|conveyor_belt|conveyer|top_floor|levels|signage|directions|diagonal|buildings|travel|arrows
+lucide-lab,euro-circle,monetization|marketing|finance|financial|markets|exchange|trader|trading|transaction|payment|coin|currency|money|shapes
+lucide-lab,euro-square,monetization|marketing|finance|financial|markets|exchange|trader|trading|transaction|payment|toolbar|button|currency|money|shapes
+lucide-lab,face-alien,extraterrestrial|life_form|outer_space|interplanetary|galactic|universe|area_51|science|emoji|gaming
+lucide-lab,fan-handheld,folding|cooler|airflow|waft|decoration|ornate|oriental|chinese|culture|wisdom|colors|spectrum|range|guide|tools|social|design
+lucide-lab,farm,farmland|ranch|acres|fields|harvest|silo|farmhouse|barn|door|buildings|maps|sustainability|animals|food-beverage
+lucide-lab,faucet,tap|spigot|water|drinking|fresh|source|pipes|plumbing|plumber|food-beverage|home|maps
+lucide-lab,feather-plus,quill|pen|write|writing|prose|inkwell|scribe|scroll|draft|new|add|text|social
+lucide-lab,feather-square,quill|pen|write|writing|prose|inkwell|scribe|scroll|draft|edit|text|social|shapes
+lucide-lab,feather-text,quill|pen|write|writing|prose|inkwell|scribe|scroll|draft|signature|text
+lucide-lab,flippers,snorkeling|scuba|submerge|freediving|diver|location|spot|gear|equipment|vacation|summer_holiday|seaside|beach|marine|ocean|depth|deep|underwater|aquatic|encounter|exploration|tourism|travel|maps
+lucide-lab,floor-plan,blueprint|property|real_estate|house|home|dwelling|living_space|rooms|doorway|area|measure|square_meter|buildings
+lucide-lab,floppy-disk-2,format|data|storage|capacity|megabytes|mb|label|files|devices
+lucide-lab,floppy-disk-rear,format|data|storage|capacity|megabytes|mb|label|back|reverse|files|devices
+lucide-lab,floppy-disk,format|data|storage|capacity|megabytes|mb|label|files|devices
+lucide-lab,floppy-disks-2,copy|format|data|storage|capacity|megabytes|mb|label|files|devices
+lucide-lab,floppy-disks-rear,copy|format|data|storage|capacity|megabytes|mb|label|back|reverse|files|devices
+lucide-lab,floppy-disks,copy|format|data|storage|capacity|megabytes|mb|label|files|devices
+lucide-lab,flower-lotus,water_lily|petals|plant|spring|bloom|blossom|flora|pond|aquatic|sacred|purity|longevity|culture|philosopy|sprituality|meditation|wellbeing|lifestyle|nature|seasons|sustainability
+lucide-lab,flower-pot,petals|houseplant|stem|spring|bloom|blossom|gardening|botanical|flora|florist|nature|seasons|home|gaming
+lucide-lab,flower-rose-single,roses|thorns|petals|plant|stem|leaves|spring|bloom|blossom|gardening|botanical|flora|florist|bouquet|bunch|gift|date|romance|romantic|valentines_day|special_occasion|nature|seasons|sustainability|home|social
+lucide-lab,flower-rose,roses|thorns|petals|plant|stem|leaves|spring|bloom|blossom|gardening|botanical|flora|florist|bouquet|bunch|gift|date|romance|romantic|valentines_day|special_occasion|nature|seasons|sustainability|home|social
+lucide-lab,flower-stem,petals|plant|leaves|spring|bloom|blossom|gardening|botanical|flora|florist|bouquet|bunch|gift|special_occasion|nature|seasons|sustainability|home|gaming
+lucide-lab,flower-tulip,petals|plant|stem|leaves|spring|bloom|blossom|gardening|botanical|flora|florist|bouquet|bunch|gift|romantic|special_occasion|nature|seasons|sustainability|home|gaming
+lucide-lab,football-goal,american|gridiron|posts|field|score|touchdown|pitch|team|sports|gaming
+lucide-lab,football-helmet,american|gridiron|touchdown|kick|pitch|team|cricket|protective_equipment|protection|padding|headgear|goal|score|bounce|sports|gaming
+lucide-lab,football,rugby|american|touchdown|kick|pitch|team|goal|score|bounce|super_bowl|nfl|sports|gaming
+lucide-lab,fork-knife-crossed,utensils|kitchenware|cutlery|culinary|cooking|cookery|cut|slice|eat|restaurant|meal|breakfast|brunch|lunch|dinner|supper|food-beverage|home|tools|travel|maps
+lucide-lab,fork-knife,utensils|kitchenware|cutlery|culinary|cooking|cookery|cut|slice|eat|restaurant|meal|breakfast|brunch|lunch|dinner|supper|food-beverage|home|tools|travel|maps
+lucide-lab,fox-face-tail,sly|wily|cunning|canine|mammal|bushy|furry|firefox|animals
+lucide-lab,frog-face,jump|hop|lilly_pad|pond_life|aquatic|amphibian|tadpole|animals
+lucide-lab,fruit,citrus|orange|grapefruit|lime|tomato|pomodoro_technique|productivity|work|egg_timer|timing|alarm|alert|olive|pitted|passion_fruit|guava|juice|squeeze|smoothie|tropical|sweet|bitter|snack|meal|lunch|ingredient|cooking|cookery|kitchen|cuisine|eating|healthy|nutrition|diet|fruit_machine|slots|gambling|jackpot|food-beverage|gaming|time|devices|home
+lucide-lab,garlic,flavor|flavour|spice|vegetable|ingredient|cooking|cookery|kitchen|cuisine|eating|nutrition|diet|food-beverage
+lucide-lab,gearbox-square,gears|gear_lever|gearstick|shift|speed|driving|driver|racing|racer|motor_sport|formula_one|formula_1|f1|car|vehicle|mechanical|clutch|ratio|sports|gaming
+lucide-lab,gearbox,gears|gear_lever|gearstick|shift|speed|driving|driver|racing|racer|motor_sport|formula_one|formula_1|f1|car|vehicle|mechanical|clutch|ratio|sports|gaming
+lucide-lab,gem-ring,diamond|crystal|ruby|rock|jewellery|price|special|present|gift|wedding|proposal|marriage|accessories|social
+lucide-lab,glasses-square,spectacles|eyesight|vision|reading|learning|education|academic|books|nerd|geek|accessibility|medical|shopping
+lucide-lab,glasses-sun,aviators|shades|sunglasses|summer_holiday|seaside|beachwear|vacation|accessories|fashion|shopping|travel
+lucide-lab,goal-net,score|football|futbol|soccer|ice_hockey|posts|crossbar|kick|pitch|penalty|sports|gaming
+lucide-lab,goblet-crack,glass|chalice|broken|break|smash|fragile|damaged|package|transit|shipping|postage|food-beverage|social|transportation|mail
+lucide-lab,goblet,glass|chalice|alcohol|drink|vineyard|winery|red|white|rose|dry|sparkling|spirits|cocktail|bar|party|nightclub|nightlife|sommelier|restaurant|dinner|meal|food-beverage|social
+lucide-lab,golf-driver,tee_off|driving_range|sand_wedge|pitching_wedge|course|hole_in_one|par|double_bogey|birdie|eagle|albatross|handicap|caddie|caddy|bunker|rough|sports|gaming
+lucide-lab,grapes,bunch|wine|vineyard|seedless|blackberry|blackberries|rasberry|rasberries|wild_berries|juice|squeeze|smoothie|sweet|snack|meal|lunch|eating|healthy|nutrition|diet|picked|fruit_machine|slots|gambling|jackpot|food-beverage
+lucide-lab,grid-lines-offset,guides|layout|design|tools
+lucide-lab,grid-lines,table|guides|number|pound|tic-tac-toe|noughts_and_crosses|layout|design|tools|maths|gaming
+lucide-lab,hairdryer,hairdrier|hairstyle|hairdresser|salon|styling|heat|amenities|electronics|home|travel|devices
+lucide-lab,hat-baseball,cap|hats|headwear|headgear|mens|boys|store|clothing|clothes|accessories|apparel|attire|fashion|shopping|sports
+lucide-lab,hat-beanie,bobble|wooly|woolly|winter|cold|headgear|apparel|fashion|shopping|seasons
+lucide-lab,hat-bowler,hats|headwear|headgear|gentleman|mens|boys|store|clothing|clothes|accessories|apparel|attire|outfit|fashion|formal|fancy_dress|costume|smart|classic|refined|elegant|evening|black_tie_event|occasion|gathering|vacation|summer_holiday|straw|shopping|social|travel
+lucide-lab,hat-chef,cooking|kitchen|restaurant|food-beverage
+lucide-lab,hat-hard,helmet|headgear|construction|protective|safety|builder|tools
+lucide-lab,hat-top,hats|headwear|headgear|gentleman|mens|boys|store|clothing|clothes|accessories|apparel|attire|outfit|fashion|formal|fancy_dress|costume|smart|classic|refined|elegant|evening|black_tie_event|occasion|wedding|groom|gathering|shopping|social
+lucide-lab,heading-circle,hospital|accident|emergency|helicopter_pad|helipad|help|medical|transportation|shapes
+lucide-lab,heading-square,h1|html|markup|markdown|toolbar|formatting|styling|typography|hospital|accident|emergency|help|text|tools|design|development|medical|shapes
+lucide-lab,hedgehog,porcupine|prickly|spiny|spiky|spikes|defences|defend|mammal|woodland|garden|animals
+lucide-lab,helmet-diving,submerge|diver|location|spot|gear|equipment|safety|sea|ocean|depth|deep|decompression|pressure|underwater|oxygen|o2|breathe|air|aquatic|encounter|exploration|discovery|observe|view|marine_life|shipwreck|tourism|science|travel|maps
+lucide-lab,hexagons-3,honeycomb|beeswax|cells|cluster|tessellation|pollen|pollinate|shapes|food-beverage
+lucide-lab,hexagons-7,honeycomb|beeswax|cells|cluster|tessellation|pollen|pollinate|shapes|food-beverage
+lucide-lab,high-heel,stiletto|platform|shoe|footwear|womens|girls|female|ladies|store|sexy|classy|clothing|clothes|apparel|attire|outfit|fashion|formal|fancy|refined|dressy|smart|elegant|evening|nightlife|club|party|occasion|gathering|leather|shopping|social
+lucide-lab,hockey-mask,ice_hockey|puck|goalkeeper|goalie|team|protective_equipment|protection|padding|headgear|face|winter_sports|horror|scary|scared|halloween|costume|sports|gaming
+lucide-lab,hockey,stick|ball|goalkeeper|goalie|team|protective_equipment|protection|face|winter_sports|horror|scary|scared|halloween|costume|sports|gaming
+lucide-lab,horse-head,donkey|pony|calf|filly|stallion|steed|mare|mammal|equestrian|horseback|ride|riding|racing|furlong|betting|gambling|animals|gaming
+lucide-lab,hot-dog,banger|wiener|wurst|jumbo|bun|meat|pork|fast_food|junk_food|snack|dish|restaurant|lunch|meal|savory|savoury|cookery|cooking|grilled|barbecue|barbeque|bbq|food-beverage
+lucide-lab,house-manor,mansion|country|property|real_estate|dwellings|living|rooms|door|chimneys|land|acres|buildings|travel|maps|home
+lucide-lab,house-off,property|real_estate|dwellings|living|rooms|door|automation|iot|disconnected|disabled|deactivated|unpowered|account|home|buildings
+lucide-lab,house-roof-off,property|real_estate|dwellings|living|rooms|door|automation|iot|disconnected|disabled|deactivated|unpowered|account|home|buildings
+lucide-lab,house-roof,property|real_estate|dwellings|living|rooms|door|thatch|snow|account|home|buildings
+lucide-lab,house,property|real_estate|dwellings|living|rooms|door|account|home|buildings
+lucide-lab,houses,homes|property|real_estate|dwellings|living|rooms|door|buildings
+lucide-lab,ice-hockey,stick|puck|ice_rink|skates|team|winter_sports|sports|gaming
+lucide-lab,ice-skate,skates|ice_rink|figure_skating|speed_skating|boots|shoes|footwear|winter|sports|seasons
+lucide-lab,igloo,ice_blocks|cold|freeze|frozen|winter|shelter|dome|eskimo|buildings|weather|seasons
+lucide-lab,indian-rupee-circle,finance|financial|markets|exchange|trader|trading|transaction|payment|coin|inr|currency|money|shapes
+lucide-lab,indian-rupee-square,finance|financial|markets|exchange|trader|trading|transaction|payment|inr|toolbar|button|currency|money|shapes
+lucide-lab,intercom,buzzer|speaker|voice|call|service|summon|hospitality|hotel|accommodation|sound|access|gate|buildings|home|travel|security
+lucide-lab,iron-off,do_not_iron|warning|instructions|clothes|clothing|apparel|attire|home|devices
+lucide-lab,iron,steam|flatten|straighten|clothes|clothing|apparel|attire|dry_cleaning|amenities|home|devices|travel
+lucide-lab,ironing-board,flatten|straighten|clothes|clothing|apparel|attire|dry_cleaning|amenities|home|furniture|travel
+lucide-lab,italic-square,oblique|emphasis|emphasize|toolbar|formatting|styling|plain_text|rich_text|rtf|typography|font|slab_serif|writing|writer|prose|content|markdown|markup|text|tools|design|development
+lucide-lab,jacket-sports,coat|man|mens|top|store|clothing|clothes|apparel|attire|fashion|thread|leather|casual|regular|warmth|winter|outdoors|shopping|sports
+lucide-lab,jacket,blazer|coat|suit|gentleman|mens|boys|top|store|clothing|clothes|accessories|apparel|attire|outfit|fashion|formal|dressy|dinner|uniform|smart|classic|refined|elegant|evening_wear|tuxedo|black_tie_event|special_occasion|wedding|groom|gathering|thread|tailored|regular|slim_fit|warmth|shopping|social
+lucide-lab,japanese-yen-circle,monetization|marketing|finance|financial|markets|exchange|trader|trading|transaction|payment|coin|jpy|currency|money|shapes
+lucide-lab,japanese-yen-square,monetization|marketing|finance|financial|markets|exchange|trader|trading|transaction|payment|jpy|toolbar|button|currency|money|shapes
+lucide-lab,jar,pot|container|storage|jam|preserve|conserve|honey|marmalade|sweet|sugar|diet|inkwell|glass|kitchenware|food-beverage|text
+lucide-lab,jug,coffee_pot|roast|ground|blend|arabica|filter|cafe|hot|drink|barista|fresh|juice|pour|glass|food-beverage
+lucide-lab,kebab,shish|skewer|meat|fast_food|junk_food|snack|meal|savory|savoury|cookery|cooking|grilled|barbecue|barbeque|bbq|food-beverage
+lucide-lab,kettle-electric,heat|boiling|water|steam|drink|tea|coffee|kitchen|appliances|food-beverage|home|devices
+lucide-lab,kettle,heat|boiling|water|steam|whistle|drink|tea|coffee|kitchen|appliances|food-beverage|home|devices
+lucide-lab,kiwi,citrus|orange|grapefruit|lemon|lime|segments|juice|squeeze|smoothie|tropical|sweet|snack|meal|lunch|eating|healthy|nutrition|diet|fruit_machine|slots|gambling|jackpot|food-beverage|gaming
+lucide-lab,layout-grid-move-horizontal,apps|applications|sorting|ascending|descending|reorder|rearrange|up|down|drag|view|design|layout|tools|arrows
+lucide-lab,layout-grid-move-vertical,apps|applications|sorting|ascending|descending|reorder|rearrange|up|down|drag|view|design|layout|tools|arrows
+lucide-lab,layout-grid-plus,apps|applications|add|collection|design|layout|tools
+lucide-lab,layout-list-move,todo|tasks|items|pending|ascending|descending|sorting|reorder|rearrange|up|down|drag|view|design|layout|text|tools|arrows
+lucide-lab,lemon,citrus|lime|juice|squeezy|squeeze|smoothie|bitter|sweet|ingredient|cooking|cookery|kitchen|cuisine|eating|healthy|nutrition|diet|fruit_machine|slots|gambling|jackpot|food-beverage|gaming
+lucide-lab,life-jacket,vest|buoyant|buoyancy|lifeguard|coastguard|sea|ocean|baywatch|beach|help|rescue|inflatable|safety|equipment|emergency|accessibility|medical
+lucide-lab,ligature-square,toolbar|button|formatting|styling|typography|fonts|font_book|collection|slab_serif|writing|writer|prose|content|alternates|alternatives|variants|variations|fi|text|tools|design|shapes
+lucide-lab,light-switch,on|off|electricity|electronics|lights|toggle|binary|boolean|power|outlet|plug|devices|connectivity
+lucide-lab,lingerie,brassiere|breasts|boobs|bottoms|tops|knickers|womens|girls|female|ladies|underwear|swimwear|beachwear|bathing_constume|summer_holiday|night|evening|elegant|sexy|store|clothing|clothes|apparel|attire|fashion|thread|cotton|lace|fitted|shopping|social|travel
+lucide-lab,locate-square,gps|location|crosshair|inspector|element|selector|target|box|browser|dom|node|aim|target|scope|sight|reticule|navigation|maps|development|tools|cursors|gaming
+lucide-lab,luggage-cabin,baggage|suitcase|wheels|packing|sotrage|travel|transportation
+lucide-lab,lunch-box,trunk|toolbox|chest|storage|container|snack|meal|brunch|tools|food-beverage
+lucide-lab,mailbox-flag,post|inbox|emails|messages|letters|mailing_list|newsletter|mail
+lucide-lab,mask-snorkel,scuba|submerge|freediving|diver|location|spot|gear|equipment|vacation|summer_holiday|seaside|beach|ocean|depth|deep|underwater|oxygen|o2|breathe|air|aquatic|encounter|exploration|observe|view|fish|marine_life|tourism|travel|maps
+lucide-lab,meal-box,brunch|lunch|dinner|tray|bento|sushi|noodles|culinary|cuisine|asian|japanese|chinese|oriental|eastern|microwave|ready|frozen|packaging|food-beverage
+lucide-lab,mortar-pestle,bowl|crush|grind|ingredients|herbs|spices|cooking|cookery|culinary|kitchen|equipment|utensil|food-beverage|tools|home
+lucide-lab,motor-racing-helmet,driving|driver|racer|formula_one|formula_1|f1|car|motorcyle|motorbike|vehicle|safety|protection|headgear|crash|sports|transportation|gaming
+lucide-lab,mug-teabag,cup|hot|drink|cafe|food-beverage
+lucide-lab,mug,cup|hot|drink|cafe|tea|barista|food-beverage
+lucide-lab,mustache,moustache|facial_hair|hairdresser|barbers|grooming|cut|shave|shop|salon|service|maps|people|social
+lucide-lab,olive,grove|extra_virgin|oil|ingredient|cooking|cookery|kitchen|cuisine|eating|nutrition|diet|mediterranean|bitter|fruit|cocktail|food-beverage
+lucide-lab,onion,flavor|flavour|vegetable|ingredient|cooking|cookery|kitchen|cuisine|eating|nutrition|diet|food-beverage
+lucide-lab,owl,wise|wisdom|wings|bird|avian|tawny|perch|wildlife|nocturnal|knowledge|learning|education|hoot|animals
+lucide-lab,pac-man-ghost,arcade|classic|retro|phantom|spooky|halloween|costume|sheet|gaming
+lucide-lab,pac-man,eat|munch|consume|arcade|classic|retro|gaming
+lucide-lab,palmtree-island-sun,desert_island|summer_holiday|vacation|retreat|relax|leisure|tropical|beach|resort|exotic|stranded|castaway|isolated|isolation|nature|travel
+lucide-lab,pancakes,shrove_tuesday|maple_syrup|dripping|fast_food|junk_food|snack|sweet|dish|restaurant|breakfast|brunch|dessert|meal|cookery|cooking|food-beverage
+lucide-lab,peace,harmony|symbol|unity|quiet|calm|rest|tranquility|sprituality|meditation|wellbeing|lifestyle|culture|philosopy|freedom|hippy|hippie|1960s|social|sustainability
+lucide-lab,peach,fruit|nectarine|apricot|plum|damson|cherry|juice|smoothie|jam|conserve|preserve|sweet|snack|meal|lunch|eating|healthy|nutrition|diet|food-beverage
+lucide-lab,pear,fruit|snack|meal|lunch|eating|healthy|nutrition|diet|food-beverage|shapes
+lucide-lab,penguin,pingu|bird|arctic|aquatic|flightless|linux|animals|development
+lucide-lab,pepper-chilli,chili|chile|hot|spicy|spice|flavor|flavour|vegetable|ingredient|cooking|cookery|kitchen|cuisine|culinary|eating|nutrition|diet|food-beverage
+lucide-lab,pie,tart|quiche|patty|flan|strudel|bakery|pastry|homemade|hot|steaming|cookery|oven|food-beverage
+lucide-lab,pig-head,piggy|piglet|hog|boar|swine|snout|trough|greedy|farmyard|sty|mud|meat|pork|bacon|butcher|hoofs|hooved|mammal|animals|food-beverage
+lucide-lab,pig,piggy|piglet|hog|boar|swine|snout|trough|greedy|farmyard|sty|mud|meat|pork|bacon|butcher|hoofs|hooved|mammal|animals|food-beverage
+lucide-lab,pillow,pillowcase|extra|bedding|cushion|headrest|sheets|soft|support|sleep|rest|home|furniture|travel
+lucide-lab,pin-safety-open,unsafe|unsecured|unpinned|unfastened|loose|off|baby|newborn|childproof|children|infant|kids|toddler|mother|mum|family|people|security|account|home|shopping
+lucide-lab,pin-safety,pinned|secured|fastened|fixed|baby|newborn|childproof|children|infant|kids|toddler|mother|mum|family|people|security|account|home|shopping
+lucide-lab,pineapple-ring,segments|chunks|canned_fruit|tinned_fruit|juice|smoothie|cocktail|tropical|sweet|snack|meal|lunch|eating|healthy|nutrition|diet|food-beverage
+lucide-lab,planet,ringed|orbit|saturn|interplanetary|space|galaxy|universe|astro|account|social|shapes|multimedia|weather|emoji|gaming|science
+lucide-lab,pond,marsh|bog|pool|lake|lily_pads|water_lillies|lotus_flowers|leaves|reeds|plants|aquatic|preserve|wildlife|flora|nature|sustainability|maps
+lucide-lab,pound-sterling-circle,finance|financial|markets|exchange|trader|trading|transaction|payment|coin|british|gbp|currency|money|shapes
+lucide-lab,pound-sterling-square,finance|financial|markets|exchange|trader|trading|transaction|payment|british|gbp|toolbar|button|currency|money|shapes
+lucide-lab,pram,baby|newborn|children|infant|kids|toddler|mother|mum|family|buggy|stroller|pushchair|wheels|transportation|people
+lucide-lab,pretzel,bakery|cooking|food|pastry|food-beverage
+lucide-lab,pumpkin,halloween|horror|creepy|spooky|frightening|fruit|spice|food-beverage
+lucide-lab,razor-blade,cut|slice|shaving|shave|trim|style|edge|beard|stubble|mens|grooming|toiletries|bathroom|amenities|home|travel|tools
+lucide-lab,razor,shaving|shaver|trimmer|styler|edger|beard|stubble|mens|grooming|toiletries|bathroom|amenities|home|travel|tools
+lucide-lab,reel-thread,needle|sewing|stitch|embroidery|waeve|woven|fabric|material|cloth|cotton|textile|string|unravel|unroll|home|tools|social
+lucide-lab,refrigerator-freezer,fridge|freezer|cooler|icebox|chiller|cold_storage|appliances|food-beverage|home
+lucide-lab,remove-formatting-square,delete|clear|cancel|normalise|normalize|styling|plain_text|font|typography|slab_serif|writing|writer|prose|content|markdown|markup|x|times|text|tools|design|development
+lucide-lab,rugby,goal|score|posts|kicker|pitch|team|scrum|ruck|ball|sports|gaming
+lucide-lab,russian-ruble-circle,finance|financial|markets|exchange|trader|trading|transaction|payment|coin|rub|currency|money|shapes
+lucide-lab,russian-ruble-square,finance|financial|markets|exchange|trader|trading|transaction|payment|rub|toolbar|button|currency|money|shapes
+lucide-lab,sausage,banger|wiener|wurst|hot_dog|jumbo|chorizo|meat|pork|fast_food|junk_food|snack|dish|restaurant|lunch|meal|savory|savoury|cookery|cooking|grilled|barbecue|barbeque|bbq|food-beverage
+lucide-lab,scarf,wooly|woolly|winter|cold|neckwear|apparel|fashion|knitting|shopping|seasons
+lucide-lab,scissors-hair-comb,hairdresser|grooming|cut|chop|snip|shave|shop|salon|service|maps|tools|people|social
+lucide-lab,shark,pectoral|fishing|infested|waters|warning|danger|alert|jaws|attack|aquatic|encounter|marine_life|tourism|seaside|beach|ocean|depth|deep|animals|travel
+lucide-lab,shave-face,shavers_only|electric|electronics|socket|plug|razor|beard|stubble|mens|grooming|toiletries|bathroom|amenities|home|travel|connectivity|devices|tools
+lucide-lab,shirt-folded-buttons,ironed|pressed|top|henley|store|clothing|clothes|apparel|attire|fashion|formal|dressy|smart|occasion|gathering|dinner|restaurant|waiter|uniform|office_wear|work|thread|cotton|slim_fit|regular|basics|shopping
+lucide-lab,shirt-long-sleeve,jersey|top|store|clothing|clothes|apparel|attire|fashion|thread|cotton|casual|slim_fit|regular|basics|undergarment|layer|shopping
+lucide-lab,shirt-t-ruler,fit|sizes|sizing|measurements|tailored|t-shirt|jersey|store|clothing|clothes|apparel|attire|fashion|casual|slim|regular|shopping
+lucide-lab,shirt-t-v-neck,jersey|t-shirt|top|store|clothing|clothes|apparel|attire|fashion|thread|cotton|casual|slim_fit|regular|basics|undergarment|layer|shopping
+lucide-lab,shirt-t,jersey|t-shirt|top|store|clothing|clothes|apparel|attire|fashion|thread|cotton|casual|slim_fit|regular|basics|shopping
+lucide-lab,shorts-boxer,boxers|briefs|underpants|trunks|underwear|mens|boys|bottoms|store|clothing|clothes|apparel|attire|fashion|thread|cotton|casual|slim_fit|regular|shopping
+lucide-lab,shorts,chino|cargo|denim|beachwear|bottoms|store|clothing|clothes|apparel|attire|fashion|thread|cotton|casual|slim_fit|regular|shopping
+lucide-lab,shovel-dig,spade|gardening|equipment|soil|dirt|dig|excavate|bury|buried|treasure|seaside|summer_holiday|beach|sandcastle|sandbox|toys|kids|children|play|bucket|nature|home|tools|travel|gaming
+lucide-lab,shower,bathroom|amenities|services|steam|clean|wash|home|travel
+lucide-lab,skirt,dress|bottom|womens|girls|female|ladies|store|sexy|classy|clothing|clothes|apparel|attire|outfit|fashion|formal|smart|elegant|nightlife|club|party|occasion|gathering|thread|cotton|shopping
+lucide-lab,skis,skiing|poles|slope|slalom|winter_holiday|vacation|trip|snow|equipment|sports|seasons
+lucide-lab,slot-card-credit,debit|visa|mastercard|bank|atm|cash_machine|cash_point|withdrawal|finance|financial|spending|budget|purchase|payment|cc|shopping|retail|store|mall|consumer|loyalty|points|cashback|transaction|instructions|port|input|insert|slide|push|account|money|devices
+lucide-lab,slot-card,sd|sim|data|format|floppy_disk|save|storage|flash|drive|digital|smartphone|mobile|instructions|port|input|insert|slide|push|multimedia|files|devices|photography
+lucide-lab,slot-disc,data|backup|save|storage|capacity|megabytes|mb|gigabytes|gb|format|digital|read|write|rw|cd|dvd|minidisc|drive|tray|walkman|player|playback|listen|audio|music|instructions|port|input|insert|slide|push|multimedia|devices|files
+lucide-lab,sneaker,trainer|shoe|footwear|store|clothing|clothes|apparel|attire|outfit|fashion|casual|exercise|running|jogging|shopping|sports
+lucide-lab,snowboard,slope|winter_holiday|vacation|trip|equipment|sports|seasons
+lucide-lab,snowman,cold|freeze|frozen|winter|weather|seasons
+lucide-lab,soap-bar,toiletries|amenities|bathroom|shower|clean|wash|lather|bubbles|home|travel
+lucide-lab,soccer-ball,football|futbol|kick|pitch|goal|score|bounce|sports|gaming
+lucide-lab,soccer-pitch,football|field|stadium|ground|surface|grass|futbol|kick|goal|score|bounce|sports|gaming
+lucide-lab,socket-eu,electricity|electronics|outlet|plug|european|two_pin|2_pin|devices|connectivity|travel|tools
+lucide-lab,socket-uk,electricity|electronics|outlet|plug|united_kingdom|great_britain|england|three_pin|3_pin|devices|connectivity|travel|tools
+lucide-lab,socket-usa,electricity|electronics|outlet|plug|united_states|american|two_pin|2_pin|devices|connectivity|travel|tools
+lucide-lab,socks,feet|foot|underwear|undergarment|store|clothing|clothes|apparel|attire|fashion|thread|cotton|shopping
+lucide-lab,spider-web,silk|weave|insects|arachnids|arachnophobia|fear|frightening|horror|halloween|creepy|lair|trap|entangle|nature|animals
+lucide-lab,spider,silk|web|weave|insect|bite|fangs|venom|poison|arachnid|arachnophobia|fear|frightening|horror|halloween|creepy|animals
+lucide-lab,stairs-arch,steps|staircase|stairway|basement|cellar|amenities|buildings
+lucide-lab,stairs-arrow-down-left,steps|stairwell|staircase|basement_access|ground_floor|levels|hotel|accommodation|emergency_exit|safety|signage|directions|diagonal|buildings|travel|home|arrows
+lucide-lab,stairs-arrow-up-right,steps|stairwell|staircase|rooftop_access|top_floor|penthouse_suite|levels|hotel|accommodation|emergency_exit|safety|signage|directions|diagonal|buildings|travel|home|arrows
+lucide-lab,stairs,steps|staircase|stairway|buildings
+lucide-lab,star-north,guide|directions|dark|night|sky|twinkle|sparkle|shine|planet|space|galaxy|universe|astro|navigation|science
+lucide-lab,steering-wheel,driving|driver|racing|racer|motor_sport|formula_one|formula_1|f1|car|vehicle|direction|sports|transportation|gaming
+lucide-lab,strawberry,fruit|berries|smoothie|sweet|snack|meal|lunch|jam|conserve|preserve|eating|healthy|nutrition|diet|food-beverage
+lucide-lab,strikethrough-square,correction|cross_out|redacted|delete|remove|toolbar|formatting|styling|plain_text|rich_text|rtf|typography|font|sans_serif|writing|writer|prose|content|markdown|markup|text|tools|design|development
+lucide-lab,stroller,baby|newborn|children|infant|kids|toddler|mother|mum|family|buggy|pram|pushchair|wheels|transportation|people
+lucide-lab,sunlounger-parasol-sun-palmtree,shade|sunbathing|summer_holiday|vacation|retreat|relax|leisure|tropical|island|beach|resort|exotic|travel
+lucide-lab,sunlounger-parasol-sun,shade|sunbathing|summer_holiday|vacation|retreat|relax|leisure|tropical|island|beach|resort|exotic|travel
+lucide-lab,sunlounger-parasol-table,shade|sunbathing|summer_holiday|vacation|retreat|relax|leisure|tropical|island|beach|resort|exotic|travel
+lucide-lab,surfboard,bodyboard|surfer|summer_holiday|seaside|beach|waves|wind|tidal|tide|ocean|baywatch|lifesaver|lifeguard|coastguard|equipment|emergency|rescue|travel|sports|gaming
+lucide-lab,sushi-2,rice|raw_fish|nori|seaweed|kale|snack|brunch|lunch|dinner|culinary|cuisine|asian|japanese|chinese|oriental|eastern|food-beverage
+lucide-lab,sushi-3,rice|raw_fish|salmon|tuna|snack|brunch|lunch|dinner|culinary|cuisine|asian|japanese|chinese|oriental|eastern|food-beverage
+lucide-lab,sushi-chopsticks,rice|raw_fish|nori|seaweed|kale|snack|brunch|lunch|dinner|culinary|cuisine|asian|japanese|chinese|oriental|eastern|food-beverage|tools
+lucide-lab,sushi,rice|raw_fish|nori|seaweed|kale|snack|brunch|lunch|dinner|culinary|cuisine|asian|japanese|chinese|oriental|eastern|food-beverage
+lucide-lab,sweater,jumper|jersey|pullover|warmth|winter|christmas|xmas|thanksgiving|occasion|gathering|shopping|social|seasons
+lucide-lab,swiss-franc-circle,monetization|marketing|finance|financial|markets|exchange|trader|trading|transaction|payment|coin|chf|currency|money|shapes
+lucide-lab,swiss-franc-square,monetization|marketing|finance|financial|markets|exchange|trader|trading|transaction|payment|chf|toolbar|button|currency|money|shapes
+lucide-lab,tab-arrow-down,tab|save|session|download|layout
+lucide-lab,tab-arrow-up-right,tab|new|open|external|share|layout|social
+lucide-lab,tab-check,ballot|poll|referendum|political|governance|government|democracy|democratic|social|decision|decide|yes|aye|counted|confirm|tick|right|correct|confident|confidence|passed|output|result|log|layout|social|development
+lucide-lab,tab-dot,tab|unsaved|unread|layout
+lucide-lab,tab-plus,tab|new|open|add|restore|layout
+lucide-lab,tab-slash,ballot|vote|poll|referendum|political|governance|government|democracy|democratic|social|decision|decide|spoiled|protest|no_confidence|discounted|disqualify|reject|none|output|log|or|layout|social|development
+lucide-lab,tab-text,ballot|vote|poll|referendum|political|governance|government|democracy|democratic|social|manifesto|pledge|decision|decide|printout|punched_card|fax|paper|leaflet|pamphlet|instructions|office|output|result|log|layout|social|development|text
+lucide-lab,tab-x,ballot|vote|poll|referendum|political|governance|government|democracy|democratic|social|decision|decide|no|reject|spoiled|cross|incorrect|no_confidence|wrong|error|output|result|log|close|remove|cancel|layout|social|development
+lucide-lab,tab,ballot|vote|poll|referendum|political|governance|government|democracy|democratic|social|decision|decide|undecided|unsure|printout|punched_card|fax|paper|office|output|result|log|blank|clear|layout|social|development
+lucide-lab,target-arrow,archery|crossbow|bullseye|hit|range|sports|gaming
+lucide-lab,tennis-ball,court|racquet|racket|net|deuce|love|bounce|sports|gaming
+lucide-lab,tennis-racket,court|racquet|net|deuce|love|bounce|sports|gaming
+lucide-lab,text-square,note|log|document|page|paper|sheet|list|script|code|editor|text|development
+lucide-lab,tie-bow-ribbon,gift|present|party|birthday|box|decoration|neckwear|female|girls|kids|children|toys|doll|accessories|apparel|shopping|social
+lucide-lab,tie-bow,neckwear|gentleman|mens|boys|store|clothing|clothes|accessories|apparel|attire|outfit|fashion|formal|fancy|dressy|smart|classic|refined|elegant|evening|black_tie_event|occasion|tuxedo|wedding|groom|gathering|dinner|restaurant|waiter|uniform|service|serve|shopping|social
+lucide-lab,tie,neckwear|gentleman|mens|boys|store|clothing|clothes|accessories|apparel|attire|outfit|fashion|formal|fancy|dressy|smart|classic|refined|elegant|evening|black_tie_event|occasion|gathering|dinner|restaurant|waiter|uniform|service|serve|shopping|social
+lucide-lab,tire,tyre|wheel|hubcap|rubber|trim|automobile|vehicle|rim|axle|transportation|maps
+lucide-lab,toast,bread|butter|spread|jam|conserve|preserve|marmalade|continental_breakfast|brunch|meal|morning|food-beverage
+lucide-lab,toaster,heat|burnt|bread|breakfast|morning|kitchen|appliances|amenities|electric|food-beverage|home|devices
+lucide-lab,toilet-roll,paper|sheets|lavatory|latrine|loo|bog|poo|privy|bathroom|toiletries|sanitation|clean|hospitality|housekeeping|room_service|amenities|unravel|perforated|dashed|home|travel
+lucide-lab,toolbox-2,tools|trunk|chest|storage|utility|utilities|container|kit|set|tools|home
+lucide-lab,toolbox,tools|trunk|chest|storage|utility|utilities|container|kit|set|tools|home
+lucide-lab,top-crop,brassiere|breasts|boobs|tops|womens|girls|female|ladies|sportswear|exercise|fitness|store|clothing|clothes|apparel|attire|fashion|thread|cotton|casual|shopping|sports
+lucide-lab,towel-folded,towels|flannel|bathroom|toiletries|sanitation|sheets|bedding|clean|fresh|dry|laundry|laundrette|hospitality|housekeeping|room_service|robe|spa_break|health_club|amenities|home|travel
+lucide-lab,towel-rack,flannel|bathroom|toiletries|sanitation|clean|fresh|dry|laundry|laundrette|hospitality|housekeeping|room_service|spa_break|health_club|amenities|hanging|home|travel
+lucide-lab,trees-forest,evergreen|forest|woodland|park|preserve|lumber|logging|outdoors|wildlife|habitat|botanical|flora|nature|seasons|sustainability|maps
+lucide-lab,triangle-stripes,equilateral|delta|shape|pyramid|levels|structure|hierarchy|maslow|needs|wellbeing|social|sustainability|shapes
+lucide-lab,trousers,jeans|denim|corduroy|chinos|cargo|pants|bottoms|store|clothing|clothes|apparel|attire|fashion|thread|cotton|casual|slim_fit|skinny|regular|shopping
+lucide-lab,tuxedo,blazer|buttons|shirt|suit|gentleman|mens|boys|top|store|clothing|clothes|accessories|apparel|attire|outfit|fashion|formal|dressy|dinner|restaurant|waiter|uniform|smart|classic|refined|elegant|evening_wear|black_tie_event|special_occasion|wedding|groom|gathering|thread|tailored|regular|slim_fit|service|serve|shopping|social
+lucide-lab,type-square,toolbar|formatting|styling|plain_text|rich_text|rtf|typography|fonts|font_book|collection|slab_serif|writing|writer|prose|content|markdown|markup|text|tools|design|development
+lucide-lab,ufo,unidentified_flying_object|flying_saucer|spaceship|spacecraft|aliens|extraterrestrial|abduction|beam|crop_circles|area_51|outer_space|lightyears|interstellar_travel|interplanetary|galactic|universe|explore|stars|science|transportation|gaming
+lucide-lab,underline-square,highlight|emphasis|emphasize|toolbar|formatting|styling|plain_text|rich_text|rtf|typography|font|sans_serif|writing|writer|prose|content|markdown|markup|text|tools|design|development
+lucide-lab,unicorn-head,rare|unique|horn|fairy_tale|nursery|story|fictional|imaginary|imagination|animals|gaming
+lucide-lab,venn,venn_diagram|overlap|compare|common|blend_mode|opacity|transparency|design|charts
+lucide-lab,vest,underwear|undergarment|mens|boys|top|waistcoat|sleeveless|sportswear|exercise|fitness|summer_holiday|beachwear|bathing|seaside|store|clothing|clothes|apparel|attire|fashion|thread|cotton|casual|slim_fit|regular|shopping|sports|travel
+lucide-lab,volleyball,beach|sand|net|holiday|vacation|summer|soccer|football|futbol|kick|pitch|goal|score|bounce|leather|wool|yarn|knitting|sewing|thread|embroidery|textile|sports|gaming|travel|home
+lucide-lab,waffle,syrup|fast_food|junk_food|snack|sweet|dish|restaurant|breakfast|brunch|dessert|meal|cookery|cooking|food-beverage
+lucide-lab,wardrobe,closet|cupboard|shelves|drawer|storage|clothes|clothing|apparel|furniture
+lucide-lab,watch-activity,clock|wearable|wrist|strap|face|digital|touchscreen|smart|gadget|technology|mobile|pulse|levels|heart_rate_monitor|vital_signs|vitals|health|exercise|fitness|running|jogging|tracking|action|motion|movement|audio|waveform|sound|time|devices|sports|medical
+lucide-lab,watch-alarm,beep|ring|clock|timer|stopwatch|alarm|alert|wear|wrist|strap|face|mechanical|analog|analogue|round|circle|time|devices
+lucide-lab,watch-bars,clock|wearable|wrist|strap|face|digital|touchscreen|smart|gadget|mobile|levels|chart|statistics|tracking|monitor|activity|exercise|fitness|running|jogging|audio|waveform|sound|vertical|time|devices|sports
+lucide-lab,watch-charging,clock|wearable|wrist|strap|face|digital|touchscreen|smart|gadget|technology|mobile|battery|recharge|power|energy|zap|time|devices
+lucide-lab,watch-check,clock|wearable|wrist|strap|face|digital|touchscreen|smart|gadget|technology|mobile|done|todo|tick|complete|task|time|devices|notifications
+lucide-lab,watch-loader,polar|clock|wearable|wrist|strap|face|digital|touchscreen|smart|gadget|technology|mobile|loading|wait|busy|progress|spinner|spinning|throbber|time|devices
+lucide-lab,watch-music,clock|wearable|wrist|strap|face|digital|touchscreen|smart|gadget|technology|mobile|playback|audio|sound|semiquaver|sixteenth_note|time|devices|multimedia
+lucide-lab,watch-square-alarm,beep|ring|clock|timer|stopwatch|alarm|alert|wearable|wrist|strap|face|digital|touchscreen|smart|gadget|technology|mobile|time|devices
+lucide-lab,watch-square,clock|wearable|wrist|strap|face|digital|touchscreen|smart|gadget|technology|mobile|time|devices
+lucide-lab,watch-text,clock|wearable|wrist|strap|face|digital|touchscreen|smart|gadget|technology|mobile|levels|chart|statistics|tracking|monitor|activity|exercise|fitness|running|jogging|audio|sound|vertical|information|message|read|horizontal|time|devices|sports|social
+lucide-lab,watermelon,snack|meal|lunch|juice|smoothie|eating|healthy|nutrition|diet|fruit_machine|slots|gambling|jackpot|food-beverage|gaming
+lucide-lab,wave-circle,surfing|tidal|tide|water|aqua|seaside|beach|ocean|curl|weather|travel
+lucide-lab,waves-birds,water|aqua|seaside|view|picturesque|tourism|summer_holiday|beach|ocean|flow|maps|travel
+lucide-lab,waves-shark-fin,pectoral|fishing|infested|waters|warning|danger|alert|jaws|attack|aquatic|encounter|marine_life|tourism|seaside|beach|ocean|depth|deep|travel|animals
+lucide-lab,whale-narwhal,narwhale|horn|tusk|fishing|fins|blowhole|blubber|barnacles|plankton|krill|sealife|ocean|aquatic|water|depth|deep|dive|diving|marine|mammal|school|calf|animals
+lucide-lab,whale,porpoise|fishing|fins|blowhole|blubber|barnacles|plankton|krill|sealife|ocean|aquatic|water|depth|deep|dive|diving|marine|mammal|school|calf|docker|containers|environment|animals|development
+lucide-lab,wheel,tire|rim|hub|spoke|cog|pulley|gear|turning|disk|circle|revolve|rotate|spin|roll|cart|bike|wagon|water_wheel|axle|turn|transportation|maps
+lucide-lab,whisk-fork-knife,utensils|kitchenware|cutlery|culinary|cooking|cookery|restaurant|chef|mix|cut|slice|eat|meal|dinner|food-beverage|home|tools
+lucide-lab,whisk,utensils|kitchenware|cutlery|culinary|cooking|cookery|restaurant|chef|mix|food-beverage|home|tools
+lucide-lab,whisks,kitchen|utensils|cutlery|culinary|cooking|cookery|restaurant|chef|mix|food-beverage|tools
+lucide-lab,windmill,sails|turbine|electricity|power|energy|renewables|buildings|maps|sustainability
+lucide-lab,wine-glass-bottle,alcohol|drink|glass|goblet|chalice|vineyard|winery|red|white|rose|dry|sparkling|bar|party|nightclub|nightlife|sommelier|restaurant|dinner|meal|food-beverage|social
+lucide-lab,yarn-ball,wool|thread|needle|sewing|stitch|embroidery|waeve|woven|fabric|material|cloth|cotton|textile|string|unravel|unroll|code|conding|package_manager|npm|home|social|development
+lucide-lab,yin-yang,yinyang|contrast|opposites|interconnected|balance|unity|chinese|culture|philosopy|chaos|calm|rest|tranquility|peace|harmony|energy|aura|sprituality|meditation|wellbeing|lifestyle|symbol|social|accessibility|sustainability
+lucide,a-arrow-down,letter|font size|text|formatting|smaller
+lucide,a-arrow-up,letter|font size|text|formatting|larger|bigger
+lucide,a-large-small,letter|font size|text|formatting
+lucide,accessibility,disability|disabled|dda|wheelchair
+lucide,activity,pulse|action|motion|movement|exercise|fitness|healthcare|heart rate monitor|vital signs|vitals|emergency room|er|intensive care|hospital|defibrillator|earthquake|siesmic|magnitude|richter scale|aftershock|tremor|shockwave|audio|waveform|synthesizer|synthesiser|music
+lucide,air-vent,air conditioner|ac|central air|cooling|climate-control
+lucide,airplay,stream|cast|mirroring|screen|monitor|macos|osx
+lucide,alarm-clock,morning
+lucide,alarm-clock-check,done|todo|tick|complete|task
+lucide,alarm-clock-minus,remove
+lucide,alarm-clock-off,morning|turn-off
+lucide,alarm-clock-plus,add
+lucide,alarm-smoke,fire|alert|warning|detector|carbon monoxide|safety|equipment|amenities
+lucide,album,photo|book
+lucide,align-center-horizontal,items|flex|justify
+lucide,align-center-vertical,items|flex|justify
+lucide,align-end-horizontal,items|bottom|flex|justify
+lucide,align-end-vertical,items|right|flex|justify
+lucide,align-horizontal-distribute-center,items|flex|justify|space|evenly|around
+lucide,align-horizontal-distribute-end,right|items|flex|justify
+lucide,align-horizontal-distribute-start,left|items|flex|justify
+lucide,align-horizontal-justify-center,center|items|flex|justify
+lucide,align-horizontal-justify-end,right|items|flex|justify
+lucide,align-horizontal-justify-start,left|items|flex|justify
+lucide,align-horizontal-space-around,center|items|flex|justify|distribute|between
+lucide,align-horizontal-space-between,around|items|bottom|flex|justify
+lucide,align-start-horizontal,top|items|flex|justify
+lucide,align-start-vertical,left|items|flex|justify
+lucide,align-vertical-distribute-center,items|flex|justify|space|evenly|around
+lucide,align-vertical-distribute-end,bottom|items|flex|justify
+lucide,align-vertical-distribute-start,top|items|flex|justify
+lucide,align-vertical-justify-center,center|items|flex|justify|distribute|between
+lucide,align-vertical-justify-end,bottom|items|flex|justify|distribute|between
+lucide,align-vertical-justify-start,top|items|flex|justify|distribute|between
+lucide,align-vertical-space-around,center|items|flex|justify|distribute|between
+lucide,align-vertical-space-between,center|items|flex|justify|distribute|between
+lucide,ambulance,ambulance|emergency|medical|vehicle|siren|healthcare|transportation|rescue|urgent|first aid
+lucide,ampersand,and|typography|operator|join|concatenate|code|&
+lucide,ampersands,and|operator|then|code|&&
+lucide,amphora,pottery|artifact|artefact|vase|ceramics|clay|archaeology|museum|wine|oil
+lucide,anchor,ship
+lucide,angry,emoji|anger|face|emotion
+lucide,annoyed,emoji|nuisance|face|emotion
+lucide,antenna,signal|connection|connectivity|tv|television|broadcast|live|frequency|tune|scan|channels|aerial|receiver|transmission|transducer|terrestrial|satellite|cable
+lucide,anvil,metal|iron|alloy|materials|heavy|weight|blacksmith|forge|acme
+lucide,aperture,camera|photo|pictures|shutter|exposure
+lucide,app-window,application|menu bar|pane|executable
+lucide,app-window-mac,application|menu bar|pane|preferences|macos|osx|executable
+lucide,apple,fruit|food|healthy|snack|nutrition|fresh|produce|grocery|organic|harvest|vitamin|red|green|juicy|sweet|tart|bite|orchard|plant|core|raw|diet
+lucide,archive,index|backup|box|storage|records
+lucide,archive-restore,unarchive|index|backup|box|storage|records
+lucide,archive-x,index|backup|box|storage|records|junk
+lucide,armchair,sofa|furniture|leisure|lounge|loveseat|couch
+lucide,arrow-big-down,backwards|reverse|direction|south
+lucide,arrow-big-down-dash,backwards|reverse|slow|direction|south|download
+lucide,arrow-big-left,previous|back|direction|west|indicate turn
+lucide,arrow-big-left-dash,previous|back|direction|west|turn|corner
+lucide,arrow-big-right,next|forward|direction|east|indicate turn
+lucide,arrow-big-right-dash,next|forward|direction|east|turn|corner
+lucide,arrow-big-up,shift|keyboard|button|mac|capitalize|capitalise|forward|direction|north
+lucide,arrow-big-up-dash,caps lock|capitals|keyboard|button|mac|forward|direction|north|faster|speed|boost
+lucide,arrow-down,backwards|reverse|direction|south
+lucide,arrow-down-0-1,filter|sort|ascending|descending|increasing|decreasing|rising|falling|numerical
+lucide,arrow-down-1-0,filter|sort|ascending|descending|increasing|decreasing|rising|falling|numerical
+lucide,arrow-down-a-z,filter|sort|ascending|descending|increasing|decreasing|rising|falling|alphabetical
+lucide,arrow-down-from-line,backwards|reverse|direction|south|download|expand|fold|vertical
+lucide,arrow-down-left,direction|south-west|diagonal
+lucide,arrow-down-narrow-wide,filter|sort|ascending|descending|increasing|decreasing|rising|falling
+lucide,arrow-down-right,direction|south-east|diagonal
+lucide,arrow-down-to-dot,direction|south|waypoint|location|step|into
+lucide,arrow-down-to-line,behind|direction|south|download|save|git|version control|pull|collapse|fold|vertical
+lucide,arrow-down-up,bidirectional|two-way|2-way|swap|switch|network|traffic|flow|mobile data|internet|sort|reorder|move
+lucide,arrow-down-wide-narrow,filter|sort|ascending|descending|increasing|decreasing|rising|falling
+lucide,arrow-down-z-a,filter|sort|ascending|descending|increasing|decreasing|rising|falling|alphabetical|reverse
+lucide,arrow-left,previous|back|direction|west|<-
+lucide,arrow-left-from-line,previous|back|direction|west|expand|fold|horizontal|<-|
+lucide,arrow-left-right,bidirectional|two-way|2-way|swap|switch|transaction|reorder|move|<-|->
+lucide,arrow-left-to-line,previous|back|direction|west|collapse|fold|horizontal||<-
+lucide,arrow-right,forward|next|direction|east|->
+lucide,arrow-right-from-line,next|forward|direction|east|export|expand|fold|horizontal||->
+lucide,arrow-right-left,bidirectional|two-way|2-way|swap|switch|transaction|reorder|move|<-|->
+lucide,arrow-right-to-line,next|forward|direction|east|tab|keyboard|mac|indent|collapse|fold|horizontal|->|
+lucide,arrow-up,forward|direction|north
+lucide,arrow-up-0-1,filter|sort|ascending|descending|increasing|decreasing|rising|falling|numerical
+lucide,arrow-up-1-0,filter|sort|ascending|descending|increasing|decreasing|rising|falling|numerical
+lucide,arrow-up-a-z,filter|sort|ascending|descending|increasing|decreasing|rising|falling|alphabetical
+lucide,arrow-up-down,bidirectional|two-way|2-way|swap|switch|network|mobile data|internet|sort|reorder|move
+lucide,arrow-up-from-dot,direction|north|step|out
+lucide,arrow-up-from-line,forward|direction|north|upload|git|version control|push|expand|fold|vertical
+lucide,arrow-up-left,direction|north-west|diagonal
+lucide,arrow-up-narrow-wide,filter|sort|ascending|descending|increasing|decreasing|rising|falling
+lucide,arrow-up-right,direction|north-east|diagonal
+lucide,arrow-up-to-line,forward|direction|north|upload|collapse|fold|vertical
+lucide,arrow-up-wide-narrow,filter|sort|ascending|descending|increasing|decreasing|rising|falling
+lucide,arrow-up-z-a,filter|sort|ascending|descending|increasing|decreasing|rising|falling|alphabetical|reverse
+lucide,arrows-up-from-line,direction|orientation|this way up|vertical|package|box|fragile|postage|shipping
+lucide,asterisk,reference|times|multiply|multiplication|operator|code|glob pattern|wildcard|*
+lucide,astroid,star|math|shape|curve|sharp|four-pointed|hypocycloid|ai|artificial intelligence
+lucide,at-sign,mention|at|email|message|@
+lucide,atom,atomic|nuclear|physics|particle|element|molecule|electricity|energy|chemistry
+lucide,audio-lines,graphic equaliser|sound|noise|listen|hearing|hertz|frequency|wavelength|vibrate|sine|synthesizer|synthesiser|levels|track|music|playback|radio|broadcast|airwaves|voice|vocals|singer|song
+lucide,audio-waveform,sound|noise|listen|hearing|hertz|frequency|wavelength|vibrate|sine|synthesizer|synthesiser|levels|track|music|playback|radio|broadcast|airwaves|voice|vocals|singer|song
+lucide,award,achievement|badge|rosette|prize|winner
+lucide,axe,hatchet|weapon|chop|sharp|equipment|fireman|firefighter|brigade|lumberjack|woodcutter|logger|forestry
+lucide,axis-3d,gizmo|coordinates
+lucide,baby,child|childproof|children
+lucide,backpack,bag|hiking|travel|camping|school|childhood
+lucide,badge,check|verified|unverified
+lucide,badge-alert,check|verified|unverified|security|safety|issue
+lucide,badge-cent,discount|offer|sale|voucher|tag|monetization|marketing|finance|financial|exchange|transaction|payment|cents|dollar|usd|$|¢
+lucide,badge-check,verified|check
+lucide,badge-dollar-sign,discount|offer|sale|voucher|tag|monetization|marketing|finance|financial|exchange|transaction|payment|usd|$
+lucide,badge-euro,discount|offer|sale|voucher|tag|monetization|marketing|finance|financial|exchange|transaction|payment|€
+lucide,badge-indian-rupee,discount|offer|sale|voucher|tag|monetization|marketing|finance|financial|exchange|transaction|payment|inr|₹
+lucide,badge-info,verified|unverified|help
+lucide,badge-japanese-yen,discount|offer|sale|voucher|tag|monetization|marketing|finance|financial|exchange|transaction|payment|jpy|¥
+lucide,badge-minus,verified|unverified|delete|remove|erase
+lucide,badge-percent,verified|unverified|sale|discount|offer|marketing|sticker|price tag
+lucide,badge-plus,verified|unverified|add|create|new
+lucide,badge-pound-sterling,discount|offer|sale|voucher|tag|monetization|marketing|finance|financial|exchange|transaction|payment|british|gbp|£
+lucide,badge-question-mark,verified|unverified|help
+lucide,badge-russian-ruble,discount|offer|sale|voucher|tag|monetization|marketing|finance|financial|exchange|transaction|payment|rub|₽
+lucide,badge-swiss-franc,discount|offer|sale|voucher|tag|monetization|marketing|finance|financial|exchange|transaction|payment|chf|₣
+lucide,badge-turkish-lira,discount|offer|sale|voucher|tag|monetization|marketing|finance|financial|exchange|transaction|payment|try|₺
+lucide,badge-x,verified|unverified|lost|delete|remove
+lucide,baggage-claim,baggage|luggage|travel|cart|trolley|suitcase
+lucide,balloon,party|festival|congratulations|celebration|decoration|colorful|floating|fun|birthday|event|entertainment
+lucide,ban,cancel|no|stop|forbidden|prohibited|error|incorrect|mistake|wrong|failure|circle|slash|null|void
+lucide,banana,fruit|food
+lucide,bandage,plaster|band-aid|first aid|medical|health|wound|injury|care|treatment|healing|protection|emergency|aid|safety|patch
+lucide,banknote,currency|money|payment
+lucide,banknote-arrow-down,bill|currency|money|payment|funds|transaction|cash|finance|withdraw|expense|out|payout|refund|debit|spending|decrease
+lucide,banknote-arrow-up,bill|currency|money|payment|funds|transaction|cash|finance|deposit|earnings|income|in|credit|prepaid|growth|increase
+lucide,banknote-x,bill|currency|money|payment|funds|transaction|cash|finance|error|failed|rejected|canceled|declined|lost|delete|remove
+lucide,barcode,scan|checkout|till|cart|transaction|purchase|buy|product|packaging|retail|consumer
+lucide,barrel,keg|drum|tank|wine|beer|oak|wood|firkin|hogshead|kilderkin|barrique|solera|aging|whiskey|brewery|distillery|winery|vineyard
+lucide,baseline,text|format|color
+lucide,bath,amenities|services|bathroom|shower
+lucide,battery,power|electricity|energy|accumulator|charge
+lucide,battery-charging,power|electricity|energy|accumulator|charge
+lucide,battery-full,power|electricity|energy|accumulator|charge
+lucide,battery-low,power|electricity|energy|accumulator|charge
+lucide,battery-medium,power|electricity|energy|accumulator|charge
+lucide,battery-plus,power|electricity|energy|accumulator|charge|plus|economy|health|add|new|maximum|upgrade|extra|+
+lucide,battery-warning,power|electricity|energy|accumulator|charge|exclamation mark
+lucide,beaker,cup|lab|chemistry|experiment|test
+lucide,bean,legume|soy|food|seed
+lucide,bean-off,soy free|legume|soy|food|seed|allergy|intolerance|diet
+lucide,bed,sleep|hotel|furniture
+lucide,bed-double,sleep|hotel|furniture
+lucide,bed-single,sleep|hotel|furniture
+lucide,beef,food|dish|restaurant|course|meal|meat|bbq|steak
+lucide,beef-off,food|dish|restaurant|course|meal|meat|bbq|steak|vegetarian
+lucide,beer,alcohol|bar|beverage|brewery|drink
+lucide,beer-off,alcohol|bar|beverage|brewery|drink
+lucide,bell,alarm|notification|sound|reminder
+lucide,bell-check,alarm|notification|sound|reminder
+lucide,bell-dot,alarm|notification|sound|reminder|unread
+lucide,bell-electric,fire alarm|flames|smoke|firefighter|fireman|department|brigade|station|emergency|alert|safety|school bell|period break|recess|doorbell|entrance|entry|ring|reception
+lucide,bell-minus,alarm|notification|silent|reminder|delete|remove|erase
+lucide,bell-off,alarm|notification|silent|reminder
+lucide,bell-plus,notification|silent|reminder|add|create|new
+lucide,bell-ring,alarm|notification|sound|reminder
+lucide,between-horizontal-end,insert|add|left|slot|squeeze|space|vertical|grid|table|rows|cells|excel|spreadsheet|accountancy|data|enter|entry|entries|blocks|rectangles|chevron
+lucide,between-horizontal-start,insert|add|right|slot|squeeze|space|vertical|grid|table|rows|cells|excel|spreadsheet|accountancy|data|enter|entry|entries|blocks|rectangles|chevron
+lucide,between-vertical-end,insert|add|top|slot|squeeze|space|vertical|grid|table|columns|cells|data|enter|entry|entries|blocks|rectangles|chevron
+lucide,between-vertical-start,insert|add|bottom|slot|squeeze|space|vertical|grid|table|columns|cells|data|enter|entry|entries|blocks|rectangles|chevron
+lucide,biceps-flexed,arm|muscle|strong|working out|athletic|toned|muscular|forelimb|curled
+lucide,bike,bicycle|transport|trip
+lucide,binary,code|digits|computer|zero|one|boolean
+lucide,binoculars,field glasses|lorgnette|pince-nez|observation|sightseeing|nature|wildlife|birdwatching|scouting|surveillance|search|discovery|monitoring|lookout|viewpoint|travel|tourism|research
+lucide,biohazard,fallout|waste|biology|chemistry|chemical|element
+lucide,bird,peace|freedom|wing|avian|tweet
+lucide,birdhouse,birdhouse|bird|garden|home|house|woodwork
+lucide,bitcoin,cryptocurrency|digital|blockchain|finance|coin|market|decentralized|investment|crypto|currency|money|payment
+lucide,blend,mode|overlay|multiply|screen|opacity|transparency|alpha|filters|lenses|mixed|shades|tints|hues|saturation|brightness|overlap|colors|colours
+lucide,blender,mixer|appliances|food|liquid|juicer|vitamizer|mix|emulsify|smoothie|drink|blade|container|kitchen|milkshake|cocktail|beverage|culinary|shredder|processor|cooking|recipe|chef|restaurant
+lucide,blinds,shades|screen|curtain|shutter|roller blind|window|lighting|household|home
+lucide,blocks,addon|plugin|integration|extension|package|build|stack|toys|kids|children|learning|squares|corner
+lucide,bluetooth,wireless
+lucide,bluetooth-connected,paired
+lucide,bluetooth-off,lost
+lucide,bluetooth-searching,pairing
+lucide,bold,text|strong|format
+lucide,bolt,nut|screw|settings|preferences|configuration|controls|edit|diy|fixed|build|construction|parts
+lucide,bomb,fatal|error|crash|blockbuster|mine|explosion|explode|explosive
+lucide,bone,health|skeleton|skull|death|pets|dog
+lucide,book,reading|paperback|booklet|magazine|leaflet|pamphlet|tome|library|writing|written|writer|author|story|script|fiction|novel|information|knowledge|education|high school|university|college|academy|student|study|learning|homework|research|documentation
+lucide,book-a,dictionary|define|definition|thesaurus|encyclopedia|encyclopaedia|reading|booklet|magazine|leaflet|pamphlet|tome|library|writing|written|writer|author|story|script|fiction|novel|information|knowledge|education|high school|university|college|academy|student|study|learning|homework|research|language|translate|alphabetical|a-z|ordered
+lucide,book-alert,reading|paperback|booklet|magazine|leaflet|pamphlet|tome|library|writing|written|writer|author|story|script|fiction|novel|information|knowledge|education|high school|university|college|academy|student|study|learning|homework|research|documentation|warning|alert|danger|exclamation mark
+lucide,book-audio,audiobook|reading|listening|sound|story|fiction|novel|information|knowledge|education|student|study|learning|research
+lucide,book-check,read|booklet|magazine|leaflet|pamphlet|library|written|authored|published|informed|knowledgeable|educated|schooled|homework|examined|tested|marked|passed|graduated|studied|learned|lesson|researched|documented|revealed|blank|plain language|true|truth|verified|corrected|task|todo|done|completed|finished|ticked
+lucide,book-copy,code|coding|version control|git|repository|clone|fork|duplicate|multiple|books|library|copies|copied|plagiarism|plagiarised|plagiarized|reading list|information|informed|knowledge|knowledgeable|knowledgable|education|high school|university|college|academy|student|study|learning|research|smart|intelligent|intellectual
+lucide,book-dashed,code|coding|version control|git|repository|template|draft|script|screenplay|writing|writer|author|unwritten|unpublished|untold
+lucide,book-down,code|coding|version control|git|repository|pull
+lucide,book-headphones,audiobook|reading|listening|sound|story|fiction|novel|information|knowledge|education|student|study|learning|research
+lucide,book-heart,diary|romance|novel|journal|entry|entries|personal|private|secret|crush|like|love|emotion|feminine|girls|teens|teenager|therapy|theraputic|therapist|planner|organizer|organiser|notes|notepad|stationery|sketchbook|writing|written|reading|favorite|favourite|high school
+lucide,book-image,images|pictures|photos|album|collection|event|magazine|catalog|catalogue|brochure|browse|gallery
+lucide,book-key,code|coding|version control|git|repository|private|public|secret|unlocked|hidden|revealed|knowledge|learning
+lucide,book-lock,code|coding|version control|git|repository|private|secret|hidden|knowledge
+lucide,book-marked,dictionary|reading|booklet|magazine|leaflet|pamphlet|tome|library|writing|written|writer|author|story|script|fiction|novel|information|knowledge|education|high school|university|college|academy|student|study|learning|homework|research|documentation|saved|later|future|reference|index|code|coding|version control|git|repository
+lucide,book-minus,code|coding|version control|git|repository|remove|delete|censor|cancel|forbid|prohibit|ban|uneducated|re-educate|unlearn|downgrade
+lucide,book-open,reading|pages|booklet|magazine|leaflet|pamphlet|library|writing|written|writer|author|story|script|screenplay|fiction|novel|information|knowledge|education|high school|university|college|academy|student|study|learning|homework|research|documentation|revealed|blank|plain
+lucide,book-open-check,read|pages|booklet|magazine|leaflet|pamphlet|library|written|authored|published|informed|knowledgeable|educated|schooled|homework|examined|tested|marked|passed|graduated|studied|learned|lesson|researched|documented|revealed|blank|plain language|true|truth|verified|corrected|task|todo|done|completed|finished|ticked
+lucide,book-open-text,reading|pages|booklet|magazine|leaflet|pamphlet|library|writing|written|writer|author|story|script|fiction|novel|information|knowledge|education|high school|university|college|academy|student|study|learning|homework|research|documentation|revealed
+lucide,book-plus,code|coding|version control|git|repository|remove|delete|read|write|author|publish|inform|graduate|re-educate|study|learn|research|knowledge|improve|upgrade|level up
+lucide,book-search,reading|library|study|education|research|knowledge|discover|browsing|lookup|finding|scanning
+lucide,book-text,reading|booklet|magazine|leaflet|pamphlet|tome|library|writing|written|writer|author|story|script|fiction|novel|information|knowledge|education|high school|university|college|academy|student|study|learning|homework|research|documentation
+lucide,book-type,thesaurus|synonym|reading|booklet|magazine|leaflet|pamphlet|tome|library|writing|written|writer|author|story|script|fiction|novel|information|knowledge|education|high school|university|college|academy|student|study|learning|homework|research|language|translate|typography|fonts|collection
+lucide,book-up,code|coding|version control|git|repository|push
+lucide,book-up-2,code|coding|version control|git|repository|push|force
+lucide,book-user,person|people|family|friends|acquaintances|contacts|details|addresses|phone numbers|directory|listing|networking
+lucide,book-x,code|coding|version control|git|repository|remove|delete|reading|misinformation|disinformation|misinformed|charlatan|sophistry|false|lies|untruth|propaganda|censored|cancelled|forbidden|prohibited|banned|uneducated|re-education|unlearn
+lucide,bookmark,save|favorite|mark|label|attachment|file|stick|pin|read|clip|marker|tag
+lucide,bookmark-check,read|finished|complete|clip|marker|tag|task|todo
+lucide,bookmark-minus,delete|remove
+lucide,bookmark-off,unsaved|unfavorite|unmarked|unlabel|disabled|removed|unpin|unread|unclip|marker|untag
+lucide,bookmark-plus,add
+lucide,bookmark-x,read|clip|marker|tag|cancel|close|delete|remove|clear
+lucide,boom-box,radio|speakers|audio|music|sound|broadcast|live|frequency
+lucide,bot,robot|ai|chat|assistant
+lucide,bot-message-square,robot|ai|chat|assistant
+lucide,bot-off,robot|ai|chat|assistant
+lucide,bottle-wine,alcohol|drink|glass|goblet|chalice|vineyard|winery|red|white|rose|dry|sparkling|bar|party|nightclub|nightlife|sommelier|restaurant|dinner|meal
+lucide,bow-arrow,archer|archery|game|war|weapon
+lucide,box,cube|package|container|storage|geometry|3d|isometric
+lucide,boxes,cubes|packages|parts|group|units|collection|cluster|geometry
+lucide,braces,json|code|token|curly brackets|data|{|}
+lucide,brackets,code|token|array|list|square|[|]
+lucide,brain,medical|mind|mental|intellect|cerebral|consciousness|genius|artificial intelligence|ai|think|thought|insight|intelligent|smart
+lucide,brain-circuit,mind|intellect|artificial intelligence|ai|deep learning|machine learning|computing
+lucide,brain-cog,mind|intellect|artificial intelligence|ai|deep learning|machine learning|computing
+lucide,brick-wall,bricks|mortar|cement|materials|construction|builder|labourer|quantity surveyor|blocks|stone
+lucide,brick-wall-fire,firewall|security|bricks|mortar|cement|materials|construction|builder|labourer|quantity surveyor|blocks|stone|campfire|camping|wilderness|outdoors|lit|warmth|wood|twigs|sticks
+lucide,brick-wall-shield,firewall|security|bricks|mortar|cement|materials|construction|builder|labourer|quantity surveyor|blocks|stone|cybersecurity|secure|safety|protection|guardian|armored|armoured|defense|defence|defender|block|threat|prevention|antivirus|vigilance|vigilant|detection|scan|find|strength|strong|tough|invincible|invincibility|invulnerable|undamaged|audit|admin|verification|crest|bravery|knight|foot soldier|infantry|trooper|pawn|battle|war|military|army|cadet|scout
+lucide,briefcase,work|bag|baggage|folder
+lucide,briefcase-business,work|bag|baggage|folder|portfolio
+lucide,briefcase-conveyor-belt,baggage|luggage|travel|suitcase|conveyor|carousel
+lucide,briefcase-medical,doctor|medicine|first aid
+lucide,bring-to-front,bring|send|move|over|forward|front|overlap|layer|order
+lucide,broccoli,leafy|crisp|fresh|culinary|vegetation|vegetable|food|healthy|vegan|vegetarian|nutrition|diet|plant|green|produce
+lucide,brush,clean|sweep|refactor|remove|draw|paint|color|artist
+lucide,brush-cleaning,cleaning|utensil|housekeeping|tool|sweeping|scrubbing|hygiene|maintenance|household|cleaner|chores|equipment|sanitation|bristles|handle|home care|sanitize|purify|wash|disinfect|sterilize|scrub|polish|decontaminate|wipe|spotless|remove|empty|erase|purge|eliminate
+lucide,bubbles,water|cleaning|soap|bath|hygiene|freshness|wash|foam|cleanliness|shampoo|purity|splash|lightness|airy|relaxation|spa|bubbly|fluid|floating|drop
+lucide,bug,issue|error|defect|testing|troubleshoot|problem|report|debug|code|insect|beetle
+lucide,bug-off,issue|fixed|resolved|testing|debug|code|insect|kill|exterminate|pest control
+lucide,bug-play,issue|testing|debug|reproduce|code|insect
+lucide,building,organisation|organization
+lucide,building-2,business|company|enterprise|skyscraper|organisation|organization|city
+lucide,bus,bus|vehicle|transport|trip
+lucide,bus-front,coach|vehicle|trip|road
+lucide,cable,cord|wire|connector|connection|link|signal|console|computer|equipment|electricity|energy|electronics|recharging|charger|power|supply|disconnected|unplugged|plugs|interface|input|output|audio video|av|rca|scart|tv|television|optical
+lucide,cable-car,ski lift|winter holiday|alpine|resort|mountains
+lucide,cake,birthday|birthdate|celebration|party|surprise|gateaux|dessert|fondant|icing sugar|sweet|baking
+lucide,cake-slice,birthday|birthdate|celebration|party|surprise|gateaux|dessert|candles|wish|fondant|icing sugar|sweet|baking
+lucide,calculator,count|calculating machine
+lucide,calendar,date|month|year|event|birthday|birthdate
+lucide,calendar-1,date|month|year|event|single|singular|once|1|first
+lucide,calendar-arrow-down,date|month|year|event|sort|order|ascending|descending|increasing|decreasing|rising|falling
+lucide,calendar-arrow-up,date|month|year|event|sort|order|ascending|descending|increasing|decreasing|rising|falling
+lucide,calendar-check,date|day|month|year|event|confirm|subscribe|schedule|done|todo|tick|complete|task
+lucide,calendar-check-2,date|day|month|year|event|confirm|subscribe|schedule|done|todo|tick|complete|task
+lucide,calendar-clock,date|day|month|year|event|clock|hour
+lucide,calendar-cog,date|day|month|year|events|settings|gear|cog
+lucide,calendar-days,date|month|year|event
+lucide,calendar-fold,date|month|year|event|birthday|birthdate|ics
+lucide,calendar-heart,date|month|year|event|heart|favourite|subscribe|valentines day
+lucide,calendar-minus,date|day|month|year|event|delete|remove
+lucide,calendar-minus-2,date|day|month|year|event|delete|remove
+lucide,calendar-off,date|day|month|year|event|delete|remove
+lucide,calendar-plus,date|day|month|year|event|add|subscribe|create|new
+lucide,calendar-plus-2,date|day|month|year|event|add|subscribe|create|new
+lucide,calendar-range,date|day|month|year|event|range|period
+lucide,calendar-search,date|day|month|year|events|search|lens
+lucide,calendar-sync,repeat|refresh|reconnect|transfer|backup|date|month|year|event|subscribe|recurring|schedule|reminder|automatic|auto
+lucide,calendar-x,date|day|month|year|event|remove|busy
+lucide,calendar-x-2,date|day|month|year|event|remove
+lucide,calendars,date|month|year|event|dates|months|years|events
+lucide,camera,photography|lens|focus|capture|shot|visual|image|device|equipment|photo|webcam|video
+lucide,camera-off,photo|webcam|video
+lucide,candy,sugar|food|sweet
+lucide,candy-cane,sugar|food|sweet|christmas|xmas
+lucide,candy-off,sugar free|food|sweet|allergy|intolerance|diet
+lucide,cannabis,cannabis|weed|leaf
+lucide,cannabis-off,cannabis|weed|leaf
+lucide,captions,closed captions|subtitles|subhead|transcription|transcribe|dialogue|accessibility
+lucide,captions-off,closed captions|subtitles|subhead|transcription|transcribe|dialogue|accessibility
+lucide,car,vehicle|drive|trip|journey
+lucide,car-front,vehicle|drive|trip|journey
+lucide,car-taxi-front,cab|vehicle|drive|trip|journey
+lucide,caravan,trailer|tow|camping|campsite|mobile home|holiday|nomadic|wilderness|outdoors
+lucide,card-sim,cellphone|smartphone|mobile|network|cellular|service|provider|signal|coverage|disk|data|format|storage|flash|digital|contacts|phone book|contractual|circuit board|chip
+lucide,carrot,vegetable|food|eat
+lucide,case-lower,text|letters|characters|font|typography
+lucide,case-sensitive,text|letters|characters|font|typography
+lucide,case-upper,text|letters|characters|font|typography
+lucide,cassette-tape,audio|music|recording|play
+lucide,cast,chromecast|airplay|screen
+lucide,castle,fortress|stronghold|palace|chateau|building
+lucide,cat,animal|pet|kitten|feline
+lucide,cctv,camera|surveillance|recording|film|videotape|crime|watching
+lucide,cctv-off,camera|surveillance|recording|film|videotape|crime|watching
+lucide,chart-area,statistics|analytics|diagram|graph|area
+lucide,chart-bar,statistics|analytics|diagram|graph
+lucide,chart-bar-big,statistics|analytics|diagram|graph
+lucide,chart-bar-decreasing,statistics|analytics|diagram|graph|trending down
+lucide,chart-bar-increasing,statistics|analytics|diagram|graph|trending up
+lucide,chart-bar-stacked,statistics|analytics|diagram|graph|multivariate|categorical|comparison
+lucide,chart-candlestick,trading|trader|financial|markets|portfolio|assets|prices|value|valuation|commodities|currencies|currency|stocks|exchange|hedge fund|statistics|analytics|diagram|graph
+lucide,chart-column,statistics|analytics|diagram|graph
+lucide,chart-column-big,statistics|analytics|diagram|graph
+lucide,chart-column-decreasing,statistics|analytics|diagram|graph|trending down
+lucide,chart-column-increasing,statistics|analytics|diagram|graph|trending up
+lucide,chart-column-stacked,statistics|analytics|diagram|graph|multivariate|categorical|comparison
+lucide,chart-gantt,diagram|graph|timeline|planning
+lucide,chart-line,statistics|analytics|diagram|graph
+lucide,chart-network,statistics|analytics|diagram|graph|topology|cluster|web|nodes|connections|edges
+lucide,chart-no-axes-column,statistics|analytics|diagram|graph
+lucide,chart-no-axes-column-decreasing,statistics|analytics|diagram|graph|trending down
+lucide,chart-no-axes-column-increasing,statistics|analytics|diagram|graph|trending up
+lucide,chart-no-axes-combined,statistics|analytics|diagram|graph|trending up
+lucide,chart-no-axes-gantt,projects|manage|overview|roadmap|plan|intentions|timeline|deadline|date|event|range|period|productivity|work|agile|code|coding
+lucide,chart-pie,statistics|analytics|diagram|presentation
+lucide,chart-scatter,statistics|analytics|diagram|graph
+lucide,chart-spline,statistics|analytics|diagram|graph|curve|continuous|smooth|polynomial|quadratic|function|interpolation
+lucide,check,done|todo|tick|complete|task
+lucide,check-check,done|received|double|todo|tick|complete|task
+lucide,check-line,done|todo|tick|complete|task
+lucide,chef-hat,cooking|food|kitchen|restaurant
+lucide,cherry,fruit|food
+lucide,chess-bishop,mitre|miter|piece|board game|religion
+lucide,chess-king,ruler|crown|piece|board game|stalemate
+lucide,chess-knight,piece|horse|board game
+lucide,chess-pawn,piece|board game
+lucide,chess-queen,ruler|crown|piece|board game|stalemate
+lucide,chess-rook,castle|piece|board game
+lucide,chevron-down,backwards|reverse|slow|dropdown
+lucide,chevron-first,previous|music
+lucide,chevron-last,skip|next|music
+lucide,chevron-left,back|previous|less than|fewer|menu|<
+lucide,chevron-right,forward|next|more than|greater|menu|code|coding|command line|terminal|prompt|shell|>
+lucide,chevron-up,caret|keyboard|mac|control|ctrl|superscript|exponential|power|ahead|fast|^|dropdown
+lucide,chevrons-down,backwards|reverse|slower
+lucide,chevrons-down-up,collapse|fold|vertical
+lucide,chevrons-left,turn|corner
+lucide,chevrons-left-right,expand|horizontal|unfold
+lucide,chevrons-left-right-ellipsis,internet|network|connection|cable|lan|port|router|switch|hub|modem|web|online|networking|communication|socket|plug|slot|controller|connector|interface|console|signal|data|input|output
+lucide,chevrons-right,turn|corner
+lucide,chevrons-right-left,collapse|fold|horizontal
+lucide,chevrons-up,forward|ahead|faster|speed|boost
+lucide,chevrons-up-down,expand|unfold|vertical
+lucide,church,temple|building
+lucide,cigarette,smoking
+lucide,cigarette-off,smoking|no-smoking
+lucide,circle,off|zero|record|shape
+lucide,circle-alert,warning|alert|danger|exclamation mark
+lucide,circle-arrow-down,backwards|reverse|direction|south|sign|button
+lucide,circle-arrow-left,previous|back|direction|west|sign|turn|button|<-
+lucide,circle-arrow-out-down-left,outwards|direction|south-west|diagonal
+lucide,circle-arrow-out-down-right,outwards|direction|south-east|diagonal
+lucide,circle-arrow-out-up-left,outwards|direction|north-west|diagonal|keyboard|button|escape
+lucide,circle-arrow-out-up-right,outwards|direction|north-east|diagonal
+lucide,circle-arrow-right,next|forward|direction|east|sign|turn|button|->
+lucide,circle-arrow-up,forward|direction|north|sign|button
+lucide,circle-check,done|todo|tick|complete|task
+lucide,circle-check-big,done|todo|tick|complete|task
+lucide,circle-chevron-down,back|menu
+lucide,circle-chevron-left,back|previous|less than|fewer|menu|<
+lucide,circle-chevron-right,back|more than|greater|menu|>
+lucide,circle-chevron-up,caret|ahead|menu|^
+lucide,circle-dashed,pending|dot|progress|issue|draft|code|coding|version control
+lucide,circle-divide,calculate|math|÷|/
+lucide,circle-dollar-sign,monetization|marketing|currency|money|payment
+lucide,circle-dot,pending|dot|progress|issue|code|coding|version control|choices|multiple choice|choose
+lucide,circle-dot-dashed,pending|dot|progress|issue|draft|code|coding|version control
+lucide,circle-ellipsis,ellipsis|et cetera|etc|loader|loading|progress|pending|throbber|menu|options|operator|code|spread|rest|more|further|extra|overflow|dots|…|...
+lucide,circle-equal,calculate|shape|=
+lucide,circle-fading-arrow-up,north|up|upgrade|improve|circle|button
+lucide,circle-fading-plus,stories|social media|instagram|facebook|meta|snapchat|sharing|content
+lucide,circle-gauge,dashboard|dial|meter|speed|pressure|measure|level
+lucide,circle-minus,subtract|remove|decrease|reduce|calculate|line|operator|code|coding|minimum|downgrade|-
+lucide,circle-off,diameter|zero|Ø|nothing|null|void|cancel|ban|no|stop|forbidden|prohibited|error|incorrect|mistake|wrong|failure
+lucide,circle-parking,parking lot|car park
+lucide,circle-parking-off,parking lot|car park|no parking
+lucide,circle-pause,music|audio|stop
+lucide,circle-percent,verified|unverified|sale|discount|offer|marketing|sticker|price tag
+lucide,circle-pile,off|zero|record|shape|circle-pile|circle|pile|stack|layer|structure|form|group|collection|stock|inventory|materials|warehouse
+lucide,circle-play,music|start|run
+lucide,circle-plus,add|new|increase|increment|positive|calculate|crosshair|aim|target|scope|sight|reticule|maximum|upgrade|extra|operator|join|concatenate|code|coding|+
+lucide,circle-pound-sterling,monetization|coin|penny|marketing|currency|money|payment|british|gbp|£
+lucide,circle-power,on|off|device|switch|toggle|binary|boolean|reboot|restart|button|keyboard|troubleshoot
+lucide,circle-question-mark,question mark
+lucide,circle-slash,diameter|zero|Ø|nothing|null|void|cancel|ban|no|stop|forbidden|prohibited|error|incorrect|mistake|wrong|failure|divide|division|or|/
+lucide,circle-slash-2,diameter|zero|ø|nothing|null|void|ban|math|divide|division|half|split|/|average|avg|mean|median|normal
+lucide,circle-small,shape|bullet|gender|genderless
+lucide,circle-star,badge|medal|honour|decoration|order|pin|laurel|trophy|medallion|insignia|bronze|silver|gold
+lucide,circle-stop,media|music
+lucide,circle-user,person|account|contact
+lucide,circle-user-round,person|account|contact
+lucide,circle-x,cancel|close|delete|remove|times|clear|error|incorrect|wrong|mistake|failure|linter|multiply|multiplication
+lucide,circuit-board,computing|electricity|electronics
+lucide,citrus,lemon|orange|grapefruit|fruit
+lucide,clapperboard,movie|film|video|camera|cinema|cut|action|television|tv|show|entertainment
+lucide,clipboard,copy|paste
+lucide,clipboard-check,copied|pasted|done|todo|tick|complete|task
+lucide,clipboard-clock,copy|paste|history|log|clock|time|watch|alarm|hour|minute|reminder|scheduled|deadline|pending|time tracking|timesheets|appointment|logbook
+lucide,clipboard-copy,copy|paste
+lucide,clipboard-list,copy|paste|tasks
+lucide,clipboard-minus,copy|delete|remove|erase|document|medical|report|doctor
+lucide,clipboard-paste,copy|paste
+lucide,clipboard-pen,paste|signature
+lucide,clipboard-pen-line,paste
+lucide,clipboard-plus,copy|paste|add|create|new|document|medical|report|doctor
+lucide,clipboard-type,paste|format|text
+lucide,clipboard-x,copy|paste|discard|remove
+lucide,clock,time|watch|alarm
+lucide,clock-1,time|watch|alarm
+lucide,clock-10,time|watch|alarm
+lucide,clock-11,time|watch|alarm
+lucide,clock-12,time|watch|alarm|noon|midnight
+lucide,clock-2,time|watch|alarm
+lucide,clock-3,time|watch|alarm
+lucide,clock-4,time|watch|alarm
+lucide,clock-5,time|watch|alarm
+lucide,clock-6,time|watch|alarm
+lucide,clock-7,time|watch|alarm
+lucide,clock-8,time|watch|alarm
+lucide,clock-9,time|watch|alarm
+lucide,clock-alert,time|watch|alarm|warning|wrong
+lucide,clock-arrow-down,time|watch|alarm|sort|order|ascending|descending|increasing|decreasing|rising|falling
+lucide,clock-arrow-up,time|watch|alarm|sort|order|ascending|descending|increasing|decreasing|rising|falling
+lucide,clock-check,time|watch|alarm
+lucide,clock-fading,time|watch|alarm
+lucide,clock-plus,time|watch|alarm|add|create|new
+lucide,closed-caption,tv|movie|video|closed captions|subtitles|subhead|transcription|transcribe|dialogue|accessibility
+lucide,cloud,weather
+lucide,cloud-alert,weather|danger|warning|alert|error|sync|network|exclamation
+lucide,cloud-backup,storage|memory|bytes|servers|backup|timemachine|rotate|synchronize|synchronise|refresh|reconnect|transfer|data|security|upload|save|remote|safety
+lucide,cloud-check,sync|network|success|done|completed|saved|persisted
+lucide,cloud-cog,computing|ai|cluster|network
+lucide,cloud-download,import
+lucide,cloud-drizzle,weather|shower
+lucide,cloud-fog,weather|mist
+lucide,cloud-hail,weather|rainfall
+lucide,cloud-lightning,weather|bolt
+lucide,cloud-moon,weather|night
+lucide,cloud-moon-rain,weather|partly|night|rainfall
+lucide,cloud-off,disconnect
+lucide,cloud-rain,weather|rainfall
+lucide,cloud-rain-wind,weather|rainfall
+lucide,cloud-snow,weather|blizzard
+lucide,cloud-sun,weather|partly
+lucide,cloud-sun-rain,weather|partly|rainfall
+lucide,cloud-sync,synchronize|synchronise|refresh|reconnect|transfer|backup|storage|upload|download|connection|network|data
+lucide,cloud-upload,file
+lucide,cloudy,weather|clouds
+lucide,clover,leaf|luck|plant
+lucide,club,shape|suit|playing|cards
+lucide,code,source|programming|html|xml
+lucide,code-xml,source|programming|html|xml
+lucide,coffee,drink|cup|mug|tea|cafe|hot|beverage
+lucide,cog,computing|settings|cog|edit|gear|preferences|controls|configuration|fixed|build|construction|parts
+lucide,coins,money|cash|finance|gamble
+lucide,columns-2,lines|list|queue|preview|panel|parallel|series|split|vertical|horizontal|half|center|middle|even|sidebar|drawer|gutter|fold|reflow|typography|pagination|pages
+lucide,columns-3,lines|list|queue|preview|parallel|series|split|vertical|horizontal|thirds|triple|center|middle|alignment|even|sidebars|drawers|gutters|fold|reflow|typography|pagination|pages
+lucide,columns-3-cog,columns|settings|customize|table|grid|adjust|configuration|panel|layout
+lucide,columns-4,lines|list|queue|preview|parallel|series|split|vertical|horizontal|thirds|triple|center|middle|alignment|even|sidebars|drawers|gutters|fold|reflow|typography|pagination|pages|prison|jail|bars|sentence|police|cops|cell|crime|criminal|justice|law|enforcement|grill
+lucide,combine,cubes|packages|parts|units|collection|cluster|combine|gather|merge
+lucide,command,keyboard|key|mac|cmd|button
+lucide,compass,direction|north|east|south|west|safari|browser
+lucide,component,design|element|group|module|part|symbol
+lucide,computer,pc|chassis|codespaces|github
+lucide,concierge-bell,reception|bell|porter
+lucide,cone,conical|triangle|triangular|geometry|filter|funnel|hopper|spotlight|searchlight
+lucide,construction,roadwork|maintenance|blockade|barricade
+lucide,contact,user|person|family|friend|acquaintance|listing|networking
+lucide,contact-round,user|person|family|friend|acquaintance|listing|networking
+lucide,container,storage|shipping|freight|supply chain|docker|environment|devops|code|coding
+lucide,contrast,display|accessibility
+lucide,cookie,biscuit|privacy|legal|food
+lucide,cooking-pot,pod|cooking|recipe|food|kitchen|chef|restaurant|dinner|lunch|breakfast|meal|eat
+lucide,copy,clone|duplicate|multiple
+lucide,copy-check,clone|duplicate|done|multiple
+lucide,copy-minus,clone|duplicate|remove|delete|collapse|subtract|multiple|-
+lucide,copy-plus,clone|duplicate|add|multiple|expand|+
+lucide,copy-slash,clone|duplicate|cancel|ban|no|stop|forbidden|prohibited|error|multiple|divide|division|split|or|/
+lucide,copy-x,cancel|close|delete|remove|clear|multiple|multiply|multiplication|times
+lucide,copyleft,licence
+lucide,copyright,licence|license
+lucide,corner-down-left,arrow|return
+lucide,corner-down-right,arrow|indent|tab
+lucide,corner-left-down,arrow
+lucide,corner-left-up,arrow
+lucide,corner-right-down,arrow
+lucide,corner-right-up,arrow
+lucide,corner-up-left,arrow
+lucide,corner-up-right,arrow
+lucide,cpu,processor|cores|technology|computer|chip|circuit|memory|ram|specs|gigahertz|ghz
+lucide,creative-commons,licence|license
+lucide,credit-card,bank|purchase|payment|cc
+lucide,croissant,bakery|cooking|food|pastry
+lucide,crop,photo|image
+lucide,cross,healthcare|first aid
+lucide,crosshair,aim|target
+lucide,crown,diadem|tiara|circlet|corona|king|ruler|winner|favourite
+lucide,cuboid,brick|block|box|3d|solid|volume|container|storage|shipping|carton|geometry|rectangular|hexahedron|butter|tofu|soap|cheese|package|parcel|crate
+lucide,cup-soda,beverage|cup|drink|soda|straw|water
+lucide,currency,finance|money
+lucide,cylinder,shape|elliptical|geometry|container|storage|tin|pot
+lucide,dam,electricity|energy|water
+lucide,database,storage|memory|container|tin|pot|bytes|servers
+lucide,database-backup,storage|memory|bytes|servers|backup|timemachine|rotate|arrow|left
+lucide,database-search,storage|memory|container|tin|pot|bytes|servers
+lucide,database-zap,cache busting|storage|memory|bytes|servers|power|crash
+lucide,decimals-arrow-left,numerical|decimal|decrease|less|fewer|precision|rounding|digits|fraction|float|number
+lucide,decimals-arrow-right,numerical|decimal|increase|more|precision|rounding|digits|fraction|float|number
+lucide,delete,backspace|remove
+lucide,dessert,pudding|christmas|xmas|custard|iced bun|icing|fondant|cake|ice cream|gelato|sundae|scoop|dollop|sugar|food|sweet
+lucide,diameter,shape|circle|geometry|trigonometry|width|height|size|calculate|measure
+lucide,diamond,square|rectangle|oblique|rhombus|shape|suit|playing|cards
+lucide,diamond-minus,keyframe|subtract|remove|decrease|reduce|calculator|button|keyboard|line|divider|separator|horizontal rule|hr|html|markup|markdown|---|toolbar|operator|code|coding|minimum|downgrade
+lucide,diamond-percent,verified|unverified|sale|discount|offer|marketing|sticker|price tag
+lucide,diamond-plus,keyframe|add|new|increase|increment|positive|calculate|toolbar|crosshair|aim|target|scope|sight|reticule|maximum|upgrade|extra|+
+lucide,dice-1,dice|random|tabletop|1|board|game
+lucide,dice-2,dice|random|tabletop|2|board|game
+lucide,dice-3,dice|random|tabletop|3|board|game
+lucide,dice-4,dice|random|tabletop|4|board|game
+lucide,dice-5,dice|random|tabletop|5|board|game
+lucide,dice-6,dice|random|tabletop|6|board|game
+lucide,dices,dice|random|tabletop|board|game
+lucide,diff,patch|difference|compare|plus|minus|plus-minus|math
+lucide,disc,album|music|songs|format|cd|dvd|vinyl|sleeve|cover|platinum|compilation|ep|recording|playback|spin|rotate|rpm|dj
+lucide,disc-2,album|music|vinyl|record|cd|dvd|format|dj|spin|rotate|rpm
+lucide,disc-3,album|music|vinyl|record|cd|dvd|format|dj|spin|rotate|rpm
+lucide,disc-album,album|music|songs|format|cd|dvd|vinyl|sleeve|cover|platinum|compilation|ep|recording|playback|spin|rotate|rpm|dj
+lucide,divide,calculate|math|division|operator|code|÷|/
+lucide,dna,gene|gmo|helix|heredity|chromosome|nucleic acid
+lucide,dna-off,gene|gmo free|helix|heredity|chromosome|nucleic acid
+lucide,dock,desktop|applications|launch|home|menu bar|bottom|line|macos|osx
+lucide,dog,animal|pet|puppy|hound|canine
+lucide,dollar-sign,currency|money|payment
+lucide,donut,doughnut|sprinkles|topping|fast food|junk food|snack|treat|sweet|sugar|dessert|hollow|ring
+lucide,door-closed,entrance|entry|exit|ingress|egress|gate|gateway|emergency exit
+lucide,door-closed-locked,entrance|entry|exit|ingress|egress|gate|gateway|emergency exit|lock
+lucide,door-open,entrance|entry|exit|ingress|egress|gate|gateway|emergency exit
+lucide,dot,interpunct|interpoint|middot|step|punctuation|period|full stop|end|finish|final|characters|font|typography|type|center|.
+lucide,download,import|export|save
+lucide,drafting-compass,geometry|trigonometry|radius|diameter|circumference|calculate|measure|arc|curve|draw|sketch
+lucide,drama,drama|masks|theater|theatre|entertainment|show
+lucide,drill,power|bit|head|hole|diy|toolbox|build|construction
+lucide,drone,quadcopter|uav|aerial|flight|flying|technology|airborne|robotics
+lucide,droplet,water|weather|liquid|fluid|wet|moisture|damp|bead|globule
+lucide,droplet-off,water|weather|liquid|fluid|wet|moisture|damp|bead|globule
+lucide,droplets,water|weather|liquid|fluid|wet|moisture|damp|bead|globule
+lucide,drum,drummer|kit|sticks|instrument|beat|bang|bass|backing track|band|play|performance|concert|march|music|audio|sound|noise|loud
+lucide,drumstick,food|chicken|meat
+lucide,dumbbell,barbell|weight|workout|gym
+lucide,ear,hearing|noise|audio|accessibility
+lucide,ear-off,hearing|hard of hearing|hearing loss|deafness|noise|silence|audio|accessibility
+lucide,earth,world|browser|language|translate|globe
+lucide,earth-lock,vpn|private|privacy|network|world|browser|security|encryption|protection|connection
+lucide,eclipse,lunar|solar|crescent moon|sun|earth|day|night|planet|space|mode|dark|light|toggle|switch|color|css|styles|display|accessibility|contrast|brightness|blend|shade
+lucide,egg,bird|chicken|nest|hatch|shell|incubate|soft boiled|hard|breakfast|brunch|morning|easter
+lucide,egg-fried,food|breakfast
+lucide,egg-off,egg free|vegan|hatched|bad egg
+lucide,ellipse,shape|geometry|rounded|smooth|outline|form|boundary|curve|shapes|ellipse|oval
+lucide,ellipsis,et cetera|etc|loader|loading|progress|pending|throbber|menu|options|operator|code|coding|spread|rest|more|further|extra|overflow|dots|…|...
+lucide,ellipsis-vertical,menu|options|spread|more|further|extra|overflow|dots|…|...
+lucide,equal,calculate|math|operator|assignment|code|=
+lucide,equal-approximately,about|calculate|math|operater
+lucide,equal-not,calculate|off|math|operator|code|≠
+lucide,eraser,pencil|drawing|undo|delete|clear|trash|remove
+lucide,ethernet-port,internet|network|connection|cable|lan|port|router|switch|hub|modem|web|online|networking|communication|socket|plug|slot|controller|connector|interface|console|signal|data|input|output
+lucide,euro,currency|money|payment
+lucide,ev-charger,electric|charger|station|vehicle|fast|plug|ev|power|electricity|energy|accumulator|charge
+lucide,expand,scale|fullscreen|maximize|minimize|contract
+lucide,external-link,outbound|open|share
+lucide,eye,view|watch|see|show|expose|reveal|display|visible|visibility|vision|preview|read
+lucide,eye-closed,view|watch|see|hide|conceal|mask|hidden|visibility|vision
+lucide,eye-off,view|watch|see|hide|conceal|mask|hidden|visibility|vision
+lucide,factory,building|business|energy|industry|manufacture|sector
+lucide,fan,air|cooler|ventilation|ventilator|blower
+lucide,fast-forward,music
+lucide,feather,logo
+lucide,fence,picket|panels|woodwork|diy|materials|suburban|garden|property|territory
+lucide,ferris-wheel,big wheel|daisy wheel|observation|attraction|entertainment|amusement park|theme park|funfair
+lucide,file,document
+lucide,file-archive,zip|package|archive
+lucide,file-axis-3d,model|3d|axis|coordinates
+lucide,file-badge,award|achievement|badge|rosette|prize|winner
+lucide,file-box,box|package|model
+lucide,file-braces,code|json|curly braces|curly brackets
+lucide,file-braces-corner,code|json|curly braces|curly brackets
+lucide,file-chart-column,statistics|analytics|diagram|graph|presentation
+lucide,file-chart-column-increasing,statistics|analytics|diagram|graph|presentation|trending up
+lucide,file-chart-line,statistics|analytics|diagram|graph|presentation
+lucide,file-chart-pie,statistics|analytics|diagram|graph|presentation
+lucide,file-check,done|document|todo|tick|complete|task
+lucide,file-check-corner,done|document|todo|tick|complete|task
+lucide,file-clock,history|log|clock
+lucide,file-code,script|document|gist|html|xml|property list|plist
+lucide,file-code-corner,script|document|html|xml|property list|plist
+lucide,file-cog,executable|settings|cog|edit|gear
+lucide,file-diff,diff|patch
+lucide,file-digit,number|document
+lucide,file-down,download|import|export
+lucide,file-exclamation-point,hidden|warning|alert|danger|protected|exclamation mark
+lucide,file-headphone,music|audio|sound|headphones
+lucide,file-heart,heart|favourite|bookmark|quick link
+lucide,file-image,image|graphics|photo|picture
+lucide,file-input,document
+lucide,file-key,key|private|public|security
+lucide,file-lock,lock|password|security
+lucide,file-minus,delete|remove|erase|document
+lucide,file-minus-corner,document
+lucide,file-music,audio|sound|noise|track|digital|recording|playback|piano|keyboard|keys|notes|chord|midi|octave
+lucide,file-output,document
+lucide,file-pen,signature
+lucide,file-pen-line,edit
+lucide,file-play,movie|video|film
+lucide,file-plus,add|create|new|document
+lucide,file-plus-corner,add|create|new|document
+lucide,file-question-mark,readme|help|question
+lucide,file-scan,scan|code|qr-code
+lucide,file-search,lost|document|find|browser|lens
+lucide,file-search-corner,lost|document|find|browser|lens
+lucide,file-signal,audio|music|volume
+lucide,file-sliders,cogged|gear|mechanical|machinery|configuration|controls|preferences|settings|system|admin|edit|executable
+lucide,file-spreadsheet,spreadsheet|sheet|table
+lucide,file-stack,versions|multiple|copy|documents|revisions|version control|history
+lucide,file-symlink,symlink|symbolic|link
+lucide,file-terminal,terminal|bash|script|executable
+lucide,file-text,data|txt|pdf|document
+lucide,file-type,font|text|typography|type
+lucide,file-type-corner,font|text|typography|type
+lucide,file-up,upload|import|export
+lucide,file-user,person|personal information|people|listing|networking|document|contact|cover letter|resume|cv|curriculum vitae|application form
+lucide,file-video-camera,movie|video|film
+lucide,file-volume,audio|music|volume
+lucide,file-x,lost|delete|remove|document
+lucide,file-x-corner,lost|delete|remove|document
+lucide,files,multiple|copy|documents
+lucide,film,movie|video|reel|camera|cinema|entertainment
+lucide,fingerprint-pattern,2fa|authentication|biometric|identity|security
+lucide,fire-extinguisher,flames|smoke|foam|water|spray|hose|firefighter|fireman|department|brigade|station|emergency|suppress|compressed|tank|cylinder|safety|equipment|amenities
+lucide,fish,dish|restaurant|course|meal|seafood|pet|sea|marine
+lucide,fish-off,food|dish|restaurant|course|meal|seafood|animal|pet|sea|marine|allergy|intolerance|diet
+lucide,fish-symbol,dish|restaurant|course|meal|seafood|pet|sea|marine
+lucide,fishing-hook,sea|boating|angler|bait|reel|tackle|marine|outdoors|fish|fishing|hook|sports|travel
+lucide,fishing-rod,fishing|rod|hobby|equipment|reel
+lucide,flag,report|marker|notification|warning|milestone|goal|notice|signal|attention|banner
+lucide,flag-off,unflag|unmark|report|marker|notification|warning|milestone|goal|notice|signal|attention|banner
+lucide,flag-triangle-left,report|timeline|marker|pin
+lucide,flag-triangle-right,report|timeline|marker|pin
+lucide,flame,heat|burn|light|glow|ignite|passion|ember|fire|lit|burning|spark|embers|smoke|firefighter|fireman|department|brigade|station|emergency
+lucide,flame-kindling,campfire|camping|wilderness|outdoors|lit|warmth|wood|twigs|sticks
+lucide,flashlight,torch|light|beam|emergency|safety|tool|bright
+lucide,flashlight-off,torch|light|beam|emergency|safety|tool|bright
+lucide,flask-conical,beaker|erlenmeyer|lab|chemistry|experiment|test
+lucide,flask-conical-off,beaker|erlenmeyer|non toxic|lab|chemistry|experiment|test
+lucide,flask-round,beaker|lab|chemistry|experiment|test
+lucide,flip-horizontal-2,reflect|mirror|alignment|dashed
+lucide,flip-vertical-2,reflect|mirror|alignment|dashed
+lucide,flower,sustainability|nature|plant|spring
+lucide,flower-2,sustainability|nature|plant
+lucide,focus,camera|lens|photo|dashed
+lucide,fold-horizontal,arrow|collapse|fold|vertical|dashed
+lucide,fold-vertical,arrow|collapse|fold|vertical|dashed
+lucide,folder,directory
+lucide,folder-archive,archive|zip|package
+lucide,folder-bookmark,folder|bookmark|file|mark|storage|archive|directory|project|favorite|save|read later
+lucide,folder-check,done|directory|todo|tick|complete|task
+lucide,folder-clock,history|directory|clock
+lucide,folder-closed,directory|closed
+lucide,folder-code,directory|coding|develop|software
+lucide,folder-cog,directory|settings|control|preferences|cog|edit|gear
+lucide,folder-dot,directory|root|project|pinned|active|current|cogged|gear|mechanical|machinery|configuration|controls|preferences|settings|system|admin|edit
+lucide,folder-down,directory|download|import|export
+lucide,folder-git,directory|root|project|git|repo
+lucide,folder-git-2,directory|root|project|git|repo
+lucide,folder-heart,directory|heart|favourite|bookmark|quick link
+lucide,folder-input,directory|import|export
+lucide,folder-kanban,projects|manage|overview|board|tickets|issues|roadmap|plan|intentions|productivity|work|agile|code|coding|directory|project|root
+lucide,folder-key,directory|key|private|security|protected
+lucide,folder-lock,directory|lock|private|security|protected
+lucide,folder-minus,directory|remove|delete
+lucide,folder-open,directory
+lucide,folder-open-dot,directory|root|project|active|current|pinned
+lucide,folder-output,directory|import|export
+lucide,folder-pen,directory|rename
+lucide,folder-plus,directory|add|create|new
+lucide,folder-root,directory|root|project|git|repo
+lucide,folder-search,directory|search|find|lost|browser|lens
+lucide,folder-search-2,directory|search|find|lost|browser|lens
+lucide,folder-symlink,directory|symlink|symbolic|link
+lucide,folder-sync,directory|synchronize|synchronise|refresh|reconnect|transfer|backup
+lucide,folder-tree,directory|tree|browser
+lucide,folder-up,directory|upload|import|export
+lucide,folder-x,directory|remove|delete
+lucide,folders,multiple|copy|directories
+lucide,footprints,steps|walking|foot|feet|trail|shoe
+lucide,forklift,machinery|industrial|warehouse|lifting|storage|equipment|heavy-duty|moving|vehicle|transport|logistics
+lucide,form,document|page|file|layout|paper|stub|formality|structure|template|inputs|design|components
+lucide,forward,send|share|email
+lucide,frame,logo|design|tool
+lucide,frown,emoji|face|bad|sad|emotion
+lucide,fuel,filling-station|gas|petrol|tank
+lucide,fullscreen,expand|zoom|preview|focus|camera|lens|image
+lucide,funnel,filter|hopper
+lucide,funnel-plus,filter|hopper|add|create|new
+lucide,funnel-x,filter|hopper|remove|delete
+lucide,gallery-horizontal,carousel|pictures|images|scroll|swipe|album|portfolio
+lucide,gallery-horizontal-end,carousel|pictures|images|scroll|swipe|album|portfolio|history|versions|backup|time machine
+lucide,gallery-thumbnails,carousel|pictures|images|album|portfolio|preview
+lucide,gallery-vertical,carousel|pictures|images|scroll|swipe|album|portfolio
+lucide,gallery-vertical-end,carousel|pictures|images|scroll|swipe|album|portfolio|history|versions|backup|time machine
+lucide,gamepad,console
+lucide,gamepad-2,console
+lucide,gamepad-directional,direction|arrow|controller|navigation|button|move|pointer|arrowhead|console|game|gaming
+lucide,gauge,dashboard|dial|meter|speed|pressure|measure|level
+lucide,gavel,justice|law|court|judgment|legal|hands|penalty|decision|authority|hammer|mallet
+lucide,gem,diamond|crystal|ruby|jewellery|price|special|present|gift|ring|wedding|proposal|marriage|rubygems
+lucide,georgian-lari,currency|money|payment
+lucide,ghost,pac-man|spooky
+lucide,gift,present|box|birthday|party
+lucide,git-branch,code|version control|vcs|repository
+lucide,git-branch-minus,code|version control|vcs|repository|delete|remove|-
+lucide,git-branch-plus,code|version control|vcs|repository|add|create|+
+lucide,git-commit-horizontal,code|version control|waypoint|stop|station
+lucide,git-commit-vertical,code|version control|waypoint|stop|station
+lucide,git-compare,code|version control|diff
+lucide,git-compare-arrows,code|version control|diff
+lucide,git-fork,code|version control
+lucide,git-graph,code|version control|commit graph|commits|gitlens
+lucide,git-merge,code|version control
+lucide,git-merge-conflict,code|version control|commits|diff|error|conflict
+lucide,git-pull-request,code|version control|open
+lucide,git-pull-request-arrow,code|version control|open
+lucide,git-pull-request-closed,code|version control|rejected|closed|cancelled|x
+lucide,git-pull-request-create,code|version control|open|plus|add|+
+lucide,git-pull-request-create-arrow,code|version control|open|plus|add|+
+lucide,git-pull-request-draft,code|version control|open|draft|dashed
+lucide,glass-water,beverage|drink|glass|water
+lucide,glasses,glasses|spectacles
+lucide,globe,world|browser|language|translate
+lucide,globe-check,world|browser|language|translate|internet|web|check|verified|success|valid|available|online|status
+lucide,globe-lock,vpn|private|privacy|network|world|browser|security|encryption|protection|connection
+lucide,globe-off,globe|earth|planet|disable|mute|off|hide|avoid|world|browser|language|translate|internet|offline|disconnected|network|connection|no connection|network failure|signal off
+lucide,globe-x,globe|internet|offline|disconnected|network|connection|world|no connection|network failure|signal off
+lucide,goal,flag|bullseye
+lucide,gpu,processor|cores|technology|computer|chip|circuit|specs|graphics processing unit|video card|display adapter|gddr|rendering|digital image processing|crypto mining
+lucide,graduation-cap,school|university|learn|study|mortarboard|education|ceremony|academic|hat|diploma|bachlor's|master's|doctorate
+lucide,grape,fruit|wine|food
+lucide,grid-2x2,table|rows|columns|blocks|plot|land|geometry|measure|size|width|height|distance|surface area|square meter|acre|window|skylight
+lucide,grid-2x2-check,table|rows|columns|blocks|plot|land|geometry|measure|data|size|width|height|distance|surface area|square meter|acre
+lucide,grid-2x2-plus,table|rows|columns|blocks|plot|land|geometry|measure|data|size|width|height|distance|surface area|square meter|acre
+lucide,grid-2x2-x,table|rows|columns|data|blocks|plot|land|geometry|measure|size|width|height|distance|surface area|square meter|acre
+lucide,grid-3x2,table|rows|columns|blocks|plot|land|geometry|measure|size|width|height|distance|surface area|square meter|acre|window
+lucide,grid-3x3,table|rows|columns
+lucide,grip,grab|dots|handle|move|drag
+lucide,grip-horizontal,grab|dots|handle|move|drag
+lucide,grip-vertical,grab|dots|handle|move|drag
+lucide,group,cubes|packages|parts|units|collection|cluster|gather|dashed
+lucide,guitar,acoustic|instrument|strings|riff|rock|band|country|concert|performance|play|lead|loud|music|audio|sound|noise
+lucide,ham,food|pork|pig|meat|bone|hock|knuckle|gammon|cured
+lucide,hamburger,burger|cheeseburger|meat|beef|patty|bun|fast food|junk food|takeaway|takeout|snack|dish|restaurant|lunch|meal|savory|savoury|cookery|cooking|grilled|barbecue|barbeque|bbq|lettuce|tomato|relish|pickles|onions|ketchup|mustard|mayonnaise
+lucide,hammer,mallet|nails|diy|toolbox|build|construction
+lucide,hand,wave|move|mouse|grab
+lucide,hand-coins,savings|banking|money|finance|offers|mortgage|payment|received|wage|payroll|allowance|pocket money|handout|pennies
+lucide,hand-fist,clench|strength|power|unity|solidarity|rebellion|victory|triumph|support|fight|combat|brawl
+lucide,hand-grab,hand
+lucide,hand-heart,love|like|emotion
+lucide,hand-helping,agreement|help|proposal|charity|begging|terms
+lucide,hand-metal,rock
+lucide,hand-platter,waiter|waitress|restaurant|table service|served|dinner|dining|meal|course|luxury
+lucide,handbag,bag|baggage|carry|clutch|fashion|luggage|purse|tote|travel
+lucide,handshake,agreement|partnership|deal|business|assistance|cooperation|friendship|union|terms
+lucide,hard-drive,computer|server|memory|data|ssd|disk|hard disk|storage|hardware|backup|media
+lucide,hard-drive-download,computer|server|memory|data|ssd|disk|hard disk|save
+lucide,hard-drive-upload,computer|server|memory|data|ssd|disk|hard disk|save
+lucide,hard-hat,helmet|construction|safety|savety
+lucide,hash,hashtag|number|pound
+lucide,hat-glasses,incognito|disguise|costume|masked|anonymous|anonymity|privacy|private browsing|stealth|hidden|undercover|cloak|invisible|ghost|spy|agent|detective|identity|cap|fedora|spectacles|shades|sunglasses|eyewear
+lucide,haze,mist|fog
+lucide,hd,tv|resolution|video|high definition|720p|1080p
+lucide,hdmi-port,socket|plug|slot|controller|connector|interface|console|signal|audio|video|visual|av|data|input|output
+lucide,heading,h1|html|markup|markdown
+lucide,heading-1,h1|html|markup|markdown
+lucide,heading-2,h2|html|markup|markdown
+lucide,heading-3,h3|html|markup|markdown
+lucide,heading-4,h4|html|markup|markdown
+lucide,heading-5,h5|html|markup|markdown
+lucide,heading-6,h6|html|markup|markdown
+lucide,headphone-off,music|audio|sound|mute|off
+lucide,headphones,music|audio|sound
+lucide,headset,music|audio|sound|gaming|headphones|headset|call|center|phone|telephone|voip|video
+lucide,heart,like|love|emotion|suit|playing|cards
+lucide,heart-crack,heartbreak|sadness|emotion
+lucide,heart-handshake,agreement|charity|help|deal|terms|emotion|together|handshake
+lucide,heart-minus,unlike|unfavorite|remove|delete|damage
+lucide,heart-off,unlike|dislike|hate|emotion
+lucide,heart-plus,plus|like|favorite|add|health|support
+lucide,heart-pulse,heartbeat|pulse|health|medical|blood pressure|cardiac|systole|diastole
+lucide,heart-x,unlike|unfavorite|remove|reject|dismiss|delete|clear
+lucide,heater,heating|warmth|comfort|fire|stove|electric|electronics|amenities
+lucide,helicopter,transport|flying|rotor|aviation|helipad|gear|flyer|technology|helicopter|aircraft|vehicle
+lucide,hexagon,shape|node.js|logo
+lucide,highlighter,mark|text
+lucide,history,time|redo|undo|rewind|timeline|version|time machine|backup|rotate|ccw
+lucide,hop,beer|brewery|drink
+lucide,hop-off,beer|brewery|drink|hop free|allergy|intolerance|diet
+lucide,hospital,infirmary|sanatorium|healthcare|doctor|hospice|clinic|emergency room|ward|building|medical|vet
+lucide,hotel,building|hostel|motel|inn
+lucide,hourglass,timer|time|sandglass
+lucide,house,home|living|building|residence|architecture
+lucide,house-heart,home sweet home|abode|building|residence|healthy living|lifestyle
+lucide,house-plug,home|living|building|residence|architecture|autarky|energy
+lucide,house-plus,home|living|medical|new|addition|building|residence|architecture
+lucide,house-wifi,home|living|building|wifi|connectivity
+lucide,ice-cream-bowl,gelato|food|dessert|dish|restaurant|course|meal
+lucide,ice-cream-cone,gelato|food
+lucide,id-card,card|badge|identity|authentication|secure
+lucide,id-card-lanyard,id-card|id-card-lanyard|identity|employee|gate-pass|badge
+lucide,image,picture|photo
+lucide,image-down,picture|photo|download|save|export
+lucide,image-minus,remove|delete
+lucide,image-off,picture|photo
+lucide,image-play,picture|gif|photo
+lucide,image-plus,add|create|picture
+lucide,image-up,picture|photo|upload|import
+lucide,image-upscale,resize|picture|sharpen|increase
+lucide,images,picture|photo|multiple|copy|gallery|album|collection|slideshow|showcase
+lucide,import,save
+lucide,inbox,email
+lucide,indian-rupee,currency|money|payment
+lucide,infinity,unlimited|forever|loop|math
+lucide,info,about|advice|clue|details|help|hint|indicator|information|knowledge|notice|status|support|tooltip
+lucide,inspection-panel,access|cover|tile|metal|materials|screws
+lucide,italic,oblique|text|format
+lucide,iteration-ccw,arrow|right
+lucide,iteration-cw,arrow|left
+lucide,japanese-yen,currency|money|payment
+lucide,joystick,game|console|control stick
+lucide,kanban,projects|manage|overview|board|tickets|issues|roadmap|plan|intentions|productivity|work|agile|code|coding
+lucide,kayak,kayak|boat|paddle|water|sport|recreation|adventure|outdoors|equipment|lake|ocean
+lucide,key,password|login|authentication|secure|unlock|keychain|key ring|fob
+lucide,key-round,password|login|authentication|secure|unlock
+lucide,key-square,password|login|authentication|secure|unlock|car key
+lucide,keyboard,layout|spell|settings|mouse
+lucide,keyboard-music,music|audio|sound|noise|notes|keys|chord|octave|midi|controller|instrument|electric|signal|digital|studio|production|producer|pianist|piano|play|performance|concert
+lucide,keyboard-off,unkeys|layout|spell|settings|mouse
+lucide,lamp,lighting|household|home|furniture
+lucide,lamp-ceiling,lighting|household|home|furniture
+lucide,lamp-desk,lighting|household|office|desk|home|furniture
+lucide,lamp-floor,lighting|household|floor|home|furniture
+lucide,lamp-wall-down,lighting|household|wall|home|furniture
+lucide,lamp-wall-up,lighting|household|wall|home|furniture
+lucide,land-plot,area|surface|square metres|allotment|parcel|property|plane|acres|measure|distance|isometric|flag|golf course|hole
+lucide,landmark,bank|building|capitol|finance|money|museum|art gallery|hall|institute|pediment|portico|doric|columns|pillars|classical|architecture|government|institution|monument|site|history|historic|library|temple|ancient|structure
+lucide,languages,translate
+lucide,laptop,computer|screen|remote
+lucide,laptop-minimal,computer|screen|remote
+lucide,laptop-minimal-check,computer|screen|remote|success|done|todo|tick|complete|task
+lucide,lasso,select|cursor
+lucide,lasso-select,select|cursor
+lucide,laugh,emoji|face|happy|good|emotion
+lucide,layers,stack|pile|pages|sheets|paperwork|copies|copy
+lucide,layers-2,stack|pile|pages|sheets|paperwork|copies|copy|duplicate|double|shortcuts
+lucide,layers-minus,stack|pile|pages|sheets|paperwork|copies|copy|layers|remove|delete
+lucide,layers-plus,stack|layers|add|new|increase|create|positive|copy|upgrade
+lucide,layout-dashboard,masonry|brick
+lucide,layout-grid,app|home|start
+lucide,layout-list,todo|tasks|items|pending|image|photo
+lucide,layout-panel-left,app|home|start|grid
+lucide,layout-panel-top,window|webpage|block|section|grid|template|structure
+lucide,layout-template,window|webpage|block|section
+lucide,leaf,sustainability|nature|energy|plant|autumn
+lucide,leafy-green,salad|lettuce|vegetable|chard|cabbage|bok choy
+lucide,lectern,pulpit|podium|stand
+lucide,lens-concave,concave|lens|optics|light|magnification|curved|focus|refraction|science|physics|eyeglass|telescope|microscope
+lucide,lens-convex,convex|lens|optics|magnification|focus|light|refraction|physics|eyeglass|telescope|microscope|curved|science
+lucide,library,books|reading|written|authors|stories|fiction|novels|information|knowledge|education|high school|university|college|academy|learning|study|research|collection|vinyl|records|albums|music|package
+lucide,library-big,books|reading|written|authors|stories|fiction|novels|information|knowledge|education|high school|university|college|academy|learning|study|research|collection|vinyl|records|albums|music|package
+lucide,life-buoy,preserver|life belt|lifesaver|help|rescue|ship|ring|raft|inflatable|wheel|donut
+lucide,ligature,text|font|typography|alternates|alternatives
+lucide,lightbulb,idea|bright|lights
+lucide,lightbulb-off,lights
+lucide,line-dot-right-horizontal,code|version control|waypoint|stop|station|last|end
+lucide,line-squiggle,line|snakes|annotate|curve|doodle|stroke|pen|tool|gesture|draw|wave|art|road
+lucide,line-style,line|stroke|style|dashed|border
+lucide,link,chain|url
+lucide,link-2,chain|url
+lucide,link-2-off,unchain|chain
+lucide,list,options
+lucide,list-check,done|check|tick|complete|list|to-do|bom
+lucide,list-checks,todo|done|check|tick|complete|tasks|items|pending
+lucide,list-chevrons-down-up,options|items|collapse|expand|details|disclosure|show|hide|toggle|accordion|more|less|fold|unfold|vertical
+lucide,list-chevrons-up-down,options|items|collapse|expand|details|disclosure|show|hide|toggle|accordion|more|less|fold|unfold|vertical
+lucide,list-collapse,items|collapse|expand|details|disclosure|show|hide|toggle|accordion|more|less|fold|unfold
+lucide,list-end,queue|bottom|end|playlist
+lucide,list-filter,options
+lucide,list-filter-plus,filter|plus|options|add
+lucide,list-indent-decrease,text|tab
+lucide,list-indent-increase,text|tab
+lucide,list-minus,playlist|remove|song|subtract|delete|unqueue
+lucide,list-music,playlist|queue|music|audio|playback
+lucide,list-ordered,number|order|queue
+lucide,list-plus,playlist|add|song|track|new
+lucide,list-restart,reset|refresh|reload|playlist|replay
+lucide,list-start,queue|top|start|next|playlist
+lucide,list-todo,todo|done|check|tick|complete|tasks|items|pending
+lucide,list-tree,tree|browser
+lucide,list-video,playlist|video|playback
+lucide,list-x,playlist|subtract|remove|delete|unqueue
+lucide,loader,loading|wait|busy|progress|spinner|spinning|throbber
+lucide,loader-circle,loading|wait|busy|progress|spinner|spinning|throbber|circle
+lucide,loader-pinwheel,loading|wait|busy|progress|throbber|spinner|spinning|beach ball|frozen|freeze
+lucide,locate,map|gps|location|cross
+lucide,locate-fixed,map|gps|location|cross
+lucide,locate-off,map|gps|location|cross
+lucide,lock,security|password|secure|admin
+lucide,lock-keyhole,security|password|secure|admin
+lucide,lock-keyhole-open,security
+lucide,lock-open,security
+lucide,log-in,sign in|arrow|enter|auth
+lucide,log-out,sign out|arrow|exit|auth
+lucide,logs,options|list|menu|order|queue|tasks|logs
+lucide,lollipop,lolly|candy|sugar|food|sweet|dessert|spiral
+lucide,luggage,baggage|luggage|travel|suitcase
+lucide,magnet,horseshoe|lock|science|snap
+lucide,mail,email|message|letter|unread
+lucide,mail-check,email|message|letter|subscribe|delivered|success|read|done|todo|tick|complete|task
+lucide,mail-minus,email|message|letter|remove|delete
+lucide,mail-open,email|message|letter|read
+lucide,mail-plus,email|message|letter|add|create|new|compose
+lucide,mail-question-mark,email|message|letter|delivery|undelivered
+lucide,mail-search,email|message|letter|search|lens
+lucide,mail-warning,email|message|letter|delivery error|exclamation mark
+lucide,mail-x,email|message|letter|remove|delete
+lucide,mailbox,emails|messages|letters|mailing list|newsletter
+lucide,mails,emails|messages|letters|multiple|mailing list|newsletter|copy
+lucide,map,location|navigation|travel
+lucide,map-minus,location|navigation|travel|drop|delete|remove|erase
+lucide,map-pin,location|waypoint|marker|drop
+lucide,map-pin-check,location|waypoint|marker|drop|done|tick|complete|task|added
+lucide,map-pin-check-inside,location|waypoint|marker|drop|done|tick|complete|task|added
+lucide,map-pin-house,location|waypoint|marker|drop|home|living|building|residence|architecture|address|poi|real estate|property|navigation|destination|geolocation|place|landmark
+lucide,map-pin-minus,location|waypoint|marker|drop|delete|remove|erase
+lucide,map-pin-minus-inside,location|waypoint|marker|drop|delete|remove|erase
+lucide,map-pin-off,location|waypoint|marker|remove
+lucide,map-pin-pen,location|waypoint|marker|drop|edit
+lucide,map-pin-plus,location|waypoint|marker|drop|add|create|new
+lucide,map-pin-plus-inside,location|waypoint|marker|drop|add|create|new
+lucide,map-pin-search,location|navigation|travel|waypoint|marker|drop
+lucide,map-pin-x,location|waypoint|marker|drop|delete|remove|erase
+lucide,map-pin-x-inside,location|waypoint|marker|drop|delete|remove|erase
+lucide,map-pinned,location|waypoint|marker|drop
+lucide,map-plus,location|navigation|travel|new|add|create
+lucide,mars,gender|sex|male|masculine|man|boy
+lucide,mars-stroke,gender|androgyne|transgender
+lucide,martini,cocktail|alcohol|beverage|bar|drink|glass|spirit|party|celebration|mixer
+lucide,maximize,fullscreen|expand|dashed
+lucide,maximize-2,fullscreen|arrows|expand
+lucide,medal,prize|sports|winner|trophy|award|achievement
+lucide,megaphone,advertisement|announcement|attention|alert|loudspeaker|megaphone|notification
+lucide,megaphone-off,advertisement|announcement|attention|alert|loudspeaker|megaphone|notification|disable|silent
+lucide,meh,emoji|face|neutral|emotion
+lucide,memory-stick,ram|random access|technology|computer|chip|circuit|specs|capacity|gigabytes|gb
+lucide,menu,bars|navigation|hamburger|options
+lucide,merge,combine|join|unite
+lucide,message-circle,comment|chat|conversation|dialog|feedback|speech bubble
+lucide,message-circle-check,comment|chat|conversation|dialog|feedback|speech bubble|moderate|check|done|todo|complete
+lucide,message-circle-code,comment|chat|conversation|dialog|feedback|speech bubble|code review|coding
+lucide,message-circle-dashed,comment|chat|conversation|dialog|feedback|speech bubble|draft
+lucide,message-circle-heart,comment|chat|conversation|dialog|feedback|positive|like|love|interest|valentine|dating|date|speech bubble
+lucide,message-circle-more,comment|chat|conversation|dialog|feedback|speech bubble|typing|writing|responding|ellipsis|etc|et cetera|...|…
+lucide,message-circle-off,comment|chat|conversation|dialog|feedback|speech bubble|clear|close|delete|remove|cancel|silence|mute|moderate
+lucide,message-circle-plus,comment|chat|conversation|dialog|feedback|speech bubble|add
+lucide,message-circle-question-mark,comment|chat|conversation|dialog|feedback|speech bubble|help
+lucide,message-circle-reply,comment|chat|conversation|dialog|feedback|speech bubble|reply|response
+lucide,message-circle-warning,comment|chat|conversation|dialog|feedback|speech bubble|report|abuse|offense|alert|danger|caution|protected|exclamation mark
+lucide,message-circle-x,comment|chat|conversation|dialog|feedback|speech bubble|clear|close|delete|remove|cancel|silence|mute|moderate
+lucide,message-square,comment|chat|conversation|dialog|feedback|speech bubble
+lucide,message-square-check,comment|chat|conversation|dialog|feedback|speech bubble|moderate|check|done|todo|complete
+lucide,message-square-code,comment|chat|conversation|dialog|feedback|speech bubble|code review|coding
+lucide,message-square-dashed,comment|chat|conversation|dialog|feedback|speech bubble|draft
+lucide,message-square-diff,comment|chat|conversation|dialog|feedback|speech bubble|add|patch|difference|plus|minus|plus-minus|math|code review|coding|version control|git
+lucide,message-square-dot,unread|unresolved|comment|chat|conversation|dialog|feedback|speech bubble
+lucide,message-square-heart,comment|chat|conversation|dialog|feedback|positive|like|love|interest|valentine|dating|date|speech bubble
+lucide,message-square-lock,comment|chat|conversation|dialog|feedback|speech bubble|secure|encrypted
+lucide,message-square-more,comment|chat|conversation|dialog|feedback|speech bubble|typing|writing|responding|ellipsis|etc|et cetera|...|…
+lucide,message-square-off,comment|chat|conversation|dialog|feedback|speech bubble|clear|close|delete|remove|cancel|silence|mute|moderate
+lucide,message-square-plus,comment|chat|conversation|dialog|feedback|speech bubble|add
+lucide,message-square-quote,comment|chat|conversation|dialog|feedback|speech bubble|blockquote|quotation|indent|reply|response
+lucide,message-square-reply,comment|chat|conversation|dialog|feedback|speech bubble|reply|response
+lucide,message-square-share,comment|chat|conversation|dialog|feedback|speech bubble|network|forward
+lucide,message-square-text,comment|chat|conversation|dialog|feedback|speech bubble
+lucide,message-square-warning,comment|chat|conversation|dialog|feedback|speech bubble|report|abuse|offense|alert|danger|caution|protected|exclamation mark
+lucide,message-square-x,comment|chat|conversation|dialog|feedback|speech bubble|clear|close|delete|remove|cancel|silence|mute|moderate
+lucide,messages-square,comment|chat|conversation|dialog|feedback|speech bubbles|copy|multiple|discussion|interview|debate
+lucide,metronome,metronome|tempo|rhythm|beat|bpm|music|audio|sound|practice|timing|timer|time|pulse|sync|cadence|control|playback|studio|tool
+lucide,mic,record|sound|listen|radio|podcast|microphone
+lucide,mic-off,record|sound|mute|microphone
+lucide,mic-vocal,lyrics|voice|listen|sound|music|radio|podcast|karaoke|singing|microphone
+lucide,microchip,processor|cores|technology|computer|chip|integrated circuit|memory|ram|specs|gpu|gigahertz|ghz
+lucide,microscope,medical|education|science|imaging|research
+lucide,microwave,oven|cooker|toaster oven|bake
+lucide,milestone,signpost|direction|right|east|forward|version control|waypoint
+lucide,milk,lactose|bottle|beverage|drink|water|diet
+lucide,milk-off,lactose free|bottle|beverage|drink|water|allergy|intolerance|diet
+lucide,minimize,exit fullscreen|close|shrink
+lucide,minimize-2,exit fullscreen|arrows|close|shrink
+lucide,minus,subtract|remove|decrease|decrement|reduce|negative|calculate|line|divider|separator|horizontal rule|hr|html|markup|markdown|---|toolbar|operator|code|coding|minimum|downgrade
+lucide,mirror-rectangular,reflection|optics|glass|surface|image|physics|science|bathroom|decor|cosmetic|shiny|periscope|vanity
+lucide,mirror-round,reflection|optics|glass|surface|image|physics|science|bathroom|vanity|makeup|decor|cosmetic|shiny|periscope
+lucide,monitor,tv|screen|display|virtual machine|vm
+lucide,monitor-check,tv|screen|display|desktop|running|active|virtual machine|vm
+lucide,monitor-cloud,virtual machine|virtual desktop|vm|vdi|computing|remote work|monitoring|infrastructure|software as a service|saas|workstation|environment|tv|screen|display
+lucide,monitor-cog,tv|screen|display|virtual machine|vm|executable|settings|cog|edit|gear|configuration|preferences|system|control panel|network|computing
+lucide,monitor-dot,tv|screen|display|desktop|running|active|virtual machine|vm
+lucide,monitor-down,tv|screen|display|desktop|download
+lucide,monitor-off,share
+lucide,monitor-pause,tv|screen|display|desktop|video|movie|film|suspend|hibernate|boot|virtual machine|vm
+lucide,monitor-play,tv|screen|display|desktop|video|movie|film|running|start|boot|virtual machine|vm
+lucide,monitor-smartphone,smartphone|phone|cellphone|device|mobile|desktop|monitor|responsive|screens
+lucide,monitor-speaker,devices|connect|cast
+lucide,monitor-stop,tv|screen|display|desktop|video|movie|film|stop|shutdown|virtual machine|vm
+lucide,monitor-up,tv|screen|display|upload|connect|remote|screen share
+lucide,monitor-x,tv|screen|display|desktop|virtual machine|vm|close|stop|suspend|remove|delete
+lucide,moon,dark|night
+lucide,moon-star,dark|night|star
+lucide,motorbike,moto|motorcycle|transport|vehicle|drive|ride|trip|race|racing|journey|delivery
+lucide,mountain,climb|hike|rock
+lucide,mountain-snow,alpine|climb|snow
+lucide,mouse,device|scroll|click
+lucide,mouse-left,device|scroll|click
+lucide,mouse-off,device|scroll|click|disabled
+lucide,mouse-pointer,click|select
+lucide,mouse-pointer-2,click|select
+lucide,mouse-pointer-2-off,pointer|mouse|cursor|off|disable|arrow|navigation|selection|select|click|no-click|interaction
+lucide,mouse-pointer-ban,wait|busy|loading|blocked|frozen|freeze
+lucide,mouse-pointer-click,click|select
+lucide,mouse-right,device|scroll|click
+lucide,move,arrows
+lucide,move-3d,arrows|axis|gizmo|coordinates|transform|translate
+lucide,move-diagonal,double|arrow
+lucide,move-diagonal-2,double|arrow
+lucide,move-down,arrow|direction|downwards|south
+lucide,move-down-left,arrow|direction
+lucide,move-down-right,arrow|direction
+lucide,move-horizontal,double|arrow
+lucide,move-left,arrow|direction|back|west
+lucide,move-right,arrow|direction|trend flat|east
+lucide,move-up,arrow|direction|upwards|north
+lucide,move-up-left,arrow|direction
+lucide,move-up-right,arrow|direction
+lucide,move-vertical,double|arrow
+lucide,music,note|quaver|eighth note
+lucide,music-2,quaver|eighth note|note
+lucide,music-3,crotchet|minim|quarter note|half note|note
+lucide,music-4,semiquaver|sixteenth note|note
+lucide,navigation,location|travel
+lucide,navigation-2,location|travel
+lucide,navigation-2-off,location|travel
+lucide,navigation-off,location|travel
+lucide,network,tree
+lucide,newspaper,news|feed|home|magazine|article|headline
+lucide,nfc,contactless|payment|near-field communication
+lucide,non-binary,gender|nonbinary|enby
+lucide,notebook,notepad|notes|stationery|sketchbook|moleskine|closure|strap|band|elastic|organizer|organiser|planner|diary|journal|writing|written|writer|reading|high school|university|college|academy|student|study|homework|research
+lucide,notebook-pen,pencil|notepad|notes|noted|stationery|sketchbook|organizer|organiser|planner|diary|journal|writing|write|written|reading|high school|university|college|academy|student|study|research|homework|eraser|rubber
+lucide,notebook-tabs,notepad|notes|people|family|friends|acquaintances|contacts|details|addresses|phone numbers|directory|listing|networking|alphabetical|a-z|organizer|organiser|planner|diary|stationery
+lucide,notebook-text,notepad|notes|pages|paper|stationery|sketchbook|organizer|organiser|planner|diary|journal|writing|write|written|reading|high school|university|college|academy|student|study|research|homework|lines|opened
+lucide,notepad-text,notebook|notes|pages|paper|stationery|sketchbook|organizer|organiser|planner|diary|journal|writing|write|written|reading|high school|university|college|academy|student|study|homework|research|lines|opened
+lucide,notepad-text-dashed,notebook|notes|pages|paper|stationery|diary|journal|writing|write|written|draft|template|lines
+lucide,nut,hazelnut|acorn|food|diet
+lucide,nut-off,hazelnut|acorn|food|allergy|intolerance|diet
+lucide,octagon,stop|shape
+lucide,octagon-alert,warning|alert|danger|exclamation mark
+lucide,octagon-minus,stop|forbidden|subtract|remove|decrease|reduce|-|traffic|halt|restricted
+lucide,octagon-pause,music|audio|stop
+lucide,octagon-x,delete|stop|alert|warning|times|clear|math
+lucide,omega,greek|symbol|mathematics|education|physics|engineering|ohms|electrical resistance|angular frequency|dynamical systems|astronomy|constellations|philosophy
+lucide,option,keyboard|key|mac|alt|button
+lucide,orbit,planet|space|physics|satellites|moons
+lucide,origami,paper|bird
+lucide,package,box|container|storage|sealed|delivery|undelivered|unopened|packed|archive|zip|module
+lucide,package-2,box|container|storage|sealed|packed|unopened|undelivered|archive|zip
+lucide,package-check,confirm|verified|done|todo|tick|complete|task|delivered
+lucide,package-minus,delete|remove
+lucide,package-open,box|container|storage|unpack|unarchive|unzip|opened|delivered
+lucide,package-plus,new|add|create
+lucide,package-search,find|product process|lens
+lucide,package-x,delete|remove
+lucide,paint-bucket,fill|paint|bucket|color|colour
+lucide,paint-roller,brush|color|colour|decoration|diy
+lucide,paintbrush,brush|paintbrush|design|color|colour|decoration|diy
+lucide,paintbrush-vertical,brush|paintbrush|design|color|colour|decoration|diy
+lucide,palette,colors|colours|theme|scheme|paint|watercolor|watercolour|artist
+lucide,panda,animal|wildlife|bear|zoo|bamboo
+lucide,panel-bottom,drawer|dock
+lucide,panel-bottom-close,drawer|dock|hide|chevron|down
+lucide,panel-bottom-dashed,drawer|dock|show|reveal|padding|margin|guide|layout|bleed
+lucide,panel-bottom-open,drawer|dock|show|reveal|chevron|up
+lucide,panel-left,primary|drawer
+lucide,panel-left-close,primary|drawer|hide|chevron|<
+lucide,panel-left-dashed,sidebar|primary|drawer|show|reveal|padding|margin|guide|layout|bleed
+lucide,panel-left-open,primary|drawer|show|reveal|chevron|right|>
+lucide,panel-left-right-dashed,sidebar|primary|drawer|show|reveal|padding|margin|guide|layout|vertical|bleed
+lucide,panel-right,sidebar|secondary|drawer
+lucide,panel-right-close,sidebar|secondary|drawer|hide|chevron|>
+lucide,panel-right-dashed,sidebar|secondary|drawer|show|reveal|padding|margin|guide|layout|bleed
+lucide,panel-right-open,sidebar|secondary|drawer|show|reveal|chevron|left|<
+lucide,panel-top,drawer|browser|webpage
+lucide,panel-top-bottom-dashed,sidebar|primary|drawer|show|reveal|padding|margin|guide|layout|horizontal|bleed
+lucide,panel-top-close,menu bar|drawer|hide|chevron|up
+lucide,panel-top-dashed,menu bar|drawer|show|reveal|padding|margin|guide|layout|bleed
+lucide,panel-top-open,menu bar|drawer|show|reveal|chevron|down
+lucide,panels-left-bottom,drawers|sidebar|primary
+lucide,panels-right-bottom,drawers|sidebar|secondary
+lucide,panels-top-left,menu bar|sidebar|primary|drawers|window|webpage|projects|overview
+lucide,paperclip,attachment|file
+lucide,parasol,umbrella|sunshade|beach|shade|sun|protection|cover|canopy|garden|outdoors|resort|travel|vacation|holiday|summer|apparel|accessory|sunbathing|relax|tropical
+lucide,parentheses,code|token|parenthesis|parens|brackets|parameters|arguments|args|input|call|math|formula|function|(|)
+lucide,parking-meter,driving|car park|pay|sidewalk|pavement
+lucide,party-popper,emoji|congratulations|celebration|party|tada|🎉|🎊|excitement|exciting|excites|confetti
+lucide,pause,music|stop
+lucide,paw-print,pets|vets|veterinarian|domesticated|cat|dog|bear
+lucide,pc-case,computer|chassis
+lucide,pen,pencil|change|create|draw|writer|writing|biro|ink|marker|felt tip|stationery|artist
+lucide,pen-line,pencil|change|create|draw|writer|writing|biro|ink|marker|felt tip|stationery|artist
+lucide,pen-off,disabled|inactive|non-editable|locked|read-only|unmodifiable|frozen|restricted|pencil|change|create|draw|writer|writing|biro|ink|marker|felt tip|stationery|artist
+lucide,pen-tool,vector|drawing|path
+lucide,pencil,rubber|edit|create|draw|sketch|draft|writer|writing|stationery|artist
+lucide,pencil-line,pencil|change|create|draw|sketch|draft|writer|writing|biro|ink|marker|felt tip|stationery|artist
+lucide,pencil-off,disabled|inactive|non-editable|locked|read-only|unmodifiable|frozen|restricted|rubber|edit|create|draw|sketch|draft|writer|writing|stationery|artist
+lucide,pencil-ruler,edit|create|draw|sketch|draft|writer|writing|stationery|artist|measurements|centimeters|cm|millimeters|mm|metre|foot|feet|inches|units|size|length|width|height|dimensions|depth|breadth|extent
+lucide,pentagon,shape
+lucide,percent,percentage|modulo|modulus|remainder|%|sale|discount|offer|marketing
+lucide,person-standing,people|human|accessibility|stick figure
+lucide,philippine-peso,currency|peso|money|php
+lucide,phone,call
+lucide,phone-call,ring
+lucide,phone-forwarded,call
+lucide,phone-incoming,call
+lucide,phone-missed,call
+lucide,phone-off,call|mute
+lucide,phone-outgoing,call
+lucide,pi,constant|code|coding|programming|symbol|trigonometry|geometry|formula
+lucide,piano,music|audio|sound|noise|notes|chord|keys|octave|acoustic|instrument|play|pianist|performance|concert
+lucide,pickaxe,mining|mine|land worker|extraction|labor|construction|progress|advancement|crafting|building|creation
+lucide,picture-in-picture,display|play|video|pop out|always on top|window|inset|multitask
+lucide,picture-in-picture-2,display|play|video|pop out|always on top|window|inset|multitask
+lucide,piggy-bank,money|savings
+lucide,pilcrow,paragraph|mark|paraph|blind|typography|type|text|prose|symbol
+lucide,pilcrow-left,direction|paragraph|mark|paraph|blind|typography|type|text|prose|symbol
+lucide,pilcrow-right,direction|paragraph|mark|paraph|blind|typography|type|text|prose|symbol
+lucide,pill,medicine|medication|drug|prescription|tablet|pharmacy
+lucide,pill-bottle,medicine|medication|prescription|drug|supplement|vitamin|capsule|jar|container|healthcare|pharmaceutical|tablet
+lucide,pin,save|map|lock|fix
+lucide,pin-off,unpin|map|unlock|unfix|unsave|remove
+lucide,pipette,eye dropper|color picker|lab|chemistry
+lucide,pizza,pie|quiche|food
+lucide,plane,plane|trip|airplane
+lucide,plane-landing,arrival|plane|trip|airplane|landing
+lucide,plane-takeoff,departure|plane|trip|airplane|takeoff
+lucide,play,music|audio|video|start|run
+lucide,plug,electricity|energy|electronics|socket|outlet|power|voltage|current|charger
+lucide,plug-2,electricity|energy|socket|outlet
+lucide,plug-zap,electricity|energy|electronics|charge|charging|battery|connect
+lucide,plus,add|new|increase|increment|positive|calculate|toolbar|crosshair|aim|target|scope|sight|reticule|maximum|upgrade|extra|+
+lucide,pocket-knife,swiss army knife|penknife|multi-tool|multitask|blade|cutter|gadget|corkscrew
+lucide,podcast,audio|music|mic|talk|voice|subscribe|subscription|stream
+lucide,pointer,mouse
+lucide,pointer-off,mouse
+lucide,popcorn,cinema|movies|films|salted|sweet|sugar|candy|snack
+lucide,popsicle,ice lolly|ice cream|sweet|food
+lucide,pound-sterling,currency|money|payment
+lucide,power,on|off|device|switch|toggle|binary|boolean|reboot|restart|button|keyboard|troubleshoot
+lucide,power-off,on|off|device|switch
+lucide,presentation,screen|whiteboard|marker pens|markers|blackboard|chalk|easel|school|learning|lesson|office|meeting|project|planning
+lucide,printer,fax|office|device
+lucide,printer-check,fax|office|device|success|printed
+lucide,printer-x,fax|office|device|cross|cancel|remove|error
+lucide,projector,cinema|film|movie|home video|presentation|slideshow|office|meeting|project|planning
+lucide,proportions,screens|sizes|rotate|rotation|adjust|aspect ratio|16:9|widescreen|4:3|resolution|responsive|mobile|desktop|dimensions|monitor|orientation|portrait|landscape
+lucide,puzzle,component|module|part|piece
+lucide,pyramid,prism|triangle|triangular|hierarchy|structure|geometry|ancient|egyptian|landmark|tourism
+lucide,qr-code,barcode|scan|link|url|information|digital
+lucide,quote,quotation
+lucide,rabbit,animal|rodent|pet|pest|bunny|hare|fast|speed|hop
+lucide,radar,scan|sonar|detect|find|locate
+lucide,radiation,radioactive|nuclear|fallout|waste|atomic|physics|particle|element|molecule
+lucide,radical,calculate|formula|math|operator|root|square|symbol
+lucide,radio,signal|broadcast|connectivity|live|frequency
+lucide,radio-off,signal|broadcast|connectivity|live|frequency
+lucide,radio-receiver,device|music|connect
+lucide,radio-tower,signal|broadcast|connectivity|live|frequency
+lucide,radius,shape|circle|geometry|trigonometry|radii|calculate|measure|size
+lucide,rainbow,colors|colours|spectrum|light|prism|arc|clear|sunshine
+lucide,rat,mouse|mice|gerbil|rodent|pet|pest|plague|disease
+lucide,ratio,screens|sizes|rotate|rotation|adjust|aspect ratio|proportions|16:9|widescreen|4:3|resolution|responsive|mobile|desktop|dimensions|monitor|orientation|portrait|landscape
+lucide,receipt,bill|voucher|slip|check|counterfoil|currency|dollar|usd|$
+lucide,receipt-cent,bill|voucher|slip|check|counterfoil|currency|cents|dollar|usd|$|¢
+lucide,receipt-euro,bill|voucher|slip|check|counterfoil|currency|€
+lucide,receipt-indian-rupee,bill|voucher|slip|check|counterfoil|currency|inr|₹
+lucide,receipt-japanese-yen,bill|voucher|slip|check|counterfoil|currency|jpy|¥
+lucide,receipt-pound-sterling,bill|voucher|slip|check|counterfoil|british|currency|gbp|£
+lucide,receipt-russian-ruble,bill|voucher|slip|check|counterfoil|currency|rub|₽
+lucide,receipt-swiss-franc,bill|voucher|slip|check|counterfoil|currency|chf|₣
+lucide,receipt-text,bill|voucher|slip|check|counterfoil|details|small print|terms|conditions|contract
+lucide,receipt-turkish-lira,bill|voucher|slip|check|counterfoil|currency|try|₺
+lucide,rectangle-circle,compose|keyboard|key|button
+lucide,rectangle-ellipsis,login|password|authenticate|2fa|field|fill|ellipsis|et cetera|etc|loader|loading|progress|pending|throbber|menu|options|operator|code|spread|rest|more|further|extra|overflow|dots|…|...
+lucide,rectangle-goggles,vr|virtual|augmented|reality|headset|goggles
+lucide,rectangle-horizontal,rectangle|aspect ratio|16:9|horizontal|shape
+lucide,rectangle-vertical,rectangle|aspect ratio|9:16|vertical|shape
+lucide,recycle,sustainability|salvage|arrows
+lucide,redo,undo|rerun|history
+lucide,redo-2,undo|rerun|history
+lucide,redo-dot,redo|history|step|over|forward
+lucide,refresh-ccw,arrows|rotate|reload|rerun|synchronise|synchronize|circular|cycle
+lucide,refresh-ccw-dot,arrows|rotate|reload|synchronise|synchronize|circular|cycle|issue|code|coding|version control
+lucide,refresh-cw,rotate|reload|rerun|synchronise|synchronize|arrows|circular|cycle
+lucide,refresh-cw-off,rotate|reload|rerun|synchronise|synchronize|arrows|circular|cycle|cancel|no|stop|error|disconnect|ignore
+lucide,refrigerator,frigerator|fridge|freezer|cooler|icebox|chiller|cold storage
+lucide,regex,search|text|code
+lucide,remove-formatting,text|font|typography|format|x|remove|delete|times|clear
+lucide,repeat,loop|arrows
+lucide,repeat-1,replay
+lucide,repeat-2,arrows|retweet|repost|share|repeat|loop
+lucide,repeat-off,loop|arrows|recurring|again
+lucide,replace,search|substitute|swap|change
+lucide,replace-all,search|substitute|swap|change
+lucide,reply,email
+lucide,reply-all,email
+lucide,rewind,music
+lucide,ribbon,awareness|strip|band|tape|strap|cordon
+lucide,road,road|street|highway|route|path|transport|traffic|drive|map
+lucide,rocket,release|boost|launch|space|version
+lucide,rocking-chair,chair|furniture|seat|comfort|relax
+lucide,roller-coaster,attraction|entertainment|amusement park|theme park|funfair
+lucide,rose,roses|thorns|petals|plant|stem|leaves|spring|bloom|blossom|gardening|botanical|flora|florist|bouquet|bunch|gift|date|romance|romantic|valentines day|special occasion
+lucide,rotate-3d,gizmo|transform|orientation|orbit|axis
+lucide,rotate-ccw,arrow|left|counter-clockwise|restart|reload|rerun|refresh|backup|undo|replay|redo|retry|rewind|reverse
+lucide,rotate-ccw-key,password|key|refresh|change
+lucide,rotate-ccw-square,left|counter-clockwise|rotate|image|90|45|degrees|°
+lucide,rotate-cw,arrow|right|clockwise|refresh|reload|rerun|redo
+lucide,rotate-cw-square,right|clockwise|rotate|image|90|45|degrees|°
+lucide,route,path|journey|planner|points|stops|stations
+lucide,route-off,path|journey|planner|points|stops|stations|reset|clear|cancelled|closed|blocked
+lucide,router,computer|server|cloud
+lucide,rows-2,lines|list|queue|preview|panel|paragraphs|parallel|series|split|vertical|horizontal|half|center|middle|even|drawer
+lucide,rows-3,lines|list|queue|preview|paragraphs|parallel|series|split|vertical|horizontal|half|center|middle|even|drawers
+lucide,rows-4,lines|list|queue|preview|paragraphs|parallel|series|split|vertical|horizontal|half|center|middle|even|drawers|grill
+lucide,rss,feed|subscribe|news|updates|notifications|content|blog|articles|broadcast|syndication|reader|channels|posts|publishing|digest|alert|following|inbox|newsletter|weblog|podcast
+lucide,ruler,measurements|centimeters|cm|millimeters|mm|metre|foot|feet|inches|units|size|length|width|height|dimensions|depth|breadth|extent|stationery
+lucide,ruler-dimension-line,measurements|centimeters|cm|millimeters|mm|metre|foot|feet|inches|units|size|length|width|height|dimensions|depth|breadth|extent|stationery
+lucide,russian-ruble,currency|money|payment
+lucide,sailboat,ship|boat|harbor|harbour|dock
+lucide,salad,food|vegetarian|dish|restaurant|course|meal|side|vegetables|health
+lucide,sandwich,food|snack|dish|restaurant|lunch|meal
+lucide,satellite,space station|orbit|transmitter
+lucide,satellite-dish,antenna|receiver|dish aerial|saucer
+lucide,saudi-riyal,currency|money|payment
+lucide,save,floppy disk
+lucide,save-all,floppy disks|copy
+lucide,save-off,floppy disk|unsalvageable
+lucide,scale,balance|legal|license|right|rule|law|justice|weight|measure|compare|judge|fair|ethics|decision
+lucide,scale-3d,gizmo|transform|size|axis
+lucide,scaling,scale|resize|design
+lucide,scan,qr-code|barcode|checkout|augmented reality|ar|target|surveillance|camera|lens|focus|frame|select|box|boundary|bounds|area|square|dashed
+lucide,scan-barcode,checkout|till|cart|transaction|purchase|buy|product|packaging|retail|consumer
+lucide,scan-eye,preview|zoom|expand|fullscreen|gallery|image|camera|watch|surveillance|retina|focus|lens|biometric|identification|authentication|access|login
+lucide,scan-face,face|biometric|identification|authentication|2fa|access|login|dashed
+lucide,scan-heart,health|heart rate|pulse|monitoring|healthiness|screening|dashed
+lucide,scan-line,checkout|till|cart|transaction|purchase|buy|product|packaging|retail|consumer|qr-code|dashed
+lucide,scan-qr-code,barcode|scan|qrcode|url|information|digital|scanner
+lucide,scan-search,preview|zoom|expand|fullscreen|gallery|image|focus|lens
+lucide,scan-text,recognition|read|translate|copy|lines
+lucide,school,building|education|childhood|university|learning|campus|scholar|student|lecture|degree|course|academia|study|knowledge|classroom|research|diploma|graduation|professor|tutorial|homework|assignment|exam
+lucide,scissors,cut|snip|chop|stationery|crafts
+lucide,scissors-line-dashed,cut here|along|snip|chop|stationery|crafts|instructions|diagram
+lucide,scooter,vehicle|drive|trip|journey|transport|electric|ride|urban|commute|speed
+lucide,screen-share,host|desktop|monitor
+lucide,screen-share-off,desktop|disconnect|monitor
+lucide,scroll,paper|log|scripture|document|notes|parchment|list|long|script|story|code|coding
+lucide,scroll-text,paper|log|scripture|document|notes|parchment|list|long|script|story|code|coding
+lucide,search,find|scan|magnifier|magnifying glass|lens
+lucide,search-alert,find|scan|magnifier|magnifying glass|stop|warning|alert|error|anomaly|lens
+lucide,search-check,find|scan|magnifier|magnifying glass|found|correct|complete|tick|lens
+lucide,search-code,find|scan|magnifier|magnifying glass|grep|chevrons|<>|lens
+lucide,search-slash,find|scan|magnifier|magnifying glass|stop|clear|cancel|abort|/|lens
+lucide,search-x,find|scan|magnifier|magnifying glass|stop|clear|cancel|abort|lens
+lucide,section,mark|typography|punctuation|legal|type|text|prose|symbol
+lucide,send,email|message|mail|paper airplane|paper aeroplane|submit
+lucide,send-horizontal,email|message|mail|paper airplane|paper aeroplane|submit
+lucide,send-to-back,bring|send|move|under|back|backwards|overlap|layer|order
+lucide,separator-horizontal,move|split
+lucide,separator-vertical,move|split
+lucide,server,cloud|storage
+lucide,server-cog,cloud|storage|computing|cog|gear
+lucide,server-crash,cloud|storage|problem|error
+lucide,server-off,cloud|storage
+lucide,settings,cog|edit|gear|preferences
+lucide,settings-2,cog|edit|gear|preferences|slider
+lucide,shapes,triangle|equilateral|square|circle|classification|different|collection|toy|blocks|learning
+lucide,share,network|connections
+lucide,share-2,network|connections
+lucide,sheet,spreadsheets|table|excel
+lucide,shell,beach|sand|holiday|sealife|fossil|ammonite|biology|ocean|terminal|command line|session|bash|zsh|roll|wrap|chewing gum|bubble gum|sweet|sugar|hosepipe|carpet|string|spiral|spinner|hypnotise|hypnosis
+lucide,shelving-unit,ledge|rack|storage|inventory|furniture|sill|shelves|shelf|organize|display|store|arrange|unit|cabinet|fixture|retail|warehouse
+lucide,shield,cybersecurity|secure|safety|protection|guardian|armored|armoured|defense|defence|defender|block|threat|prevention|antivirus|vigilance|vigilant|detection|scan|find|strength|strong|tough|invincible|invincibility|invulnerable|undamaged|audit|admin|verification|crest|bravery|knight|foot soldier|infantry|trooper|pawn|battle|war|military|army|cadet|scout
+lucide,shield-alert,unshielded|cybersecurity|insecure|unsecured|safety|unsafe|protection|unprotected|guardian|unguarded|unarmored|unarmoured|defenseless|defenceless|undefended|defender|blocked|stopped|intercepted|interception|saved|thwarted|threat|prevention|unprevented|antivirus|vigilance|vigilant|detection|detected|scanned|found|exploit|vulnerability|vulnerable|weakness|infection|infected|comprimised|data leak|audited|admin|verification|unverified|uncertified|warning|emergency|attention|urgent|alarm|crest|bravery|strength|tough|attacked|damaged|injured|hit|expired|disabled|inactive|error|exclamation mark|!
+lucide,shield-ban,unshielded|cybersecurity|insecure|unsecured|safety|unsafe|protection|unprotected|guardian|unguarded|unarmored|unarmoured|defenseless|defenceless|undefended|defender|blocked|stopped|intercepted|interception|saved|thwarted|threat|prevention|unprevented|antivirus|vigilance|vigilant|detection|detected|scanned|found|exploit|vulnerability|vulnerable|weakness|infection|infected|comprimised|data leak|audited|admin|verification|unverified|uncertified|cancel|error|crest|bravery|attacked|damaged|injured|hit|expired|eliminated|disabled|inactive|/
+lucide,shield-check,cybersecurity|secured|safety|protection|protected|guardian|guarded|armored|armoured|defense|defence|defended|blocked|threat|prevention|prevented|antivirus|vigilance|vigilant|active|activated|enabled|detection|scanned|found|strength|strong|tough|invincible|invincibility|invulnerable|undamaged|audited|admin|verification|verified|certification|certified|tested|passed|qualified|cleared|cleaned|disinfected|uninfected|task|completed|todo|done|ticked|checked|crest|bravery
+lucide,shield-cog,cybersecurity|secure|safety|protection|guardian|armored|armoured|defense|defence|defender|block|threat|prevention|antivirus|vigilance|vigilant|detection|scan|find|strength|strong|tough|invincible|invincibility|invulnerable|undamaged|audit|admin|verification|crest|bravery|knight|foot soldier|infantry|trooper|pawn|battle|war|military|army|cadet|scout
+lucide,shield-cog-corner,cybersecurity|secure|safety|protection|guardian|armored|armoured|defense|defence|defender|block|threat|prevention|antivirus|vigilance|vigilant|detection|scan|find|strength|strong|tough|invincible|invincibility|invulnerable|undamaged|audit|admin|verification|crest|shieldcog|bravery|knight|foot soldier|infantry|trooper|pawn|battle|war|military|army|cadet|scout
+lucide,shield-ellipsis,cybersecurity|securing|protecting|guarding|armoring|armouring|defending|blocking|preventing|antivirus|detecting|scanning|finding|auditing|admin|verifying|crest|upgrading|loader|loading|throbber|progress|dots|more|etc|...|…
+lucide,shield-half,cybersecurity|secure|safety|protection|guardian|armored|armoured|defense|defence|defender|block|threat|prevention|antivirus|vigilance|vigilant|detection|scan|strength|strong|tough|invincible|invincibility|invulnerable|undamaged|audit|admin|verification|crest|logo|sigil|flag|team|faction|fraternity|university|college|academy|school|education|uniform|bravery|knight|foot soldier|infantry|trooper|pawn|battle|war|military|ranking|army|cadet|scout
+lucide,shield-minus,unshield|cybersecurity|unsecure|unguard|unblock|antivirus|clean|clear|disinfect|patch|fix|stop|cancel|remove|relax|admin|crest|bravery|weakened|damaged|hit|unarm|disable|deactivate|decommission|downgraded|minimum|-
+lucide,shield-off,unshielded|cybersecurity|insecure|unsecured|safety|unsafe|protection|unprotected|guardian|unguarded|unarmored|unarmoured|defenseless|defenceless|undefended|defender|interception|threat|prevention|unprevented|antivirus|detection|undetected|exploit|vulnerability|vulnerable|weakness|infected|infection|comprimised|data leak|unaudited|admin|verification|unverified|inactive|cancelled|error|crest|bravery|damaged|injured|hit|expired|eliminated
+lucide,shield-plus,cybersecurity|secure|safety|protection|guardian|armored|armoured|defense|defence|defender|block|threat|prevention|antivirus|vigilance|vigilant|detection|scan|strength|strong|tough|invincible|invincibility|invulnerable|undamaged|extra|added|professional|enterprise|full|maximum|upgraded|ultra|activate|enable|audit|admin|verification|crest|medic|+
+lucide,shield-question-mark,unshielded|cybersecurity|insecure|unsecured|safety|unsafe|protection|unprotected|guardian|unguarded|unarmored|unarmoured|defenseless|defenceless|undefended|defender|threat|prevention|unprevented|antivirus|vigilance|vigilant|detection|undetected|scan|find|exploit|vulnerability|vulnerable|weakness|infection|comprimised|data leak|audit|admin|verification|unverified|uncertified|uncertain|unknown|inactive|crest|question mark|?
+lucide,shield-user,shield|user|admin|protection|protected|safety|guard
+lucide,shield-x,unshielded|cybersecurity|insecure|unsecured|safety|unsafe|protection|unprotected|guardian|unguarded|unarmored|unarmoured|defenseless|defenceless|undefended|defender|blocked|stopped|intercepted|interception|saved|thwarted|threat|prevention|prevented|antivirus|vigilance|vigilant|detection|detected|scanned|found|exploit|vulnerability|vulnerable|weakness|infection|infected|comprimised|data leak|audited|admin|verification|unverified|inactive|cancel|error|wrong|false|crest|bravery|attacked|damaged|injured|hit|dead|deceased|expired|eliminated|exterminated
+lucide,ship,boat|knots|nautical mile|maritime|sailing|yacht|cruise|ocean liner|tanker|vessel|navy|trip|releases
+lucide,ship-wheel,steering|rudder|boat|knots|nautical mile|maritime|sailing|yacht|cruise|ocean liner|tanker|vessel|navy|trip
+lucide,shirt,t-shirt|shopping|store|clothing|clothes
+lucide,shopping-bag,ecommerce|cart|purchase|store
+lucide,shopping-basket,cart|e-commerce|store|purchase|products|items|ingredients
+lucide,shopping-cart,trolley|cart|basket|e-commerce|store|purchase|products|items|ingredients
+lucide,shovel,dig|spade|treasure
+lucide,shower-head,shower|bath|bathroom|amenities|services
+lucide,shredder,file|paper|tear|cut|delete|destroy|remove|erase|document|destruction|secure|security|confidential|data|trash|dispose|disposal|information|waste|permanent
+lucide,shrimp,seafood|shellfish|crustacean|prawn|scallop|whelk|arthropod|littleneck|quahog|cherrystone
+lucide,shrink,scale|fullscreen
+lucide,shrub,forest|undergrowth|park|nature
+lucide,shuffle,music|random|reorder
+lucide,sigma,sum|calculate|formula|math|enumeration|enumerate
+lucide,signal,connection|wireless|gsm|phone|2g|3g|4g|5g
+lucide,signal-high,connection|wireless|gsm|phone|2g|3g|4g|5g
+lucide,signal-low,connection|wireless|gsm|phone|2g|3g|4g|5g
+lucide,signal-medium,connection|wireless|gsm|phone|2g|3g|4g|5g
+lucide,signal-zero,connection|wireless|gsm|phone|2g|3g|4g|5g|lost
+lucide,signature,text|format|input|contract|autograph|handwriting|sign|cursive|ink|scribble|authorize|personal|agreement|legal|document|identity|authentic|approval|verification|unique
+lucide,signpost,navigation|direction|arrow|wayfinding|guide|location|pointer|route|indicator|marker|bidirectional|left|right|east|west
+lucide,signpost-big,bidirectional|left|right|east|west
+lucide,siren,police|ambulance|emergency|security|alert|alarm|light
+lucide,skip-back,arrow|previous|music
+lucide,skip-forward,arrow|skip|next|music
+lucide,skull,death|danger|bone
+lucide,slash,divide|division|or|/
+lucide,slice,cutter|scalpel|knife
+lucide,sliders-horizontal,settings|filters|controls
+lucide,sliders-vertical,settings|controls
+lucide,smartphone,phone|cellphone|device|screen
+lucide,smartphone-charging,phone|cellphone|device|power|screen
+lucide,smartphone-nfc,contactless|payment|near-field communication|screen
+lucide,smile,emoji|face|happy|good|emotion
+lucide,smile-plus,emoji|face|happy|good|emotion|react|reaction|add
+lucide,snail,animal|insect|slow|speed|delicacy|spiral
+lucide,snowflake,cold|weather|freeze|snow|winter
+lucide,soap-dispenser-droplet,wash|bath|water|liquid|fluid|wet|moisture|damp|bead|globule
+lucide,sofa,armchair|furniture|leisure|lounge|loveseat|couch
+lucide,solar-panel,solar panel|solar|panel|sun|energy|electricity|light
+lucide,soup,food|dish|restaurant|course|meal|bowl|starter
+lucide,space,text|selection|letters|characters|font|typography
+lucide,spade,shape|suit|playing|cards
+lucide,sparkle,star|effect|filter|night|magic|shiny|glitter|twinkle|celebration
+lucide,sparkles,stars|effect|filter|night|magic
+lucide,speaker,sound|audio|music|tweeter|subwoofer|bass|production|producer|dj
+lucide,speech,disability|disabled|dda|human|accessibility|people|sound
+lucide,spell-check,spelling|error|mistake|oversight|typo|correction|code|linter|a
+lucide,spell-check-2,spelling|error|mistake|oversight|typo|correction|code|linter|a
+lucide,spline,path|pen|tool|shape|curve|draw
+lucide,spline-pointer,path|tool|curve|node|click|pointer|target|vector
+lucide,split,break|disband|divide|separate|branch|disunite
+lucide,spool,bobbin|spindle|yarn|thread|string|sewing|needlework
+lucide,sport-shoe,footwear|sports|running|athletic|shoe|sneaker|training|exercise|fitness
+lucide,spotlight,winner|soapbox|stage|entertainment|drama|podium|actor|actress|singer|light|beam|play|theatre|show|focus|concert|performance|lens|leaderboard|followspot|best|highlight
+lucide,spray-can,paint|color|graffiti|decoration|aerosol|deodorant|shaving foam|air freshener
+lucide,sprout,eco|green|growth|leaf|nature|plant|seed|spring|sustainability
+lucide,square,stop|playback|music|audio|video|rectangle|aspect ratio|1:1|shape
+lucide,square-activity,pulse|action|motion|movement|exercise|fitness|healthcare|heart rate monitor|vital signs|vitals|emergency room|er|intensive care|hospital|defibrillator|earthquake|siesmic|magnitude|richter scale|aftershock|tremor|shockwave|audio|waveform|synthesizer|synthesiser|music
+lucide,square-arrow-down,backwards|reverse|direction|south|sign|keyboard|button
+lucide,square-arrow-down-left,direction|south-west|diagonal|sign|turn|keyboard|button
+lucide,square-arrow-down-right,direction|south-east|diagonal|sign|turn|keyboard|button
+lucide,square-arrow-left,previous|back|direction|west|sign|keyboard|button|<-
+lucide,square-arrow-out-down-left,outwards|direction|south-west|diagonal
+lucide,square-arrow-out-down-right,outwards|direction|south-east|diagonal
+lucide,square-arrow-out-up-left,outwards|direction|north-west|diagonal
+lucide,square-arrow-out-up-right,outwards|direction|north-east|diagonal|share|open|external|link
+lucide,square-arrow-right,next|forward|direction|west|sign|keyboard|button|->
+lucide,square-arrow-right-enter,left|in|inside|input|insert|source|import|place|->
+lucide,square-arrow-right-exit,out|outside|output|export|->
+lucide,square-arrow-up,forward|direction|north|sign|keyboard|button
+lucide,square-arrow-up-left,direction|north-west|diagonal|sign|keyboard|button
+lucide,square-arrow-up-right,direction|north-east|diagonal|sign|keyboard|button|share
+lucide,square-asterisk,password|secret|access|key|multiply|multiplication|glob pattern|wildcard|*
+lucide,square-bottom-dashed-scissors,cut|snippet|chop|stationery|crafts
+lucide,square-centerline-dashed-horizontal,reflect|mirror|alignment|dashed
+lucide,square-centerline-dashed-vertical,reflect|mirror|alignment|dashed
+lucide,square-chart-gantt,projects|manage|overview|roadmap|plan|intentions|timeline|deadline|date|event|range|period|productivity|work|agile|code|coding|toolbar|button
+lucide,square-check,done|todo|tick|complete|task
+lucide,square-check-big,done|todo|tick|complete|task
+lucide,square-chevron-down,back|menu|panel
+lucide,square-chevron-left,back|previous|less than|fewer|menu|panel|button|keyboard|<
+lucide,square-chevron-right,forward|next|more than|greater|menu|panel|code|coding|command line|terminal|prompt|shell|console|>
+lucide,square-chevron-up,caret|keyboard|button|mac|control|ctrl|superscript|exponential|power|ahead|menu|panel|^
+lucide,square-code,gist|source|programming|html|xml|coding
+lucide,square-dashed,selection|square|rectangular|marquee|tool|dashed|box
+lucide,square-dashed-bottom,rectangle|aspect ratio|1:1|shape|snippet|code|coding
+lucide,square-dashed-bottom-code,rectangle|aspect ratio|1:1|shape|snippet|code|coding
+lucide,square-dashed-kanban,projects|manage|overview|board|tickets|issues|roadmap|plan|intentions|productivity|work|agile|draft|template|boilerplate|code|coding
+lucide,square-dashed-mouse-pointer,inspector|element|mouse|click|pointer|box|browser|selector|target|dom|node
+lucide,square-dashed-text,find|search|selection|dashed
+lucide,square-dashed-top-solid,square|border|width|layout|style|design|rectangular|marquee|dashed|box|rectangle|aspect ratio|1:1
+lucide,square-divide,calculate|math|÷|/
+lucide,square-dot,git|diff|modified|.
+lucide,square-equal,calculate|=
+lucide,square-function,programming|code|automation|math
+lucide,square-kanban,projects|manage|overview|board|tickets|issues|roadmap|plan|intentions|productivity|work|agile|code|coding|toolbar|button
+lucide,square-library,books|reading|written|authors|stories|fiction|novels|information|knowledge|education|high school|university|college|academy|learning|study|research|collection|vinyl|records|albums|music|package
+lucide,square-m,metro|subway|underground|track|line
+lucide,square-menu,bars|navigation|hamburger|options|menu bar|panel
+lucide,square-minus,subtract|remove|decrease|reduce|calculator|button|keyboard|line|divider|separator|horizontal rule|hr|html|markup|markdown|---|toolbar|operator|code|coding|minimum|downgrade
+lucide,square-mouse-pointer,inspector|element|mouse|click|pointer|box|browser|selector|target|dom|node
+lucide,square-parking,parking lot|car park
+lucide,square-parking-off,parking lot|car park|no parking
+lucide,square-pause,music|audio|stop
+lucide,square-pen,pencil|edit|change|create|draw|sketch|draft|writer|writing|biro|ink|marker|felt tip|stationery|artist
+lucide,square-percent,verified|unverified|sale|discount|offer|marketing|sticker|price tag
+lucide,square-pi,constant|code|coding|programming|symbol|trigonometry|geometry|formula
+lucide,square-pilcrow,paragraph|mark|paraph|blind|typography|type|text|prose|symbol
+lucide,square-play,music|audio|video|start|run
+lucide,square-plus,add|new|increase|increment|positive|calculate|calculator|button|keyboard|toolbar|maximum|upgrade|extra|operator|join|concatenate|code|coding|+
+lucide,square-power,on|off|device|switch|toggle|binary|boolean|reboot|restart|button|keyboard|troubleshoot
+lucide,square-radical,calculate|formula|math|operator|root|square|symbol
+lucide,square-round-corner,border|radius|style|design|corner|layout|round|rounded
+lucide,square-scissors,cut|snippet|chop|stationery|crafts|toolbar|button
+lucide,square-sigma,sum|calculate|formula|math|enumeration|enumerate
+lucide,square-slash,git|diff|ignored|divide|division|shortcut|or|/
+lucide,square-split-horizontal,split|divide
+lucide,square-split-vertical,split|divide
+lucide,square-square,float|center|rectangle
+lucide,square-stack,versions|clone|copy|duplicate|multiple|revisions|version control|backup|history
+lucide,square-star,badge|medal|honour|decoration|order|pin|laurel|trophy|medallion|insignia|bronze|silver|gold
+lucide,square-stop,media|music
+lucide,square-terminal,code|command line|prompt|shell
+lucide,square-user,person|account|contact
+lucide,square-user-round,person|account|contact
+lucide,square-x,cancel|close|delete|remove|times|clear|math|multiply|multiplication
+lucide,squares-exclude,square|pathfinder|path|exclude|invert|xor|shape|vector
+lucide,squares-intersect,square|pathfinder|path|intersect|shape|include|vector
+lucide,squares-subtract,square|pathfinder|path|minus|subtract|subtraction|shape|front|vector
+lucide,squares-unite,square|pathfinder|path|unite|union|shape|merge|vector
+lucide,squircle,shape
+lucide,squircle-dashed,shape|pending|progress|issue|draft|code|coding|version control
+lucide,squirrel,animal|rodent|pet|pest|nuts|retrieve|updates|storage|stash
+lucide,stamp,mark|print|clone|loyalty|library
+lucide,star,bookmark|favorite|like|review|rating
+lucide,star-half,bookmark|favorite|like|review|rating
+lucide,star-off,dislike|unlike|remove|unrate
+lucide,step-back,arrow|previous|music|left|reverse
+lucide,step-forward,arrow|next|music|right|continue
+lucide,stethoscope,phonendoscope|medical|heart|lungs|sound
+lucide,sticker,reaction|emotion|smile|happy|feedback
+lucide,sticky-note,post-it|comment|annotation|reaction|memo|reminder|todo|task|idea|brainstorm|document|page|paper|sheet|stationary|office
+lucide,sticky-note-check,post-it|comment|annotation|reaction|memo|reminder|todo|task|idea|brainstorm|document|page|paper|sheet|stationary|office|done|complete|success|check|verified
+lucide,sticky-note-minus,post-it|comment|annotation|reaction|memo|reminder|todo|task|idea|brainstorm|document|page|paper|sheet|stationary|office|remove|delete|minus
+lucide,sticky-note-off,post-it|comment|annotation|reaction|memo|reminder|todo|task|idea|brainstorm|document|page|paper|sheet|stationary|office|disabled|hidden|mute|inactive
+lucide,sticky-note-plus,post-it|comment|annotation|reaction|memo|reminder|todo|task|idea|brainstorm|document|page|paper|sheet|stationary|office|add|create|new|plus
+lucide,sticky-note-x,post-it|comment|annotation|reaction|memo|reminder|todo|task|idea|brainstorm|document|page|paper|sheet|stationary|office|close|cancel|delete|remove
+lucide,sticky-notes,post-it|annotation|memo|reminder|todo|tasks|ideas|brainstorm|documents|notes|multiple|collection|group|stack|clone|duplicate|copy
+lucide,stone,mineral|geology|nature|solid|pebble|crystal|ore|hard|coal|stone|rock|boulder
+lucide,store,shop|supermarket|stand|boutique|building
+lucide,stretch-horizontal,items|flex|justify|distribute
+lucide,stretch-vertical,items|flex|justify|distribute
+lucide,strikethrough,cross out|delete|remove|format
+lucide,subscript,text
+lucide,sun,brightness|weather|light|summer
+lucide,sun-dim,brightness|dim|low|brightness low
+lucide,sun-medium,brightness|medium
+lucide,sun-moon,dark|light|moon|sun|brightness|theme|auto theme|system theme|appearance
+lucide,sun-snow,weather|air conditioning|temperature|hot|cold|seasons
+lucide,sunrise,weather|time|morning|day
+lucide,sunset,weather|time|evening|night
+lucide,superscript,text|exponent
+lucide,swatch-book,colors|colours|swatches|pantone|shades|tint|hue|saturation|brightness|theme|scheme|palette|samples|textile|carpet
+lucide,swiss-franc,currency|money|payment
+lucide,switch-camera,photo|selfie|front|back
+lucide,sword,battle|challenge|game|war|weapon
+lucide,swords,battle|challenge|game|war|weapon
+lucide,syringe,medicine|medical|needle|pump|plunger|nozzle|blood
+lucide,table,spreadsheet|grid
+lucide,table-2,spreadsheet|grid
+lucide,table-cells-merge,spreadsheet|grid|row
+lucide,table-cells-split,spreadsheet|grid|row
+lucide,table-columns-split,spreadsheet|grid|cut|break|divide|separate|segment
+lucide,table-of-contents,toc|outline|navigation|document structure|index|overview|sections|chapters|content|documentation|manual|knowledge base|faq
+lucide,table-properties,property list|plist|spreadsheet|grid|dictionary|object|hash
+lucide,table-rows-split,spreadsheet|grid|cut|break|divide|separate|segment
+lucide,tablet,device
+lucide,tablet-smartphone,responsive|screens|browser|testing|mobile
+lucide,tablets,medicine|medication|drug|prescription|pills|pharmacy
+lucide,tag,label|badge|ticket|mark
+lucide,tags,labels|badges|tickets|marks|copy|multiple
+lucide,tally-1,count|score|enumerate|days|one|1|first|bar|prison|cell|sentence
+lucide,tally-2,count|score|enumerate|days|two|2|second|double|bars|prison|cell|sentence
+lucide,tally-3,count|score|enumerate|days|three|3|third|triple|bars|prison|cell|sentence
+lucide,tally-4,count|score|enumerate|days|4|fourth|quadruple|bars|prison|cell|sentence
+lucide,tally-5,count|score|enumerate|days|five|5|fifth|bars|prison|cell|sentence|slash|/
+lucide,tangent,tangential|shape|circle|geometry|trigonometry|bezier curve
+lucide,target,logo|bullseye|deadline|projects|overview|work|productivity
+lucide,telescope,astronomy|space|discovery|exploration|explore|vision|perspective|focus|stargazing|observe|view
+lucide,tent,tipi|teepee|wigwam|lodge|camping|campsite|holiday|retreat|nomadic|native american|indian|wilderness|outdoors
+lucide,tent-tree,camping|campsite|holiday|retreat|nomadic|wilderness|outdoors
+lucide,terminal,code|command line|prompt|shell
+lucide,test-tube,tube|vial|phial|flask|ampoule|ampule|lab|chemistry|experiment|test
+lucide,test-tube-diagonal,tube|vial|phial|flask|ampoule|ampule|lab|chemistry|experiment|test
+lucide,test-tubes,tubes|vials|phials|flasks|ampoules|ampules|lab|chemistry|experiment|test
+lucide,text-align-center,text|alignment|center
+lucide,text-align-end,text|alignment|right
+lucide,text-align-justify,text|alignment|justified|menu|list
+lucide,text-align-start,text|alignment|left|list
+lucide,text-cursor,select|caret|type|typing|write|writing|edit|insert|input|textarea
+lucide,text-cursor-input,select
+lucide,text-initial,drop cap|text|format|typography|letter|font size
+lucide,text-quote,blockquote|quotation|indent|reply|response
+lucide,text-search,find|data|copy|txt|pdf|document|scan|magnifier|magnifying glass|lens
+lucide,text-wrap,words|lines|break|paragraph
+lucide,theater,theater|theatre|entertainment|podium|stage|musical
+lucide,thermometer,temperature|celsius|fahrenheit|weather
+lucide,thermometer-snowflake,temperature|celsius|fahrenheit|weather|cold|freeze|freezing
+lucide,thermometer-sun,temperature|celsius|fahrenheit|weather|warm|hot
+lucide,thumbs-down,dislike|bad|emotion
+lucide,thumbs-up,like|good|emotion
+lucide,ticket,entry|pass|voucher|event|concert|show|perforated|dashed
+lucide,ticket-check,entry|pass|voucher|event|concert|show|booked|purchased|receipt|redeemed|validated|verified|certified|checked|used
+lucide,ticket-minus,entry|pass|voucher|event|concert|show|remove|cancel|unbook|subtract|decrease|-
+lucide,ticket-percent,discount|reduced|offer|voucher|entry|pass|event|concert|show|book|purchase|%
+lucide,ticket-plus,entry|pass|voucher|event|concert|show|book|purchase|add|+
+lucide,ticket-slash,entry|pass|voucher|event|concert|show|redeemed|used|marked|checked|verified|spoiled|invalidated|void|denied|refused|banned|barred|forbidden|prohibited|cancelled|cancellation|refunded|delete|remove|clear|error
+lucide,ticket-x,entry|pass|voucher|event|concert|show|cancelled|cancellation|refunded|used|void|invalidated|spoiled|denied|refused|banned|barred|forbidden|prohibited|delete|remove|clear|error|x
+lucide,tickets,trip|travel|pass|entry|voucher|event|concert|show|perforated|dashed
+lucide,tickets-plane,plane|trip|airplane|flight|travel|fly|takeoff|vacation|passenger|pass|check-in|airport
+lucide,timeline,tags|history
+lucide,timer,time|timer|stopwatch
+lucide,timer-off,time|timer|stopwatch
+lucide,timer-reset,time|timer|stopwatch
+lucide,toggle-left,on|off|switch|boolean
+lucide,toggle-right,on|off|switch|boolean
+lucide,toilet,toilet|potty|bathroom|washroom
+lucide,tool-case,tools|maintenance|repair
+lucide,toolbox,toolkit|tools|trunk|chest|box|storage|utility|utilities|container|kit|set|repair|fix|service|maintenance|mechanic|workshop|construction|hardware|equipment|gear|handyman|engineering|craft|diy
+lucide,tornado,weather|wind|storm|hurricane
+lucide,torus,donut|doughnut|ring|hollow|3d|fast food|junk food|snack|treat|sweet|sugar|dessert
+lucide,touchpad,trackpad|cursor
+lucide,touchpad-off,trackpad|cursor
+lucide,towel-rack,flannel|bathroom|toiletries|sanitation|clean|fresh|dry|laundry|laundrette|hospitality|housekeeping|room service|spa break|health club|amenities|hanging
+lucide,tower-control,airport|travel|tower|transportation|lighthouse
+lucide,toy-brick,lego|block|addon|plugin|integration
+lucide,tractor,farming|farmer|ranch|harvest|equipment|vehicle
+lucide,traffic-cone,roadworks|tarmac|safety|block
+lucide,train-front,railway|metro|subway|underground|high-speed|bullet|fast|track|line
+lucide,train-front-tunnel,railway|metro|subway|underground|speed|bullet|fast|track|line
+lucide,train-track,railway|line
+lucide,tram-front,railway|metro|subway|underground|track|line|tourism
+lucide,transgender,gender|inclusive
+lucide,trash,empty|deletion|cleanup|junk|clear|garbage|delete|remove|bin|waste|recycle|discard|binoculars|rubbish
+lucide,trash-2,garbage|delete|remove|bin
+lucide,tree-deciduous,tree|forest|park|nature
+lucide,tree-palm,vacation|leisure|island
+lucide,tree-pine,tree|pine|forest|park|nature
+lucide,trees,tree|forest|park|nature
+lucide,trending-down,statistics
+lucide,trending-up,statistics
+lucide,trending-up-down,arrows|estimated|indeterminate|data fluctuation|uncertain|forecast|variable|prediction|dynamic|volatile
+lucide,triangle,equilateral|delta|shape|pyramid|hierarchy
+lucide,triangle-alert,warning|alert|danger|exclamation mark|linter
+lucide,triangle-dashed,equilateral|delta|shape|pyramid|hierarchy|dashed
+lucide,triangle-right,volume|controls|controller|tv remote|geometry|delta|ramp|slope|incline|increase
+lucide,trophy,prize|sports|winner|achievement|award|champion|celebration|victory
+lucide,truck,delivery|van|shipping|haulage|lorry
+lucide,truck-electric,delivery|van|shipping|haulage|lorry|electric
+lucide,turkish-lira,currency|money|payment
+lucide,turntable,record player|gramophone|stereo|phonograph|vinyl|lp|disc|platter|cut|music|analog|retro|dj deck|disc jockey|scratch|spinning
+lucide,turtle,animal|pet|tortoise|slow|speed
+lucide,tv,television|stream|display|widescreen|high-definition|hd|1080p|4k|8k|smart|digital|video|entertainment|showtime|channels|terrestrial|satellite|cable|broadcast|live|frequency|tune|scan|aerial|receiver|transmission|signal|connection|connectivity
+lucide,tv-minimal,flatscreen|television|stream|display|widescreen|high-definition|hd|1080p|4k|8k|smart|digital|video|home cinema|entertainment|showtime|channels|catchup
+lucide,tv-minimal-play,flatscreen|television|stream|display|widescreen|high-definition|hd|1080p|4k|8k|smart|digital|video|movie|live|ott|running|start|film|home cinema|entertainment|showtime|channels|catchup
+lucide,type,text|font|typography
+lucide,type-outline,text|font|typography|silhouette|profile|contour|stroke|line
+lucide,umbrella,rain|weather
+lucide,umbrella-off,rain|weather|uncovered|uninsured|antivirus|unprotected|risky
+lucide,underline,text|format
+lucide,undo,redo|rerun|history
+lucide,undo-2,redo|rerun|history|back|return|reverse|revert|direction|u-turn
+lucide,undo-dot,redo|history|step|back
+lucide,unfold-horizontal,arrow|collapse|fold|vertical|dashed
+lucide,unfold-vertical,arrow|expand|vertical|dashed
+lucide,ungroup,cubes|packages|parts|units|collection|cluster|separate
+lucide,university,building|education|childhood|school|college|academy|institute
+lucide,unlink,url|unchain
+lucide,unlink-2,url|unchain
+lucide,unplug,electricity|energy|electronics|socket|outlet|disconnect
+lucide,upload,file
+lucide,usb,universal|serial|bus|controller|connector|interface
+lucide,user,person|account|contact
+lucide,user-check,followed|subscribed|done|todo|tick|complete|task
+lucide,user-cog,settings|edit|cog|gear
+lucide,user-key,passkey|password|login|authentication|authorization|roles|permissions|private|public|security|person|account|contact
+lucide,user-lock,person|lock|locked|account|secure
+lucide,user-minus,delete|remove|unfollow|unsubscribe
+lucide,user-pen,person|account|contact|profile|edit|change
+lucide,user-plus,new|add|create|follow|subscribe
+lucide,user-round,person|account|contact
+lucide,user-round-check,followed|subscribed|done|todo|tick|complete|task
+lucide,user-round-cog,settings|edit|cog|gear
+lucide,user-round-key,passkey|password|login|authentication|authorization|roles|permissions|private|public|security|person|account|contact
+lucide,user-round-minus,delete|remove|unfollow|unsubscribe
+lucide,user-round-pen,person|account|contact|profile|edit|change
+lucide,user-round-plus,new|add|create|follow|subscribe
+lucide,user-round-search,person|account|contact|find|scan|magnifier|magnifying glass|lens
+lucide,user-round-x,delete|remove|unfollow|unsubscribe|unavailable
+lucide,user-search,person|account|contact|find|scan|magnifier|magnifying glass|lens
+lucide,user-star,person|account|favorite|contact|like|review|rating|admin
+lucide,user-x,delete|remove|unfollow|unsubscribe|unavailable
+lucide,users,group|people
+lucide,users-round,group|people
+lucide,utensils,fork|knife|cutlery|flatware|tableware|silverware|food|restaurant|meal|breakfast|dinner|supper
+lucide,utensils-crossed,fork|knife|cutlery|flatware|tableware|silverware|food|restaurant|meal|breakfast|dinner|supper
+lucide,utility-pole,electricity|energy|transmission line|telegraph pole|power lines|phone
+lucide,van,minivan|cart|wagon|truck|lorry|trailer|camper|vehicle|drive|trip|journey|van|transport|carriage|delivery|travel
+lucide,variable,code|coding|programming|symbol|calculate|algebra|x|parentheses|parenthesis|brackets|parameter|(|)
+lucide,vault,safe|lockbox|deposit|locker|coffer|strongbox|safety|secure|storage|valuables|bank
+lucide,vector-square,shape|geometry|art|width|height|size|calculate|measure|select|graphics|box
+lucide,vegan,vegetarian|fruitarian|herbivorous|animal rights|diet
+lucide,venetian-mask,mask|masquerade|impersonate|secret|incognito
+lucide,venus,gender|sex|female|feminine|woman|girl
+lucide,venus-and-mars,gender|sex|intersex|androgynous|hermaphrodite
+lucide,vibrate,smartphone|notification|rumble|haptic feedback|screen
+lucide,vibrate-off,smartphone|notification|rumble|haptic feedback|notifications|screen
+lucide,video,camera|movie|film|recording|motion picture|camcorder|reel
+lucide,video-off,camera|movie|film
+lucide,videotape,vhs|movie|film|recording|motion picture|showreel|cassette
+lucide,view,eye|look
+lucide,voicemail,phone|cassette|tape|reel|recording|audio
+lucide,volleyball,beach|sand|net|holiday|vacation|summer|soccer|football|futbol|kick|pitch|goal|score|bounce|leather|wool|yarn|knitting|sewing|thread|embroidery|textile
+lucide,volume,music|sound|mute|speaker
+lucide,volume-1,music|sound|speaker
+lucide,volume-2,music|sound|speaker
+lucide,volume-off,music|sound|mute|speaker
+lucide,volume-x,music|sound|mute|speaker
+lucide,vote,vote|poll|ballot|political|social|check|tick
+lucide,wallet,money|finance|pocket
+lucide,wallet-cards,money|finance|pocket|credit|purchase|payment|shopping|retail|consumer|cc
+lucide,wallet-minimal,finance|pocket
+lucide,wallpaper,background|texture|image|art|design|visual|decor|pattern|screen|cover|lock screen
+lucide,wand,magic|selection
+lucide,wand-sparkles,magic|wizard|magician
+lucide,warehouse,storage|storehouse|depot|depository|repository|stockroom|logistics|building
+lucide,washing-machine,tumble dryer|amenities|electronics|cycle|clothes|rinse|spin|drum
+lucide,watch,clock|time
+lucide,waves-arrow-down,water|sea|level|sound|hertz|wavelength|vibrate|low|tide|ocean|rising|down|falling
+lucide,waves-arrow-up,water|sea|level|sound|hertz|wavelength|vibrate|high|tide|ocean|rising
+lucide,waves-horizontal,water|sea|sound|hertz|wavelength|vibrate|ocean|swimming|frequency
+lucide,waves-ladder,swimming|water|pool|lifeguard|ocean|🌊|🏊‍♂️|🏊‍♀️|🏊|🥽
+lucide,waves-vertical,steam|warmth|temperature|burn|hot|boiling|heat|smoke|vapor|smell|aroma|sauna
+lucide,waypoints,indirection|vpn|virtual private network|proxy|connections|bounce|reroute|path|journey|planner|stops|stations|shared|spread|viral
+lucide,webcam,camera|security
+lucide,webhook,push api|interface|callback
+lucide,webhook-off,push api|interface|callback
+lucide,weight,mass|heavy|lead|metal|measure|geometry|scales|balance
+lucide,weight-tilde,measure|scale|estimate|load|balance|size|measurement|quantity|mass
+lucide,wheat,corn|cereal|grain|gluten
+lucide,wheat-off,corn|cereal|grain|gluten free|allergy|intolerance|diet
+lucide,whole-word,text|selection|letters|characters|font|typography
+lucide,wifi,connection|signal|wireless
+lucide,wifi-cog,connection|signal|wireless|directory|settings|control|preferences|cog|edit|gear
+lucide,wifi-high,connection|signal|wireless
+lucide,wifi-low,connection|signal|wireless
+lucide,wifi-off,disabled
+lucide,wifi-pen,edit|wifi|pen|change|network
+lucide,wifi-sync,connection|signal|wireless|synchronize|reconnect|reset|restart
+lucide,wifi-zero,connection|signal|wireless
+lucide,wind,weather|air|blow
+lucide,wind-arrow-down,weather|air|pressure|blow
+lucide,wine,alcohol|beverage|bar|drink|glass|sommelier|vineyard|winery
+lucide,wine-off,alcohol|beverage|drink|glass|alcohol free|abstinence|abstaining|teetotalism|allergy|intolerance
+lucide,workflow,action|continuous integration|ci|automation|devops|network|node|connection
+lucide,worm,invertebrate|grub|larva|snake|crawl|wiggle|slither|pest control|computer virus|malware
+lucide,wrench,account|settings|spanner|diy|toolbox|build|construction
+lucide,x,cancel|close|cross|delete|ex|remove|times|clear|math|multiply|multiplication
+lucide,x-line-top,line|top|arrow|navigation|up|pointer|direction|vector|symbol|cancel|close|delete|remove|times|clear|math|multiply|multiplication|mean|median|average|x̄
+lucide,zap,flash|camera|lightning|electricity|energy|power|quick
+lucide,zap-off,flash|camera|lightning|electricity|energy|power
+lucide,zodiac-aquarius,water bearer|waves|innovation|air|future|astrology|star sign|horoscope|constellation|celestial
+lucide,zodiac-aries,ram|horns|fire|energy|initiative|astrology|star sign|horoscope|constellation|celestial
+lucide,zodiac-cancer,crab|shell|protection|water|intuition|astrology|star sign|horoscope|constellation|celestial
+lucide,zodiac-capricorn,goat|mountain|ambition|earth|discipline|astrology|star sign|horoscope|constellation|celestial
+lucide,zodiac-gemini,twins|duality|communication|air|adaptability|astrology|star sign|horoscope|constellation|celestial
+lucide,zodiac-leo,lion|crown|leadership|fire|confidence|astrology|star sign|horoscope|constellation|celestial
+lucide,zodiac-libra,scales|balance|justice|air|harmony|astrology|star sign|horoscope|constellation|celestial
+lucide,zodiac-ophiuchus,serpent|snake holder|healing|knowledge|astronomy|astrology|star sign|horoscope|constellation|celestial
+lucide,zodiac-pisces,fish|duality|water|dreams|empathy|astrology|star sign|horoscope|constellation|celestial
+lucide,zodiac-sagittarius,archer|arrow|exploration|fire|philosophy|astrology|star sign|horoscope|constellation|celestial
+lucide,zodiac-scorpio,scorpion|stinger|intensity|water|transformation|astrology|star sign|horoscope|constellation|celestial
+lucide,zodiac-taurus,bull|strength|stability|earth|endurance|astrology|star sign|horoscope|constellation|celestial
+lucide,zodiac-virgo,virgin|maiden|harvest|precision|earth|analysis|astrology|star sign|horoscope|constellation|celestial
+lucide,zoom-in,magnifying glass|plus
+lucide,zoom-out,magnifying glass|plus
