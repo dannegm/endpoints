@@ -252,14 +252,14 @@ POST /collections/generate  (o /suggest)
 
 Estas tareas deben completarse antes de arrancar con el código del endpoint.
 
-- [ ] **Refactorizar `router.js`** — separar en sub-routers por responsabilidad para que el router principal solo monte módulos. Agrupaciones sugeridas:
+- [x] **Refactorizar `router.js`** — separar en sub-routers por responsabilidad para que el router principal solo monte módulos. Agrupaciones sugeridas:
   - `routes/search.js` — `/search`, `/search/:entity`, `/top`, `/summaries`
   - `routes/books.js` — `/book/:libid`, `/author/:authorKey`, `/serie/:serieKey`, `/category/:categoryKey`
   - `routes/files.js` — `/request`, `/validate`, `/download`, `/file`, `/sendto-kindle`, `/clear-bucket`
   - `routes/settings.js` — `/settings` (GET/PUT)
   - `routes/collections.js` — todo el scope de collections y topics (nuevo)
 
-- [ ] **Generar `catalog.ndjson`** — script que lee el JSON completo del catálogo y produce el archivo curado en formato `[libid, title, authors_csv, published, cover_id]` por línea.
+- [x] **Generar `catalog.ndjson`** — script que lee el JSON completo del catálogo y produce el archivo curado en formato `[libid, title, authors_csv, published, cover_id]` por línea.
   > El archivo generado pesa ~10MB con 152,079 registros — se commitea directamente al repo. En futuras actualizaciones del catálogo, verificar que el tamaño siga siendo razonable antes de commitear.
 - [ ] **Crear las tablas en Supabase** — ejecutar el SQL de `topics` y `collections` en el proyecto de Supabase.
 - [ ] **Seedear topics iniciales** — llamar a `POST /topics/generate` una vez desplegado para tener topics suficientes antes del primer `generate`. Sin topics en la DB, el pipeline no puede arrancar sin prompt manual.
