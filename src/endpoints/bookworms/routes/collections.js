@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 
 import { supabase } from '@/services/supabase';
+import { Ntfy } from '@/services/ntfy';
 
 import { seeder, prompter, picker } from '../agents';
 import { matchBooks } from '../utils/matcher';
@@ -10,6 +11,7 @@ import { getPagination } from '../helpers';
 
 const router = Router();
 const $schema = supabase.schema('bookworms');
+const ntfy = new Ntfy(process.env.APP_TOPIC);
 
 const MAX_RETRIES = 3;
 const MIN_BOOKS = 4;
@@ -268,6 +270,12 @@ async function handleCollectionPipeline(req, res, persist) {
             target_id: result.topic_id,
         });
     }
+
+    ntfy.pushRich({
+        title: '📚 Nueva colección disponible',
+        message: `**${data.headline}**\n${data.description}`,
+        tags: 'books',
+    }).catch(() => {});
 
     return res.status(201).json(data);
 }
