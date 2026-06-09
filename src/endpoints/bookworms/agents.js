@@ -111,3 +111,72 @@ Responde SOLO con el texto del prompt, sin explicaciones ni formato adicional.
 
     return response.choices[0].message.content?.trim() || '';
 }
+
+// --- Picker ---
+
+const PickerBookSchema = z.object({
+    title: z.string().min(1),
+    authors: z.array(z.string()).min(1),
+    published: z.number().int().optional(),
+    why: z.string().max(120),
+});
+
+const PickerOutputSchema = z.object({
+    headline: z.string().min(1),
+    description: z.string().min(1),
+    tags: z.array(z.string()).min(1),
+    books: z.array(PickerBookSchema).min(12),
+});
+
+export async function picker({ prompt, catalogCutoff }) {
+    const systemPrompt = `
+Eres un curador literario experto en literatura en español.
+El catálogo disponible es exclusivamente en español y cubre títulos publicados hasta ${catalogCutoff}.
+
+Devuelve SIEMPRE un JSON válido (sin texto extra, sin markdown) con esta estructura exacta:
+{
+  "headline": "título evocador de la colección, máx 60 caracteres",
+  "description": "descripción de 1-2 frases que invite a explorar la colección",
+  "tags": ["tag1", "tag2"],
+  "books": [
+    {
+      "title": "título exacto del libro",
+      "authors": ["Nombre Apellido"],
+      "published": 1985,
+      "why": "por qué encaja en esta colección, máx 120 caracteres"
+    }
+  ]
+}
+
+Reglas:
+- Sugiere al menos 12 libros — se esperan descartes, necesitas margen
+- Los tags siempre en español
+- Los títulos deben ser los usados en las ediciones en español
+- El campo "why" debe ser específico y evocador, máx 120 caracteres
+- Responde SOLO con el JSON
+`.trim();
+
+    const response = await ia.chat.send({
+        chatRequest: {
+            model: MODEL,
+            messages: [
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: prompt },
+            ],
+        },
+    });
+
+    const output = response.choices[0].message.content || '';
+
+    try {
+        const raw = JSON.parse(output);
+        const result = PickerOutputSchema.safeParse(raw);
+        if (!result.success) {
+            throw { type: 'INVALID_SCHEMA', issues: result.error.format() };
+        }
+        return result.data;
+    } catch (e) {
+        if (e?.type) throw e;
+        throw { type: 'INVALID_JSON', raw: output };
+    }
+}
