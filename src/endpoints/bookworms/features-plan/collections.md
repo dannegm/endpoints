@@ -263,13 +263,10 @@ Estas tareas deben completarse antes de arrancar con el código del endpoint.
   > El archivo generado pesa ~10MB con 152,079 registros — se commitea directamente al repo. En futuras actualizaciones del catálogo, verificar que el tamaño siga siendo razonable antes de commitear.
 - [ ] **Crear las tablas en Supabase** — ejecutar el SQL de `topics` y `collections` en el proyecto de Supabase.
 - [ ] **Seedear topics iniciales** — llamar a `POST /topics/generate` una vez desplegado para tener topics suficientes antes del primer `generate`. Sin topics en la DB, el pipeline no puede arrancar sin prompt manual.
-- [ ] **Verificar variables de entorno** — el proyecto ya tiene `OPENROUTER_API_KEY` y `OPENROUTER_API_MODEL` configurados (actualmente apuntando a Gemini Flash Mini). Se reutilizan tal cual, sin vars nuevas.
-- [ ] **Curar listas de iconos** — definir dos arrays de iconos relevantes para moods/géneros literarios (emociones, atmósferas, sensaciones) que se hardcodearán en el system prompt del Seeder:
-  - `lucide`: extraer del catálogo estable los nombres más relevantes para el contexto de libros
-  - `lucide-lab`: extraer la lista completa del directorio `icons/` del repo y filtrar manualmente los relevantes
-  Una vez curadas, ambas listas van hardcodeadas en el system prompt del Seeder como vocabulario visual permitido.
+- [x] **Verificar variables de entorno** — el proyecto ya tiene `OPENROUTER_API_KEY` y `OPENROUTER_API_MODEL` configurados (actualmente apuntando a Gemini Flash Mini). Se reutilizan tal cual, sin vars nuevas.
+- [x] **Curar listas de iconos** — se optó por un enfoque dinámico en lugar de hardcodear: `lucide-lab-icons.csv` (nombre, tags, categorías) se carga en memoria y se busca con Fuse.js vía `utils/icon-finder.js`. El Seeder genera un `icon_hint` en inglés y el código resuelve el icono aleatoriamente entre los candidatos con score < 0.3.
 
-- [ ] **Instalar dependencias** — `yarn add fuse.js` (para el Matcher). Zod ya está en el proyecto.
+- [x] **Instalar dependencias** — `fuse.js@7.4.2` instalado. Zod ya estaba en el proyecto.
 
 ---
 
