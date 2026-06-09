@@ -111,11 +111,11 @@ Además consulta un sample de ~20 colecciones recientes para evitar generar algo
 
 **Rol:** No es un agente de IA. Es lógica de código pura que valida cada libro sugerido por Picker contra el catálogo local en memoria.
 
-**Estrategia de búsqueda:** Al arrancar el servidor se carga un archivo `catalog.ndjson` en memoria y se construye un índice con **Fuse.js**. La búsqueda es local, sin consultas a la DB, en microsegundos.
+**Estrategia de búsqueda:** Al arrancar el servidor se carga un archivo `catalog-books.ndjson` en memoria y se construye un índice con **Fuse.js**. La búsqueda es local, sin consultas a la DB, en microsegundos.
 
 > **Nota de escalabilidad:** Esta estrategia funciona bien hasta ~300k registros. Fuse.js es O(n) — escanea todo el índice en cada búsqueda. El Matcher puede hacer hasta 36 búsquedas por request (12 libros × 3 reintentos), así que la latencia escala linealmente con el tamaño del catálogo. Además, el índice en memoria ocupa ~0.6MB por cada 1,000 registros, lo que se vuelve presión real a partir de ~500k. Si en algún momento el catálogo supera los 300k registros y el Matcher empieza a ser el cuello de botella, las opciones son: (a) reemplazar Fuse.js por un índice binario pre-construido (e.g. FlexSearch con índice serializado), o (b) devolver la búsqueda a Supabase usando las funciones RPC de trigrams ya existentes (`search_books_similar`). En 2026, con 152,079 registros, esto no es un problema.
 
-**Formato del catálogo (`catalog.ndjson`):**
+**Formato del catálogo (`catalog-books.ndjson`):**
 Cada línea es un array compacto:
 ```
 [libid, title, authors_csv, published, cover_id]
@@ -259,7 +259,7 @@ Estas tareas deben completarse antes de arrancar con el código del endpoint.
   - `routes/settings.js` — `/settings` (GET/PUT)
   - `routes/collections.js` — todo el scope de collections y topics (nuevo)
 
-- [x] **Generar `catalog.ndjson`** — script que lee el JSON completo del catálogo y produce el archivo curado en formato `[libid, title, authors_csv, published, cover_id]` por línea.
+- [x] **Generar `catalog-books.ndjson`** — script que lee el JSON completo del catálogo y produce el archivo curado en formato `[libid, title, authors_csv, published, cover_id]` por línea.
   > El archivo generado pesa ~10MB con 152,079 registros — se commitea directamente al repo. En futuras actualizaciones del catálogo, verificar que el tamaño siga siendo razonable antes de commitear.
 - [ ] **Crear las tablas en Supabase** — ejecutar el SQL de `topics` y `collections` en el proyecto de Supabase.
 - [ ] **Seedear topics iniciales** — llamar a `POST /topics/generate` una vez desplegado para tener topics suficientes antes del primer `generate`. Sin topics en la DB, el pipeline no puede arrancar sin prompt manual.

@@ -14,11 +14,11 @@ async function main() {
     });
 
     await writeFile(
-        join(__dirname, 'catalog.ndjson'),
+        join(__dirname, 'catalog-books.ndjson'),
         lines.join('\n')
     );
 
-    console.log(`Done. ${lines.length} entries written to catalog.ndjson`);
+    console.log(`Done. ${lines.length} entries written to catalog-books.ndjson`);
 }
 
 main().catch(console.error);
