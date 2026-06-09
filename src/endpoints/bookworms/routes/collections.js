@@ -13,6 +13,7 @@ const router = Router();
 const $schema = supabase.schema('bookworms');
 const ntfy = new Ntfy(process.env.APP_TOPIC);
 
+
 const MAX_RETRIES = 3;
 const MIN_BOOKS = 4;
 
@@ -287,8 +288,8 @@ router.post('/collections/generate', async (req, res) => {
     res.status(202).json({ message: 'Pipeline iniciado.' });
 
     ntfy.pushRich({
-        title: '⚙️ Generando colección...',
-        message: 'El pipeline de curación ha comenzado.',
+        title: 'Generando coleccion...',
+        message: 'El pipeline de curacion ha comenzado.',
         tags: 'hourglass_flowing_sand',
     }).catch(() => {});
 
@@ -306,17 +307,17 @@ router.post('/collections/generate', async (req, res) => {
         } catch (err) {
             console.error('pipeline error:', err);
             ntfy.pushRich({
-                title: '❌ Error en el pipeline',
+                title: 'Error en el pipeline',
                 message: `${err?.type || err?.message || 'Error desconocido'}\n_${elapsed()}_`,
-                tags: 'x',
+                tags: 'rotating_light',
             }).catch(() => {});
             return;
         }
 
         if (!result) {
             ntfy.pushRich({
-                title: '⚠️ Colección sin libros',
-                message: `No se encontraron suficientes libros válidos tras 3 intentos.\n_${elapsed()}_`,
+                title: 'Coleccion sin libros',
+                message: `No se encontraron suficientes libros validos tras 3 intentos.\n_${elapsed()}_`,
                 tags: 'warning',
             }).catch(() => {});
             return;
@@ -337,9 +338,9 @@ router.post('/collections/generate', async (req, res) => {
         if (error) {
             console.error('collections insert error:', error);
             ntfy.pushRich({
-                title: '❌ Error guardando colección',
+                title: 'Error guardando coleccion',
                 message: `${error.message}\n_${elapsed()}_`,
-                tags: 'x',
+                tags: 'rotating_light',
             }).catch(() => {});
             return;
         }
@@ -353,7 +354,7 @@ router.post('/collections/generate', async (req, res) => {
         }
 
         ntfy.pushRich({
-            title: '📚 Nueva colección disponible',
+            title: 'Nueva coleccion disponible',
             message: `**${data.headline}**\n${data.description}\n_${elapsed()}_`,
             tags: 'books',
         }).catch(() => {});
