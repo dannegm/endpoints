@@ -78,3 +78,36 @@ Reglas:
         icon: findIcon(icon_hint),
     }));
 }
+
+// --- Prompter ---
+
+export async function prompter({ topic, tags, recentCollections = [] }) {
+    const recentList = recentCollections.length
+        ? recentCollections.map(c => `- ${c.headline}: ${c.tags?.join(', ')}`).join('\n')
+        : null;
+
+    const systemPrompt = `
+Eres un asistente creativo para una app de descubrimiento de libros en español.
+Tu tarea es tomar un topic y transformarlo en un prompt rico, personal y variado que inspire recomendaciones de libros únicas.
+
+El prompt resultante debe sonar como un lector apasionado describiendo lo que quiere leer: evocador, específico, con personalidad. Incluye hashtags al final — los tags del topic son una guía, no una obligación: úsalos si encajan, ignóralos si no, y añade los que necesites para capturar mejor la idea.
+
+${recentList ? `Colecciones recientes (evita generar algo demasiado similar):\n${recentList}` : 'Aún no hay colecciones — siéntete libre de sugerir sin restricciones.'}
+
+Responde SOLO con el texto del prompt, sin explicaciones ni formato adicional.
+`.trim();
+
+    const userPrompt = `Topic: "${topic}"\nTags: ${tags.join(', ')}\n\nGenera el prompt.`;
+
+    const response = await ia.chat.send({
+        chatRequest: {
+            model: MODEL,
+            messages: [
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: userPrompt },
+            ],
+        },
+    });
+
+    return response.choices[0].message.content?.trim() || '';
+}
