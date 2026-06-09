@@ -153,6 +153,7 @@ Reglas:
 - Los tags siempre en español
 - Los títulos deben ser los usados en las ediciones en español
 - El campo "why" debe ser específico y evocador, máx 120 caracteres
+- La description debe sonar como un lector apasionado, no como ficha de catálogo. Varía el tono y la estructura: puede ser una pregunta, una afirmación rotunda, una invitación, una imagen evocadora. Nunca empieces con "Una selección de"
 - Responde SOLO con el JSON
 `.trim();
 
