@@ -1,0 +1,15 @@
+name: Generate weekly collection
+
+on:
+  schedule:
+    - cron: '0 12 * * 1'  # Mondays 6 AM CST (UTC-6)
+  workflow_dispatch:       # manual trigger
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger pipeline
+        run: |
+          curl -X POST https://endpoints.hckr.mx/bookworms/collections/generate \
+            -H "x-dnn-apikey: ${{ secrets.BOOKWORMS_APP_KEY }}"
