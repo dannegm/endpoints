@@ -7,7 +7,7 @@
     "scripts": {
         "dev": "nodemon -r dotenv/config --exec babel-node src",
         "format": "prettier . --write --log-level=warn",
-        "build:server": "npx babel src --out-dir ./build",
+        "build:server": "npx babel src --out-dir ./build --copy-files",
         "build:client": "cd home && yarn build",
         "build": "sh ./scripts/build.sh",
         "start": "NODE_ENV=production node ./build",
