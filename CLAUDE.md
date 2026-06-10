@@ -16,12 +16,11 @@ The shortener service has its own subdomain: `s.hckr.mx/`.
 npm run dev
 
 # Scaffold a new endpoint (also accepts a random name suggestion if no name is given)
-yarn make <project-name>
+pnpm make <project-name>
 
 # Build everything (backend + frontend fallback)
-npm run build
-npm run build:server   # Babel compiles src/ → build/
-npm run build:client   # cd home && yarn build
+npm run build          # only builds the home/ frontend (server runs directly with tsx)
+npm run build:client   # cd home && pnpm build
 
 # Start production server
 npm start
@@ -74,7 +73,7 @@ Copy `.env.example` to `.env`. Logs are written to `logs/` by Winston.
 
 ## Package manager
 
-Use **yarn** for all dependency management (`yarn add`, `yarn remove`). Do not use `npm install/uninstall` — the deploy environment breaks if both `package-lock.json` and `yarn.lock` exist.
+Use **pnpm** for all dependency management (`pnpm add`, `pnpm remove`). Do not use `npm install/uninstall` or `yarn` — the deploy environment breaks if multiple lock files exist (`package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`).
 
 ## Code style
 
