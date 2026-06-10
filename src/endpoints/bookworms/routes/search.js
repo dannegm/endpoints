@@ -46,6 +46,26 @@ router.get('/summaries', (req, res) => {
     });
 });
 
+const sample = (arr, n) => {
+    const result = [];
+    const taken = new Set();
+    while (result.length < n) {
+        const i = Math.floor(Math.random() * arr.length);
+        if (!taken.has(i)) { taken.add(i); result.push(arr[i]); }
+    }
+    return result;
+};
+
+router.get('/search/suggestions', (req, res) => {
+    const suggestions = [
+        ...sample(booksRaw, 3).map(b => ({ entity: 'book', query: b.title })),
+        ...sample(authorsRaw, 3).map(a => ({ entity: 'author', query: a.name })),
+        ...sample(seriesRaw, 3).map(s => ({ entity: 'serie', query: s.name })),
+    ].sort(() => Math.random() - 0.5);
+
+    return res.json(suggestions);
+});
+
 router.get('/search', (req, res) => {
     const query = normalize(req.query?.q || '');
     const pagination = getPagination(req);
