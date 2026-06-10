@@ -73,15 +73,25 @@ async function runPipeline({
 // GET /topics
 router.get('/topics', async (req, res) => {
     const [from, to] = getPagination(req);
-    const { data, error } = await $schema
+    const { data, count, error } = await $schema
         .from('topics')
-        .select('*')
+        .select('*', { count: 'exact' })
         .order('created_at', { ascending: false })
         .range(from - 1, to - 1);
 
-    if (error?.code === 'PGRST103') return res.json([]);
+    if (error?.code === 'PGRST103') return res.json({ data: [], pagination: { from, to, found: 0, count: 0, page: Number(req.query?.page || 1), pages: 0 } });
     if (error) return res.status(500).json({ error: 'Error obteniendo topics.' });
-    return res.json(data);
+    return res.json({
+        data,
+        pagination: {
+            from,
+            to,
+            found: count,
+            count: data?.length || 0,
+            page: Number(req.query?.page || 1),
+            pages: Math.ceil(count / (to - from + 1)),
+        },
+    });
 });
 
 // POST /topics/generate
@@ -120,10 +130,10 @@ router.post('/topics/generate', async (req, res) => {
         return res.status(500).json({ error: 'Error insertando topics.' });
     }
 
-    return res.json(data);
+    return res.json({ data });
 });
 
-// GET /topics/:id/collections
+// GET /topics/:id
 router.get('/topics/:id', async (req, res) => {
     const { id } = req.params;
     const { data, error } = await $schema
@@ -133,38 +143,46 @@ router.get('/topics/:id', async (req, res) => {
         .single();
 
     if (error) return res.status(404).json({ error: 'Topic no encontrado.' });
-    return res.json(data);
+    return res.json({ data });
 });
 
 // GET /topics/:id/collections
 router.get('/topics/:id/collections', async (req, res) => {
     const { id } = req.params;
-    const [from, to] = getPagination(req);
 
     const { data, error } = await $schema
         .from('collections')
         .select('*')
         .eq('topic_id', id)
-        .order('created_at', { ascending: false })
-        .range(from - 1, to - 1);
+        .order('created_at', { ascending: false });
 
-    if (error?.code === 'PGRST103') return res.json([]);
+    if (error?.code === 'PGRST103') return res.json({ data: [] });
     if (error) return res.status(500).json({ error: 'Error obteniendo colecciones.' });
-    return res.json(data);
+    return res.json({ data });
 });
 
 // GET /collections
 router.get('/collections', async (req, res) => {
     const [from, to] = getPagination(req);
-    const { data, error } = await $schema
+    const { data, count, error } = await $schema
         .from('collections')
-        .select('*')
+        .select('*', { count: 'exact' })
         .order('created_at', { ascending: false })
         .range(from - 1, to - 1);
 
-    if (error?.code === 'PGRST103') return res.json([]);
+    if (error?.code === 'PGRST103') return res.json({ data: [], pagination: { from, to, found: 0, count: 0, page: Number(req.query?.page || 1), pages: 0 } });
     if (error) return res.status(500).json({ error: 'Error obteniendo colecciones.' });
-    return res.json(data);
+    return res.json({
+        data,
+        pagination: {
+            from,
+            to,
+            found: count,
+            count: data?.length || 0,
+            page: Number(req.query?.page || 1),
+            pages: Math.ceil(count / (to - from + 1)),
+        },
+    });
 });
 
 // GET /collections/last  ← before /:id
@@ -177,7 +195,7 @@ router.get('/collections/last', async (req, res) => {
         .single();
 
     if (error) return res.status(404).json({ error: 'No hay colecciones.' });
-    return res.json(data);
+    return res.json({ data });
 });
 
 // GET /collections/:id
@@ -189,7 +207,7 @@ router.get('/collections/:id', async (req, res) => {
         .single();
 
     if (error) return res.status(404).json({ error: 'Colección no encontrada.' });
-    return res.json(data);
+    return res.json({ data });
 });
 
 // POST /collections
@@ -205,7 +223,7 @@ router.post('/collections', async (req, res) => {
         .single();
 
     if (error) return res.status(500).json({ error: 'Error creando colección.' });
-    return res.status(201).json(data);
+    return res.status(201).json({ data });
 });
 
 async function fetchPipelineContext(prompt) {
@@ -284,7 +302,7 @@ router.post('/collections/suggest', async (req, res) => {
             .status(503)
             .json({ error: 'No se pudo generar una colección con suficientes libros válidos.' });
 
-    return res.json(result);
+    return res.json({ data: result });
 });
 
 // POST /collections/generate — fire and forget
@@ -297,7 +315,7 @@ router.post('/collections/generate', async (req, res) => {
             .status(503)
             .json({ error: 'No hay topics disponibles. Ejecuta /topics/generate primero.' });
 
-    res.status(202).json({ message: 'Pipeline iniciado.' });
+    res.status(202).json({ data: { message: 'Pipeline iniciado.' } });
 
     ntfy.pushRich({
         title: 'Generando coleccion...',
@@ -381,7 +399,7 @@ router.post('/collections/test-matcher', (req, res) => {
     }
     const matches = matchBooks(books);
     const results = books.map((book, i) => ({ input: book, match: matches[i] }));
-    return res.json(results);
+    return res.json({ data: results });
 });
 
 export default router;

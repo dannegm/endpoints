@@ -12,9 +12,7 @@ router.get('/book/:libid', async (req, res) => {
     const libid = req.params?.libid;
 
     if (!libid) {
-        return res.status(404).json({
-            message: 'Book not found',
-        });
+        return res.status(404).json({ error: 'Book not found' });
     }
 
     const cacheKey = `bookworms.book.${libid}`;
@@ -47,11 +45,11 @@ router.get('/book/:libid', async (req, res) => {
     res.setHeader('X-Cached', cached);
 
     if (error && !error?.type) {
-        res.status(500).json({ message: 'Something went worng' });
+        return res.status(500).json({ error: 'Something went wrong' });
     }
 
     if (error?.type === 'NOT_FOUND') {
-        return res.status(404).json({ message: 'Book not found' });
+        return res.status(404).json({ error: 'Book not found' });
     }
 
     await $schema.rpc('increment_field', {
@@ -60,16 +58,14 @@ router.get('/book/:libid', async (req, res) => {
         target_id: data.id,
     });
 
-    return res.json(data);
+    return res.json({ data });
 });
 
 router.get('/author/:authorKey', async (req, res) => {
     const authorKey = req.params?.authorKey;
 
     if (!authorKey) {
-        return res.status(404).json({
-            message: 'Author not found',
-        });
+        return res.status(404).json({ error: 'Author not found' });
     }
 
     const cacheKey = `bookworms.author.${authorKey}`;
@@ -97,11 +93,11 @@ router.get('/author/:authorKey', async (req, res) => {
     res.setHeader('X-Cached', cached);
 
     if (error && !error?.type) {
-        res.status(500).json({ message: 'Something went worng' });
+        return res.status(500).json({ error: 'Something went wrong' });
     }
 
     if (error?.type === 'NOT_FOUND') {
-        return res.status(404).json({ message: 'Author not found' });
+        return res.status(404).json({ error: 'Author not found' });
     }
 
     await $schema.rpc('increment_field', {
@@ -110,16 +106,14 @@ router.get('/author/:authorKey', async (req, res) => {
         target_id: data.id,
     });
 
-    return res.json(data);
+    return res.json({ data });
 });
 
 router.get('/serie/:serieKey', async (req, res) => {
     const serieKey = req.params?.serieKey;
 
     if (!serieKey) {
-        return res.status(404).json({
-            message: 'Author not found',
-        });
+        return res.status(404).json({ error: 'Serie not found' });
     }
 
     const cacheKey = `bookworms.author.${serieKey}`;
@@ -147,11 +141,11 @@ router.get('/serie/:serieKey', async (req, res) => {
     res.setHeader('X-Cached', cached);
 
     if (error && !error?.type) {
-        res.status(500).json({ message: 'Something went worng' });
+        return res.status(500).json({ error: 'Something went wrong' });
     }
 
     if (error?.type === 'NOT_FOUND') {
-        return res.status(404).json({ message: 'Serie not found' });
+        return res.status(404).json({ error: 'Serie not found' });
     }
 
     await $schema.rpc('increment_field', {
@@ -160,7 +154,7 @@ router.get('/serie/:serieKey', async (req, res) => {
         target_id: data.id,
     });
 
-    return res.json(data);
+    return res.json({ data });
 });
 
 router.get('/category/:categoryKey', async (req, res) => {
@@ -208,7 +202,7 @@ router.get('/category/:categoryKey', async (req, res) => {
     res.setHeader('X-Cached', cached);
 
     if (error) {
-        res.status(500).json({ error, message: 'Something went worng' });
+        return res.status(500).json({ error: 'Something went wrong' });
     }
 
     return res.json(data);

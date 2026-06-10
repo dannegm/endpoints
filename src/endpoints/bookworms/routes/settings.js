@@ -9,11 +9,11 @@ router.get('/settings', async (req, res) => {
     const { data, error } = await $schema.from('settings').select('key, value');
 
     if (error) {
-        res.status(500).json({ message: 'Something went worng' });
+        return res.status(500).json({ error: 'Something went wrong' });
     }
 
     const config = Object.fromEntries(data.map(({ key, value }) => [key, value]));
-    res.json(config);
+    return res.json({ data: config });
 });
 
 router.put('/settings', async (req, res) => {
@@ -26,11 +26,11 @@ router.put('/settings', async (req, res) => {
         .select();
 
     if (error) {
-        res.status(500).json({ message: 'Something went worng' });
+        return res.status(500).json({ error: 'Something went wrong' });
     }
 
     const config = Object.fromEntries(data.map(({ key, value }) => [key, value]));
-    res.json(config);
+    return res.json({ data: config });
 });
 
 export default router;

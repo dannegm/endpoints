@@ -15,9 +15,7 @@ router.get('/request', async (req, res) => {
     const format = req.query?.format || 'epub';
 
     if (!filename) {
-        return res.status(400).json({
-            message: 'Missing filename.',
-        });
+        return res.status(400).json({ error: 'Missing filename.' });
     }
 
     const otp = totp.generate();
@@ -33,9 +31,11 @@ router.get('/request', async (req, res) => {
     });
 
     return res.json({
-        message: 'Reach the validate url to see if your book is available',
-        validateUrl: `/bookworms/validate?filename=${finalFilename}`,
-        filename: finalFilename,
+        data: {
+            message: 'Reach the validate url to see if your book is available',
+            validateUrl: `/bookworms/validate?filename=${finalFilename}`,
+            filename: finalFilename,
+        },
     });
 });
 
@@ -43,25 +43,25 @@ router.get('/validate', async (req, res) => {
     const filename = req.query?.filename;
 
     if (!filename) {
-        return res.status(400).json({
-            message: 'Missing filename.',
-        });
+        return res.status(400).json({ error: 'Missing filename.' });
     }
 
     const { error } = await $storage.download(filename);
 
     if (error) {
         return res.status(404).json({
-            message: 'Book not found, please request first and try again later',
+            error: 'Book not found, please request first and try again later',
             requestUrl: `/bookworms/request?filename=${filename}`,
             filename,
         });
     }
 
     return res.json({
-        message: 'Book available and ready for download',
-        downloadUrl: `/bookworms/download?filename=${filename}`,
-        filename,
+        data: {
+            message: 'Book available and ready for download',
+            downloadUrl: `/bookworms/download?filename=${filename}`,
+            filename,
+        },
     });
 });
 
@@ -102,15 +102,13 @@ router.get('/file', async (req, res) => {
     const filename = req.query?.filename;
 
     if (!filename) {
-        return res.status(404).send({
-            message: 'Missing filename.',
-        });
+        return res.status(400).json({ error: 'Missing filename.' });
     }
 
     const { data } = $storage.getPublicUrl(filename);
 
     if (!data) {
-        return res.status(404).send({ message: 'Book file not found.' });
+        return res.status(404).json({ error: 'Book file not found.' });
     }
 
     const { data: bookData } = await $schema
@@ -125,16 +123,14 @@ router.get('/file', async (req, res) => {
         target_id: bookData.id,
     });
 
-    return res.json(data);
+    return res.json({ data });
 });
 
 router.post('/sendto-kindle', async (req, res) => {
     const { email, filename } = req.body;
 
     if (!filename || !email) {
-        return res.status(400).send({
-            message: 'Invalid payload.',
-        });
+        return res.status(400).json({ error: 'Invalid payload.' });
     }
 
     const { data: fileData, error: fileError } = await $storage.download(filename);
@@ -167,7 +163,7 @@ router.post('/sendto-kindle', async (req, res) => {
 
     if (emailError) {
         console.error('Error sending email:', emailError);
-        return res.status(404).send();
+        return res.status(500).json({ error: 'Error sending email.' });
     }
 
     const { data: bookData } = await $schema
@@ -182,7 +178,7 @@ router.post('/sendto-kindle', async (req, res) => {
         target_id: bookData.id,
     });
 
-    res.status(200).json({ message: 'Email sent successfully.', filename, email });
+    return res.status(200).json({ data: { message: 'Email sent successfully.', filename, email } });
 });
 
 router.get('/clear-bucket', async (req, res) => {

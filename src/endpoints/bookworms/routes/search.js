@@ -61,9 +61,11 @@ const fuseSeries = new Fuse(seriesRaw, {
 
 router.get('/summaries', (req, res) => {
     return res.json({
-        authors: authorsRaw.length,
-        series: seriesRaw.length,
-        books: booksRaw.length,
+        data: {
+            authors: authorsRaw.length,
+            series: seriesRaw.length,
+            books: booksRaw.length,
+        },
     });
 });
 
@@ -87,7 +89,7 @@ router.get('/search/suggestions', (req, res) => {
         ...sample(seriesRaw, 3).map(s => ({ entity: 'serie', query: s.name })),
     ].sort(() => Math.random() - 0.5);
 
-    return res.json(suggestions);
+    return res.json({ data: suggestions });
 });
 
 router.get('/search', (req, res) => {
@@ -95,7 +97,7 @@ router.get('/search', (req, res) => {
     const pagination = getPagination(req);
 
     if (!query) {
-        return res.status(400).json({ message: 'You must provide at least a query' });
+        return res.status(400).json({ error: 'You must provide at least a query' });
     }
 
     const [from, to] = pagination;
@@ -105,21 +107,24 @@ router.get('/search', (req, res) => {
     const allSeries = fuseSeries.search(query).map(r => mapperByEntity.serie(r.item));
 
     return res.json({
-        authors: {
-            total: allAuthors.length,
-            results: allAuthors,
-        },
-        series: {
-            total: allSeries.length,
-            results: allSeries,
-        },
-        books: {
-            from,
-            to,
-            page: Number(req.query?.page || 1),
-            count: allBooks.slice(from, to + 1).length,
-            total: allBooks.length,
-            results: allBooks.slice(from, to + 1),
+        data: {
+            authors: {
+                found: allAuthors.length,
+                data: allAuthors,
+            },
+            series: {
+                found: allSeries.length,
+                data: allSeries,
+            },
+            books: {
+                from,
+                to,
+                found: allBooks.length,
+                count: allBooks.slice(from, to + 1).length,
+                page: Number(req.query?.page || 1),
+                pages: Math.ceil(allBooks.length / (to - from + 1)),
+                data: allBooks.slice(from, to + 1),
+            },
         },
     });
 });
@@ -133,10 +138,10 @@ const fuseByEntity = {
 router.get('/search/:entity', (req, res) => {
     const { entity } = req.params;
     const fuse = fuseByEntity[entity];
-    if (!fuse) return res.status(404).json({ message: 'Invalid entity' });
+    if (!fuse) return res.status(404).json({ error: 'Invalid entity' });
 
     const query = normalize(req.query?.q || '');
-    if (!query) return res.status(400).json({ message: 'Missing query' });
+    if (!query) return res.status(400).json({ error: 'Missing query' });
 
     const [from, to] = getPagination(req);
     const mapper = mapperByEntity[entity] || (item => item);
