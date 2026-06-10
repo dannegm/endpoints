@@ -137,7 +137,7 @@ router.post('/sendto-kindle', async (req, res) => {
 
     if (!fileData || fileError) {
         console.error('Read book error:', fileError);
-        return res.status(404).send();
+        return res.status(404).json({ error: 'Book not found in storage.' });
     }
 
     await $storage.remove([filename]);
