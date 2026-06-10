@@ -1,6 +1,6 @@
 #!/bin/env bash
 
 echo "Building home..."
-pnpm build:client
+bun run build:client
 
 echo "Build complete!"

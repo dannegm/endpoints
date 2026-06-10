@@ -1,4 +1,0 @@
-{
-    "verbose": false,
-    "ignore": ["**/node_modules", "*.log", "**/indice.json"]
-}

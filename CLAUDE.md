@@ -12,21 +12,21 @@ The shortener service has its own subdomain: `s.hckr.mx/`.
 ## Commands
 
 ```bash
-# Backend dev server (hot reload via nodemon + Babel)
-npm run dev
+# Backend dev server (hot reload nativo de Bun)
+bun dev
 
 # Scaffold a new endpoint (also accepts a random name suggestion if no name is given)
-pnpm make <project-name>
+bun make <project-name>
 
 # Build everything (backend + frontend fallback)
-npm run build          # only builds the home/ frontend (server runs directly with tsx)
-npm run build:client   # cd home && pnpm build
+bun run build          # only builds the home/ frontend (server runs directly with bun)
+bun run build:client   # cd home && bun run build
 
 # Start production server
-npm start
+bun start
 
 # Format code
-npm run format
+bun run format
 ```
 
 ## Architecture
@@ -54,7 +54,7 @@ If an endpoint needs something not covered by shared code, it should define its 
 
 ### Path aliases
 
-`@/*` resolves to `src/*` (configured in `.babelrc.js` and `jsconfig.json`).
+`@/*` resolves to `src/*` (configured in `jsconfig.json`, leído nativamente por Bun).
 
 ### Key integrations
 
@@ -73,7 +73,7 @@ Copy `.env.example` to `.env`. Logs are written to `logs/` by Winston.
 
 ## Package manager
 
-Use **pnpm** for all dependency management (`pnpm add`, `pnpm remove`). Do not use `npm install/uninstall` or `yarn` — the deploy environment breaks if multiple lock files exist (`package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`).
+Use **bun** for all dependency management (`bun add`, `bun remove`). Do not use `npm install/uninstall`, `yarn`, or `pnpm` — the deploy environment breaks if multiple lock files exist.
 
 ## Code style
 

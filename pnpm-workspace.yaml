@@ -1,5 +1,0 @@
-allowBuilds:
-  esbuild: true
-  '@openrouter/sdk': true
-  re2: true
-  sharp: true
