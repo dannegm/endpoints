@@ -32,6 +32,15 @@ const seriesRaw = loadNdjson('../data/catalog-series.ndjson').map(([name, books]
     books,
 }));
 
+const mapperByEntity = {
+    books: item => ({
+        ...item,
+        authors: item.authors.map(name => ({ name })),
+    }),
+    author: item => item,
+    serie: item => item,
+};
+
 const fuseBooks = new Fuse(booksRaw, {
     keys: [
         { name: 'title', weight: 5 },
@@ -91,12 +100,9 @@ router.get('/search', (req, res) => {
 
     const [from, to] = pagination;
 
-    const allBooks = fuseBooks.search(query).map(r => ({
-        ...r.item,
-        authors: r.item.authors.map(name => ({ name })),
-    }));
-    const allAuthors = fuseAuthors.search(query).map(r => r.item);
-    const allSeries = fuseSeries.search(query).map(r => r.item);
+    const allBooks = fuseBooks.search(query).map(r => mapperByEntity.books(r.item));
+    const allAuthors = fuseAuthors.search(query).map(r => mapperByEntity.author(r.item));
+    const allSeries = fuseSeries.search(query).map(r => mapperByEntity.serie(r.item));
 
     return res.json({
         authors: {
@@ -133,7 +139,8 @@ router.get('/search/:entity', (req, res) => {
     if (!query) return res.status(400).json({ message: 'Missing query' });
 
     const [from, to] = getPagination(req);
-    const all = fuse.search(query).map(r => r.item);
+    const mapper = mapperByEntity[entity] || (item => item);
+    const all = fuse.search(query).map(r => mapper(r.item));
 
     return res.json({
         data: all.slice(from, to + 1),
