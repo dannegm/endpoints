@@ -120,10 +120,10 @@ router.get('/search', (req, res) => {
                 from,
                 to,
                 found: allBooks.length,
-                count: allBooks.slice(from, to + 1).length,
+                count: allBooks.slice(from - 1, to).length,
                 page: Number(req.query?.page || 1),
                 pages: Math.ceil(allBooks.length / (to - from + 1)),
-                data: allBooks.slice(from, to + 1),
+                data: allBooks.slice(from - 1, to),
             },
         },
     });
@@ -148,12 +148,12 @@ router.get('/search/:entity', (req, res) => {
     const all = fuse.search(query).map(r => mapper(r.item));
 
     return res.json({
-        data: all.slice(from, to + 1),
+        data: all.slice(from - 1, to),
         pagination: {
             from,
             to,
             found: all.length,
-            count: all.slice(from, to + 1).length,
+            count: all.slice(from - 1, to).length,
             page: Number(req.query?.page || 1),
             pages: Math.ceil(all.length / (to - from + 1)),
         },
