@@ -145,7 +145,16 @@ Devuelve una colección por ID.
 
 ---
 
-#### `GET /topic/:id/collections`
+#### `GET /topics/:id`
+
+Devuelve un topic por ID.
+
+**Response `200`** — objeto Topic.
+**Response `404`** — `{ "error": "Colección no encontrada." }`
+
+---
+
+#### `GET /topics/:id/collections`
 
 Lista colecciones asociadas a un topic, paginada.
 

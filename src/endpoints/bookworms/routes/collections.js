@@ -123,8 +123,21 @@ router.post('/topics/generate', async (req, res) => {
     return res.json(data);
 });
 
-// GET /topic/:id/collections
-router.get('/topic/:id/collections', async (req, res) => {
+// GET /topics/:id/collections
+router.get('/topics/:id', async (req, res) => {
+    const { id } = req.params;
+    const { data, error } = await $schema
+        .from('topics')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+    if (error) return res.status(404).json({ error: 'Topic no encontrado.' });
+    return res.json(data);
+});
+
+// GET /topics/:id/collections
+router.get('/topics/:id/collections', async (req, res) => {
     const { id } = req.params;
     const [from, to] = getPagination(req);
 
