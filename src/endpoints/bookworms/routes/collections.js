@@ -5,9 +5,9 @@ import { es } from 'date-fns/locale';
 import { supabase } from '@/services/supabase';
 import { Ntfy } from '@/services/ntfy';
 
-import { seeder, prompter, picker } from '../agents';
+import { seeder, prompter, picker } from '../utils/agents';
 import { matchBooks } from '../utils/matcher';
-import { getPagination } from '../helpers';
+import { getPagination } from '../utils/helpers';
 
 const router = Router();
 const $schema = supabase.schema('bookworms');

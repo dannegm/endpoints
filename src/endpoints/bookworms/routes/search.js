@@ -3,7 +3,7 @@ import path from 'path';
 import Fuse from 'fuse.js';
 import { Router } from 'express';
 
-import { getPagination, normalize } from '../helpers';
+import { getPagination, normalize } from '../utils/helpers';
 
 const router = Router();
 
@@ -14,7 +14,7 @@ const loadNdjson = file =>
         .filter(Boolean)
         .map(line => JSON.parse(line));
 
-const booksRaw = loadNdjson('../catalog-books.ndjson').map(
+const booksRaw = loadNdjson('../data/catalog-books.ndjson').map(
     ([libid, title, authors_csv, , cover_id]) => ({
         libid,
         title,
@@ -23,11 +23,14 @@ const booksRaw = loadNdjson('../catalog-books.ndjson').map(
     }),
 );
 
-const authorsRaw = loadNdjson('../catalog-authors.ndjson').map(([name, books]) => ({
+const authorsRaw = loadNdjson('../data/catalog-authors.ndjson').map(([name, books]) => ({
     name,
     books,
 }));
-const seriesRaw = loadNdjson('../catalog-series.ndjson').map(([name, books]) => ({ name, books }));
+const seriesRaw = loadNdjson('../data/catalog-series.ndjson').map(([name, books]) => ({
+    name,
+    books,
+}));
 
 const fuseBooks = new Fuse(booksRaw, {
     keys: [
@@ -88,7 +91,10 @@ router.get('/search', (req, res) => {
 
     const [from, to] = pagination;
 
-    const allBooks = fuseBooks.search(query).map(r => r.item);
+    const allBooks = fuseBooks.search(query).map(r => ({
+        ...r.item,
+        authors: r.item.authors.map(name => ({ name })),
+    }));
     const allAuthors = fuseAuthors.search(query).map(r => r.item);
     const allSeries = fuseSeries.search(query).map(r => r.item);
 

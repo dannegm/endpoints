@@ -15,7 +15,7 @@ async function main() {
         .sort((a, b) => a[0].localeCompare(b[0]))
         .map(([name, count]) => JSON.stringify([name, count]));
 
-    await writeFile(join(__dirname, '../catalog-authors.ndjson'), lines.join('\n'));
+    await writeFile(join(__dirname, '../data/catalog-authors.ndjson'), lines.join('\n'));
 
     console.log(`Done. ${lines.length} authors written to catalog-authors.ndjson`);
 }

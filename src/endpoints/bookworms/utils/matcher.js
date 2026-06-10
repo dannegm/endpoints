@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import Fuse from 'fuse.js';
 
-const catalogBooksPath = path.join(__dirname, '../catalog-books.ndjson');
+const catalogBooksPath = path.join(__dirname, '../data/catalog-books.ndjson');
 const lines = fs.readFileSync(catalogBooksPath, 'utf8').split('\n').filter(Boolean);
 const catalog = lines.map(line => {
     const [libid, title, authors_csv, published, cover_id] = JSON.parse(line);

@@ -13,7 +13,7 @@ async function main() {
         return JSON.stringify([book.libid, book.title, authors, book.published ?? null, cover_id]);
     });
 
-    await writeFile(join(__dirname, 'catalog-books.ndjson'), lines.join('\n'));
+    await writeFile(join(__dirname, '../data/catalog-books.ndjson'), lines.join('\n'));
 
     console.log(`Done. ${lines.length} entries written to catalog-books.ndjson`);
 }

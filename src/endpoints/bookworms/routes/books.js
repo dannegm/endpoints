@@ -3,7 +3,7 @@ import { Router } from 'express';
 import { sha1 } from '@/helpers/crypto';
 import { supabase } from '@/services/supabase';
 
-import { cache, getNoCacheFlag, getPagination, normalize } from '../helpers';
+import { cache, getNoCacheFlag, getPagination, normalize } from '../utils/helpers';
 
 const router = Router();
 const $schema = supabase.schema('bookworms');

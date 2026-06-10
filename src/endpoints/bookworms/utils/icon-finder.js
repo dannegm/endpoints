@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import Fuse from 'fuse.js';
 
-const csvPath = path.join(__dirname, '../icons.csv');
+const csvPath = path.join(__dirname, '../data/icons.csv');
 const lines = fs.readFileSync(csvPath, 'utf8').split('\n').slice(1).filter(Boolean);
 
 const icons = lines.map(line => {
