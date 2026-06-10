@@ -1,263 +1,114 @@
+import fs from 'fs';
+import path from 'path';
+import Fuse from 'fuse.js';
 import { Router } from 'express';
 
-import { sha1 } from '@/helpers/crypto';
-import { supabase } from '@/services/supabase';
-
-import { cache, getNoCacheFlag, getPagination, normalize } from '../helpers';
+import { getPagination, normalize } from '../helpers';
 
 const router = Router();
-const $schema = supabase.schema('bookworms');
 
-router.get('/summaries', async (req, res) => {
-    const cacheKey = `bookworms.summaries`;
-    const { data, cached, error } = await cache(
-        cacheKey,
-        async () => {
-            const { data: authorsData } = await $schema.from('authors').select(`count`);
-            const { data: seriesData } = await $schema.from('series').select(`count`);
-            const { data: booksData } = await $schema.from('books').select('count');
+const loadNdjson = file =>
+    fs.readFileSync(path.join(__dirname, file), 'utf8')
+        .split('\n')
+        .filter(Boolean)
+        .map(line => JSON.parse(line));
 
-            return {
-                authors: authorsData?.[0]?.count || 0,
-                series: seriesData?.[0]?.count || 0,
-                books: booksData?.[0]?.count || 0,
-            };
-        },
-        getNoCacheFlag(req),
-    );
+const booksRaw = loadNdjson('../catalog-books.ndjson').map(([libid, title, authors_csv, , cover_id]) => ({
+    libid,
+    title,
+    authors: authors_csv ? authors_csv.split(',') : [],
+    cover_id,
+}));
 
-    res.setHeader('X-Cached', cached);
+const authorsRaw = loadNdjson('../catalog-authors.ndjson').map(([name, books]) => ({ name, books }));
+const seriesRaw = loadNdjson('../catalog-series.ndjson').map(([name, books]) => ({ name, books }));
 
-    if (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Something went worng' });
-    }
-
-    return res.json(data);
+const fuseBooks = new Fuse(booksRaw, {
+    keys: [{ name: 'title', weight: 5 }, { name: 'authors', weight: 3 }],
+    threshold: 0.3,
 });
 
-router.get('/search', async (req, res) => {
+const fuseAuthors = new Fuse(authorsRaw, {
+    keys: ['name'],
+    threshold: 0.3,
+});
+
+const fuseSeries = new Fuse(seriesRaw, {
+    keys: ['name'],
+    threshold: 0.3,
+});
+
+router.get('/summaries', (req, res) => {
+    return res.json({
+        authors: authorsRaw.length,
+        series: seriesRaw.length,
+        books: booksRaw.length,
+    });
+});
+
+router.get('/search', (req, res) => {
     const query = normalize(req.query?.q || '');
     const pagination = getPagination(req);
 
     if (!query) {
-        return res.status(400).json({
-            message: 'You must provide at least a query',
-        });
+        return res.status(400).json({ message: 'You must provide at least a query' });
     }
 
-    const cacheKey = `bookworms.search.${sha1(query + pagination.join(','))}`;
-    const { data, cached, error } = await cache(
-        cacheKey,
-        async () => {
-            const { data: authorsData } = await $schema
-                .from('authors')
-                .select(`name, views, books(count)`)
-                .order('id', { ascending: false })
-                .ilike('name_normalized', `%${query}%`);
+    const [from, to] = pagination;
 
-            const { data: seriesData } = await $schema
-                .from('series')
-                .select(`name, views, books(count)`)
-                .order('id', { ascending: false })
-                .ilike('name_normalized', `%${query}%`);
+    const allBooks = fuseBooks.search(query).map(r => r.item);
+    const allAuthors = fuseAuthors.search(query).map(r => r.item);
+    const allSeries = fuseSeries.search(query).map(r => r.item);
 
-            const { data: booksCount } = await $schema
-                .from('books')
-                .select('count')
-                .ilike('title_normalized', `%${query}%`);
-
-            const { data: booksData } = await $schema
-                .from('books')
-                .select(
-                    'libid, title, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name)',
-                )
-                .order('id', { ascending: false })
-                .ilike('title_normalized', `%${query}%`)
-                .range(...pagination);
-
-            const mapCount = item => ({
-                name: item.name,
-                views: item.views,
-                books: item.books[0].count,
-            });
-
-            const [from, to] = pagination;
-
-            return {
-                authors: {
-                    total: authorsData?.length || 0,
-                    results: authorsData.map(mapCount) || [],
-                },
-                series: {
-                    total: seriesData?.length || 0,
-                    results: seriesData.map(mapCount) || [],
-                },
-                books: {
-                    from,
-                    to,
-                    page: Number(req.query?.page || 1),
-                    count: booksData?.length || 0,
-                    total: booksCount[0]?.count || 0,
-                    results: booksData || [],
-                },
-            };
+    return res.json({
+        authors: {
+            total: allAuthors.length,
+            results: allAuthors,
         },
-        getNoCacheFlag(req),
-    );
-
-    res.setHeader('X-Cached', cached);
-
-    if (error) {
-        res.status(500).json({ message: 'Something went worng' });
-    }
-
-    return res.json(data);
+        series: {
+            total: allSeries.length,
+            results: allSeries,
+        },
+        books: {
+            from,
+            to,
+            page: Number(req.query?.page || 1),
+            count: allBooks.slice(from, to + 1).length,
+            total: allBooks.length,
+            results: allBooks.slice(from, to + 1),
+        },
+    });
 });
 
-const entities = {
-    books: {
-        rpc: 'search_books_similar',
-        rpc_counter: 'count_books_similar',
-        threshold: 0.3,
-        map: item => item,
-    },
-    author: {
-        rpc: 'search_authors_similar',
-        rpc_counter: 'count_authors_similar',
-        threshold: 0.3,
-        map: item => ({
-            id: item.id,
-            name: item.name,
-            views: item.views,
-            books: item.books_count,
-        }),
-    },
-    serie: {
-        rpc: 'search_series_similar',
-        rpc_counter: 'count_series_similar',
-        threshold: 0.3,
-        map: item => ({
-            id: item.id,
-            name: item.name,
-            views: item.views,
-            books: item.books_count,
-        }),
-    },
+const fuseByEntity = {
+    books: fuseBooks,
+    author: fuseAuthors,
+    serie: fuseSeries,
 };
 
-router.get('/search/:entity', async (req, res) => {
+router.get('/search/:entity', (req, res) => {
     const { entity } = req.params;
-    const config = entities[entity];
-    if (!config) return res.status(404).json({ message: 'Invalid entity' });
+    const fuse = fuseByEntity[entity];
+    if (!fuse) return res.status(404).json({ message: 'Invalid entity' });
 
     const query = normalize(req.query?.q || '');
     if (!query) return res.status(400).json({ message: 'Missing query' });
 
-    const pagination = getPagination(req);
-    const cacheKey = `bookworms.search.${sha1(entity + query + pagination.join(','))}`;
+    const [from, to] = getPagination(req);
+    const all = fuse.search(query).map(r => r.item);
 
-    const { data, cached, error } = await cache(
-        cacheKey,
-        async () => {
-            const [from, to] = pagination;
-
-            const { data, error } = await $schema.rpc(config.rpc, {
-                q: query,
-                threshold: config.threshold,
-                from_index: from,
-                to_index: to,
-            });
-
-            if (error) throw error;
-
-            const { data: countData } = await $schema.rpc(config.rpc_counter, {
-                q: query,
-                threshold: config.threshold,
-            });
-
-            const totalCount = countData || 0;
-
-            return {
-                data: data?.map(config.map) || [],
-                pagination: {
-                    from,
-                    to: to,
-                    found: totalCount,
-                    count: data?.length || 0,
-                    page: Number(req.query?.page || 1),
-                    pages: Math.ceil(totalCount / (to - from + 1)),
-                },
-            };
+    return res.json({
+        data: all.slice(from, to + 1),
+        pagination: {
+            from,
+            to,
+            found: all.length,
+            count: all.slice(from, to + 1).length,
+            page: Number(req.query?.page || 1),
+            pages: Math.ceil(all.length / (to - from + 1)),
         },
-        getNoCacheFlag(req),
-    );
-
-    res.setHeader('X-Cached', cached);
-
-    if (error) {
-        res.status(500).json({ error, message: 'Something went worng' });
-    }
-
-    return res.json(data);
+    });
 });
 
-router.get('/top', async (req, res) => {
-    const entity = req.query?.entity || 'books';
-    const category = req.query?.category || 'views';
-    const limit = Math.min(50, req.query?.limit || 10);
-
-    const setupMap = {
-        books: {
-            categories: ['views', 'downloads'],
-            fields: 'libid, title, filename, cover_id, views, downloads, serie_name, serie_sequence, authors(name)',
-        },
-        series: {
-            categories: ['views'],
-            fields: 'name, views',
-        },
-        authors: {
-            categories: ['views'],
-            fields: 'name, views',
-        },
-    };
-
-    if (!Object.keys(setupMap).includes(entity)) {
-        return res.status(400).json({
-            message: 'Provide a valid entity',
-            allowedEntities: Object.keys(setupMap),
-        });
-    }
-
-    if (!setupMap[entity].categories.includes(category)) {
-        return res.status(400).json({
-            message: 'Provide a valid category',
-            allowedCategories: setupMap[entity].categories,
-        });
-    }
-
-    const cacheKey = `bookworms.top.${entity}.${category}.${limit}`;
-    const { data, cached, error } = await cache(
-        cacheKey,
-        async () => {
-            const { data } = await $schema
-                .from(entity)
-                .select(setupMap[entity].fields)
-                .order(category, { ascending: false })
-                .limit(limit);
-
-            return data;
-        },
-        getNoCacheFlag(req),
-    );
-
-    res.setHeader('X-Cached', cached);
-
-    if (error) {
-        res.status(500).json({ message: 'Something went worng' });
-    }
-
-    return res.json(data);
-});
 
 export default router;
