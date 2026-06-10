@@ -3,7 +3,7 @@ import { OpenRouter } from '@openrouter/sdk';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 
-import { findIcon } from './utils/icon-finder';
+import { findIcon } from './icon-finder';
 
 const ia = new OpenRouter({ apiKey: process.env.OPENROUTER_API_KEY });
 const MODEL = process.env.OPENROUTER_API_MODEL;
