@@ -1,6 +1,6 @@
 import { createLogger, format, transports, addColors } from 'winston';
 import { upperCase, kebabCase } from 'lodash';
-import clc from 'cli-color';
+import chalk from 'chalk';
 
 const customLevels = {
     levels: {
@@ -29,9 +29,9 @@ addColors(customLevels.colors);
 
 const consoleFormat = (tag = 'logger') =>
     format.printf(({ level, message }) => {
-        const coloredTag = clc.magenta(`[${upperCase(tag)}]`);
+        const coloredTag = chalk.magenta(`[${upperCase(tag)}]`);
         const timestamp = new Date().toISOString();
-        return `${clc.blackBright(timestamp)} ${coloredTag} ${level}: ${message}`;
+        return `${chalk.blackBright(timestamp)} ${coloredTag} ${level}: ${message}`;
     });
 
 const buildCustomLogger = tag => {
