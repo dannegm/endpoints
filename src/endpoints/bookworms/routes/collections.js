@@ -13,7 +13,6 @@ const router = Router();
 const $schema = supabase.schema('bookworms');
 const ntfy = new Ntfy(process.env.APP_TOPIC);
 
-
 const MAX_RETRIES = 3;
 const MIN_BOOKS = 4;
 

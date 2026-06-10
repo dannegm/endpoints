@@ -8,23 +8,32 @@ import { getPagination, normalize } from '../helpers';
 const router = Router();
 
 const loadNdjson = file =>
-    fs.readFileSync(path.join(__dirname, file), 'utf8')
+    fs
+        .readFileSync(path.join(__dirname, file), 'utf8')
         .split('\n')
         .filter(Boolean)
         .map(line => JSON.parse(line));
 
-const booksRaw = loadNdjson('../catalog-books.ndjson').map(([libid, title, authors_csv, , cover_id]) => ({
-    libid,
-    title,
-    authors: authors_csv ? authors_csv.split(',') : [],
-    cover_id,
-}));
+const booksRaw = loadNdjson('../catalog-books.ndjson').map(
+    ([libid, title, authors_csv, , cover_id]) => ({
+        libid,
+        title,
+        authors: authors_csv ? authors_csv.split(',') : [],
+        cover_id,
+    }),
+);
 
-const authorsRaw = loadNdjson('../catalog-authors.ndjson').map(([name, books]) => ({ name, books }));
+const authorsRaw = loadNdjson('../catalog-authors.ndjson').map(([name, books]) => ({
+    name,
+    books,
+}));
 const seriesRaw = loadNdjson('../catalog-series.ndjson').map(([name, books]) => ({ name, books }));
 
 const fuseBooks = new Fuse(booksRaw, {
-    keys: [{ name: 'title', weight: 5 }, { name: 'authors', weight: 3 }],
+    keys: [
+        { name: 'title', weight: 5 },
+        { name: 'authors', weight: 3 },
+    ],
     threshold: 0.3,
 });
 
@@ -51,7 +60,10 @@ const sample = (arr, n) => {
     const taken = new Set();
     while (result.length < n) {
         const i = Math.floor(Math.random() * arr.length);
-        if (!taken.has(i)) { taken.add(i); result.push(arr[i]); }
+        if (!taken.has(i)) {
+            taken.add(i);
+            result.push(arr[i]);
+        }
     }
     return result;
 };
@@ -129,6 +141,5 @@ router.get('/search/:entity', (req, res) => {
         },
     });
 });
-
 
 export default router;

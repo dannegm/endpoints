@@ -6,7 +6,7 @@ async function main() {
 
     const authorsMap = new Map();
     for (const book of indice) {
-        for (const author of (book.authors ?? [])) {
+        for (const author of book.authors ?? []) {
             authorsMap.set(author, (authorsMap.get(author) ?? 0) + 1);
         }
     }
