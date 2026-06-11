@@ -2,7 +2,7 @@ import { OpenRouter } from '@openrouter/sdk';
 
 const ia = new OpenRouter({ apiKey: process.env.OPENROUTER_API_KEY });
 
-const MODEL = 'google/gemini-2.0-flash-001:online';
+const MODEL = process.env.OPENROUTER_API_MODEL || 'google/gemini-3.1-flash-lite';
 
 const SYSTEM_PROMPT = `Eres un agente de búsqueda especializado en operativos viales de la Ciudad de México.
 Tu única tarea es encontrar información oficial y reciente sobre el Operativo Última Milla
