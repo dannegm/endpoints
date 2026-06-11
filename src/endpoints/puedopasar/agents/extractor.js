@@ -2,7 +2,7 @@ import { OpenRouter } from '@openrouter/sdk';
 
 const ia = new OpenRouter({ apiKey: process.env.OPENROUTER_API_KEY });
 
-const MODEL = process.env.OPENROUTER_API_MODEL;
+const MODEL = process.env.OPENROUTER_API_MODEL || 'google/gemini-3.1-flash-lite';
 
 const SYSTEM_PROMPT = `Eres un agente extractor de datos sobre operativos viales en CDMX.
 Recibirás el contenido de páginas web. Extrae ÚNICAMENTE:
