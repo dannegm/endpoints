@@ -1,0 +1,88 @@
+{
+  "today": true,
+  "dates": [
+    { "date": "2026-06-11", "partialClosure": "23:00", "totalClosure": "05:00", "prevDay": true },
+    { "date": "2026-06-17", "partialClosure": "10:00", "totalClosure": "14:00" },
+    { "date": "2026-06-24", "partialClosure": "09:00", "totalClosure": "13:00" },
+    { "date": "2026-06-30", "partialClosure": "09:00", "totalClosure": "13:00" },
+    { "date": "2026-07-05", "partialClosure": "08:00", "totalClosure": "12:00" }
+  ],
+  "affectedStreets": {
+    "total": [
+      "San Gabriel – Santa Úrsula",
+      "San Benjamín – Santa Úrsula",
+      "San Cástulo – Santa Úrsula",
+      "San Celso – Santa Úrsula",
+      "San León – Santa Úrsula",
+      "Santo Tomás – San Alejandro",
+      "Santo Tomás – San Jorge",
+      "San Guillermo – San Alejandro",
+      "San Guillermo – San Jorge",
+      "San Guillermo – Santa Úrsula"
+    ],
+    "partial": [
+      "Acoxpa y Las Torres",
+      "Periférico y Circuito Azteca",
+      "Periférico y Coscomate",
+      "Periférico y Renato Leduc",
+      "Periférico y Tlalpan",
+      "Tlalpan y Viaducto Tlalpan",
+      "Gran Sur e Imán"
+    ]
+  },
+  "perimeter": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [-99.135269, 19.302900],
+          [-99.135496, 19.305398],
+          [-99.136190, 19.307820],
+          [-99.137310, 19.310095],
+          [-99.138831, 19.312141],
+          [-99.140710, 19.313918],
+          [-99.142884, 19.315353],
+          [-99.145290, 19.316410],
+          [-99.147855, 19.317055],
+          [-99.150500, 19.317289],
+          [-99.153145, 19.317055],
+          [-99.155710, 19.316410],
+          [-99.158116, 19.315353],
+          [-99.160290, 19.313918],
+          [-99.162169, 19.312141],
+          [-99.163690, 19.310095],
+          [-99.164810, 19.307820],
+          [-99.165504, 19.305398],
+          [-99.165731, 19.302900],
+          [-99.165504, 19.300402],
+          [-99.164810, 19.297980],
+          [-99.163690, 19.295705],
+          [-99.162169, 19.293659],
+          [-99.160290, 19.291882],
+          [-99.158116, 19.290447],
+          [-99.155710, 19.289390],
+          [-99.153145, 19.288745],
+          [-99.150500, 19.288511],
+          [-99.147855, 19.288745],
+          [-99.145290, 19.289390],
+          [-99.142884, 19.290447],
+          [-99.140710, 19.291882],
+          [-99.138831, 19.293659],
+          [-99.137310, 19.295705],
+          [-99.136190, 19.297980],
+          [-99.135496, 19.300402],
+          [-99.135269, 19.302900]
+        ]
+      ]
+    },
+    "properties": {
+      "radiusKm": 1.6,
+      "center": { "lat": 19.3029, "lng": -99.1505 }
+    }
+  },
+  "lastChecked": "2026-06-11T00:00:00Z",
+  "source": "https://ssc.cdmx.gob.mx",
+  "confidence": "low",
+  "fallback": true
+}

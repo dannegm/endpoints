@@ -1,0 +1,16 @@
+name: Puedo Pasar — Refresh
+
+on:
+  schedule:
+    - cron: '0 0,8,16 * * *'
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger refresh
+        run: |
+          curl -X POST \
+            -H "x-puedopasar-key: ${{ secrets.APP_KEY }}" \
+            https://endpoints.hckr.mx/puedopasar/refresh

@@ -1,0 +1,32 @@
+{
+  "dates": [
+    { "date": "2026-06-11", "partialClosure": "23:00", "totalClosure": "05:00", "prevDay": true },
+    { "date": "2026-06-17", "partialClosure": "10:00", "totalClosure": "14:00" },
+    { "date": "2026-06-24", "partialClosure": "09:00", "totalClosure": "13:00" },
+    { "date": "2026-06-30", "partialClosure": "09:00", "totalClosure": "13:00" },
+    { "date": "2026-07-05", "partialClosure": "08:00", "totalClosure": "12:00" }
+  ],
+  "affectedStreets": {
+    "total": [
+      "San Gabriel – Santa Úrsula",
+      "San Benjamín – Santa Úrsula",
+      "San Cástulo – Santa Úrsula",
+      "San Celso – Santa Úrsula",
+      "San León – Santa Úrsula",
+      "Santo Tomás – San Alejandro",
+      "Santo Tomás – San Jorge",
+      "San Guillermo – San Alejandro",
+      "San Guillermo – San Jorge",
+      "San Guillermo – Santa Úrsula"
+    ],
+    "partial": [
+      "Acoxpa y Las Torres",
+      "Periférico y Circuito Azteca",
+      "Periférico y Coscomate",
+      "Periférico y Renato Leduc",
+      "Periférico y Tlalpan",
+      "Tlalpan y Viaducto Tlalpan",
+      "Gran Sur e Imán"
+    ]
+  }
+}
