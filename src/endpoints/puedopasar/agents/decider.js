@@ -4,7 +4,8 @@ const ia = new OpenRouter({ apiKey: process.env.OPENROUTER_API_KEY });
 
 const MODEL = process.env.OPENROUTER_API_MODEL || 'google/gemini-3.1-flash-lite';
 
-const buildSystemPrompt = currentDate => `Eres un agente de decisión sobre operativos viales en la Ciudad de México.
+const buildSystemPrompt =
+    currentDate => `Eres un agente de decisión sobre operativos viales en la Ciudad de México.
 Recibirás datos extraídos de fuentes web y datos de respaldo (fallback).
 
 Produce el JSON final del estado del operativo.

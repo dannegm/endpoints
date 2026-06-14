@@ -26,6 +26,7 @@
 Durante el torneo internacional de fútbol de verano 2026, la Ciudad de México implementa un operativo vial llamado **"Operativo Última Milla"** (también referido como "Polígono Última Milla" o "Primera Milla") alrededor del **Estadio Ciudad de México** (antes Estadio Azteca, actualmente también denominado Estadio Banorte) en los días de partido.
 
 Este operativo implica:
+
 - Un perímetro de seguridad de **~1.6 km** alrededor del estadio
 - Cierres totales y parciales en vialidades clave del sur de CDMX
 - Acceso restringido: solo con boleto, acreditación oficial, o código QR ("Tarjetón Digital") de residente emitido por la Alcaldía Coyoacán
@@ -38,21 +39,27 @@ No existe una herramienta centralizada, visual y accesible que permita a residen
 ## 2. Forma de pensar / decisiones
 
 ### Por qué una app efímera
+
 El problema es temporal y muy específico. Una app ligera, sin base de datos compleja, desplegada en un subdominio existente (`puedopasar.hckr.mx`) es suficiente. No necesita auth, usuarios ni persistencia de estado del usuario.
 
 ### Por qué un agente de IA para los datos
+
 Las fuentes oficiales (SSC CDMX, SEMOVI, Alcaldía Coyoacán) no tienen APIs. Publican en HTML y PDFs. Un agente puede monitorear cambios en fechas, perímetro u horarios sin intervención manual.
 
 ### Por qué 3 agentes separados
+
 Inspirado en el patrón del proyecto Bookworms en el repo `dannegm/endpoints`. Cada agente tiene responsabilidad atómica: buscar, extraer, decidir. El orquestador es código puro que los llama en cadena, construye el JSON final y lo escribe al disco.
 
 ### Por qué datos estáticos en el cliente
+
 El cliente importa un JSON estático — no hay fetch a ninguna API. El orquestador genera el archivo, el demon lo commitea al repo cliente, Vercel redeploya automáticamente. Resultado: cero latencia, cero costo de API en runtime, historial de cambios en git como auditoría gratuita.
 
 ### Por qué el demon como puente
+
 El demon (`dannegm/demons`) ya existe, corre en la máquina local de Daniel, escucha ntfy y tiene acceso al filesystem. Es el puente natural entre el servidor remoto y el repo del cliente. No requiere infraestructura adicional.
 
 ### Por qué rate limit en memoria
+
 App efímera, bajo tráfico. Un timestamp de última ejecución en memoria es suficiente.
 
 ---
@@ -66,6 +73,7 @@ Crear una utilidad web pública, visual y multilingüe que responda a la pregunt
 3. Datos actualizados cada 8 horas vía pipeline IA → demon → git
 
 **Audiencia (en orden de prioridad):**
+
 1. Residentes de la zona sur de CDMX
 2. Personas que estudian, trabajan o transitan por la zona
 3. Ciudadanos mexicanos (turismo local)
@@ -83,20 +91,20 @@ Crear una utilidad web pública, visual y multilingüe que responda a la pregunt
 
 No usar bajo ninguna circunstancia en copy de la app:
 
-| Término | Nota |
-|---|---|
-| `FIFA` | Marca registrada global |
-| `FIFA World Cup` / `FIFA World Cup 26` | Marca registrada |
-| `World Cup` / `World Cup 26` / `WC26` | Marca registrada — incluso solas |
-| `Copa Mundial de la FIFA` / `Copa Mundial de la FIFA 26` | Marca registrada en español |
-| `COPA MUNDIAL` / `MUNDIAL` | Marcas registradas independientes |
-| `Coupe du Monde de la FIFA` | Marca registrada en francés |
-| `COUPE DU MONDE` | Marca registrada |
-| Logo oficial del torneo | Protegido por copyright |
-| Emblema oficial, mascota oficial | Protegidos |
-| Tipografía oficial "FWC 26" | Protegida por diseño registrado |
-| Slogans oficiales del torneo | Protegidos |
-| Logos de ciudades sede | Protegidos (incluye "CDMX 2026" en formato oficial) |
+| Término                                                  | Nota                                                |
+| -------------------------------------------------------- | --------------------------------------------------- |
+| `FIFA`                                                   | Marca registrada global                             |
+| `FIFA World Cup` / `FIFA World Cup 26`                   | Marca registrada                                    |
+| `World Cup` / `World Cup 26` / `WC26`                    | Marca registrada — incluso solas                    |
+| `Copa Mundial de la FIFA` / `Copa Mundial de la FIFA 26` | Marca registrada en español                         |
+| `COPA MUNDIAL` / `MUNDIAL`                               | Marcas registradas independientes                   |
+| `Coupe du Monde de la FIFA`                              | Marca registrada en francés                         |
+| `COUPE DU MONDE`                                         | Marca registrada                                    |
+| Logo oficial del torneo                                  | Protegido por copyright                             |
+| Emblema oficial, mascota oficial                         | Protegidos                                          |
+| Tipografía oficial "FWC 26"                              | Protegida por diseño registrado                     |
+| Slogans oficiales del torneo                             | Protegidos                                          |
+| Logos de ciudades sede                                   | Protegidos (incluye "CDMX 2026" en formato oficial) |
 
 **Importante:** FIFA también registró variaciones, abreviaciones y nombres fonéticamente similares. Ante la duda, no usar.
 
@@ -104,40 +112,41 @@ No usar bajo ninguna circunstancia en copy de la app:
 
 Estas expresiones son genéricas, descriptivas o de uso editorial legítimo:
 
-| Término seguro | Uso sugerido |
-|---|---|
-| `evento deportivo` / `evento internacional` | Referencia al torneo sin nombrarlo |
-| `torneo de fútbol` / `torneo internacional de fútbol` | Descripción genérica |
-| `partido de fútbol` | Referencia a los juegos |
-| `Estadio Ciudad de México` | Nombre oficial actual del recinto |
-| `Estadio Banorte` | Nombre comercial actual del recinto |
-| `Operativo Última Milla` | Nombre del operativo gubernamental — seguro |
-| `Polígono Última Milla` | Nombre del perímetro — seguro |
-| `SSC CDMX` / `Secretaría de Seguridad Ciudadana` | Fuente oficial |
-| `Alcaldía Coyoacán` | Fuente oficial |
-| `SEMOVI` | Fuente oficial |
-| `cierre vial` / `restricción vehicular` | Descriptivo, seguro |
-| `fútbol` / `soccer` | Deporte genérico, no marca |
-| fechas específicas (11 jun, 17 jun...) | Hechos de dominio público |
-| `días de partido` | Descriptivo sin asociación comercial |
-| Banderas y colores nacionales | Permitidos sin escudos federación |
+| Término seguro                                        | Uso sugerido                                |
+| ----------------------------------------------------- | ------------------------------------------- |
+| `evento deportivo` / `evento internacional`           | Referencia al torneo sin nombrarlo          |
+| `torneo de fútbol` / `torneo internacional de fútbol` | Descripción genérica                        |
+| `partido de fútbol`                                   | Referencia a los juegos                     |
+| `Estadio Ciudad de México`                            | Nombre oficial actual del recinto           |
+| `Estadio Banorte`                                     | Nombre comercial actual del recinto         |
+| `Operativo Última Milla`                              | Nombre del operativo gubernamental — seguro |
+| `Polígono Última Milla`                               | Nombre del perímetro — seguro               |
+| `SSC CDMX` / `Secretaría de Seguridad Ciudadana`      | Fuente oficial                              |
+| `Alcaldía Coyoacán`                                   | Fuente oficial                              |
+| `SEMOVI`                                              | Fuente oficial                              |
+| `cierre vial` / `restricción vehicular`               | Descriptivo, seguro                         |
+| `fútbol` / `soccer`                                   | Deporte genérico, no marca                  |
+| fechas específicas (11 jun, 17 jun...)                | Hechos de dominio público                   |
+| `días de partido`                                     | Descriptivo sin asociación comercial        |
+| Banderas y colores nacionales                         | Permitidos sin escudos federación           |
 
 ### Criterio de uso editorial (sección A3 de las guidelines)
 
 La app califica como **uso editorial/descriptivo** porque:
+
 - No tiene afiliación comercial con el torneo
 - No genera revenue
 - No usa Official IP en el nombre/dominio
 - No crea impresión de que la app es patrocinada por FIFA
 - Su propósito es informar sobre un operativo **gubernamental** (SSC CDMX), no sobre el torneo en sí
 
-Las guidelines (sección A3) confirman: *"Editorial/descriptive use of the event is permissible as long as the use does not create a risk of confusion that the service is in any way connected with the Tournament or FIFA."*
+Las guidelines (sección A3) confirman: _"Editorial/descriptive use of the event is permissible as long as the use does not create a risk of confusion that the service is in any way connected with the Tournament or FIFA."_
 
 ### Nota sobre Clean Zones (fuente oficial: inside.fifa.com/tournament-organisation/brand-protection)
 
 FIFA define las **Clean Zones** como perímetros alrededor de los estadios que restringen actividades comerciales no autorizadas. Importante para el copy de la sección "¿Cómo puedo pasar?":
 
-> *"Permanent businesses and/or businesses regularly operating in a Clean Zone may, in principle, continue their usual core operations during the tournament period as long as their activity is not specifically targeting the event to obtain an undue promotional benefit."*
+> _"Permanent businesses and/or businesses regularly operating in a Clean Zone may, in principle, continue their usual core operations during the tournament period as long as their activity is not specifically targeting the event to obtain an undue promotional benefit."_
 
 Esto significa que **negocios locales, trabajadores y residentes dentro del perímetro pueden continuar su actividad normal** — dato que debe reflejarse en la sección HowToPass del cliente.
 
@@ -162,13 +171,13 @@ La Clean Zone es una restricción comercial/publicitaria, no un bloqueo total de
 
 ### Fechas y horarios confirmados
 
-| Fecha | Partido | Cierre parcial | Cierre total |
-|---|---|---|---|
-| **11 jun** | México vs Sudáfrica | 23:00h del día 10 | 05:00h |
-| **17 jun** | Colombia vs Uzbekistán | 10:00h | 14:00h |
-| **24 jun** | Chequia vs México | 09:00h | 13:00h |
-| **30 jun** | Dieciseisavos de final | 09:00h | 13:00h |
-| **5 jul** | Octavos de final | 08:00h | 12:00h |
+| Fecha      | Partido                | Cierre parcial    | Cierre total |
+| ---------- | ---------------------- | ----------------- | ------------ |
+| **11 jun** | México vs Sudáfrica    | 23:00h del día 10 | 05:00h       |
+| **17 jun** | Colombia vs Uzbekistán | 10:00h            | 14:00h       |
+| **24 jun** | Chequia vs México      | 09:00h            | 13:00h       |
+| **30 jun** | Dieciseisavos de final | 09:00h            | 13:00h       |
+| **5 jul**  | Octavos de final       | 08:00h            | 12:00h       |
 
 > **Nota:** La reapertura de vialidades ocurre aproximadamente **3 horas después** de concluido cada partido.
 
@@ -220,51 +229,55 @@ Los residentes dentro del polígono deben tramitar el **Tarjetón Digital** en l
 ## 6. Stack tecnológico
 
 ### Capa Server (`dannegm/endpoints`)
-| Herramienta | Rol |
-|---|---|
-| Bun | Runtime |
-| Express | HTTP server |
-| OpenRouter (Gemini Flash) | LLM para los 3 agentes |
-| GitHub Actions | Scheduler (cron cada 8h) |
-| In-memory rate limit | Evitar ejecuciones excesivas |
+
+| Herramienta               | Rol                          |
+| ------------------------- | ---------------------------- |
+| Bun                       | Runtime                      |
+| Express                   | HTTP server                  |
+| OpenRouter (Gemini Flash) | LLM para los 3 agentes       |
+| GitHub Actions            | Scheduler (cron cada 8h)     |
+| In-memory rate limit      | Evitar ejecuciones excesivas |
 
 > Vive en `src/endpoints/puedopasar/`. Expuesto en `endpoints.hckr.mx/puedopasar`.
 
 ### Capa Demon (`dannegm/demons`)
-| Herramienta | Rol |
-|---|---|
-| Node.js + PM2 | Runtime daemon |
-| ntfy.sh | Canal pub/sub para recibir comandos |
-| TOTP (`OPT_KEY`) | Autenticación de comandos |
-| git CLI | Commit + push al repo cliente |
+
+| Herramienta      | Rol                                 |
+| ---------------- | ----------------------------------- |
+| Node.js + PM2    | Runtime daemon                      |
+| ntfy.sh          | Canal pub/sub para recibir comandos |
+| TOTP (`OPT_KEY`) | Autenticación de comandos           |
+| git CLI          | Commit + push al repo cliente       |
 
 > Corre localmente en la máquina de Daniel. Escucha el comando `updatePuedoPasar`.
 
 ### Capa Client (repo nuevo)
-| Herramienta | Rol |
-|---|---|
-| Vite + React | Framework |
-| Tailwind CSS | Estilos |
-| Google Fonts | Tipografía |
-| shadcn/ui | Componentes base |
-| mapcn (MapLibre GL) | Mapa interactivo |
-| TanStack Router | Routing |
-| TanStack Query | Fetching / estado asíncrono |
-| nuqs | Estado en URL (query params) |
-| i18next + react-i18next | Internacionalización |
-| Utilidades propias | Proporcionadas por Daniel antes de iniciar el código |
-| Vercel | Deploy automático vía git push |
+
+| Herramienta             | Rol                                                  |
+| ----------------------- | ---------------------------------------------------- |
+| Vite + React            | Framework                                            |
+| Tailwind CSS            | Estilos                                              |
+| Google Fonts            | Tipografía                                           |
+| shadcn/ui               | Componentes base                                     |
+| mapcn (MapLibre GL)     | Mapa interactivo                                     |
+| TanStack Router         | Routing                                              |
+| TanStack Query          | Fetching / estado asíncrono                          |
+| nuqs                    | Estado en URL (query params)                         |
+| i18next + react-i18next | Internacionalización                                 |
+| Utilidades propias      | Proporcionadas por Daniel antes de iniciar el código |
+| Vercel                  | Deploy automático vía git push                       |
 
 > Vive en su propio repo. Desplegado en `puedopasar.hckr.mx`.
 > ⚠️ **Instrucción para Claude Code:** No iniciar el código del cliente hasta que Daniel proporcione las utilidades propias. Integrarlas antes de implementar cualquier componente.
 
 ### Idiomas
-| Código | Idioma | Estado |
-|---|---|---|
-| `es` | Español | Original (Daniel) |
-| `en` | Inglés | Original (Daniel + Luna) |
-| `fr` | Francés | Traducción asistida por IA |
-| `ja` | Japonés | Traducción asistida por IA (guiño) |
+
+| Código | Idioma  | Estado                             |
+| ------ | ------- | ---------------------------------- |
+| `es`   | Español | Original (Daniel)                  |
+| `en`   | Inglés  | Original (Daniel + Luna)           |
+| `fr`   | Francés | Traducción asistida por IA         |
+| `ja`   | Japonés | Traducción asistida por IA (guiño) |
 
 ---
 
@@ -338,24 +351,29 @@ src/endpoints/puedopasar/
 ### Endpoints expuestos
 
 #### `GET /puedopasar/data`
+
 Devuelve el contenido actual de `status.json`. Sin auth. Este es el único endpoint que consume el demon.
 
 #### `POST /puedopasar/refresh`
+
 Trigger del pipeline. Responde **inmediatamente** y ejecuta el orquestador en segundo plano (`runOrchestrator()` sin `await`). Esto evita 502s si los agentes tardan.
 
 La validación del header y del rate limit es síncrona — si falla ahí, sí responde con error. Todo lo demás es async.
 
 **Header de autenticación (valor proporcionado por Daniel):**
+
 ```
 x-puedopasar-key: <PUEDOPASAR_SECRET>
 ```
 
 **Response inmediata — pipeline iniciado:**
+
 ```json
 { "ok": true, "started": true }
 ```
 
 **Response si rate limit activo:**
+
 ```json
 { "ok": true, "skipped": true, "lastChecked": "2026-06-11T08:00:00Z" }
 ```
@@ -416,12 +434,14 @@ x-puedopasar-key: <PUEDOPASAR_SECRET>
 ### Los 3 agentes
 
 #### Agente 1 — Buscador (`searcher.js`)
+
 - **Input:** ninguno
 - **Output:** `[{ url, snippet, publishedAt }]` — máximo 5 resultados
 - **Modelo:** Gemini Flash vía OpenRouter con web search habilitado
 - **Regla estricta:** solo recolecta, no interpreta
 
 **System prompt:**
+
 ```
 Eres un agente de búsqueda especializado en operativos viales de la Ciudad de México.
 Tu única tarea es encontrar información oficial y reciente sobre el Operativo Última Milla
@@ -439,11 +459,13 @@ Máximo 5 resultados. Si no encuentras nada relevante, devuelve [].
 ```
 
 #### Agente 2 — Extractor (`extractor.js`)
+
 - **Input:** array de URLs del Agente 1 (el orquestador hace fetch del HTML y lo pasa como texto)
 - **Output:** array de datos crudos extraídos
 - **Regla estricta:** no toma decisiones, no infiere
 
 **System prompt:**
+
 ```
 Eres un agente extractor de datos sobre operativos viales en CDMX.
 Recibirás el contenido de páginas web. Extrae ÚNICAMENTE:
@@ -464,11 +486,13 @@ Formato: [{
 ```
 
 #### Agente 3 — Decisor (`decider.js`)
+
 - **Input:** datos del Agente 2 + `fallback.json` + fecha actual inyectada como string
 - **Output:** objeto parcial de status (sin `perimeter`, lo agrega el orquestador)
 - **Regla:** si datos insuficientes → usar fallback, marcar `confidence: "low", fallback: true`
 
 **System prompt:**
+
 ```
 Eres un agente de decisión sobre operativos viales en la Ciudad de México.
 Recibirás datos extraídos de fuentes web y datos de respaldo (fallback).
@@ -535,6 +559,7 @@ export const runOrchestrator = async () => {
 ```
 
 **Dos funciones ntfy distintas:**
+
 - `ntfy(msg)` — notificación simple de log, sin OTP, sin formato de comando
 - `ntfyCommand(cmd)` — genera OTP y publica `[otp]cmd` para que el demon lo ejecute
 
@@ -542,14 +567,14 @@ export const runOrchestrator = async () => {
 
 ```js
 export const state = {
-  lastRefresh: null,
-  lastResult: null,
-  REFRESH_INTERVAL: 8 * 60 * 60 * 1000, // 8 horas
+    lastRefresh: null,
+    lastResult: null,
+    REFRESH_INTERVAL: 8 * 60 * 60 * 1000, // 8 horas
 };
 
 export const canRefresh = () => {
-  if (!state.lastRefresh) return true;
-  return Date.now() - new Date(state.lastRefresh).getTime() > state.REFRESH_INTERVAL;
+    if (!state.lastRefresh) return true;
+    return Date.now() - new Date(state.lastRefresh).getTime() > state.REFRESH_INTERVAL;
 };
 ```
 
@@ -569,18 +594,18 @@ Archivo: `.github/workflows/puedopasar-refresh.yml`
 ```yaml
 name: Puedo Pasar — Refresh
 on:
-  schedule:
-    - cron: '0 0,8,16 * * *'
-  workflow_dispatch:
+    schedule:
+        - cron: '0 0,8,16 * * *'
+    workflow_dispatch:
 jobs:
-  refresh:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger refresh
-        run: |
-          curl -X POST \
-            -H "x-puedopasar-key: ${{ secrets.PUEDOPASAR_SECRET }}" \
-            https://endpoints.hckr.mx/puedopasar/refresh
+    refresh:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Trigger refresh
+              run: |
+                  curl -X POST \
+                    -H "x-puedopasar-key: ${{ secrets.PUEDOPASAR_SECRET }}" \
+                    https://endpoints.hckr.mx/puedopasar/refresh
 ```
 
 ---
@@ -600,6 +625,7 @@ jobs:
 ### Nuevo comando: `updatePuedoPasar`
 
 **Formato del mensaje ntfy que dispara el comando:**
+
 ```
 [123456]updatePuedoPasar({"dataUrl":"https://endpoints.hckr.mx/puedopasar/data"})
 ```
@@ -607,6 +633,7 @@ jobs:
 **Archivo:** `src/demons/puedopasar/index.js`
 
 **Flujo del handler:**
+
 1. Recibir `dataUrl` de los params JSON
 2. `fetch(dataUrl)` → obtener el JSON de status
 3. Asegurarse de que el path `<CLIENT_REPO_PATH>/public/data/` existe (crear si no)
@@ -617,16 +644,19 @@ jobs:
 8. Publicar notificación ntfy de éxito o error
 
 **Variable de entorno nueva:**
+
 ```
 PUEDOPASAR_CLIENT_REPO_PATH=/ruta/absoluta/al/repo/cliente
 ```
 
 **Flag a agregar en `src/flags.js`:**
+
 ```js
 'command.puedopasar': true,
 ```
 
 **Registro en `src/demons/index.js`:**
+
 ```js
 import { handler as updatePuedoPasar } from './puedopasar/index.js';
 // agregar al objeto handlers existente
@@ -712,12 +742,12 @@ import statusData from '/data/status.json';
 
 Calcular distancia en línea recta entre la ubicación del usuario y el centroide del perímetro (`19.3029, -99.1505`). Comparar contra el radio del polígono (`perimeterKm`).
 
-| Situación | Color | Mensaje (es) |
-|---|---|---|
-| Dentro del perímetro | 🔴 Rojo | "Estás dentro de la zona de cierre" |
-| < 500m del borde | 🟠 Naranja | "Estás muy cerca del perímetro" |
-| 500m – 1.5km del borde | 🟡 Amarillo | "Estás cerca, puede afectarte" |
-| > 1.5km del borde | 🟢 Verde | "Tu zona no se ve afectada directamente" |
+| Situación              | Color       | Mensaje (es)                             |
+| ---------------------- | ----------- | ---------------------------------------- |
+| Dentro del perímetro   | 🔴 Rojo     | "Estás dentro de la zona de cierre"      |
+| < 500m del borde       | 🟠 Naranja  | "Estás muy cerca del perímetro"          |
+| 500m – 1.5km del borde | 🟡 Amarillo | "Estás cerca, puede afectarte"           |
+| > 1.5km del borde      | 🟢 Verde    | "Tu zona no se ve afectada directamente" |
 
 ### Componentes principales
 
@@ -751,24 +781,28 @@ public/
 ## 11. i18n
 
 ### Setup
+
 - `i18next` + `react-i18next`
 - Detección automática del idioma del browser
 - Fallback: `es`
 
 ### Idiomas
-| Código | Idioma | Responsable |
-|---|---|---|
-| `es` | Español | Daniel (original) |
-| `en` | Inglés | Daniel + Luna (original) |
-| `fr` | Francés | Traducción asistida por IA |
-| `ja` | Japonés | Traducción asistida por IA (guiño) |
+
+| Código | Idioma  | Responsable                        |
+| ------ | ------- | ---------------------------------- |
+| `es`   | Español | Daniel (original)                  |
+| `en`   | Inglés  | Daniel + Luna (original)           |
+| `fr`   | Francés | Traducción asistida por IA         |
+| `ja`   | Japonés | Traducción asistida por IA (guiño) |
 
 ### Flujo
+
 1. `es` y `en` se escriben durante el desarrollo del cliente
 2. Una vez estables, se generan `fr` y `ja` pasando los strings por Claude
 3. Archivos en `src/locales/{lang}/translation.json`
 
 ### Recordatorio legal para copy
+
 Todo texto en todos los idiomas debe seguir las instrucciones de la **sección 4**.
 En particular: no traducir "World Cup" porque es marca registrada en inglés.
 En francés: no usar "Coupe du Monde de la FIFA" ni "Coupe du Monde".
@@ -782,6 +816,7 @@ En japonés: no usar ninguna transliteración de los términos protegidos.
 > Se puede comenzar directamente con la Fase 1.
 
 ### Fase 1 — Server
+
 - [ ] Generar `perimeter.json` con polígono GeoJSON (radio 1.6km desde `19.3029, -99.1505`)
 - [ ] Generar `fallback.json` con los datos de la sección 5
 - [ ] Scaffold `src/endpoints/puedopasar/` con la estructura definida
@@ -793,6 +828,7 @@ En japonés: no usar ninguna transliteración de los términos protegidos.
 - [ ] Verificar: `GET /puedopasar/data` devuelve JSON válido con datos de fallback
 
 ### Fase 2 — Demon
+
 - [ ] Revisar `src/demons/bookworms/` como referencia de patrón
 - [ ] Crear `src/demons/puedopasar/index.js` con handler `updatePuedoPasar`
 - [ ] Agregar `'command.puedopasar': true` en `src/flags.js`
@@ -802,6 +838,7 @@ En japonés: no usar ninguna transliteración de los términos protegidos.
 - [ ] Verificar que el commit llega al repo cliente y Vercel redeploya
 
 ### Fase 3 — Client
+
 - [ ] Crear repo con Vite + React + Tailwind + Google Fonts + shadcn + mapcn + TanStack Router + TanStack Query + nuqs + i18next
 - [ ] **Recibir e integrar las utilidades propias de Daniel**
 - [ ] Configurar i18next con `es` y `en`
@@ -812,6 +849,7 @@ En japonés: no usar ninguna transliteración de los términos protegidos.
 - [ ] Deploy en Vercel → `puedopasar.hckr.mx`
 
 ### Fase 4 — Traducciones y polish
+
 - [ ] Generar `fr` y `ja` con ayuda de IA
 - [ ] Auditar todo el copy contra sección 4
 - [ ] Testing en mobile (audiencia principal usa teléfono)
@@ -819,4 +857,4 @@ En japonés: no usar ninguna transliteración de los términos protegidos.
 
 ---
 
-*Documento generado durante sesión de planificación con Luna. Research legal y de zonas completado. Última actualización: junio 2026.*
+_Documento generado durante sesión de planificación con Luna. Research legal y de zonas completado. Última actualización: junio 2026._

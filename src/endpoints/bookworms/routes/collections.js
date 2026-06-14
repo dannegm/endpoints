@@ -79,7 +79,18 @@ router.get('/topics', async (req, res) => {
         .order('created_at', { ascending: false })
         .range(from - 1, to - 1);
 
-    if (error?.code === 'PGRST103') return res.json({ data: [], pagination: { from, to, found: 0, count: 0, page: Number(req.query?.page || 1), pages: 0 } });
+    if (error?.code === 'PGRST103')
+        return res.json({
+            data: [],
+            pagination: {
+                from,
+                to,
+                found: 0,
+                count: 0,
+                page: Number(req.query?.page || 1),
+                pages: 0,
+            },
+        });
     if (error) return res.status(500).json({ error: 'Error obteniendo topics.' });
     return res.json({
         data,
@@ -136,11 +147,7 @@ router.post('/topics/generate', async (req, res) => {
 // GET /topics/:id
 router.get('/topics/:id', async (req, res) => {
     const { id } = req.params;
-    const { data, error } = await $schema
-        .from('topics')
-        .select('*')
-        .eq('id', id)
-        .single();
+    const { data, error } = await $schema.from('topics').select('*').eq('id', id).single();
 
     if (error) return res.status(404).json({ error: 'Topic no encontrado.' });
     return res.json({ data });
@@ -170,7 +177,18 @@ router.get('/collections', async (req, res) => {
         .order('created_at', { ascending: false })
         .range(from - 1, to - 1);
 
-    if (error?.code === 'PGRST103') return res.json({ data: [], pagination: { from, to, found: 0, count: 0, page: Number(req.query?.page || 1), pages: 0 } });
+    if (error?.code === 'PGRST103')
+        return res.json({
+            data: [],
+            pagination: {
+                from,
+                to,
+                found: 0,
+                count: 0,
+                page: Number(req.query?.page || 1),
+                pages: 0,
+            },
+        });
     if (error) return res.status(500).json({ error: 'Error obteniendo colecciones.' });
     return res.json({
         data,

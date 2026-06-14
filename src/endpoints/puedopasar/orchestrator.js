@@ -37,7 +37,9 @@ export const runOrchestrator = async () => {
         const statusPath = join(import.meta.dir, 'data', 'status.json');
         writeFileSync(statusPath, JSON.stringify(final, null, 2));
 
-        push(`✅ [puedopasar] Datos actualizados. Confidence: ${final.confidence}. Fuente: ${final.source}`);
+        push(
+            `✅ [puedopasar] Datos actualizados. Confidence: ${final.confidence}. Fuente: ${final.source}`,
+        );
 
         pushCommand(`updatePuedoPasar({"dataUrl":"https://endpoints.hckr.mx/puedopasar/data"})`);
 

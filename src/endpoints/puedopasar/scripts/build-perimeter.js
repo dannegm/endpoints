@@ -2,42 +2,66 @@ import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const OUTPUT = join(import.meta.dir, '../data/perimeter.json');
+const API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+
+if (!API_KEY) {
+    console.error('✗ GOOGLE_MAPS_API_KEY no configurada');
+    process.exit(1);
+}
 
 const QUERIES = [
     // Parciales — definen el borde exterior
-    'Calzada Acoxpa y Avenida Las Torres, Coyoacán, Ciudad de México',
-    'Periférico Sur y Circuito Azteca, Coyoacán, Ciudad de México',
-    'Periférico Sur y Coscomate, Tlalpan, Ciudad de México',
-    'Periférico Sur y Renato Leduc, Tlalpan, Ciudad de México',
-    'Periférico Sur y Calzada de Tlalpan, Ciudad de México',
-    'Calzada de Tlalpan y Viaducto Tlalpan, Ciudad de México',
-    'Avenida del Imán y Gran Sur, Coyoacán, Ciudad de México',
+    'Calzada Acoxpa & Avenida Las Torres, Coyoacán, Ciudad de México',
+    'Anillo Periférico & Circuito Azteca, Coyoacán, Ciudad de México',
+    'Anillo Periférico & Coscomate, Tlalpan, Ciudad de México',
+    'Anillo Periférico & Renato Leduc, Tlalpan, Ciudad de México',
+    'Anillo Periférico & Calzada de Tlalpan, Ciudad de México',
+    'Calzada de Tlalpan & Viaducto Tlalpan, Ciudad de México',
+    'Avenida del Imán & Gran Sur, Coyoacán, Ciudad de México',
     // Totales — interiores, amplían el hull
-    'San Gabriel y Santa Úrsula, Coyoacán, Ciudad de México',
-    'San Benjamín y Santa Úrsula, Coyoacán, Ciudad de México',
-    'San Guillermo y Santa Úrsula, Coyoacán, Ciudad de México',
-    'Santo Tomás y San Alejandro, Coyoacán, Ciudad de México',
-    'San Guillermo y San Jorge, Coyoacán, Ciudad de México',
+    'San Gabriel & Santa Úrsula, Coyoacán, Ciudad de México',
+    'San Benjamín & Santa Úrsula, Coyoacán, Ciudad de México',
+    // agregados (faltaban)
+    'San Cástulo & Santa Úrsula, Coyoacán, Ciudad de México',
+    'San Celso & Santa Úrsula, Coyoacán, Ciudad de México',
+    'San León & Santa Úrsula, Coyoacán, Ciudad de México',
+    'San Guillermo & Santa Úrsula, Coyoacán, Ciudad de México',
+    'San Guillermo & San Alejandro, Coyoacán, Ciudad de México',
+    'San Guillermo & San Jorge, Coyoacán, Ciudad de México',
+    'Santo Tomás & San Alejandro, Coyoacán, Ciudad de México',
+    'Santo Tomás & San Jorge, Coyoacán, Ciudad de México',
 ];
 
-const sleep = ms => new Promise(r => setTimeout(r, ms));
+// Bounding box ~3km alrededor del estadio para descartar resultados erróneos
+const BOUNDS = { minLat: 19.276, maxLat: 19.33, minLng: -99.179, maxLng: -99.123 };
+const inBounds = ([lng, lat]) =>
+    lat >= BOUNDS.minLat && lat <= BOUNDS.maxLat && lng >= BOUNDS.minLng && lng <= BOUNDS.maxLng;
 
-async function geocode(query) {
-    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&countrycodes=mx&format=json&limit=1`;
-    const res = await fetch(url, {
-        headers: { 'User-Agent': 'puedopasar-perimeter-builder/1.0 (endpoints.hckr.mx)' },
-    });
+async function geocode(address) {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${API_KEY}`;
+    const res = await fetch(url);
     const data = await res.json();
-    if (!data.length) {
-        console.warn(`  ⚠ Sin resultado: ${query}`);
+
+    if (data.status !== 'OK' || !data.results.length) {
+        console.warn(`  ⚠ Sin resultado (${data.status}): ${address}`);
         return null;
     }
-    const { lat, lon, display_name } = data[0];
-    console.log(`  ✓ ${query}\n    → ${display_name}`);
-    return [parseFloat(lon), parseFloat(lat)];
+
+    const { lat, lng } = data.results[0].geometry.location;
+    const point = [lng, lat];
+
+    if (!inBounds(point)) {
+        console.warn(
+            `  ⚠ Fuera del área esperada, descartado: ${data.results[0].formatted_address}`,
+        );
+        return null;
+    }
+
+    console.log(`  ✓ ${address}\n    → ${data.results[0].formatted_address}`);
+    return point;
 }
 
-// Jarvis March (gift wrapping) — devuelve los puntos del convex hull en orden
+// Jarvis March (gift wrapping)
 function convexHull(points) {
     const n = points.length;
     if (n < 3) return points;
@@ -62,22 +86,22 @@ function convexHull(points) {
 }
 
 async function main() {
-    console.log('Geocodificando vialidades...\n');
+    console.log('Geocodificando vialidades con Google Maps...\n');
 
     const points = [];
 
     for (const query of QUERIES) {
         const point = await geocode(query);
         if (point) points.push(point);
-        await sleep(1100); // Nominatim: máx 1 req/s
     }
 
+    console.log(`\n${points.length}/${QUERIES.length} puntos obtenidos`);
+
     if (points.length < 3) {
-        console.error(`\n✗ Solo se obtuvieron ${points.length} puntos, necesito al menos 3.`);
+        console.error('✗ No hay suficientes puntos para calcular el hull.');
         process.exit(1);
     }
 
-    console.log(`\nCalculando convex hull sobre ${points.length} puntos...`);
     const hull = convexHull(points);
     hull.push(hull[0]); // cerrar el polígono
 
@@ -88,13 +112,12 @@ async function main() {
         lng: (Math.min(...lngs) + Math.max(...lngs)) / 2,
     };
 
-    // Radio aproximado: distancia máxima del centroide a cualquier vértice del hull
     const toKm = ([lng, lat]) => {
         const dlat = (lat - center.lat) * 111.32;
         const dlng = (lng - center.lng) * 111.32 * Math.cos((center.lat * Math.PI) / 180);
         return Math.sqrt(dlat ** 2 + dlng ** 2);
     };
-    const radiusKm = Math.max(...hull.map(toKm));
+    const radiusKm = Math.round(Math.max(...hull.map(toKm)) * 100) / 100;
 
     const geojson = {
         type: 'Feature',
@@ -103,13 +126,15 @@ async function main() {
             coordinates: [hull],
         },
         properties: {
-            radiusKm: Math.round(radiusKm * 100) / 100,
+            radiusKm,
             center,
         },
     };
 
     writeFileSync(OUTPUT, JSON.stringify(geojson, null, 2));
-    console.log(`\n✅ perimeter.json generado con ${hull.length - 1} vértices (radio ~${geojson.properties.radiusKm} km)`);
+    console.log(
+        `\n✅ perimeter.json generado — ${hull.length - 1} vértices, radio ~${radiusKm} km`,
+    );
 }
 
 main();

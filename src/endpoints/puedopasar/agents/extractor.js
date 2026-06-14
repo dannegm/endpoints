@@ -23,7 +23,11 @@ async function fetchContent(url, snippet) {
             signal: AbortSignal.timeout(10_000),
         });
         const html = await res.text();
-        const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 6000);
+        const text = html
+            .replace(/<[^>]+>/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .slice(0, 6000);
         return { url, text };
     } catch {
         return { url, text: snippet || '' };
