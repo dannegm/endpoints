@@ -2,7 +2,7 @@ name: Generate weekly collection
 
 on:
     schedule:
-        - cron: '0 12 * * 1' # Mondays 6 AM CST (UTC-6)
+        - cron: '0 10 * * 5' # Fridays 4 AM CST (UTC-6)
     workflow_dispatch: # manual trigger
 
 jobs:
