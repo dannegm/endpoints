@@ -5,3 +5,4 @@
 # Build
 /build
 **/indice.json
+/templates
