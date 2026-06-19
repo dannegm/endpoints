@@ -1,9 +1,12 @@
 import { Router } from 'express';
+import adminRouter from './routes/admin.js';
+import filesRouter from './routes/files.js';
+import previewRouter from './routes/preview.js';
 
 const router = Router();
 
-router.all('/', (req, res) => {
-    return res.send('OK - bins');
-});
+router.use(adminRouter);
+router.use(filesRouter);
+router.use(previewRouter);
 
 export default router;
