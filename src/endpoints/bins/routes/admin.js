@@ -9,8 +9,8 @@ const supabaseAdmin = createClient(
 
 const router = Router();
 
-const JWT_SECRET = new TextEncoder().encode(process.env.BINS_JWT_SECRET);
 const ADMIN_KEY = process.env.BINS_ADMIN_KEY;
+const JWT_SECRET = new TextEncoder().encode(process.env.BINS_JWT_SECRET);
 
 router.post('/admin/claim', async (req, res) => {
     const authHeader = req.headers.authorization;
