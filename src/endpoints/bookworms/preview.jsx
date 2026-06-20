@@ -31,7 +31,7 @@ export function BookPreview({ title, authors, published, pagecount, serieName, s
                         { key: i, style: { display: 'flex', background: 'rgba(181,98,26,0.10)', borderRadius: 100, padding: '4px 14px', border: `1px solid rgba(181,98,26,0.25)` } },
                         React.createElement(
                             'span',
-                            { style: { fontFamily: 'Noto Sans', fontWeight: 600, fontSize: 14, color: BRAND } },
+                            { style: { fontFamily: 'Noto Sans', fontWeight: 600, fontSize: 17, color: BRAND } },
                             label,
                         ),
                     ),
@@ -52,7 +52,7 @@ export function BookPreview({ title, authors, published, pagecount, serieName, s
               { style: { width: 248, height: 372, borderRadius: 6, background: `linear-gradient(135deg, ${BRAND} 0%, ${BRAND2} 100%)`, display: 'flex', alignItems: 'center', justifyContent: 'center' } },
               React.createElement(
                   'span',
-                  { style: { color: 'rgba(255,255,255,0.9)', fontSize: 88, fontFamily: 'Merriweather', fontWeight: 700 } },
+                  { style: { color: 'rgba(255,255,255,0.9)', fontSize: 106, fontFamily: 'Merriweather', fontWeight: 700 } },
                   title[0] ?? 'B',
               ),
           );
@@ -83,7 +83,7 @@ export function BookPreview({ title, authors, published, pagecount, serieName, s
 
                 {/* Watermark */}
                 <div style={{ position: 'absolute', top: 18, left: 48, display: 'flex' }}>
-                    <span style={{ fontFamily: 'Merriweather', fontWeight: 700, fontSize: 118, color: BRAND, opacity: 0.06, letterSpacing: '6px' }}>
+                    <span style={{ fontFamily: 'Merriweather', fontWeight: 700, fontSize: 142, color: BRAND, opacity: 0.06, letterSpacing: '6px' }}>
                         BOOKWORMS
                     </span>
                 </div>
@@ -99,21 +99,21 @@ export function BookPreview({ title, authors, published, pagecount, serieName, s
                     {/* Logo row */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 22 }}>
                         <div style={{ display: 'flex', width: 3, height: 18, background: BRAND, borderRadius: 2 }} />
-                        <span style={{ fontFamily: 'Merriweather', fontWeight: 700, fontSize: 15, color: BRAND, letterSpacing: '2.5px' }}>
+                        <span style={{ fontFamily: 'Merriweather', fontWeight: 700, fontSize: 18, color: BRAND, letterSpacing: '2.5px' }}>
                             BOOKWORMS
                         </span>
                     </div>
 
                     {/* Title */}
                     <div style={{ display: 'flex', maxHeight: 200, marginBottom: 14 }}>
-                        <span style={{ fontFamily: 'Merriweather', fontWeight: 700, fontSize: 52, color: FG, lineHeight: 1.18 }}>
+                        <span style={{ fontFamily: 'Merriweather', fontWeight: 700, fontSize: 62, color: FG, lineHeight: 1.18 }}>
                             {truncatedTitle}
                         </span>
                     </div>
 
                     {/* Authors */}
                     <div style={{ display: 'flex', marginBottom: 32 }}>
-                        <span style={{ fontFamily: 'Noto Sans', fontWeight: 400, fontSize: 21, color: MUTED }}>
+                        <span style={{ fontFamily: 'Noto Sans', fontWeight: 400, fontSize: 25, color: MUTED }}>
                             {truncatedAuthors}
                         </span>
                     </div>
@@ -124,7 +124,7 @@ export function BookPreview({ title, authors, published, pagecount, serieName, s
                     {/* Year · Pages */}
                     {metaLine ? (
                         <div style={{ display: 'flex', marginBottom: 14 }}>
-                            <span style={{ fontFamily: 'Noto Sans', fontWeight: 600, fontSize: 16, color: MUTED, letterSpacing: '0.5px' }}>
+                            <span style={{ fontFamily: 'Noto Sans', fontWeight: 600, fontSize: 19, color: MUTED, letterSpacing: '0.5px' }}>
                                 {metaLine}
                             </span>
                         </div>
