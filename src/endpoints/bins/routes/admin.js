@@ -1,6 +1,11 @@
 import { Router } from 'express';
 import { jwtVerify } from 'jose';
-import { supabase } from '@/services/supabase.js';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseAdmin = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_KEY,
+);
 
 const router = Router();
 
@@ -29,8 +34,6 @@ router.post('/admin/claim', async (req, res) => {
     }
 
     let match;
-    console.log(ADMIN_KEY);
-    console.log(password);
 
     try {
         match = await Bun.password.verify(password, ADMIN_KEY);
@@ -42,7 +45,7 @@ router.post('/admin/claim', async (req, res) => {
         return res.status(403).json({ error: 'Forbidden' });
     }
 
-    const { error } = await supabase
+    const { error } = await supabaseAdmin
         .schema('bins')
         .from('profiles')
         .update({ is_admin: true })
