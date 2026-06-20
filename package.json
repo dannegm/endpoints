@@ -12,7 +12,8 @@
         "start": "NODE_ENV=production bun src/index.js",
         "prod": "NODE_ENV=production pm2 start bun -- src/index.js",
         "make": "bun --bun x plop",
-        "codename": "npx codename-generator"
+        "codename": "npx codename-generator",
+        "keygen": "bun scripts/generate-admin-key.js"
     },
     "dependencies": {
         "@fontsource/geist": "^5.2.9",

@@ -28,7 +28,16 @@ router.post('/admin/claim', async (req, res) => {
         return res.status(400).json({ error: 'Missing uuid or password' });
     }
 
-    const match = await Bun.password.verify(password, ADMIN_KEY);
+    let match;
+    console.log(ADMIN_KEY);
+    console.log(password);
+
+    try {
+        match = await Bun.password.verify(password, ADMIN_KEY);
+    } catch {
+        return res.status(500).json({ error: 'Invalid server key configuration' });
+    }
+
     if (!match) {
         return res.status(403).json({ error: 'Forbidden' });
     }
