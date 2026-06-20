@@ -53,7 +53,7 @@ export function BinPreview({ binId, title, authorName, accentColor, fileCount, v
                 width: '1200px',
                 height: '630px',
                 background: '#09090b',
-                padding: '64px 72px',
+                padding: '48px 72px 100px',
                 fontFamily: 'Geist',
             }}
         >
@@ -86,7 +86,7 @@ export function BinPreview({ binId, title, authorName, accentColor, fileCount, v
                             maxHeight: '150px',
                         }}
                     >
-                        {title.length > 50 ? `${title.slice(0, 50).trimEnd()}…` : title}
+                        {title.length > 100 ? `${title.slice(0, 100).trimEnd()}…` : title}
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px', gap: '14px' }}>
                         <div
@@ -117,7 +117,7 @@ export function BinPreview({ binId, title, authorName, accentColor, fileCount, v
             </div>
 
             {/* Bottom bar */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                 {/* Stacked language icons + file count */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -152,11 +152,11 @@ export function BinPreview({ binId, title, authorName, accentColor, fileCount, v
                 </div>
 
                 {/* Views + branding */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px', marginRight: '12px' }}>
                     <div style={{ fontSize: '22px', color: '#a1a1aa', fontFamily: 'Geist Mono' }}>
                         {`${views.toLocaleString()} views`}
                     </div>
-                    <div style={{ fontSize: '26px', color: accentColor, fontWeight: 600, letterSpacing: '-0.5px' }}>
+                    <div style={{ fontSize: '26px', color: accentColor, fontWeight: 600, letterSpacing: '-0.5px', marginRight: '-6px' }}>
                         bins.hckr.mx
                     </div>
                 </div>

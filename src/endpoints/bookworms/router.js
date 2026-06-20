@@ -7,8 +7,11 @@ import booksRoutes from './routes/books';
 import filesRoutes from './routes/files';
 import settingsRoutes from './routes/settings';
 import collectionsRoutes from './routes/collections';
+import previewRoutes from './routes/preview';
 
 const router = Router();
+
+router.use(previewRoutes);
 
 router.use(withApiKey(process.env.BOOKWORMS__APP_KEY || ''));
 
