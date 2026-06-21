@@ -1,0 +1,30 @@
+@base = https://endpoints.hckr.mx/manayo
+
+# ──── HEALTH ────
+
+### Health check
+GET {{base}}/
+
+# ──── SETTINGS ────
+
+### Get all settings (ia_enabled, theme, etc.)
+GET {{base}}/settings
+
+# ──── AI ────
+
+### AI suggest — random card (no description)
+POST {{base}}/ai/suggest
+Content-Type: application/json
+
+{
+  "mode": "random"
+}
+
+### AI suggest — prompt-based card
+POST {{base}}/ai/suggest
+Content-Type: application/json
+
+{
+  "mode": "prompt",
+  "description": "algo intenso para cuando estás muy emocionado"
+}

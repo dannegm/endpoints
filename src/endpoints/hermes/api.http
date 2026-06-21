@@ -1,0 +1,27 @@
+@base = https://endpoints.hckr.mx/hermes
+@apiKey = {{$dotenv APP_KEY}}
+@topic = my-topic
+@event = update
+
+# ──── HEALTH ────
+
+### Health check
+GET {{base}}/
+x-dnn-apikey: {{apiKey}}
+
+# ──── SSE ────
+
+### Subscribe to topic (Server-Sent Events stream)
+GET {{base}}/sub/{{topic}}
+x-dnn-apikey: {{apiKey}}
+
+# ──── PUBLISH ────
+
+### Publish event to topic
+POST {{base}}/pub/{{topic}}/{{event}}
+x-dnn-apikey: {{apiKey}}
+Content-Type: application/json
+
+{
+  "message": "hello"
+}

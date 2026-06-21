@@ -1,0 +1,23 @@
+@base = https://endpoints.hckr.mx/proxys
+
+# ──── CUSTOM PROXY ────
+# x-proxy-target: full URL (path + query included) to forward the request to
+
+### Custom proxy — GET request
+GET {{base}}/custom
+x-proxy-target: https://endpoints.hckr.mx/starfish/otp
+
+### Custom proxy — POST request
+POST {{base}}/custom
+x-proxy-target: https://api.example.com/users?active=true
+Content-Type: application/json
+
+{
+  "name": "dan"
+}
+
+# ──── METEO PROXY ────
+# Transparent proxy to https://api.open-meteo.com — passes path + query through
+
+### Get weather forecast (proxied to open-meteo.com)
+GET {{base}}/meteo/v1/forecast?latitude=19.43&longitude=-99.13&current=temperature_2m,wind_speed_10m

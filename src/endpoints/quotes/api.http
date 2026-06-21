@@ -1,0 +1,138 @@
+@base = https://endpoints.hckr.mx/quotes
+@apiKey = {{$dotenv QUOTES_SECRET_TOKEN}}
+@tracker = {{$dotenv QUOTES_SECRET_TOKEN}}
+@space = krystel
+@id = 1
+@actionId = action-uuid
+
+# ──── HEALTH ────
+
+### Health check
+GET {{base}}/
+
+# ──── ADMIN ────
+
+### Clear rate limit for an IP (requires x-dnn-apikey)
+POST {{base}}/clear/ratelimit?ip=192.168.1.1
+x-dnn-apikey: {{apiKey}}
+
+# ──── SESSIONS ────
+
+### Register / heartbeat a session (no auth)
+POST {{base}}/{{space}}/track
+
+### Request auth token (requires x-dnn-tracker + body code)
+POST {{base}}/{{space}}/auth/token
+x-dnn-tracker: {{tracker}}
+Content-Type: application/json
+
+{
+  "code": "mi-codigo-secreto"
+}
+
+### Validate auth token
+GET {{base}}/{{space}}/auth/validate
+x-dnn-tracker: {{tracker}}
+
+# ──── QUOTES ────
+
+### Get all quotes in a space
+GET {{base}}/{{space}}
+
+### Get all quotes including future and deleted
+GET {{base}}/{{space}}?includes=future,deleted
+
+### Pick a random quote
+GET {{base}}/{{space}}/pick
+
+### Pick a random quote with specific repeat probability
+GET {{base}}/{{space}}/pick?repeatProbability=0.5&skip-actions=true
+
+### Pick a specific quote by ID
+GET {{base}}/{{space}}/pick?quote.id={{id}}
+
+### Get quote by ID
+GET {{base}}/{{space}}/{{id}}
+
+### Get quote by ID without tracking view
+GET {{base}}/{{space}}/{{id}}?skip-actions=true
+
+### Create quote
+POST {{base}}/{{space}}
+Content-Type: application/json
+
+{
+  "quote": "El texto de la cita",
+  "published_at": "2026-06-20T00:00:00.000Z"
+}
+
+### Update quote
+PUT {{base}}/{{space}}/{{id}}
+Content-Type: application/json
+
+{
+  "quote": "Texto actualizado"
+}
+
+### Soft delete quote (sets deleted_at)
+DELETE {{base}}/{{space}}/{{id}}
+
+### Hard delete quote (removes from DB)
+DELETE {{base}}/{{space}}/{{id}}/destroy
+
+# ──── POSTS ────
+
+### Get all posts in a space
+GET {{base}}/{{space}}/posts
+
+### Get all posts including indev and deleted
+GET {{base}}/{{space}}/posts?includes=indev,deleted
+
+### Get post by ID
+GET {{base}}/{{space}}/posts/{{id}}
+
+### Create post
+POST {{base}}/{{space}}/posts
+Content-Type: application/json
+
+{
+  "content": "Contenido del post",
+  "type": "post"
+}
+
+### Update post
+PUT {{base}}/{{space}}/posts/{{id}}
+Content-Type: application/json
+
+{
+  "content": "Contenido actualizado"
+}
+
+### Soft delete post
+DELETE {{base}}/{{space}}/posts/{{id}}
+
+### Hard delete post
+DELETE {{base}}/{{space}}/posts/{{id}}/destroy
+
+# ──── ACTIONS ────
+
+### Register action on a quote (like, balloons, said_yes, etc.)
+POST {{base}}/{{space}}/{{id}}/action/like
+Content-Type: application/json
+
+{}
+
+### Register action without quote ID
+POST {{base}}/{{space}}/none/action/balloons
+Content-Type: application/json
+
+{}
+
+### Get all actions for a space
+GET {{base}}/{{space}}/actions?page=1&limit=50
+
+### Delete all actions for a space
+DELETE {{base}}/{{space}}/actions
+
+### Delete action by ID
+DELETE {{base}}/actions/{{actionId}}

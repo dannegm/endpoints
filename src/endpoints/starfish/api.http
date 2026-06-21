@@ -1,0 +1,11 @@
+@base = https://endpoints.hckr.mx/starfish
+
+# ──── HEALTH ────
+
+### Health check
+GET {{base}}/
+
+# ──── OTP ────
+
+### Generate TOTP code + URI
+GET {{base}}/otp

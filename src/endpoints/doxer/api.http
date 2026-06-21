@@ -1,0 +1,57 @@
+@base = https://endpoints.hckr.mx/doxer
+@apiKey = {{$dotenv APP_KEY}}
+
+# ──── INSPECT ────
+
+### Health check
+GET {{base}}/
+x-dnn-apikey: {{apiKey}}
+
+### Full client info (ip, method, path, headers, cookies, query, body)
+GET {{base}}/info
+x-dnn-apikey: {{apiKey}}
+
+### Client data (ip + derived metadata)
+GET {{base}}/client
+x-dnn-apikey: {{apiKey}}
+
+### Request and response headers
+GET {{base}}/headers
+x-dnn-apikey: {{apiKey}}
+
+### Request body echo
+POST {{base}}/body
+x-dnn-apikey: {{apiKey}}
+Content-Type: application/json
+
+{
+  "hello": "world"
+}
+
+### Query params echo
+GET {{base}}/query?foo=bar&baz=1
+x-dnn-apikey: {{apiKey}}
+
+### Path params echo
+GET {{base}}/params/some/nested/path
+x-dnn-apikey: {{apiKey}}
+
+### HTTP method echo
+GET {{base}}/method
+x-dnn-apikey: {{apiKey}}
+
+### Return specific status code
+GET {{base}}/status/418
+x-dnn-apikey: {{apiKey}}
+
+### Cookies echo
+GET {{base}}/cookies
+x-dnn-apikey: {{apiKey}}
+
+### Current UTC time + timestamp
+GET {{base}}/time
+x-dnn-apikey: {{apiKey}}
+
+### Process env (sensitive values masked, paths redacted)
+GET {{base}}/env
+x-dnn-apikey: {{apiKey}}

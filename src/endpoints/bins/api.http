@@ -1,0 +1,26 @@
+@base = https://endpoints.hckr.mx/bins
+@binId = abc123
+@fileId = file-uuid
+@adminToken = eyJhbGciOiJIUzI1NiJ9...
+
+# ──── ADMIN ────
+
+### Claim admin role (JWT must contain uuid + password, signed with BINS_JWT_SECRET)
+POST {{base}}/admin/claim
+Authorization: Bearer {{adminToken}}
+
+# ──── FILES ────
+
+### Get file by ID (renders inline with correct MIME type)
+GET {{base}}/files/{{fileId}}
+
+### Get file by ID with custom filename
+GET {{base}}/files/{{fileId}}/mi-archivo.js
+
+# ──── PREVIEW ────
+
+### Bin preview image — SVG
+GET {{base}}/bins/{{binId}}/preview-image.svg
+
+### Bin preview image — PNG
+GET {{base}}/bins/{{binId}}/preview-image.png

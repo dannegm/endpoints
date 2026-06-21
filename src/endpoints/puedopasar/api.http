@@ -1,0 +1,14 @@
+@base = https://endpoints.hckr.mx/puedopasar
+@apiKey = {{$dotenv APP_KEY}}
+
+# ──── DATA ────
+
+### Get current status data (reads from status.json, falls back to static data)
+GET {{base}}/data
+x-dnn-apikey: {{apiKey}}
+
+# ──── REFRESH ────
+
+### Trigger orchestrator to refresh status (fire-and-forget, respects cooldown)
+POST {{base}}/refresh
+x-dnn-apikey: {{apiKey}}

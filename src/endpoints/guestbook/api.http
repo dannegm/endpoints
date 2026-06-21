@@ -1,0 +1,11 @@
+@base = https://endpoints.hckr.mx/guestbook
+
+# ──── HEALTH ────
+
+### Health check
+GET {{base}}/
+
+# ──── PROXY ────
+
+### Proxy download — streams remote file as attachment
+GET {{base}}/proxy/download?url=https://example.com/file.pdf&filename=archivo.pdf
