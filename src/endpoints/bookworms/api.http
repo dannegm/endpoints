@@ -1,0 +1,225 @@
+### Bookworms API
+### Base: https://endpoints.hckr.mx/bookworms
+
+@base = https://endpoints.hckr.mx/bookworms
+@apiKey = {{$dotenv BOOKWORMS__APP_KEY}}
+
+# ─────────────────────────────────────────
+# HEALTH
+# ─────────────────────────────────────────
+
+### Health check
+GET {{base}}/
+x-dnn-apikey: {{apiKey}}
+
+
+# ─────────────────────────────────────────
+# PREVIEW (no auth required)
+# ─────────────────────────────────────────
+
+### Book preview image — SVG
+GET {{base}}/book/{{libid}}/preview-image.svg
+
+### Book preview image — PNG
+GET {{base}}/book/{{libid}}/preview-image.png
+
+
+# ─────────────────────────────────────────
+# BOOKS
+# ─────────────────────────────────────────
+
+### Get book by libid
+GET {{base}}/book/{{libid}}
+x-dnn-apikey: {{apiKey}}
+
+### Get book (bypass cache)
+GET {{base}}/book/{{libid}}?nocache
+x-dnn-apikey: {{apiKey}}
+
+### Get author by key
+GET {{base}}/author/nombre-del-autor
+x-dnn-apikey: {{apiKey}}
+
+### Get author (bypass cache)
+GET {{base}}/author/nombre-del-autor?nocache
+x-dnn-apikey: {{apiKey}}
+
+### Get series by key
+GET {{base}}/serie/nombre-de-la-serie
+x-dnn-apikey: {{apiKey}}
+
+### Get series (bypass cache)
+GET {{base}}/serie/nombre-de-la-serie?nocache
+x-dnn-apikey: {{apiKey}}
+
+### Get books by category (fuzzy match, threshold 0.3)
+GET {{base}}/category/fantasia?page=1&limit=10
+x-dnn-apikey: {{apiKey}}
+
+
+# ─────────────────────────────────────────
+# SEARCH
+# ─────────────────────────────────────────
+
+### Catalog summary (book/author/series counts)
+GET {{base}}/summaries
+x-dnn-apikey: {{apiKey}}
+
+### Random suggestions (3 books + 3 authors + 3 series)
+GET {{base}}/search/suggestions
+x-dnn-apikey: {{apiKey}}
+
+### Global search (books weighted 5x title, 3x authors; + authors + series)
+GET {{base}}/search?q=dune&page=1&limit=10
+x-dnn-apikey: {{apiKey}}
+
+### Search books only
+GET {{base}}/search/books?q=dune&page=1&limit=10
+x-dnn-apikey: {{apiKey}}
+
+### Search authors only
+GET {{base}}/search/author?q=asimov&page=1&limit=10
+x-dnn-apikey: {{apiKey}}
+
+### Search series only
+GET {{base}}/search/serie?q=fundacion&page=1&limit=10
+x-dnn-apikey: {{apiKey}}
+
+
+# ─────────────────────────────────────────
+# COLLECTIONS
+# ─────────────────────────────────────────
+
+### List all collections (paginated)
+GET {{base}}/collections?page=1&limit=10
+x-dnn-apikey: {{apiKey}}
+
+### Get most recent collection
+GET {{base}}/collections/last
+x-dnn-apikey: {{apiKey}}
+
+### Get single collection
+GET {{base}}/collections/{{collectionId}}
+x-dnn-apikey: {{apiKey}}
+
+### Create collection manually (headline required)
+POST {{base}}/collections
+x-dnn-apikey: {{apiKey}}
+Content-Type: application/json
+
+{
+  "headline": "Los mejores libros de ciencia ficción",
+  "description": "Una selección de clásicos del género",
+  "tags": ["sci-fi", "clasicos"],
+  "topic_id": "{{topicId}}",
+  "books": ["libid-1", "libid-2", "libid-3", "libid-4"]
+}
+
+### Suggest collection (synchronous) — optional prompt, else picks weighted topic
+POST {{base}}/collections/suggest
+x-dnn-apikey: {{apiKey}}
+Content-Type: application/json
+
+{
+  "prompt": "libros de aventuras para jóvenes"
+}
+
+### Generate collection (async, 202, fire-and-forget, up to 3 retries, min 4 books)
+POST {{base}}/collections/generate
+x-dnn-apikey: {{apiKey}}
+Content-Type: application/json
+
+{
+  "prompt": "novelas históricas ambientadas en Roma"
+}
+
+### Test book-to-catalog matcher
+POST {{base}}/collections/test-matcher
+x-dnn-apikey: {{apiKey}}
+Content-Type: application/json
+
+{
+  "books": [
+    { "title": "Dune", "author": "Frank Herbert" },
+    { "title": "Foundation", "author": "Isaac Asimov" }
+  ]
+}
+
+
+# ─────────────────────────────────────────
+# TOPICS
+# ─────────────────────────────────────────
+
+### List all topics (paginated)
+GET {{base}}/topics?page=1&limit=10
+x-dnn-apikey: {{apiKey}}
+
+### Get single topic
+GET {{base}}/topics/{{topicId}}
+x-dnn-apikey: {{apiKey}}
+
+### Get collections for a topic
+GET {{base}}/topics/{{topicId}}/collections
+x-dnn-apikey: {{apiKey}}
+
+### Generate topics via AI (default count: 10)
+POST {{base}}/topics/generate
+x-dnn-apikey: {{apiKey}}
+Content-Type: application/json
+
+{
+  "count": 5
+}
+
+
+# ─────────────────────────────────────────
+# FILES / DOWNLOADS
+# ─────────────────────────────────────────
+
+### Request book conversion (queues via ntfy, returns validation URL)
+GET {{base}}/request?filename=dune.epub&format=epub
+x-dnn-apikey: {{apiKey}}
+
+### Validate — check if requested book is available in storage
+GET {{base}}/validate?filename=dune.epub
+x-dnn-apikey: {{apiKey}}
+
+### Download book file (deletes from storage, increments counter)
+GET {{base}}/download?filename=dune.epub
+x-dnn-apikey: {{apiKey}}
+
+### Get public file URL (does NOT delete, increments counter)
+GET {{base}}/file?filename=dune.epub
+x-dnn-apikey: {{apiKey}}
+
+### Send book to Kindle via email (removes from storage after send)
+POST {{base}}/sendto-kindle
+x-dnn-apikey: {{apiKey}}
+Content-Type: application/json
+
+{
+  "email": "usuario@kindle.com",
+  "filename": "dune.epub"
+}
+
+### Clear bucket (deletes all files, returns 204)
+GET {{base}}/clear-bucket
+x-dnn-apikey: {{apiKey}}
+
+
+# ─────────────────────────────────────────
+# SETTINGS
+# ─────────────────────────────────────────
+
+### Get all settings (flattened key-value object)
+GET {{base}}/settings
+x-dnn-apikey: {{apiKey}}
+
+### Upsert settings
+PUT {{base}}/settings
+x-dnn-apikey: {{apiKey}}
+Content-Type: application/json
+
+{
+  "library.last_update": "2026-06-20T00:00:00Z"
+}
