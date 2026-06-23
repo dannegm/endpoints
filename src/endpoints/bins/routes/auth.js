@@ -1,7 +1,8 @@
 import { Router } from 'express';
-import { jwtVerify } from 'jose';
+import { jwtVerify, SignJWT } from 'jose';
 import { createClient } from '@supabase/supabase-js';
 import { sha1 } from '@/helpers/crypto.js';
+import { withApiKey } from '@/helpers/middlewares.js';
 
 const supabaseAdmin = createClient(
     process.env.SUPABASE_URL,
@@ -70,5 +71,38 @@ router.post('/auth/claim', async (req, res) => {
         refresh_token: data.session.refresh_token,
     });
 });
+
+router.post(
+    '/auth/recover',
+    withApiKey(process.env.BINS_CLAIM_SECRET),
+    async (req, res) => {
+        const { username } = req.body;
+        if (!username) return res.status(400).json({ error: 'Missing username' });
+
+        const { data: profile, error } = await supabaseAdmin
+            .schema('bins')
+            .from('profiles')
+            .select('uuid, name, color_light, color_dark')
+            .eq('name', username)
+            .maybeSingle();
+
+        if (error) return res.status(500).json({ error: 'DB error' });
+        if (!profile) return res.status(404).json({ error: 'User not found' });
+
+        const user = {
+            uuid: profile.uuid,
+            name: profile.name,
+            colorLight: profile.color_light,
+            colorDark: profile.color_dark,
+        };
+
+        const token = await new SignJWT({ uuid: profile.uuid, user })
+            .setProtectedHeader({ alg: 'HS256' })
+            .setExpirationTime('15m')
+            .sign(JWT_SECRET);
+
+        return res.json({ link: `https://bins.hckr.mx/login?token=${token}` });
+    },
+);
 
 export default router;
